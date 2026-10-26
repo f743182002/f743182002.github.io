@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f3f1eb">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' file:; script-src 'self' file:; style-src 'self' file: 'unsafe-inline'; img-src 'self' file: data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>景平大勇街3樓｜3房2廳2衛｜總價1,688萬</title>
+  <meta name="description" content="景平大勇街3樓，3房2廳2衛、前後陽台，權狀30.02坪。景平站Google地圖步行規劃約4分鐘，實際以現場為準。預約看屋請聯絡林津陞。">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="景平大勇街3樓｜3房2廳2衛｜總價1,688萬">
+  <meta property="og:description" content="3房2廳2衛・前後陽台。權狀30.02坪（主建物24.04坪）。景平站Google地圖步行規劃約4分鐘，實際以現場為準。">
+  <meta property="og:image" content="https://f743182002.github.io/S21140123/assets/photos/living-wide.jpg">
+  <meta property="og:url" content="https://f743182002.github.io/S21140123/">
+  <meta property="og:image:alt" content="景平大勇街3樓客餐廳現場照片">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar"><a href="#listing-hero" class="brand"><span class="brand-mark" aria-hidden="true">◇</span><span>景平大勇街3樓<small>PROPERTY VIEW</small></span></a><span class="top-note">全國不動產板橋加盟店</span><button id="start-report" class="dark">看物件簡報 ↗</button></header>
+<main>
+  <section id="listing-hero" class="listing-hero" aria-labelledby="listing-title">
+    <img id="hero-photo" class="hero-photo" src="assets/photos/living-wide.jpg" alt="客廳、餐桌椅與陽台門的現場照片" fetchpriority="high" width="1600" height="1104">
+    <div class="hero-copy"><p class="hero-location">中和區大勇街 25 巷 · 公寓 3F／4F</p><h1 id="listing-title">景平大勇街3樓</h1>
+      <div class="sale-price" aria-label="售價"><strong data-price></strong><small>售價以最新刊登資訊為準</small></div>
+      <ul class="hero-facts"><li>3房2廳2衛・前後陽台</li><li>權狀 30.02 坪（主建物 24.04 坪）</li><li>景平站 步行約4分鐘（Google 地圖）</li></ul>
+      <p class="hero-distance-note">步行規劃，實際以現場為準。</p>
+      <div class="hero-actions"><a class="contact-button call" href="tel:0925635678"><span>打電話 <span class="phone-number">0925-635-678</span></span></a><a class="contact-button line" href="https://line.me/R/ti/p/%40banqiao.asheng" rel="noopener noreferrer">加 LINE 預約看屋</a></div>
+    </div>
+  </section>
+  <section class="featured-section" aria-labelledby="featured-title"><div class="featured-heading"><div><p class="eyebrow">PROPERTY PHOTOS</p><h2 id="featured-title">先看室內與陽台照片</h2></div><button id="view-all-photos">查看全部照片 →</button></div><p class="hint">左右滑動看照片，點一下可放大。</p><div id="featured-photos" class="featured-photos" tabindex="0" aria-label="精選現場照片，左右滑動或按 Tab 選取"></div></section>
+  <nav class="tabs" aria-label="展示內容" role="tablist"><button id="tab-explore" data-tab="explore" role="tab" aria-controls="explore" aria-selected="true">空間探索</button><button id="tab-photos" data-tab="photos" role="tab" aria-controls="photos" aria-selected="false" tabindex="-1">現場照片</button><button id="tab-report" data-tab="report" role="tab" aria-controls="report" aria-selected="false" tabindex="-1">空間簡報</button><button id="tab-plan" data-tab="plan" role="tab" aria-controls="plan" aria-selected="false" tabindex="-1">原始圖面</button></nav>
+  <section id="explore" class="explore" role="tabpanel" aria-labelledby="tab-explore">
+    <aside class="directory"><p class="eyebrow">SPACE DIRECTORY</p><h2>先選一個空間</h2><div class="summary"><b>3<small>房</small></b><b>2<small>廳</small></b><b>2<small>衛</small></b><b>2<small>陽台</small></b></div><div id="room-list"></div></aside>
+    <div class="model-column"><div class="viewer"><canvas id="scene" tabindex="0"></canvas><div id="scene-labels" aria-hidden="true"></div><div class="view-switch"><button data-view="perspective" aria-pressed="true">3D 透視</button><button data-view="top" aria-pressed="false">平面俯視</button></div><span class="watermark" aria-hidden="true">SPACE<br>VIEW</span><div class="tools"><button id="zoom-in" aria-label="放大">＋</button><button id="zoom-out" aria-label="縮小">−</button><button id="reset" aria-label="重設視角">↺</button><button id="capture" aria-label="下載目前視角 PNG">↓</button></div><span class="selected" id="selected-name">整體格局</span><p id="scene-error" hidden role="alert">模型無法載入，請查看原始圖面。</p></div><div class="controls"><label>牆體 <select id="walls"><option value="low">剖切</option><option value="full">完整</option><option value="none">隱藏</option></select></label><label><input id="furniture" type="checkbox" checked> 家具示意</label><label><input id="labels" type="checkbox" checked> 空間名稱</label></div><p class="notice">格局示意，非實測，家具為示意，實際以現場為準</p><p class="hint">拖曳旋轉 · 滾輪／雙指縮放 · 點選空間<br>鍵盤方向鍵旋轉、＋／−縮放、0 重設。圖面座標不代表方位。</p></div>
+    <aside class="inspector"><p class="eyebrow">A CLOSER LOOK</p><h2 id="room-title">整體格局</h2><p id="room-description"></p><button id="show-room-photos">查看相關照片 ↗</button><p id="room-photo-note" class="hint"></p><div class="facts" id="facts"></div><button id="show-plan" class="text-button">對照原始格局圖 →</button></aside>
+  </section>
+  <section id="photos" class="page" role="tabpanel" aria-labelledby="tab-photos" hidden><div class="section-heading"><p class="eyebrow">AT THE PROPERTY</p><h2>室內與陽台現場照片</h2><p>點照片可以放大看</p><p class="hint" id="photo-staging-note">室內陳設為現場佈置，不隨房屋移轉。</p></div><div id="photo-filters" class="filters" aria-label="照片空間篩選"></div><div id="photo-grid" class="photo-grid"></div></section>
+  <section id="report" class="page" role="tabpanel" aria-labelledby="tab-report" hidden><div class="report-heading"><p class="eyebrow">PROPERTY PRESENTATION</p><span id="slide-counter" aria-live="polite"></span></div><div class="slide"><div class="slide-copy"><p class="eyebrow" id="slide-eyebrow"></p><h2 id="slide-title"></h2><p id="slide-body"></p><ul id="slide-points"></ul><div id="slide-contact" hidden></div><p class="notice">格局示意，非實測，家具為示意，實際以現場為準</p></div><figure class="slide-figure"><img id="slide-image" alt=""></figure></div><div class="slide-controls"><button id="slide-prev">← 上一頁</button><div id="slide-dots" aria-label="簡報頁碼"></div><button id="slide-next" class="dark">下一頁 →</button></div></section>
+  <section id="plan" class="page plan" role="tabpanel" aria-labelledby="tab-plan" hidden><div><p class="eyebrow">THE ORIGINAL PLAN</p><h2>回到原圖，<br>對照每個位置。</h2><p>這張概繪圖沒有按比例畫。模型只呈現相對位置，尺寸、牆高及家具配置都不是實測結果。</p><p>上方兩個房間與廚房；中間左側兩間浴廁、右側餐廳；下方是房間、客廳與右側梯間。</p><p>原始圖面保留原樣供對照，標示內容仍須現場確認。</p><button id="enlarge-plan" class="dark">放大原圖 ↗</button></div><figure><img src="assets/floorplan.jpg" alt="格局圖：上方陽台，下接兩房及右側廚房；中間左側兩浴廁、右側餐廳；下方左房、中客廳、右梯間與下方陽台"><figcaption>原始概繪圖 · 非一定比例 · 實際以現場為準</figcaption></figure></section>
+</main>
+<footer class="footer"><div><p class="eyebrow">LET’S TAKE A LOOK</p><h2>約個時間，到現場看看。</h2><div id="footer-contact"></div></div><div id="footer-disclosure" class="disclosure"></div></footer>
+<nav class="mobile-contact-bar" aria-label="預約看屋聯絡"><a class="contact-button call" href="tel:0925635678">打電話</a><a class="contact-button line" href="https://line.me/R/ti/p/%40banqiao.asheng" rel="noopener noreferrer">加 LINE</a></nav>
+<dialog id="photo-dialog" aria-labelledby="photo-title"><header><h2 id="photo-title">現場照片</h2><button id="close-dialog" aria-label="關閉圖片">✕</button></header><img id="photo-large" alt=""><p id="photo-caption"></p><p class="hint" id="dialog-staging-note">室內陳設為現場佈置，不隨房屋移轉。</p><div class="dialog-nav"><button id="photo-prev">← 上一張</button><span id="photo-counter" aria-live="polite"></span><button id="photo-next">下一張 →</button></div></dialog>
+<div id="status" role="status" class="sr-only"></div>
+<script src="config.js"></script><script src="listing.js"></script><script src="photos.js"></script><script src="scene.js"></script><script src="app.js"></script>
+</body></html>
