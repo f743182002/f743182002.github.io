@@ -23,6 +23,11 @@
 
 頁首揭露列（精簡版，SOP 3.1）與頁尾完整版揭露三行都不可刪；主色紅（#C8161D），LOGO 用 assets/logo-nra.png（全國不動產官網 nra.com.tw 原檔）與 assets/logo-nra-icon.png（圓形標誌）；地圖橫幅白底、黑字、紅框；社區圓點與名稱照 SOP 4.9 用紅色、加大；只放手機＋LINE；禁用詞照 realtor-ad-compliance 技能。
 
+## 給 AI 的工作規則（林津陞多次交代）
+
+- **claude.ai 帳號裡的技能（skills）由 AI 自己更新，不要打包檔案丟給林津陞上傳。** 有瀏覽器或連到他電腦的 session，就自己打開 claude.ai 技能設定改好上傳。雲端 session 沒有瀏覽器，就交給他電腦上的 session 去做；做不到時講清楚卡在哪一步，不要叫他自己上傳。
+- 雲端容器裡的 `~/.claude/skills/synced/` 只是從帳號同步下來的副本，改了不會回寫到帳號，下次開 session 就被蓋掉。
+
 ## 網域
 
 - 主網域 **banqiaoasheng.com**，2026-11-02 在 Cloudflare 註冊。DNS 也在 Cloudflare，所有紀錄一律設成 **DNS only（灰色雲）**，不開 Cloudflare 代理，由 GitHub、Netlify 自己簽 HTTPS 憑證。
