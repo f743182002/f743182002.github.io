@@ -16,11 +16,14 @@
 """
 import html
 import json
+import os
 import re
 import subprocess
 import sys
+from datetime import datetime
 from pathlib import Path
 from urllib.parse import quote
+from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://banqiaoasheng.com/"
@@ -31,8 +34,18 @@ MARK = re.compile(r"(<!-- DECKS:START (\w+) -->)(.*?)(<!-- DECKS:END \2 -->)", r
 ENCODE_URI_SAFE = "-_.!~*'();/?:@&=+$,#"
 
 
+def write_if_changed(path, text):
+    """內容和原檔相同就不寫（維持冪等），回傳是否有寫入。"""
+    if path.exists() and path.read_text(encoding="utf-8") == text:
+        return False
+    path.write_text(text, encoding="utf-8")
+    return True
+
+
 def git(*args):
-    r = subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True)
+    # TZ=Asia/Taipei：lastmod 的 git 日期用台北時間，和「index 有變時用台北今天」一致
+    env = {**os.environ, "TZ": "Asia/Taipei"}
+    r = subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True, env=env)
     return r.stdout if r.returncode == 0 else ""
 
 
@@ -70,8 +83,7 @@ def restore_index_if_overwritten(text):
 
 
 def build_index(decks):
-    text = INDEX.read_text(encoding="utf-8")
-    text = restore_index_if_overwritten(text)
+    text = restore_index_if_overwritten(INDEX.read_text(encoding="utf-8"))
     groups = {"community": [], "listing": []}
     for k in sorted_keys(decks):
         if k.startswith("community/"):
@@ -87,19 +99,27 @@ def build_index(decks):
         return m.group(1) + "\n" + body + "\n" + m.group(4)
 
     new = MARK.sub(repl, text)
-    INDEX.write_text(new, encoding="utf-8")
+    changed = write_if_changed(INDEX, new)
+    print("index.html：" + ("已更新" if changed else "沒有變動"))
+    return changed
 
 
 def lastmod(rel, decks_key=None, decks=None):
     if decks_key and decks and decks.get(decks_key, {}).get("updated"):
         return decks[decks_key]["updated"]
-    d = git("log", "-1", "--format=%cs", "--", rel).strip()
+    d = git("log", "-1", "--date=format-local:%Y-%m-%d", "--format=%cd", "--", rel).strip()
     return d or None
 
 
-def build_sitemap(decks):
+def build_sitemap(decks, index_changed=False):
     pages = []  # (path, lastmod)
-    pages.append(("", lastmod("index.html")))
+    # 這次有改 index.html 的話，git 日期還是上一次 commit 的，改用今天（台北時間），
+    # 否則下次 push 又會多一個只改 sitemap 的 commit
+    if index_changed:
+        home_lm = datetime.now(ZoneInfo("Asia/Taipei")).date().isoformat()
+    else:
+        home_lm = lastmod("index.html")
+    pages.append(("", home_lm))
     for sub in ("map", "about"):
         if (ROOT / sub / "index.html").exists():
             pages.append((sub + "/", lastmod(sub)))
@@ -115,19 +135,19 @@ def build_sitemap(decks):
              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for path, lm in pages:
         lines.append("  <url>")
-        lines.append("    <loc>" + html.escape(SITE + quote(path, safe="/")) + "</loc>")
+        lines.append("    <loc>" + html.escape(SITE + quote(path, safe=ENCODE_URI_SAFE)) + "</loc>")
         if lm:
             lines.append("    <lastmod>" + lm + "</lastmod>")
         lines.append("  </url>")
     lines.append("</urlset>")
-    (ROOT / "sitemap.xml").write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print(f"sitemap.xml：{len(pages)} 個網址")
+    changed = write_if_changed(ROOT / "sitemap.xml", "\n".join(lines) + "\n")
+    print(f"sitemap.xml：{len(pages)} 個網址，" + ("已更新" if changed else "沒有變動"))
 
 
 def main():
     decks = load_decks()
-    build_index(decks)
-    build_sitemap(decks)
+    index_changed = build_index(decks)
+    build_sitemap(decks, index_changed)
 
 
 if __name__ == "__main__":

@@ -30,19 +30,30 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: 產生 sitemap.xml 與首頁靜態清單
-        run: python3 scripts/build_site.py
-
-      - name: 有變動才 commit
+      # 每次嘗試都先對齊最新的 origin/main 再產生，不做 rebase，
+      # 指揮艙連續 push 時也不會因 rebase 衝突失敗；push 被拒就重來，最多 3 次。
+      - name: 產生 sitemap.xml 與首頁靜態清單，有變動才 commit + push
         run: |
           git config core.quotepath false
-          if git diff --quiet -- index.html sitemap.xml; then
-            echo "沒有變動"
-            exit 0
-          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html sitemap.xml
-          git commit -m "自動更新 sitemap.xml 與首頁靜態清單（依 decks.json）"
-          git pull --rebase origin main
-          git push origin HEAD:main
+          for attempt in 1 2 3; do
+            echo "第 ${attempt} 次嘗試"
+            git fetch origin main
+            git reset --hard origin/main
+            python3 scripts/build_site.py
+            if git diff --quiet -- index.html sitemap.xml; then
+              echo "沒有變動"
+              exit 0
+            fi
+            git add index.html sitemap.xml
+            git commit -m "自動更新 sitemap.xml 與首頁靜態清單（依 decks.json）"
+            if git push origin HEAD:main; then
+              echo "已推送"
+              exit 0
+            fi
+            echo "push 失敗（main 可能有新 commit），5 秒後重試"
+            sleep 5
+          done
+          echo "重試 3 次仍無法 push"
+          exit 1
