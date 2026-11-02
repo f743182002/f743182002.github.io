@@ -11,85 +11,92 @@
    "id": "xinpu",
    "name": "新埔生活圈",
    "color": "#2F80C2",
-   "lat": 25.0239,
+   "lat": 25.0234,
    "lon": 121.4671
   },
   {
    "id": "jiangzicui",
    "name": "江子翠生活圈",
    "color": "#7A5CC7",
-   "lat": 25.0295,
-   "lon": 121.4763
+   "lat": 25.0289,
+   "lon": 121.4756
   },
   {
    "id": "xinban",
    "name": "新板特區",
    "color": "#E0812B",
-   "lat": 25.0122,
-   "lon": 121.4663
+   "lat": 25.012,
+   "lon": 121.4656
   },
   {
    "id": "jiangcui-ab",
    "name": "江翠北側重劃區AB",
    "color": "#5B8C3A",
-   "lat": 25.0219,
-   "lon": 121.4507
+   "lat": 25.0214,
+   "lon": 121.4505
   },
   {
    "id": "jiangcui-c",
    "name": "江翠北側重劃區C",
    "color": "#5B8C3A",
-   "lat": 25.0303,
-   "lon": 121.4578
+   "lat": 25.0296,
+   "lon": 121.4575
   },
   {
    "id": "jiangcui-def",
    "name": "江翠北側重劃區DEF",
    "color": "#5B8C3A",
-   "lat": 25.0357,
-   "lon": 121.4774
+   "lat": 25.0356,
+   "lon": 121.4723
+  },
+  {
+   "id": "jiangcui-g",
+   "name": "江翠北側重劃區G",
+   "color": "#5B8C3A",
+   "lat": 25.0358,
+   "lon": 121.4832
   },
   {
    "id": "shehou",
    "name": "社後生活圈",
    "color": "#8C6D3A",
-   "lat": 25.017,
-   "lon": 121.4564
+   "lat": 25.0167,
+   "lon": 121.4575
   },
   {
    "id": "puqian",
    "name": "埔墘生活圈",
    "color": "#C24B4B",
-   "lat": 25.0146,
-   "lon": 121.4805
+   "lat": 25.0142,
+   "lon": 121.481
   },
   {
    "id": "fuzhong",
    "name": "府中生活圈",
    "color": "#3A8C8C",
-   "lat": 25.0067,
-   "lon": 121.46
+   "lat": 25.0065,
+   "lon": 121.4614
   },
   {
    "id": "fuzhou",
    "name": "浮洲",
    "color": "#777777",
-   "lat": 25.0038,
-   "lon": 121.4465
+   "lat": 25.0037,
+   "lon": 121.4476
   },
   {
    "id": "yadong",
    "name": "亞東醫院",
    "color": "#777777",
-   "lat": 24.9951,
-   "lon": 121.4543
+   "lat": 24.9953,
+   "lon": 121.4545
   },
   {
    "id": "jisui",
    "name": "積穗（中和）",
    "color": "#C2557A",
-   "lat": 24.9955,
-   "lon": 121.4784
+   "lat": 24.9956,
+   "lon": 121.4788
   }
  ],
  "communities": [
@@ -346,7 +353,7 @@
   },
   {
    "name": "新濠一滙",
-   "area": "jiangzicui",
+   "area": "jiangcui-g",
    "road": "環河西路四段",
    "lat": 25.0314684,
    "lon": 121.4814161,

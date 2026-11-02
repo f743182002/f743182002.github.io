@@ -51,6 +51,7 @@
 .pop .cta.alt{background:#06C755}
 .pop .note{font-size:11.5px;color:#8A6A2A;margin-top:4px}
 .area-lbl{transform:translateX(-50%);white-space:nowrap;background:rgba(255,255,255,.92);color:#1F2B33;border:2px solid;border-radius:6px;padding:1px 8px;font-size:13px;font-weight:700;box-shadow:0 1px 3px rgba(0,0,0,.25);pointer-events:none}
+.hide-lbl .area-lbl{display:none}
 .office-pin{display:flex;align-items:center;gap:4px;white-space:nowrap;font-size:12px;font-weight:700;color:#1A6B3E;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 3px #fff}
 .office-pin i{width:16px;height:16px;border-radius:4px;background:#1A8F4E;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.35);color:#fff;font-style:normal;font-size:10px;line-height:12px;text-align:center}
 .cm-pin{width:18px;height:18px;border-radius:50%;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4)}
@@ -161,6 +162,8 @@
       if(a.lat==null)return;
       L.marker([a.lat,a.lon],{interactive:false,keyboard:false,zIndexOffset:-500,icon:L.divIcon({className:'',html:'<div class="area-lbl" style="border-color:'+a.color+'">'+esc(a.name)+'</div>',iconSize:null,iconAnchor:[0,12]})}).addTo(map);
     });
+    function lblVis(){map.getContainer().classList.toggle('hide-lbl',map.getZoom()<14)}
+    map.on('zoomend',lblVis);lblVis();
     if(D.office){
       L.marker([D.office.lat,D.office.lon],{icon:L.divIcon({className:'',html:'<div class="office-pin"><i>全</i>林津陞</div>',iconSize:null,iconAnchor:[8,8]}),title:D.office.name,zIndexOffset:-100}).addTo(map);
     }
