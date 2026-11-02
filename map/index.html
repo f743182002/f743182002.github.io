@@ -12,17 +12,17 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <link rel="stylesheet" href="../assets/site.css">
 <style>
-.hero{background:linear-gradient(120deg,#A3121A,#D7261E 60%,#E8502E);color:#fff}
+.hero{background:#fff;color:#C8161D;border-bottom:3px solid #C8161D}
 .hero .wrap{padding-top:16px;padding-bottom:14px}
 .hero h1{margin:0;font-size:24px;letter-spacing:.02em}
-.hero p{margin:2px 0 10px;font-size:14px;opacity:.92}
+.hero p{margin:2px 0 10px;font-size:14px;color:#1F2B33}
 .chips{display:flex;gap:8px;flex-wrap:wrap}
-.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.55);background:rgba(255,255,255,.12);color:#fff;border-radius:999px;padding:5px 12px;font-size:14px;cursor:pointer;font-family:inherit}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1.5px solid #C8161D;background:#fff;color:#C8161D;font-weight:700;border-radius:999px;padding:5px 12px;font-size:14px;cursor:pointer;font-family:inherit}
 .chip i{width:12px;height:12px;border-radius:50%;display:inline-block;box-shadow:0 0 0 1.5px #fff}
-.chip em{font-style:normal;background:rgba(255,255,255,.25);border-radius:999px;padding:0 7px;font-size:12px}
-.chip[aria-pressed="false"]{opacity:.5;text-decoration:line-through}
+.chip em{font-style:normal;background:#C8161D;color:#fff;border-radius:999px;padding:0 7px;font-size:12px}
+.chip[aria-pressed="false"]{opacity:.45;text-decoration:line-through;border-style:dashed}
 .chips + .chips{margin-top:8px}
-.chip-label{color:#fff;font-size:13px;opacity:.85;align-self:center;margin-right:2px}
+.chip-label{color:#C8161D;font-weight:700;font-size:13px;align-self:center;margin-right:2px}
 .layout{display:grid;grid-template-columns:1fr 360px;height:calc(100vh - 240px);min-height:520px}
 #map{height:100%;width:100%;z-index:1}
 .side{border-left:1px solid var(--line);background:var(--card);display:flex;flex-direction:column;min-height:0}
