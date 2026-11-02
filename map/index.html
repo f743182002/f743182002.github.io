@@ -50,6 +50,7 @@
 .pop .cta{display:block;text-align:center;margin-top:10px;background:#1E6FB0;color:#fff !important;text-decoration:none;border-radius:6px;padding:7px;font-weight:700}
 .pop .cta.alt{background:#06C755}
 .pop .note{font-size:11.5px;color:#8A6A2A;margin-top:4px}
+.area-lbl{transform:translateX(-50%);white-space:nowrap;background:rgba(255,255,255,.92);color:#1F2B33;border:2px solid;border-radius:6px;padding:1px 8px;font-size:13px;font-weight:700;box-shadow:0 1px 3px rgba(0,0,0,.25);pointer-events:none}
 .office-pin{display:flex;align-items:center;gap:4px;white-space:nowrap;font-size:12px;font-weight:700;color:#1A6B3E;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 3px #fff}
 .office-pin i{width:16px;height:16px;border-radius:4px;background:#1A8F4E;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.35);color:#fff;font-style:normal;font-size:10px;line-height:12px;text-align:center}
 .cm-pin{width:18px;height:18px;border-radius:50%;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4)}
@@ -90,7 +91,7 @@
 
 <section class="hero"><div class="wrap">
   <h1>阿陞的商圈地圖</h1>
-  <p>看房前先看位置：社區在哪、離捷運多遠、哪幾個可以一起看。點地圖上的社區看重點，再點進去看 3D 日照與實價登錄。</p>
+  <p>看房前先看位置：社區在哪個生活圈、離捷運多遠、哪幾個可以一起看。點地圖上的社區看重點，再點進去看 3D 日照與實價登錄。</p>
   <div class="chips" id="areaChips"><span class="chip-label">生活圈</span></div>
   <div class="chips" id="eraChips"><span class="chip-label">完工年代</span></div>
 </div></section>
@@ -109,6 +110,7 @@
 <main class="wrap faq">
   <h2>常見問題</h2>
   <details><summary>地圖上收錄哪些社區？</summary><p>都是阿陞實際做過完整社區分析的社區（查過使照、學區、步行路線與實價登錄）。之後每完成一個社區分析就會加上地圖。想看的社區還沒有，可以直接 LINE 我。</p></details>
+  <details><summary>生活圈怎麼分的？</summary><p>生活圈名稱與範圍參考樂居的板橋區分區，地圖上的生活圈名稱為約略位置。</p></details>
   <details><summary>位置準嗎？</summary><p>社區位置以建物輪廓定位，不是用刊登平台的地圖座標。標示虛線框的社區為約略位置，看房前請以門牌與現場為準。</p></details>
   <details><summary>步行時間怎麼算的？</summary><p>步行距離與時間依 OpenStreetMap 步行路線規劃，實際可能因步行速度、道路施工、交通狀況、天氣等而有出入。</p></details>
   <details><summary>學區準嗎？</summary><p>學區依新北市教育局學區查詢整理，實際以教育局最新公告為準。</p></details>
@@ -122,7 +124,7 @@
   經紀業｜非凡不動產有限公司<br>
   經紀人｜謝政峯（99）北縣字第002181號<br>
   營業員｜林津陞（99）登字第148103號<br>
-  <span>社區資料（完工年、樓層、結構等）若與實際情形有所差異，仍須以現場情形及地政機關登記為準。地圖底圖 © OpenStreetMap 貢獻者。</span>
+  <span>社區資料（完工年、樓層、結構等）若與實際情形有所差異，仍須以現場情形及地政機關登記為準。生活圈分區參考樂居，範圍為約略劃分。地圖底圖 © OpenStreetMap 貢獻者。</span>
 </div></footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
@@ -155,6 +157,10 @@
       return {c:c,a:a,m:m,era:eraOf(c)};
     });
 
+    D.areas.forEach(function(a){
+      if(a.lat==null)return;
+      L.marker([a.lat,a.lon],{interactive:false,keyboard:false,zIndexOffset:-500,icon:L.divIcon({className:'',html:'<div class="area-lbl" style="border-color:'+a.color+'">'+esc(a.name)+'</div>',iconSize:null,iconAnchor:[0,12]})}).addTo(map);
+    });
     if(D.office){
       L.marker([D.office.lat,D.office.lon],{icon:L.divIcon({className:'',html:'<div class="office-pin"><i>全</i>林津陞</div>',iconSize:null,iconAnchor:[8,8]}),title:D.office.name,zIndexOffset:-100}).addTo(map);
     }
