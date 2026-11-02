@@ -16,6 +16,7 @@
 """
 import html
 import json
+import os
 import re
 import subprocess
 import sys
@@ -42,7 +43,9 @@ def write_if_changed(path, text):
 
 
 def git(*args):
-    r = subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True)
+    # TZ=Asia/Taipei：lastmod 的 git 日期用台北時間，和「index 有變時用台北今天」一致
+    env = {**os.environ, "TZ": "Asia/Taipei"}
+    r = subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True, env=env)
     return r.stdout if r.returncode == 0 else ""
 
 
@@ -104,7 +107,7 @@ def build_index(decks):
 def lastmod(rel, decks_key=None, decks=None):
     if decks_key and decks and decks.get(decks_key, {}).get("updated"):
         return decks[decks_key]["updated"]
-    d = git("log", "-1", "--format=%cs", "--", rel).strip()
+    d = git("log", "-1", "--date=format-local:%Y-%m-%d", "--format=%cd", "--", rel).strip()
     return d or None
 
 
