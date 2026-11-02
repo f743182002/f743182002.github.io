@@ -21,4 +21,4 @@
 
 ## 法遵
 
-頁尾完整版揭露三行不可刪；只放手機＋LINE；禁用詞照 realtor-ad-compliance 技能。
+頁首揭露列（精簡版，SOP 3.1）與頁尾完整版揭露三行都不可刪；主色紅（#C8161D），LOGO 用 assets/logo-ctr.png（取自社區簡報內嵌的全國不動產標誌）；社區圓點與名稱照 SOP 4.9 用紅色、加大；只放手機＋LINE；禁用詞照 realtor-ad-compliance 技能。
