@@ -30,3 +30,4 @@
 - `tax.banqiaoasheng.com`：對應 Netlify 專案 `house116money`（稅務小幫手）。
 - `loan.banqiaoasheng.com`：對應 Netlify 專案 `zesty-cocada-c738c2`（青安 3.0）。
 - 以後新的互動簡報網址一律寫 `https://banqiaoasheng.com/community/<社區名>/`。舊的 `f743182002.github.io` 網址 GitHub 會自動轉址，不用改舊影片說明欄。
+- 「關於我」頁在 `about/`（2026-11-02 由 Netlify lin-realtor 搬入），舊網址 lin-realtor.netlify.app 會轉到 https://banqiaoasheng.com/about/ 。
