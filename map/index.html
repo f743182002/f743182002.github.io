@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>阿陞的商圈地圖｜板橋社區一張圖看懂｜板橋阿陞聊房</title>
+<meta name="description" content="板橋新埔、江子翠、板新一帶社區地圖：每個社區的完工年、樓層戶數、捷運步行時間、學區與看屋重點，點進去看 3D 日照與實價登錄互動簡報。">
+<meta property="og:title" content="阿陞的商圈地圖｜板橋社區一張圖看懂">
+<meta property="og:description" content="看房前先看位置：社區在哪、離捷運多遠、哪幾個可以一起看。">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_TW">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+.hero{background:linear-gradient(120deg,#1E6FB0,#2F9BD6);color:#fff}
+.hero .wrap{padding-top:16px;padding-bottom:14px}
+.hero h1{margin:0;font-size:24px;letter-spacing:.02em}
+.hero p{margin:2px 0 10px;font-size:14px;opacity:.92}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.55);background:rgba(255,255,255,.12);color:#fff;border-radius:999px;padding:5px 12px;font-size:14px;cursor:pointer;font-family:inherit}
+.chip i{width:12px;height:12px;border-radius:50%;display:inline-block;box-shadow:0 0 0 1.5px #fff}
+.chip em{font-style:normal;background:rgba(255,255,255,.25);border-radius:999px;padding:0 7px;font-size:12px}
+.chip[aria-pressed="false"]{opacity:.5;text-decoration:line-through}
+.chips + .chips{margin-top:8px}
+.chip-label{color:#fff;font-size:13px;opacity:.85;align-self:center;margin-right:2px}
+.layout{display:grid;grid-template-columns:1fr 360px;height:calc(100vh - 210px);min-height:520px}
+#map{height:100%;width:100%;z-index:1}
+.side{border-left:1px solid var(--line);background:var(--card);display:flex;flex-direction:column;min-height:0}
+.side-head{padding:12px 14px;border-bottom:1px solid var(--line)}
+.side-head h2{margin:0 0 8px;font-size:17px;color:var(--brand)}
+.side-head h2 small{color:var(--muted);font-weight:400;font-size:13px;margin-left:6px}
+.side-head input{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;background:var(--bg);color:var(--ink);font-family:inherit}
+.list{overflow-y:auto;flex:1;margin:0;padding:0;list-style:none}
+.list li{padding:11px 14px;border-bottom:1px solid var(--line);cursor:pointer;display:flex;gap:10px}
+.list li:hover,.list li.on{background:color-mix(in srgb,var(--brand) 8%,transparent)}
+.list .dot{flex:0 0 12px;height:12px;border-radius:50%;margin-top:6px}
+.list b{font-size:16px}
+.list .tag{font-size:11px;border:1px solid var(--accent);color:#B46A00;border-radius:4px;padding:0 5px;margin-left:6px;vertical-align:2px}
+.list .meta{font-size:13px;color:var(--muted)}
+.empty{padding:20px 14px;color:var(--muted);font-size:14px}
+.pop{font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;min-width:230px;max-width:280px}
+.pop h3{margin:0 0 2px;font-size:17px}
+.pop .sub{font-size:12.5px;color:#5F6F78;margin-bottom:6px}
+.pop table{border-collapse:collapse;font-size:13px;width:100%}
+.pop td{padding:2px 0;vertical-align:top}
+.pop td:first-child{color:#5F6F78;white-space:nowrap;padding-right:8px}
+.pop ul{margin:6px 0 0;padding-left:18px;font-size:13px}
+.pop .warn li::marker{content:"△ "}
+.pop .good li::marker{content:"○ "}
+.pop .cta{display:block;text-align:center;margin-top:10px;background:#1E6FB0;color:#fff !important;text-decoration:none;border-radius:6px;padding:7px;font-weight:700}
+.pop .cta.alt{background:#06C755}
+.pop .note{font-size:11.5px;color:#8A6A2A;margin-top:4px}
+.office-pin{display:flex;align-items:center;gap:4px;white-space:nowrap;font-size:12px;font-weight:700;color:#1A6B3E;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 3px #fff}
+.office-pin i{width:16px;height:16px;border-radius:4px;background:#1A8F4E;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.35);color:#fff;font-style:normal;font-size:10px;line-height:12px;text-align:center}
+.cm-pin{width:18px;height:18px;border-radius:50%;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.cm-pin.approx{border-style:dashed}
+.faq{margin-top:28px}
+.faq h2{font-size:20px}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin-bottom:8px}
+.faq summary{cursor:pointer;font-weight:700}
+.faq p{margin:8px 0 0;font-size:14.5px;color:var(--muted)}
+@media (max-width:860px){
+  .hero h1{font-size:21px}
+  .hero p{font-size:13px}
+  .chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+  .chips::-webkit-scrollbar{display:none}
+  .chip,.chip-label{flex:0 0 auto}
+  .layout{grid-template-columns:1fr;height:auto}
+  #map{height:58vh;min-height:360px}
+  .side{border-left:0;border-top:1px solid var(--line)}
+  .list{max-height:none}
+}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="topbar-in">
+  <a class="brand" href="../"><b>板橋阿陞聊房</b><small>全國不動產板橋加盟店・林津陞</small></a>
+  <nav class="nav" aria-label="主選單">
+    <a href="../">首頁</a>
+    <a href="./" aria-current="page">商圈地圖</a>
+    <a href="../#community">社區分析</a>
+    <a href="../#listings">我的物件</a>
+    <a href="../#tools">試算工具</a>
+    <a href="../#book">買房攻略</a>
+    <a href="https://www.youtube.com/channel/UC_OqNkkqQTT6L7xLZZvlRfQ" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://lin-realtor.netlify.app/" target="_blank" rel="noopener">關於我</a>
+  </nav>
+  <a class="btn-line" href="https://line.me/R/ti/p/%40banqiao.asheng" target="_blank" rel="noopener">加 LINE</a>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <h1>阿陞的商圈地圖</h1>
+  <p>看房前先看位置：社區在哪、離捷運多遠、哪幾個可以一起看。點地圖上的社區看重點，再點進去看 3D 日照與實價登錄。</p>
+  <div class="chips" id="areaChips"><span class="chip-label">生活圈</span></div>
+  <div class="chips" id="eraChips"><span class="chip-label">完工年代</span></div>
+</div></section>
+
+<div class="layout">
+  <div id="map" role="region" aria-label="板橋社區地圖"></div>
+  <aside class="side">
+    <div class="side-head">
+      <h2>社區清單<small id="count"></small></h2>
+      <input id="q" type="search" placeholder="搜尋社區名稱或路名…" aria-label="搜尋社區">
+    </div>
+    <ul class="list" id="list"></ul>
+  </aside>
+</div>
+
+<main class="wrap faq">
+  <h2>常見問題</h2>
+  <details><summary>地圖上收錄哪些社區？</summary><p>都是阿陞實際做過完整社區分析的社區（查過使照、學區、步行路線與實價登錄）。之後每完成一個社區分析就會加上地圖。想看的社區還沒有，可以直接 LINE 我。</p></details>
+  <details><summary>位置準嗎？</summary><p>社區位置以建物輪廓定位，不是用刊登平台的地圖座標。標示虛線框的社區為約略位置，看房前請以門牌與現場為準。</p></details>
+  <details><summary>步行時間怎麼算的？</summary><p>步行距離與時間依 OpenStreetMap 步行路線規劃，實際可能因步行速度、道路施工、交通狀況、天氣等而有出入。</p></details>
+  <details><summary>學區準嗎？</summary><p>學區依新北市教育局學區查詢整理，實際以教育局最新公告為準。</p></details>
+  <details><summary>實價登錄筆數是怎麼算的？</summary><p>資料來源為內政部不動產交易實價查詢服務網買賣資料，已排除親友、特殊關係等特殊交易，照原始資料引用，不代表個別房屋價格。完整表格在各社區的互動簡報裡。</p></details>
+</main>
+
+<footer class="site-foot"><div class="wrap">
+  <b>☆預約看屋請聯絡：林津陞 0925-635-678</b><br>
+  加官方 LINE：@banqiao.asheng<br>
+  全國不動產板橋加盟店<br>
+  經紀業｜非凡不動產有限公司<br>
+  經紀人｜謝政峯（99）北縣字第002181號<br>
+  營業員｜林津陞（99）登字第148103號<br>
+  <span>社區資料（完工年、樓層、結構等）若與實際情形有所差異，仍須以現場情形及地政機關登記為準。地圖底圖 © OpenStreetMap 貢獻者。</span>
+</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+(function(){
+  var ERAS=[
+    {id:'new',name:'民國110年後',test:function(y){return y!==null&&y>=110}},
+    {id:'100s',name:'民國100～109年',test:function(y){return y!==null&&y>=100&&y<110}},
+    {id:'90s',name:'民國90～99年',test:function(y){return y!==null&&y>=90&&y<100}},
+    {id:'80s',name:'民國89年以前',test:function(y){return y!==null&&y<90}},
+    {id:'build',name:'興建中',test:function(y){return y===null}}
+  ];
+  function eraOf(c){for(var i=0;i<ERAS.length;i++){if(ERAS[i].test(c.year))return ERAS[i].id}return null}
+  function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]})}
+
+  var map=L.map('map',{scrollWheelZoom:true}).setView([25.021,121.470],15);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap 貢獻者'}).addTo(map);
+
+  fetch('../data/communities.json',{cache:'no-cache'}).then(function(r){return r.json()}).then(init).catch(function(){
+    document.getElementById('list').innerHTML='<li class="empty">社區資料載入失敗，請重新整理頁面。</li>';
+  });
+
+  function init(D){
+    var areaById={};D.areas.forEach(function(a){areaById[a.id]=a});
+    var onArea={},onEra={};D.areas.forEach(function(a){onArea[a.id]=true});ERAS.forEach(function(e){onEra[e.id]=true});
+    var items=D.communities.map(function(c){
+      var a=areaById[c.area]||{color:'#666',name:''};
+      var icon=L.divIcon({className:'',html:'<div class="cm-pin'+(c.approx?' approx':'')+'" style="background:'+a.color+'"></div>',iconSize:[18,18],iconAnchor:[9,9],popupAnchor:[0,-8]});
+      var m=L.marker([c.lat,c.lon],{icon:icon,title:c.name}).bindPopup(popup(c,a)).bindTooltip(c.name,{direction:'top',offset:[0,-8]});
+      return {c:c,a:a,m:m,era:eraOf(c)};
+    });
+
+    if(D.office){
+      L.marker([D.office.lat,D.office.lon],{icon:L.divIcon({className:'',html:'<div class="office-pin"><i>全</i>林津陞</div>',iconSize:null,iconAnchor:[8,8]}),title:D.office.name,zIndexOffset:-100}).addTo(map);
+    }
+
+    var ac=document.getElementById('areaChips');
+    D.areas.forEach(function(a){
+      var n=items.filter(function(x){return x.c.area===a.id}).length;if(!n)return;
+      ac.appendChild(chip('<i style="background:'+a.color+'"></i>'+esc(a.name)+'<em>'+n+'</em>',function(on){onArea[a.id]=on;render()}));
+    });
+    var ec=document.getElementById('eraChips');
+    ERAS.forEach(function(e){
+      var n=items.filter(function(x){return x.era===e.id}).length;if(!n)return;
+      ec.appendChild(chip(esc(e.name)+'<em>'+n+'</em>',function(on){onEra[e.id]=on;render()}));
+    });
+
+    var q=document.getElementById('q');q.addEventListener('input',render);
+    var list=document.getElementById('list');
+    var first=true;
+    render();
+
+    function render(){
+      var kw=q.value.trim();
+      var shown=items.filter(function(x){
+        return onArea[x.c.area]&&onEra[x.era]&&(!kw||x.c.name.indexOf(kw)>=0||(x.c.road||'').indexOf(kw)>=0);
+      });
+      items.forEach(function(x){if(shown.indexOf(x)>=0){x.m.addTo(map)}else{map.removeLayer(x.m)}});
+      document.getElementById('count').textContent='共 '+shown.length+' 個';
+      list.innerHTML='';
+      if(!shown.length){list.innerHTML='<li class="empty">沒有符合條件的社區。</li>'}
+      shown.forEach(function(x){
+        var li=document.createElement('li');
+        li.innerHTML='<span class="dot" style="background:'+x.a.color+'"></span><div><b>'+esc(x.c.name)+'</b>'+(x.c.deck?'':'<span class="tag">簡報製作中</span>')+
+          '<div class="meta">'+esc(x.a.name)+'・'+esc(x.c.road)+'・'+esc(x.c.built)+'</div><div class="meta">'+esc(x.c.mrt)+'</div></div>';
+        li.addEventListener('click',function(){
+          Array.prototype.forEach.call(list.children,function(n){n.classList.remove('on')});li.classList.add('on');
+          map.setView(x.m.getLatLng(),Math.max(map.getZoom(),16),{animate:false});x.m.openPopup();
+          if(window.innerWidth<=860)document.getElementById('map').scrollIntoView({behavior:'smooth'});
+        });
+        list.appendChild(li);
+      });
+      if(first&&shown.length){
+        first=false;
+        var core=shown.filter(function(x){return x.c.area!=='zhonghe'});
+        map.fitBounds(L.latLngBounds((core.length?core:shown).map(function(x){return x.m.getLatLng()})).pad(0.15));
+      }
+    }
+
+    function chip(html,cb){
+      var b=document.createElement('button');b.type='button';b.className='chip';b.setAttribute('aria-pressed','true');b.innerHTML=html;
+      b.addEventListener('click',function(){var on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',on?'true':'false');cb(on)});
+      return b;
+    }
+
+    function popup(c,a){
+      var rows=[['生活圈',a.name],['位置',c.road],['完工',c.built],['樓層',c.floors],['規模',c.units],['結構',c.structure],['捷運',c.mrt],['學區',c.school?c.school+'（以教育局公告為準）':''],['實價登錄',c.deals?('近五年 '+c.deals+' 筆（已排除特殊交易）'):'']];
+      var h='<div class="pop"><h3>'+esc(c.name)+'</h3><div class="sub">新北市'+(c.area==='zhonghe'?'':'板橋區')+esc(c.road)+'</div><table>';
+      rows.forEach(function(r){if(r[1])h+='<tr><td>'+r[0]+'</td><td>'+esc(r[1])+'</td></tr>'});
+      h+='</table>';
+      if(c.pros&&c.pros.length)h+='<ul class="good">'+c.pros.map(function(p){return '<li>'+esc(p)+'</li>'}).join('')+'</ul>';
+      if(c.cautions&&c.cautions.length)h+='<ul class="warn">'+c.cautions.map(function(p){return '<li>看屋留意：'+esc(p)+'</li>'}).join('')+'</ul>';
+      if(c.approx)h+='<div class="note">地圖位置為約略位置，以門牌與現場為準。</div>';
+      if(c.deck)h+='<a class="cta" href="../'+encodeURI(c.deck)+'">看互動簡報（3D 日照・步行地圖・實價表）</a>';
+      h+='<a class="cta alt" href="https://line.me/R/ti/p/%40banqiao.asheng" target="_blank" rel="noopener">問阿陞：'+esc(c.name)+'有沒有房子在賣？</a></div>';
+      return h;
+    }
+  }
+})();
+</script>
+</body>
+</html>
