@@ -29,7 +29,7 @@
 
 ## 法遵
 
-頁首揭露列（精簡版，SOP 3.1）與頁尾完整版揭露三行都不可刪；主色紅（#C8161D），LOGO 用 assets/logo-nra.png（全國不動產官網 nra.com.tw 原檔）與 assets/logo-nra-icon.png（圓形標誌）；地圖橫幅白底、黑字、紅框；社區圓點與名稱照 SOP 4.9 用紅色、加大；只放手機＋LINE；禁用詞照 realtor-ad-compliance 技能。
+頁首揭露列（精簡版，SOP 3.1）與頁尾完整版揭露三行都不可刪；主色紅（#C8161D），LOGO 用 assets/logo-nra.png（全國不動產官網 nra.com.tw 原檔）與 assets/logo-nra-icon.png（圓形標誌）；地圖橫幅白底、黑字、紅框；社區圓點與名稱照 SOP 4.9 用紅色、加大；只放手機＋LINE；禁用詞照 realtor-ad-compliance 技能。例外：`about/` 關於我頁的聯絡區與頁尾可以放店址（新北市板橋區文化路二段37號），林津陞 2026-11-03 確認「這個沒關係」；店電話仍不放。
 
 ## 網域
 
