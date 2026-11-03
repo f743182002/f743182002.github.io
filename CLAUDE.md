@@ -15,6 +15,14 @@
 2. 社區版另外在 `data/communities.json` 的 `communities` 加一筆，地圖才會出現。欄位照現有格式填，`deck` 填 `community/<社區名>/`；只能用查證表（facts_verified.json）裡已查證的值。座標用簡報 data.js 的 `SITE.lat/lon`（建物輪廓中心），不用 591 座標。
 3. 簡報還沒發布的社區，`deck` 填 `null`，清單會顯示「簡報製作中」。
 
+## 結構化資料（JSON-LD）與 llms.txt（2026-11-03）
+
+- 各頁 `<head>` 的 `<!-- LD:START -->…<!-- LD:END -->`、簡報頁 `<main>` 前的 `<!-- LD-SUMMARY -->` noscript 摘要、`/llms.txt` 都由 `scripts/structured_data.py` 產生，**不要手改**；GitHub Actions 每次 push 會重跑。
+- 這支程式的唯一來源是 9b-houseflow-tools `tools/property-deck/structured_data.py`，指揮艙發布時會複製過來；要改請改那邊。
+- 資料來源：頁面內嵌的 DECK／SITE、`data/communities.json`、`data/videos.json`（YouTube 影片）、`data/narration.json`（影片字卡與口播稿，發布時寫入）、`decks.json`。
+- 影片上傳 YouTube 後執行 `python scripts/structured_data.py add-video . community/<社區名> https://youtu.be/<編號>` 再 commit／push（Shorts 一樣）。
+- 法遵：金額、屋齡、禁用詞整句不寫；有一頁沒過，程式整批不寫檔。
+
 ## 生活圈分類
 
 `data/communities.json` 的 `areas`，名稱與範圍參考樂居板橋區生活圈（林津陞 2026-11-02 提供樂居地圖截圖）。`lat/lon` 是生活圈名稱在地圖上的標籤位置（依樂居地圖判讀，約略）。新社區歸到最近的生活圈；跨界的照樂居社區頁標示。不放樂居的單價數字。

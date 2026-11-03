@@ -33,16 +33,20 @@ jobs:
       - name: 產生 sitemap.xml 與首頁靜態清單
         run: python3 scripts/build_site.py
 
+      # 2026-11-03：各頁 <head> 的 JSON-LD、noscript 摘要與 llms.txt（data/videos.json 加影片也會更新）
+      - name: 產生結構化資料與 llms.txt
+        run: python3 scripts/structured_data.py .
+
       - name: 有變動才 commit
         run: |
           git config core.quotepath false
-          if git diff --quiet -- index.html sitemap.xml; then
+          if [ -z "$(git status --porcelain -- index.html sitemap.xml llms.txt '*.html')" ]; then
             echo "沒有變動"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html sitemap.xml
-          git commit -m "自動更新 sitemap.xml 與首頁靜態清單（依 decks.json）"
+          git add index.html sitemap.xml llms.txt '*.html'
+          git commit -m "自動更新 sitemap.xml、首頁靜態清單與結構化資料（依 decks.json）"
           git pull --rebase origin main
           git push origin HEAD:main
