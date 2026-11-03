@@ -12,7 +12,7 @@
 ## 發布新簡報時
 
 1. **不要再用清單覆寫 `index.html`。** 舊的發布流程會把 index.html 重寫成純清單，總站會整個不見。現在只要更新 `decks.json`（加一筆 `"community/<社區名>": {name, subtitle, area, updated}`），首頁就會自動列出。
-2. 社區版另外在 `data/communities.json` 的 `communities` 加一筆，地圖才會出現。欄位照現有格式填，`deck` 填 `community/<社區名>/`；只能用查證表（facts_verified.json）裡已查證的值。座標用簡報 data.js 的 `SITE.lat/lon`（建物輪廓中心），不用 591 座標。
+2. 社區版另外在 `data/communities.json` 的 `communities` 加一筆，地圖才會出現。欄位照現有格式填，`deck` 填 `community/<社區名>/`；只能用查證表（facts_verified.json）裡已查證的值。座標用簡報 data.js 的 `SITE.lat/lon`（建物輪廓中心），不用 591 座標。指揮艙發布時會自動寫入，不用手動加（property-deck `site_map.py`：同名社區只更新那一筆、新社區加在最後；檢查不過整個發布不 push）。
 3. 簡報還沒發布的社區，`deck` 填 `null`，清單會顯示「簡報製作中」。
 
 ## 結構化資料（JSON-LD）與 llms.txt（2026-11-03）
