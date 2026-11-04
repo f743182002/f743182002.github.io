@@ -419,7 +419,23 @@
     "成交筆數少"
    ],
    "deals": 8,
-   "deck": "community/榮耀交響曲/"
+   "deck": "community/榮耀交響曲/",
+   "ev": {
+    "status": [
+     "existing_needs_approval"
+    ],
+    "basis": {
+     "permit_no": "95板建字第00221號",
+     "commenced": "2006-09-27",
+     "use_permit_no": "97板使字第00732號",
+     "use_permit_issued": "2008-11-24",
+     "completed": "2008-06-25",
+     "use": "店舖、集合住宅",
+     "rule": "既有建物（建照在108/7/1前）：個別加裝依公寓大廈管理條例第6條；建築技術規則設施編第62條第4款不適用",
+     "src": "參考政府公開資料"
+    },
+    "verified_at": "2026-11-04"
+   }
   },
   {
    "name": "三輝歌劇苑",
