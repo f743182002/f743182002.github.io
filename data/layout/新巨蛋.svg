@@ -67,18 +67,20 @@
 <path d="M329.0,238.6 L308.1,338.6 L400.9,357.6 L421.9,257.5 Z" fill="#FFFFFF" stroke="#C8161D" stroke-width="2.5" stroke-linejoin="round"/>
 <path d="M441.8,262.4 L424.1,362.8 L517.3,378.8 L535.0,278.8 Z" fill="#FFFFFF" stroke="#C8161D" stroke-width="2.5" stroke-linejoin="round"/>
 </g>
-<text x="30.8" y="222.0" font-size="14" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">文化路二段</text>
+<text x="59.0" y="222.0" font-size="14" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">文化路二段</text>
 <text x="327.7" y="157.3" font-size="14" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">莒光路16巷</text>
 <text x="245.4" y="281.3" font-size="14" font-weight="700" fill="#C8161D" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">B棟</text>
 <text x="187.9" y="263.7" font-size="14" font-weight="700" fill="#C8161D" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">A棟</text>
 <text x="365.0" y="303.1" font-size="14" font-weight="700" fill="#C8161D" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">C棟</text>
 <text x="479.6" y="325.7" font-size="14" font-weight="700" fill="#C8161D" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">D棟</text>
-<line x1="344.4" y1="309.2" x2="344.4" y2="295.2" stroke="#8A969E" stroke-width="1"/>
 <line x1="344.4" y1="309.2" x2="344.4" y2="323.2" stroke="#8A969E" stroke-width="1"/>
+<line x1="344.4" y1="309.2" x2="344.4" y2="283.2" stroke="#8A969E" stroke-width="1"/>
 <line x1="344.4" y1="309.2" x2="384.4" y2="309.2" stroke="#8A969E" stroke-width="1"/>
-<line x1="344.4" y1="309.2" x2="344.4" y2="269.2" stroke="#8A969E" stroke-width="1"/>
+<line x1="344.4" y1="309.2" x2="344.4" y2="349.2" stroke="#8A969E" stroke-width="1"/>
+<line x1="344.4" y1="309.2" x2="379.3" y2="299.6" stroke="#8A969E" stroke-width="1"/>
+<line x1="453.6" y1="322.6" x2="453.6" y2="308.6" stroke="#8A969E" stroke-width="1"/>
 <line x1="453.6" y1="322.6" x2="453.6" y2="336.6" stroke="#8A969E" stroke-width="1"/>
-<line x1="453.6" y1="322.6" x2="453.6" y2="310.4" stroke="#8A969E" stroke-width="1"/>
+<line x1="453.6" y1="322.6" x2="453.6" y2="282.6" stroke="#8A969E" stroke-width="1"/>
 <circle cx="105.0" cy="286.3" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
 <circle cx="232.2" cy="295.1" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
 <circle cx="232.2" cy="295.1" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
@@ -97,30 +99,30 @@
 <text x="261.1" y="299.1" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">362之1</text>
 <rect x="179.4" y="286.1" width="47.8" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
 <text x="203.3" y="299.1" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">362之3</text>
-<rect x="349.4" y="300.2" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
-<text x="363.8" y="313.2" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">366</text>
-<rect x="291.5" y="300.2" width="47.8" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
-<text x="315.4" y="313.2" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">366之1</text>
-<rect x="320.4" y="277.2" width="47.8" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
-<text x="344.4" y="290.2" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">366之2</text>
+<rect x="310.5" y="300.2" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
+<text x="324.9" y="313.2" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">366</text>
 <rect x="320.4" y="323.2" width="47.8" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
-<text x="344.4" y="336.2" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">366之3</text>
+<text x="344.4" y="336.2" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">366之1</text>
+<rect x="320.4" y="265.2" width="47.8" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
+<text x="344.4" y="278.2" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">366之2</text>
 <rect x="384.4" y="300.2" width="47.8" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
-<text x="408.3" y="313.2" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">366之5</text>
-<rect x="320.4" y="251.2" width="47.8" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
-<text x="344.4" y="264.2" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">366之6</text>
-<rect x="458.6" y="313.6" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
-<text x="473.0" y="326.6" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">368</text>
+<text x="408.3" y="313.2" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">366之3</text>
+<rect x="320.4" y="349.2" width="47.8" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
+<text x="344.4" y="362.2" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">366之5</text>
+<rect x="379.3" y="281.6" width="47.8" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
+<text x="403.2" y="294.6" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">366之6</text>
+<rect x="439.1" y="290.6" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
+<text x="453.6" y="303.6" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">368</text>
 <rect x="429.6" y="336.6" width="47.8" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
 <text x="453.6" y="349.6" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">368之2</text>
-<rect x="444.1" y="292.4" width="47.8" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
-<text x="468.0" y="305.4" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">368之5</text>
+<rect x="429.6" y="264.6" width="47.8" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
+<text x="453.6" y="277.6" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">368之5</text>
 <circle cx="590.0" cy="130.0" r="18" fill="#FFFFFF" stroke="#C8161D" stroke-width="2.5"/>
 <path d="M590.0,117.0 L597.0,138.0 L590.0,133.0 L583.0,138.0 Z" fill="#C8161D"/>
 <text x="590.0" y="164.0" font-size="12" font-weight="700" fill="#C8161D" text-anchor="middle">北</text>
 <line x1="34.0" y1="447.8" x2="197.5" y2="447.8" stroke="#1F2B33" stroke-width="2.5"/>
 <text x="34.0" y="440.8" font-size="12" fill="#1F2B33">約 50 公尺</text>
-<text x="20" y="489.8" font-size="13" fill="#1F2B33">棟別門牌配置示意，不依實際比例重繪，僅供參考；實際以現場、門牌及使用執照為準。</text>
+<text x="20" y="489.8" font-size="13" fill="#1F2B33">棟別門牌配置示意，僅供參考；實際以現場、門牌及使用執照為準。</text>
 <text x="20" y="508.8" font-size="13" fill="#1F2B33">本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap、門牌位置 內政部國土測繪中心門牌定位</text>
 <text x="20" y="527.8" font-size="13" fill="#1F2B33">（紅點為門牌實際位置）。</text>
 <text x="20" y="550.8" font-size="11" fill="#8A969E">道路底圖 © OpenStreetMap 貢獻者</text>

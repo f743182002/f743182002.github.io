@@ -40,7 +40,7 @@
 <path d="M373.8,541.5 L379.9,533.1 L395.1,544.1 L399.1,547.3 L412.5,529.3 L427.7,508.9 L441.6,490.3 L437.8,487.4 L419.2,473.7 L405.5,463.5 L387.8,450.1 L373.8,468.7 L370.6,466.4 L355.8,486.2 L359.0,488.5 L352.6,497.3 Z" fill="#FFFFFF" stroke="#C8161D" stroke-width="2.5" stroke-linejoin="round"/>
 <path d="M270.0,541.2 L288.3,554.9 L301.7,564.8 L320.3,578.4 L336.9,590.7 L373.8,541.5 L352.6,497.3 L344.7,507.4 L330.8,497.0 L313.6,484.5 L299.9,502.5 L296.4,499.9 L281.9,519.1 L284.8,521.1 Z" fill="#FFFFFF" stroke="#C8161D" stroke-width="2.5" stroke-linejoin="round"/>
 </g>
-<text x="584.2" y="450.1" font-size="14" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">文化路一段</text>
+<text x="581.0" y="450.1" font-size="14" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">文化路一段</text>
 <circle cx="112.5" cy="425.1" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
 <circle cx="141.3" cy="389.3" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
 <circle cx="142.5" cy="451.0" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
@@ -160,7 +160,7 @@
 <text x="590.0" y="164.0" font-size="12" font-weight="700" fill="#C8161D" text-anchor="middle">北</text>
 <line x1="34.0" y1="650.3" x2="179.5" y2="650.3" stroke="#1F2B33" stroke-width="2.5"/>
 <text x="34.0" y="643.3" font-size="12" fill="#1F2B33">約 50 公尺</text>
-<text x="20" y="692.3" font-size="13" fill="#1F2B33">棟別門牌配置示意，不依實際比例重繪，僅供參考；實際以現場、門牌及使用執照為準。</text>
+<text x="20" y="692.3" font-size="13" fill="#1F2B33">棟別門牌配置示意，僅供參考；實際以現場、門牌及使用執照為準。</text>
 <text x="20" y="711.3" font-size="13" fill="#1F2B33">本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap、門牌位置 內政部國土測繪中心門牌定位</text>
 <text x="20" y="730.3" font-size="13" fill="#1F2B33">（紅點為門牌實際位置）。</text>
 <text x="20" y="753.3" font-size="11" fill="#8A969E">道路底圖 © OpenStreetMap 貢獻者</text>

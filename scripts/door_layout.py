@@ -184,9 +184,19 @@ def render(name, site, comm, doors, out_path=None):
     nx, ny = ox + mapW - 30, oy + 34
     sx, sy = ox + 14, oy + mapH - 16
     keep_out = [(nx - 22, ny - 22, nx + 22, ny + 40), (sx - 4, sy - 20, sx + max(50 * scale, 70) + 4, sy + 4)]
+    # 棟名（有名字才寫，放在棟中心）先佔位，門牌標籤不可蓋住棟名（新巨蛋 A～D 棟）
+    titles = []
+    for b in me:
+        raw = (b.get("n") or "").replace(name, "").strip()
+        title = raw if raw else (name if len(me) == 1 and not kept else "")
+        if title:
+            cx, cy = P(centroid(b["p"]))
+            tw = text_w(title, 14)
+            titles.append((title, cx, cy))
+            keep_out.append((cx - tw / 2 - 3, cy - 10, cx + tw / 2 + 3, cy + 9))
     placed = place_labels([(n, labs[n], P(q)) for n, q in kept], (ox + 2, oy + 2, ox + mapW - 2, oy + mapH - 2), 12, keep_out)
     # 附註（依寬度換行）
-    notes = [("棟別門牌配置示意" if kept else "棟別配置示意") + "，不依實際比例重繪，僅供參考；實際以現場、門牌及使用執照為準。",
+    notes = [("棟別門牌配置示意" if kept else "棟別配置示意") + "，僅供參考；實際以現場、門牌及使用執照為準。",
              ("本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap、門牌位置 內政部國土測繪中心門牌定位（紅點為門牌實際位置）。"
               if kept else "本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap，紅框為本社區。")]
     note_lines = []
@@ -238,13 +248,12 @@ def render(name, site, comm, doors, out_path=None):
             continue
         used.add(n)
         x, y = P(vis[len(vis) // 2])
+        half = text_w(n, 14) / 2 + 4   # 路名整個留在地圖框內（文化路二段在左緣被切掉）
+        x = min(max(x, ox + half), ox + mapW - half)
         o.append('<text x="%.1f" y="%.1f" font-size="14" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">%s</text>' % (x, y - 9, e(n)))
     # 棟名（有名字才寫，放在棟中心；門牌另外用小標籤）
-    for b in me:
-        raw = (b.get("n") or "").replace(name, "").strip()
-        title = raw if raw else (name if len(me) == 1 and not kept else "")
-        if title:
-            cx, cy = P(centroid(b["p"]))
+    for title, cx, cy in titles:
+        if True:
             o.append('<text x="%.1f" y="%.1f" font-size="14" font-weight="700" fill="%s" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">%s</text>' % (cx, cy + 5, RED, e(title)))
     # 門牌：紅點＝國土測繪中心門牌定位；標籤彼此不重疊，離點遠的拉引線
     for no, lab, (px, py), box, lead in placed:

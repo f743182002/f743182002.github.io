@@ -63,7 +63,7 @@
 <text x="590.0" y="164.0" font-size="12" font-weight="700" fill="#C8161D" text-anchor="middle">北</text>
 <line x1="34.0" y1="611.5" x2="351.1" y2="611.5" stroke="#1F2B33" stroke-width="2.5"/>
 <text x="34.0" y="604.5" font-size="12" fill="#1F2B33">約 50 公尺</text>
-<text x="20" y="653.5" font-size="13" fill="#1F2B33">棟別門牌配置示意，不依實際比例重繪，僅供參考；實際以現場、門牌及使用執照為準。</text>
+<text x="20" y="653.5" font-size="13" fill="#1F2B33">棟別門牌配置示意，僅供參考；實際以現場、門牌及使用執照為準。</text>
 <text x="20" y="672.5" font-size="13" fill="#1F2B33">本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap、門牌位置 內政部國土測繪中心門牌定位</text>
 <text x="20" y="691.5" font-size="13" fill="#1F2B33">（紅點為門牌實際位置）。</text>
 <text x="20" y="714.5" font-size="11" fill="#8A969E">道路底圖 © OpenStreetMap 貢獻者</text>

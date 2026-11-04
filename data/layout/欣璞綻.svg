@@ -23,14 +23,14 @@
 <path d="M185.8,463.9 L223.4,261.8 L277.6,272.0 L273.1,296.2 L454.2,330.0 L421.1,507.3 Z" fill="#FFFFFF" stroke="#C8161D" stroke-width="2.5" stroke-linejoin="round"/>
 </g>
 <text x="524.4" y="285.9" font-size="14" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">莒光路40巷</text>
-<text x="564.5" y="548.6" font-size="14" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">民生路二段234巷24弄</text>
+<text x="546.7" y="548.6" font-size="14" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">民生路二段234巷24弄</text>
 <text x="305.9" y="360.2" font-size="14" font-weight="700" fill="#C8161D" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">欣璞綻</text>
 <circle cx="590.0" cy="130.0" r="18" fill="#FFFFFF" stroke="#C8161D" stroke-width="2.5"/>
 <path d="M590.0,117.0 L597.0,138.0 L590.0,133.0 L583.0,138.0 Z" fill="#C8161D"/>
 <text x="590.0" y="164.0" font-size="12" font-weight="700" fill="#C8161D" text-anchor="middle">北</text>
 <line x1="34.0" y1="657.0" x2="352.8" y2="657.0" stroke="#1F2B33" stroke-width="2.5"/>
 <text x="34.0" y="650.0" font-size="12" fill="#1F2B33">約 50 公尺</text>
-<text x="20" y="699.0" font-size="13" fill="#1F2B33">棟別配置示意，不依實際比例重繪，僅供參考；實際以現場、門牌及使用執照為準。</text>
+<text x="20" y="699.0" font-size="13" fill="#1F2B33">棟別配置示意，僅供參考；實際以現場、門牌及使用執照為準。</text>
 <text x="20" y="718.0" font-size="13" fill="#1F2B33">本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap，紅框為本社區。</text>
 <text x="20" y="741.0" font-size="11" fill="#8A969E">道路底圖 © OpenStreetMap 貢獻者</text>
 </svg>
