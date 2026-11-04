@@ -587,7 +587,21 @@
     "低樓層有商辦用途、車位多為機械式"
    ],
    "deals": 30,
-   "deck": "community/春池宇宙光/"
+   "deck": "community/春池宇宙光/",
+   "ev": {
+    "status": [
+     "existing_needs_approval"
+    ],
+    "basis": {
+     "permit_no": "83板建字第01828號",
+     "use_permit_no": "89板使字第00857號",
+     "use_permit_issued": "2000-10-09",
+     "completed": "2000-07-20",
+     "rule": "既有建物（建照在108/7/1前）：個別加裝依公寓大廈管理條例第6條；建築技術規則設施編第62條第4款不適用",
+     "src": "參考政府公開資料"
+    },
+    "verified_at": "2026-11-04"
+   }
   },
   {
    "name": "新濠一滙",
