@@ -37,22 +37,34 @@
 .chip em{font-style:normal;background:#C8161D;color:#fff;border-radius:999px;min-width:22px;height:20px;line-height:20px;padding:0 6px;font-size:12.5px;text-align:center}
 .chip[aria-pressed="false"]{color:#8A949A;border-style:dashed;border-color:#D9A3A5;text-decoration:line-through}
 .chip[aria-pressed="false"] em{background:#C9CED2}
+.chip[aria-pressed="true"] em.zero{background:#E3A3A6}
+.fsum{display:flex;align-items:center;flex-wrap:wrap;gap:6px 12px;margin-top:10px;font-size:14px;color:#2E3A42}
+.fsum b{color:#C8161D;font-size:16px}
+.fsum .hint{color:#56656E;font-size:13px}
+.btn-clear{height:30px;border:1.5px solid #1F2B33;background:#fff;color:#1F2B33;border-radius:999px;padding:0 12px;font-size:13.5px;font-weight:700;cursor:pointer;font-family:inherit}
+.btn-clear:hover{background:#F1F3F4}
+.btn-clear:focus-visible{outline:2px solid #C8161D;outline-offset:2px}
 .layout{display:grid;grid-template-columns:1fr 380px;height:calc(100vh - 92px);min-height:560px;max-height:1000px}
 #map{height:100%;width:100%;z-index:1;scroll-margin-top:96px}
 .side{border-left:1px solid var(--line);background:var(--card);display:flex;flex-direction:column;min-height:0}
 .side-head{padding:14px 16px;border-bottom:1px solid var(--line)}
 .side-head h2{margin:0 0 10px;font-size:18px;color:var(--ink)}
 .side-head h2 small{color:var(--muted);font-weight:400;font-size:14px;margin-left:8px}
-.side-head input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;background:var(--bg);color:var(--ink);font-family:inherit}
+.side-head input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:16px;background:var(--bg);color:var(--ink);font-family:inherit}
+.sortrow{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:14px;color:var(--muted)}
+.sortrow select{flex:1;min-width:0;padding:7px 10px;border:1px solid var(--line);border-radius:8px;font-size:15px;background:var(--bg);color:var(--ink);font-family:inherit}
 .list{overflow-y:auto;flex:1;margin:0;padding:0;list-style:none}
-.list li{padding:12px 16px;border-bottom:1px solid var(--line);cursor:pointer;display:flex;gap:12px;border-left:3px solid transparent}
+.list li{border-bottom:1px solid var(--line);border-left:3px solid transparent}
+.list li .row{all:unset;box-sizing:border-box;width:100%;padding:12px 16px 12px 13px;cursor:pointer;display:flex;gap:12px;color:var(--ink);font:inherit;line-height:1.65}
+.list li .row:focus-visible{outline:2px solid #C8161D;outline-offset:-3px}
 .list li:hover{background:color-mix(in srgb,var(--brand) 7%,transparent)}
 .list li.on{background:color-mix(in srgb,var(--brand) 12%,transparent);border-left-color:#C8161D}
+.list .age{color:var(--ink);font-weight:700}
 .list .dot{flex:0 0 12px;height:12px;border-radius:50%;margin-top:8px;background:#D7141A;box-shadow:0 0 0 2px color-mix(in srgb,#D7141A 25%,transparent)}
 .list b{font-size:17px;line-height:1.4}
 .list .tag{font-size:12px;border:1px solid var(--accent);color:var(--tag-ink,#9A5A00);background:color-mix(in srgb,var(--accent) 12%,transparent);border-radius:4px;padding:0 6px;margin-left:8px;vertical-align:2px;white-space:nowrap}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .list .tag{--tag-ink:#F6C27A}}
-.list .meta{font-size:14px;color:var(--muted);line-height:1.55;margin-top:2px}
+.list .meta{display:block;font-size:14px;color:var(--muted);line-height:1.55;margin-top:2px}
 .empty{padding:20px 14px;color:var(--muted);font-size:14px}
 .leaflet-popup-content-wrapper{border-radius:12px;box-shadow:0 6px 24px rgba(0,0,0,.28)}
 .leaflet-popup-content{margin:14px 16px}
@@ -79,6 +91,9 @@
 .cm-name::before{display:none}
 .hide-names .cm-name{display:none}
 .cm-pin.approx{border-style:dashed}
+.map-box{position:relative;height:100%;min-height:0}
+.touch-hint{position:absolute;inset:0;z-index:900;display:flex;align-items:center;justify-content:center;background:rgba(31,43,51,.45);color:#fff;font-size:18px;font-weight:700;letter-spacing:.04em;pointer-events:none;opacity:0;transition:opacity .2s}
+.touch-hint.show{opacity:1}
 .faq{margin-top:32px;max-width:900px}
 .faq h2{font-size:22px;margin:0 0 12px}
 .faq details{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin-bottom:8px}
@@ -94,8 +109,10 @@
   .chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:0 16px 6px}
   .chips::-webkit-scrollbar{display:none}
   .chip{flex:0 0 auto}
+  .fsum{margin-top:6px}
+  .fsum .hint{display:none}
   .layout{grid-template-columns:1fr;height:auto;min-height:0;max-height:none}
-  #map{height:62vh;min-height:380px}
+  .map-box{height:62vh;min-height:380px}
   .side{border-left:0;border-top:1px solid var(--line)}
   .list{max-height:none}
 }
@@ -915,17 +932,26 @@
   <h1>阿陞的商圈地圖</h1>
   <p>看房前先看位置：社區在哪個生活圈、離捷運多遠、哪幾個可以一起看。點地圖上的社區看重點，再點進去看 3D 日照與實價登錄。</p>
   <div class="filters">
-    <span class="chip-label">生活圈</span><div class="chips" id="areaChips"></div>
-    <span class="chip-label">完工年代</span><div class="chips" id="eraChips"></div>
+    <span class="chip-label" id="areaLbl">生活圈</span><div class="chips" id="areaChips" role="group" aria-labelledby="areaLbl"></div>
+    <span class="chip-label" id="ageLbl">屋齡</span><div class="chips" id="ageChips" role="group" aria-labelledby="ageLbl"></div>
+    <span class="chip-label" id="mrtLbl">捷運步行</span><div class="chips" id="mrtChips" role="group" aria-labelledby="mrtLbl"></div>
   </div>
+  <div class="fsum"><span id="fsum" aria-live="polite"></span><button type="button" class="btn-clear" id="clearBtn" hidden>清除篩選</button><span class="hint">點按鈕可隱藏／顯示該類社區；屋齡依完工年月與今天日期自動計算。</span></div>
 </div></section>
 
 <div class="layout">
-  <div id="map" role="region" aria-label="板橋社區地圖"></div>
+  <div class="map-box"><div id="map" role="region" aria-label="板橋社區地圖"></div><div class="touch-hint" id="touchHint" aria-hidden="true">用兩指移動地圖</div></div>
   <aside class="side">
     <div class="side-head">
       <h2>社區清單<small id="count"></small></h2>
-      <input id="q" type="search" placeholder="搜尋社區名稱或路名…" aria-label="搜尋社區">
+      <input id="q" type="search" placeholder="搜尋社區名稱、路名或生活圈…" aria-label="搜尋社區">
+      <label class="sortrow">排序<select id="sort" aria-label="社區清單排序">
+        <option value="">預設</option>
+        <option value="mrt">捷運步行：近到遠</option>
+        <option value="new">屋齡：新到舊</option>
+        <option value="old">屋齡：舊到新</option>
+        <option value="area">依生活圈</option>
+      </select></label>
     </div>
     <ul class="list" id="list"></ul>
   </aside>
@@ -936,6 +962,7 @@
   <details><summary>地圖上收錄哪些社區？</summary><p>都是阿陞實際做過完整社區分析的社區（查過使照、學區、步行路線與實價登錄）。之後每完成一個社區分析就會加上地圖。想看的社區還沒有，可以直接 LINE 我。</p></details>
   <details><summary>生活圈怎麼分的？</summary><p>生活圈名稱與範圍參考樂居的板橋區分區，地圖上的生活圈名稱為約略位置。</p></details>
   <details><summary>位置準嗎？</summary><p>社區位置以建物輪廓定位，不是用刊登平台的地圖座標。標示虛線框的社區為約略位置，看房前請以門牌與現場為準。</p></details>
+  <details><summary>屋齡怎麼算的？</summary><p>屋齡依各社區的完工年月與您打開頁面當天的日期自動計算，所以每年會自動更新；只查到完工年份、還沒查到月份的社區不顯示屋齡，標「待查證完工月份」。實際以建物登記謄本為準。</p></details>
   <details><summary>步行時間怎麼算的？</summary><p>步行距離與時間依 OpenStreetMap 步行路線規劃，實際可能因步行速度、道路施工、交通狀況、天氣等而有出入。</p></details>
   <details><summary>學區準嗎？</summary><p>學區依新北市教育局學區查詢整理，實際以教育局最新公告為準。</p></details>
   <details><summary>實價登錄筆數是怎麼算的？</summary><p>資料來源為內政部不動產交易實價查詢服務網買賣資料，已排除親友、特殊關係等特殊交易，照原始資料引用，不代表個別房屋價格。完整表格在各社區的互動簡報裡。</p></details>
@@ -954,18 +981,64 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
 (function(){
-  var ERAS=[
-    {id:'new',name:'民國110年後',test:function(y){return y!==null&&y>=110}},
-    {id:'100s',name:'民國100～109年',test:function(y){return y!==null&&y>=100&&y<110}},
-    {id:'90s',name:'民國90～99年',test:function(y){return y!==null&&y>=90&&y<100}},
-    {id:'80s',name:'民國89年以前',test:function(y){return y!==null&&y<90}},
-    {id:'build',name:'興建中',test:function(y){return y===null}}
+  // ── 屋齡：一律不寫死。打開頁面時依 built（完工年月）與當天日期（台灣時間 UTC+8）即時計算，每年自動更新。
+  // 只有完工年、沒有月份的社區（例：「民國84年」）可能差一歲，林津陞 2026-11-04 規定不顯示任何屋齡數字、
+  // 不估算，一律顯示「待查證完工月份」，篩選歸到「完工月份待查」。
+  function twToday(){var n=new Date(Date.now()+8*3600*1000);return {y:n.getUTCFullYear(),m:n.getUTCMonth()+1}}
+  function ageInfo(built){
+    var t=twToday(),m=/民國(\d+)年(?:(\d+)月)?/.exec(built||'');
+    if(!m)return {kind:'build'};                       // 興建中（或沒有完工資料）
+    if(!m[2])return {kind:'nomonth'};                  // 只有年份：不算屋齡
+    var months=(t.y-(+m[1]+1911))*12+(t.m-(+m[2]));   // 以月為單位：完工當月起算
+    if(months<0)return {kind:'build'};                 // 完工年月還沒到 → 視為興建中
+    return {kind:'age',months:months,years:Math.floor(months/12)};
+  }
+  function ageText(built){
+    var i=ageInfo(built);
+    if(i.kind==='nomonth')return '待查證完工月份';
+    if(i.kind!=='age')return '';
+    return i.years<1?'未滿 1 年':i.years+' 年';
+  }
+  // 屋齡分組（參考 591／樂居常用的 5、10、20、30 年切點，再依林津陞要求加「3年內」新成屋）。
+  // 互不重疊：「3～5年」= 滿3年未滿5年，依此類推。
+  var AGES=[
+    {id:'a3',name:'3年內（新成屋）',max:36},
+    {id:'a5',name:'3～5年',max:60},
+    {id:'a10',name:'5～10年',max:120},
+    {id:'a20',name:'10～20年',max:240},
+    {id:'a30',name:'20～30年',max:360},
+    {id:'a30p',name:'30年以上',max:Infinity},
+    {id:'nomonth',name:'完工月份待查'},
+    {id:'build',name:'興建中'}
   ];
-  function eraOf(c){for(var i=0;i<ERAS.length;i++){if(ERAS[i].test(c.year))return ERAS[i].id}return null}
+  function ageBucket(c){
+    var i=ageInfo(c.built);if(i.kind!=='age')return i.kind;
+    for(var k=0;k<AGES.length;k++){if(AGES[k].max!=null&&i.months<AGES[k].max)return AGES[k].id}
+    return 'a30p';
+  }
+  // ── 捷運步行：從 mrt 文字取分鐘數（「步行約1分鐘內」→ 1）
+  function mrtMin(t){var m=/(\d+)\s*分鐘/.exec(t||'');return m?+m[1]:null}
+  var MRTS=[
+    {id:'m5',name:'5分鐘內',test:function(n){return n!==null&&n<=5}},
+    {id:'m10',name:'6～10分鐘',test:function(n){return n!==null&&n>5&&n<=10}},
+    {id:'m10p',name:'超過10分鐘',test:function(n){return n!==null&&n>10}},
+    {id:'mna',name:'未標示',test:function(n){return n===null},optional:true}
+  ];
+  function mrtBucket(n){for(var i=0;i<MRTS.length;i++){if(MRTS[i].test(n))return MRTS[i].id}return 'mna'}
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]})}
 
-  var map=L.map('map',{scrollWheelZoom:true}).setView([25.021,121.470],15);
+  // 手機：單指滑動讓給頁面捲動（才滑得到下面的社區清單），地圖用兩指移動／縮放
+  var mobile=L.Browser.mobile;
+  var map=L.map('map',{scrollWheelZoom:true,dragging:!mobile,tap:false}).setView([25.021,121.470],15);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap 貢獻者'}).addTo(map);
+  if(mobile){
+    var hint=document.getElementById('touchHint'),ht=null,mc=map.getContainer();
+    mc.addEventListener('touchmove',function(e){
+      if(e.touches.length!==1)return;
+      hint.classList.add('show');clearTimeout(ht);ht=setTimeout(function(){hint.classList.remove('show')},1200);
+    },{passive:true});
+    mc.addEventListener('touchstart',function(e){if(e.touches.length>1)hint.classList.remove('show')},{passive:true});
+  }
 
   fetch('../data/layout/index.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():null}).then(function(j){window.LAYOUTS=j&&j.layouts||{}}).catch(function(){window.LAYOUTS={}});
   fetch('../data/communities.json',{cache:'no-cache'}).then(function(r){return r.json()}).then(init).catch(function(){
@@ -973,13 +1046,14 @@
   });
 
   function init(D){
-    var areaById={};D.areas.forEach(function(a){areaById[a.id]=a});
-    var onArea={},onEra={};D.areas.forEach(function(a){onArea[a.id]=true});ERAS.forEach(function(e){onEra[e.id]=true});
-    var items=D.communities.map(function(c){
+    var areaById={},areaOrder={};D.areas.forEach(function(a,i){areaById[a.id]=a;areaOrder[a.id]=i});
+    var onArea={},onAge={},onMrt={};
+    var items=D.communities.map(function(c,i){
       var a=areaById[c.area]||{color:'#666',name:''};
       var icon=L.divIcon({className:'',html:'<div class="cm-pin'+(c.approx?' approx':'')+'"></div>',iconSize:[22,22],iconAnchor:[11,11],popupAnchor:[0,-10]});
       var m=L.marker([c.lat,c.lon],{icon:icon,title:c.name}).bindPopup(function(){return popup(c,a)},{maxHeight:window.innerWidth<=860?Math.max(260,Math.round(window.innerHeight*0.62)-70):null,autoPanPadding:[12,12]}).bindTooltip(c.name,{permanent:true,direction:'right',offset:[10,0],className:'cm-name'});
-      return {c:c,a:a,m:m,era:eraOf(c)};
+      var ai=ageInfo(c.built),mn=mrtMin(c.mrt);
+      return {c:c,a:a,m:m,i:i,area:c.area,age:ageBucket(c),months:ai.kind==='age'?ai.months:(ai.kind==='build'?-1:null),min:mn,mrt:mrtBucket(mn)};
     });
 
     D.areas.forEach(function(a){
@@ -992,36 +1066,61 @@
       L.marker([D.office.lat,D.office.lon],{icon:L.divIcon({className:'',html:'<div class="office-pin"><img src="../assets/logo-nra-icon.png" alt="">林津陞</div>',iconSize:null,iconAnchor:[11,11]}),title:D.office.name,zIndexOffset:-100}).addTo(map);
     }
 
-    var ac=document.getElementById('areaChips');
-    D.areas.forEach(function(a){
-      var n=items.filter(function(x){return x.c.area===a.id}).length;
-      ac.appendChild(chip(esc(a.name)+'<em>'+n+'</em>',function(on){onArea[a.id]=on;render()}));
-    });
-    var ec=document.getElementById('eraChips');
-    ERAS.forEach(function(e){
-      var n=items.filter(function(x){return x.era===e.id}).length;
-      ec.appendChild(chip(esc(e.name)+'<em>'+n+'</em>',function(on){onEra[e.id]=on;render()}));
-    });
+    var allChips=[];
+    function row(el,defs,key,state){
+      defs.forEach(function(d){
+        var n=items.filter(function(x){return x[key]===d.id}).length;
+        state[d.id]=true;
+        if(d.optional&&!n)return;   // 「未標示」只有真的有社區缺資料時才出現
+        el.appendChild(chip(esc(d.name)+'<em'+(n?'':' class="zero"')+'>'+n+'</em>',function(on){state[d.id]=on;render()},d.name+' '+n+' 個社區'));
+      });
+    }
+    row(document.getElementById('areaChips'),D.areas,'area',onArea);   // 生活圈 0 個的也保留
+    row(document.getElementById('ageChips'),AGES,'age',onAge);
+    row(document.getElementById('mrtChips'),MRTS,'mrt',onMrt);
 
     var q=document.getElementById('q');q.addEventListener('input',render);
+    var sortSel=document.getElementById('sort');
+    try{var sv=localStorage.getItem('mapSort');if(sv&&sortSel.querySelector('option[value="'+sv+'"]'))sortSel.value=sv}catch(e){}
+    sortSel.addEventListener('change',function(){try{localStorage.setItem('mapSort',sortSel.value)}catch(e){}render()});
+    var clearBtn=document.getElementById('clearBtn');
+    clearBtn.addEventListener('click',function(){
+      [onArea,onAge,onMrt].forEach(function(st){for(var k in st)st[k]=true});
+      allChips.forEach(function(b){b.setAttribute('aria-pressed','true')});
+      q.value='';render();
+    });
     var list=document.getElementById('list');
     var first=true;
     render();
 
+    function cmp(k){
+      var last=function(v){return v==null?Infinity:v};
+      if(k==='mrt')return function(a,b){return last(a.min)-last(b.min)||a.i-b.i};
+      if(k==='new')return function(a,b){return last(a.months)-last(b.months)||a.i-b.i};
+      if(k==='old')return function(a,b){var va=a.months==null||a.months<0?-Infinity:a.months,vb=b.months==null||b.months<0?-Infinity:b.months;return vb-va||a.i-b.i};
+      if(k==='area')return function(a,b){return (areaOrder[a.c.area]||0)-(areaOrder[b.c.area]||0)||last(a.min)-last(b.min)||a.i-b.i};
+      return function(a,b){return a.i-b.i};
+    }
+
     function render(){
       var kw=q.value.trim();
       var shown=items.filter(function(x){
-        return onArea[x.c.area]&&onEra[x.era]&&(!kw||x.c.name.indexOf(kw)>=0||(x.c.road||'').indexOf(kw)>=0);
+        return onArea[x.c.area]&&onAge[x.age]&&onMrt[x.mrt]&&(!kw||x.c.name.indexOf(kw)>=0||(x.c.road||'').indexOf(kw)>=0||(x.a.name||'').indexOf(kw)>=0);
       });
       items.forEach(function(x){if(shown.indexOf(x)>=0){x.m.addTo(map)}else{map.removeLayer(x.m)}});
+      shown.sort(cmp(sortSel.value));
+      var filtered=shown.length!==items.length||!!kw||allChips.some(function(b){return b.getAttribute('aria-pressed')==='false'});
       document.getElementById('count').textContent='共 '+shown.length+' 個';
+      document.getElementById('fsum').innerHTML='符合 <b>'+shown.length+'</b> 個社區'+(filtered?'（全部 '+items.length+' 個）':'');
+      clearBtn.hidden=!filtered;
       list.innerHTML='';
-      if(!shown.length){list.innerHTML='<li class="empty">沒有符合條件的社區。</li>'}
+      if(!shown.length){list.innerHTML='<li class="empty">沒有符合條件的社區，可以按上方「清除篩選」。</li>'}
       shown.forEach(function(x){
         var li=document.createElement('li');
-        li.innerHTML='<span class="dot"></span><div><b>'+esc(x.c.name)+'</b>'+(x.c.deck?'':'<span class="tag">簡報製作中</span>')+
-          '<div class="meta">'+esc(x.a.name)+'・'+esc(x.c.road)+'・'+esc(x.c.built)+'</div><div class="meta">'+esc(x.c.mrt)+'</div></div>';
-        li.addEventListener('click',function(){
+        var at=ageText(x.c.built),ageHtml=at?(/^待查/.test(at)?'屋齡：'+at:'屋齡 '+at):esc(x.c.built);
+        li.innerHTML='<button type="button" class="row"><span class="dot"></span><span><b>'+esc(x.c.name)+'</b>'+(x.c.deck?'':'<span class="tag">簡報製作中</span>')+
+          '<span class="meta">'+esc(x.a.name)+'・'+esc(x.c.road)+'</span><span class="meta"><span class="age">'+ageHtml+'</span>・'+esc(x.c.mrt)+'</span></span></button>';
+        li.firstChild.addEventListener('click',function(){
           Array.prototype.forEach.call(list.children,function(n){n.classList.remove('on')});li.classList.add('on');
           map.setView(x.m.getLatLng(),Math.max(map.getZoom(),16),{animate:false});x.m.openPopup();
           if(window.innerWidth<=860)document.getElementById('map').scrollIntoView({behavior:'smooth'});
@@ -1035,24 +1134,17 @@
       }
     }
 
-    function chip(html,cb){
+    function chip(html,cb,label){
       var b=document.createElement('button');b.type='button';b.className='chip';b.setAttribute('aria-pressed','true');b.innerHTML=html;
+      if(label)b.setAttribute('aria-label',label);
       b.addEventListener('click',function(){var on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',on?'true':'false');cb(on)});
+      allChips.push(b);
       return b;
     }
 
-    // 屋齡：不寫死，打開頁面時依「完工年月」與當天日期（台灣時間）即時計算，所以不會過期
-    function ageText(built){
-      var m=/民國(\d+)年(?:(\d+)月)?/.exec(built||'');if(!m)return '';
-      var y=+m[1]+1911,mo=m[2]?+m[2]:null;
-      var now=new Date(Date.now()+8*3600*1000),ny=now.getUTCFullYear(),nm=now.getUTCMonth()+1;
-      var age=ny-y;if(mo&&nm<mo)age--;
-      if(age<0)return '';
-      if(age<1)return '未滿 1 年';
-      return (mo?'':'約 ')+age+' 年';
-    }
     function popup(c,a){
-      var rows=[['生活圈',a.name],['位置',c.road],['完工',c.built],['屋齡',ageText(c.built)?ageText(c.built)+(/月/.test(c.built)?'（依完工年月自動計算）':'（依完工年自動推算）'):''],['樓層',c.floors],['規模',c.units],['結構',c.structure],['捷運',c.mrt],['學區',c.school?c.school+'（以教育局公告為準）':''],['實價登錄',c.deals?('近五年 '+c.deals+' 筆（已排除特殊交易）'):'']];
+      var at=ageText(c.built);
+      var rows=[['生活圈',a.name],['位置',c.road],['完工',c.built],['屋齡',at?(/^待查/.test(at)?at:at+'（依完工年月自動計算）'):''],['樓層',c.floors],['規模',c.units],['結構',c.structure],['捷運',c.mrt],['學區',c.school?c.school+'（以教育局公告為準）':''],['實價登錄',c.deals?('近五年 '+c.deals+' 筆（已排除特殊交易）'):'']];
       var h='<div class="pop"><h3>'+esc(c.name)+'</h3><div class="sub">新北市'+(c.area==='zhonghe'?'':'板橋區')+esc(c.road)+'</div><table>';
       rows.forEach(function(r){if(r[1])h+='<tr><td>'+r[0]+'</td><td>'+esc(r[1])+'</td></tr>'});
       h+='</table>';
