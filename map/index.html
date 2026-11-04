@@ -1016,6 +1016,23 @@
     for(var k=0;k<AGES.length;k++){if(AGES[k].max!=null&&i.months<AGES[k].max)return AGES[k].id}
     return 'a30p';
   }
+  // ── 充電樁（2026-11-04 第四階段）：communities.json 的 ev（property-deck 依查證表寫入）。文字照研究報告 C 節地圖彈窗說法；
+  // unverified 不顯示這一行。has_* 的查證日超過 12 個月由瀏覽器當天日期（台灣時間）判斷，顯示「待重新確認」
+  // （與簡報範本 template.src.html 的 EVX.stale 同算法，property-deck tests/test_ev_live.cjs 比對）。
+  function evStale(d){var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(d||'');if(!m)return true;
+    var t=new Date(Date.now()+8*3600*1000);
+    var days=(Date.UTC(t.getUTCFullYear(),t.getUTCMonth(),t.getUTCDate())-Date.UTC(+m[1],+m[2]-1,+m[3]))/864e5;
+    return days>365}
+  var EV_MAP={existing_needs_approval:'既有大樓，加裝需經管委會同意與用電評估',law_space_108:'依法預留裝設空間（新建物）',
+    ntpc_conduit_111:'依新北規定預留管線',no_parking:'社區無附設汽車停車位'};
+  function evText(ev){
+    var st=(ev&&ev.status)||[];if(!st.length||st.indexOf('unverified')>=0)return '';
+    var out=[];st.forEach(function(t){if(EV_MAP[t])out.push(EV_MAP[t])});
+    var m=/^(\d{4})-(\d{2})/.exec(ev.verified_at||''),when=m?'（查證日 '+m[1]+'/'+m[2]+(evStale(ev.verified_at)?'，待重新確認':'')+'）':'（待重新確認）';
+    if(st.indexOf('has_shared_charging')>=0)out.push('社區設有公共充電'+when);
+    if(st.indexOf('has_private_installed')>=0)out.push('已有住戶在自有車位裝設'+when);
+    return out.join('・');
+  }
   // ── 捷運步行：從 mrt 文字取分鐘數（「步行約1分鐘內」→ 1）
   function mrtMin(t){var m=/(\d+)\s*分鐘/.exec(t||'');return m?+m[1]:null}
   var MRTS=[
@@ -1144,7 +1161,7 @@
 
     function popup(c,a){
       var at=ageText(c.built);
-      var rows=[['生活圈',a.name],['位置',c.road],['完工',c.built],['屋齡',at?(/^待查/.test(at)?at:at+'（依完工年月自動計算）'):''],['樓層',c.floors],['規模',c.units],['結構',c.structure],['捷運',c.mrt],['學區',c.school?c.school+'（以教育局公告為準）':''],['實價登錄',c.deals?('近五年 '+c.deals+' 筆（已排除特殊交易）'):'']];
+      var rows=[['生活圈',a.name],['位置',c.road],['完工',c.built],['屋齡',at?(/^待查/.test(at)?at:at+'（依完工年月自動計算）'):''],['樓層',c.floors],['規模',c.units],['結構',c.structure],['捷運',c.mrt],['學區',c.school?c.school+'（以教育局公告為準）':''],['充電',evText(c.ev)],['實價登錄',c.deals?('近五年 '+c.deals+' 筆（已排除特殊交易）'):'']];
       var h='<div class="pop"><h3>'+esc(c.name)+'</h3><div class="sub">新北市'+(c.area==='zhonghe'?'':'板橋區')+esc(c.road)+'</div><table>';
       rows.forEach(function(r){if(r[1])h+='<tr><td>'+r[0]+'</td><td>'+esc(r[1])+'</td></tr>'});
       h+='</table>';
