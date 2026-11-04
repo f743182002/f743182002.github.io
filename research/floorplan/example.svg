@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="638" height="588" viewBox="0 0 638 588" font-family="Noto Sans TC, PingFang TC, Microsoft JhengHei, WenQuanYi Zen Hei, sans-serif">
+<rect width="638" height="588" fill="#fff"/>
+<rect x="0" y="0" width="638" height="6" fill="#C8161D"/>
+<text x="40" y="42" font-size="22" font-weight="700" fill="#222222">範例社區（虛構）　A型｜3房2廳2衛</text>
+<text x="40" y="66" font-size="13" fill="#555">主建物約 28.5 坪　陽台約 2.1 坪</text>
+<text x="598" y="42" font-size="18" font-weight="700" fill="#C8161D" text-anchor="end">範例</text>
+<rect x="43" y="99" width="254" height="46" rx="10" fill="#FFFFFF" stroke="#555555" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="170.0" y="127.0" font-size="16" font-weight="700" fill="#222222" text-anchor="middle">陽台<tspan font-size="11" font-weight="400" fill="#777">（前陽台）</tspan></text>
+<rect x="43" y="151" width="254" height="150" rx="10" fill="#F4F1EC" stroke="#555555" stroke-width="2"/>
+<text x="170.0" y="231.0" font-size="16" font-weight="700" fill="#222222" text-anchor="middle">客廳</text>
+<rect x="303" y="99" width="202" height="150" rx="10" fill="#ECECEC" stroke="#555555" stroke-width="2"/>
+<text x="404.0" y="179.0" font-size="16" font-weight="700" fill="#222222" text-anchor="middle">主臥</text>
+<rect x="303" y="255" width="98" height="46" rx="10" fill="#E6EAED" stroke="#555555" stroke-width="2"/>
+<text x="352.0" y="283.0" font-size="16" font-weight="700" fill="#222222" text-anchor="middle">衛浴<tspan font-size="11" font-weight="400" fill="#777">（主臥）</tspan></text>
+<rect x="407" y="255" width="98" height="46" rx="10" fill="#E6EAED" stroke="#555555" stroke-width="2"/>
+<text x="456.0" y="283.0" font-size="16" font-weight="700" fill="#222222" text-anchor="middle">衛浴</text>
+<rect x="43" y="307" width="150" height="98" rx="10" fill="#F4F1EC" stroke="#555555" stroke-width="2"/>
+<text x="118.0" y="361.0" font-size="16" font-weight="700" fill="#222222" text-anchor="middle">餐廳</text>
+<rect x="43" y="411" width="150" height="46" rx="10" fill="#E6EAED" stroke="#555555" stroke-width="2"/>
+<text x="118.0" y="439.0" font-size="16" font-weight="700" fill="#222222" text-anchor="middle">廚房</text>
+<rect x="199" y="307" width="98" height="150" rx="10" fill="#F7F7F7" stroke="#555555" stroke-width="2"/>
+<text x="248.0" y="387.0" font-size="16" font-weight="700" fill="#222222" text-anchor="middle">玄關</text>
+<rect x="303" y="307" width="98" height="150" rx="10" fill="#ECECEC" stroke="#555555" stroke-width="2"/>
+<text x="352.0" y="387.0" font-size="16" font-weight="700" fill="#222222" text-anchor="middle">次臥</text>
+<rect x="407" y="307" width="98" height="150" rx="10" fill="#ECECEC" stroke="#555555" stroke-width="2"/>
+<text x="456.0" y="387.0" font-size="16" font-weight="700" fill="#222222" text-anchor="middle">次臥</text>
+<polygon points="274.0,464 265.0,480 283.0,480" fill="#C8161D"/>
+<text x="274.0" y="500" font-size="13" font-weight="700" fill="#C8161D" text-anchor="middle">入口</text>
+<circle cx="560" cy="126" r="22" fill="#fff" stroke="#C8161D" stroke-width="2"/>
+<g transform="rotate(180 560 126)"><polygon points="560,109 553,134 560,129 567,134" fill="#C8161D"/>
+</g>
+<text x="560.0" y="164.0" font-size="12" font-weight="700" fill="#C8161D" text-anchor="middle">N</text>
+<line x1="40" y1="512" x2="598" y2="512" stroke="#ddd"/>
+<text x="40" y="530" font-size="12" fill="#222222">格局示意，非依比例繪製，僅供參考；實際以現場、權狀及使用執照為準</text>
+<text x="40" y="548" font-size="12" fill="#222222">本圖為本店依公開資料與現場勘查自行繪製之示意圖，非建商原始圖面</text>
+<text x="40" y="566" font-size="11" fill="#777">資料來源：實價登錄、現場勘查｜繪製 2026-11-04</text>
+</svg>
