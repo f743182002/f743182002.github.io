@@ -239,7 +239,21 @@
     "現場感受臨路聲音"
    ],
    "deals": null,
-   "deck": "community/文化勳章/"
+   "deck": "community/文化勳章/",
+   "ev": {
+    "status": [
+     "existing_needs_approval"
+    ],
+    "basis": {
+     "permit_no": "80板建字第00147號",
+     "use_permit_no": "84板使字第00753號",
+     "use_permit_issued": "1995-06-17",
+     "completed": "1995-03-25",
+     "rule": "既有建物（建照在108/7/1前）：個別加裝依公寓大廈管理條例第6條；建築技術規則設施編第62條第4款不適用",
+     "src": "參考政府公開資料"
+    },
+    "verified_at": "2026-11-04"
+   }
   },
   {
    "name": "綠如意",
