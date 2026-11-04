@@ -172,6 +172,14 @@ tr.hl td{background:var(--accent-soft)}
 .evtags b{display:block;font-size:16px;color:var(--ink)}
 .evtags p{margin:6px 0 0}
 .evtags .recheck{color:#C8161D;font-weight:700}
+/* 戶型（2026-11-04 第五階段） */
+.laytable{width:100%;border-collapse:collapse;font-size:16px;margin:6px 0 10px}
+.laytable th,.laytable td{border-bottom:1px solid var(--line,#E2E6EA);padding:8px 6px;text-align:left}
+.laytable th{font-size:13px;color:var(--mute);font-weight:700}
+.laytable td.n{font-family:var(--f-mono);text-align:right}
+.layplan{margin:0 0 16px}.layplan svg{width:100%;height:auto;display:block;border:1px solid var(--line,#E2E6EA);border-radius:8px;background:#fff}
+.layplan figcaption{font-size:12.5px;color:var(--mute);margin-top:6px}
+.btn.leju{border-color:#555;color:#222;font-weight:700}
 @media (max-width:860px){
   body{height:auto}
   main{flex:none}
@@ -835,6 +843,25 @@ tr.hl td{background:var(--accent-soft)}
   <div class="stage"><div class="tbl-wrap"><table id="ptable"></table></div></div>
 </section>
 
+<!-- 戶型（2026-11-04 第五階段）：DECK.layouts（實價登錄戶型分布）或 DECK.plans（林津陞核可的阿陞版示意圖）有資料才顯示，
+     放在社區成交與評析之間；錄影版（recbuild.py 設 window.__NOLAYOUT）整節拿掉，影片 scenes 的章節編號不變、不改口播。
+     樂居只放外連按鈕（DECK.leju，查證表 leju_url 已確認才有），不複製圖、不嵌入。 -->
+<section class="ch" id="c-layout" aria-label="戶型" hidden>
+  <div class="panel">
+    <p class="eyebrow">戶型</p>
+    <h2>社區戶型分布</h2>
+    <p id="d-lay-sum"></p>
+    <table class="laytable" id="d-lay-table"></table>
+    <div class="btnrow" id="d-lay-leju" hidden></div>
+    <p class="src" id="d-lay-src"></p>
+  </div>
+  <div class="stage"><div class="notes">
+    <div id="d-lay-plans" hidden></div>
+    <h3>附註</h3>
+    <ol id="d-lay-notes"></ol>
+  </div></div>
+</section>
+
 <!-- 06 verdict -->
 <section class="ch" id="c6" aria-label="評析" hidden>
   <div class="panel">
@@ -994,10 +1021,40 @@ window.__EV=EVX;
   $('d-ev-law').innerHTML=(ev.laws||[]).map(t=>'<li>'+esc(t)+'</li>').join('');
 })();
 
+/* ---------- 戶型（2026-11-04 第五階段） ---------- */
+// 分布表與附註是發布時寫好的（site_export.layouts()：實價登錄房數分組，不放金額、完工年、交易日）。
+// 示意圖只放林津陞核可的（plans 每張都有 approved_by）；樂居按鈕只在查證表 leju_url 已確認時才有，只放連結。
+(function(){
+  const sec=$('c-layout');if(!sec)return;
+  const lay=window.__NOLAYOUT?null:D.layouts;
+  const plans=window.__NOLAYOUT?[]:(D.plans||[]).filter(p=>p&&p.approved_by&&p.svg);
+  const rows=(lay&&lay.rows)||[];
+  if(!rows.length&&!plans.length){sec.remove();return}
+  if(rows.length){
+    setT('d-lay-sum','依實價登錄 '+lay.n+' 戶住宅成交的申報格局整理（同一戶只計一次），'+(lay.cutoff||'')+'。');
+    const rng=r=>r.main_ping?(r.main_ping[0]===r.main_ping[1]?'約 '+r.main_ping[0]+' 坪':r.main_ping[0]+'～'+r.main_ping[1]+' 坪'):'—';
+    $('d-lay-table').innerHTML='<thead><tr><th>房數</th><th>筆數</th><th>主建物坪數範圍</th></tr></thead><tbody>'
+      +rows.map(r=>'<tr><td>'+esc(r.label)+'</td><td class="n">'+esc(r.count)+'</td><td>'+esc(rng(r))+'</td></tr>').join('')+'</tbody>';
+    setT('d-lay-src','資料來源：'+(lay.source||'內政部實價登錄')+'；'+(lay.cutoff||''));
+  }else{$('d-lay-table').remove()}
+  if(plans.length){
+    const box=$('d-lay-plans');box.hidden=false;
+    box.innerHTML='<h3>阿陞版戶型示意圖</h3>'+plans.map(p=>'<figure class="layplan">'+p.svg+'<figcaption>'+esc(p.type_label)+'｜'+esc(p.rooms)+'<br>'
+      +(p.caption||[]).map(esc).join('<br>')+'</figcaption></figure>').join('');
+  }
+  const url=D.leju&&D.leju.url;
+  if(url&&/^https:\/\/www\.leju\.com\.tw\/community\/L[0-9a-f]{8,20}$/.test(url)){
+    const b=$('d-lay-leju');b.hidden=false;
+    b.innerHTML='<a class="btn leju" href="'+esc(url)+'" target="_blank" rel="noopener nofollow">看樂居戶型圖 →</a><span class="small mute">外部網站，圖面權利屬原網站</span>';
+  }
+  $('d-lay-notes').innerHTML=((lay&&lay.notes)||[]).concat(plans.length?(plans[0].caption||[]):[]).map(t=>'<li>'+esc(t)+'</li>').join('');
+})();
+
 /* ---------- chapters ---------- */
 const chapters=[...document.querySelectorAll('.ch')];
 const titles=['物件摘要','室內與坪數','區位與交通','日照模擬','社區成交','評析','聯絡與揭露'];
 if($('c-ev'))titles.splice(6,0,'停車與充電');  // 停車與充電頁在聯絡前面（沒有 ev 資料或錄影版已拿掉）
+if($('c-layout'))titles.splice(5,0,'戶型');  // 戶型頁在社區成交與評析之間（沒有資料或錄影版已拿掉；要在停車與充電之後插，順序才對）
 const rail=$('rail');
 titles.forEach((t,i)=>{const b=document.createElement('button');b.type='button';b.innerHTML='<span>'+String(i+1).padStart(2,'0')+'</span>'+t;b.onclick=()=>go(i);rail.appendChild(b)});
 let cur=0;
