@@ -11,9 +11,23 @@
 
 ## 發布新簡報時
 
-1. **不要再用清單覆寫 `index.html`。** 舊的發布流程會把 index.html 重寫成純清單，總站會整個不見。現在只要更新 `decks.json`（加一筆 `"community/<社區名>": {name, subtitle, area, updated}`），首頁就會自動列出。
+1. **不要再用清單覆寫 `index.html`。** 舊的發布流程會把 index.html 重寫成純清單，總站會整個不見。現在只要更新 `decks.json`（加一筆 `"community/<社區名>": {name, subtitle, area, updated, status}`），首頁就會自動列出。
 2. 社區版另外在 `data/communities.json` 的 `communities` 加一筆，地圖才會出現。欄位照現有格式填，`deck` 填 `community/<社區名>/`；只能用查證表（facts_verified.json）裡已查證的值。座標用簡報 data.js 的 `SITE.lat/lon`（建物輪廓中心），不用 591 座標。指揮艙發布時會自動寫入，不用手動加（property-deck `site_map.py`：同名社區只更新那一筆、新社區加在最後；檢查不過整個發布不 push）。
 3. 簡報還沒發布的社區，`deck` 填 `null`，清單會顯示「簡報製作中」。
+
+## 簡報頁版型規則（2026-11-04 第一階段）
+
+由 property-deck 範本（`skill/assets/template.src.html`）產生，**不要手改輸出 HTML**，要改請改範本再用指揮艙重發布（`deck_engine.py republish C_<社區名> --work-root … --keep-date`）。
+- `<!doctype html><html lang="zh-Hant">`；頁首深紅揭露列（同首頁 `.disc-bar`：全國不動產板橋加盟店｜經紀業 非凡不動產有限公司｜經紀人 謝政峯（99）北縣字第002181號｜營業員 林津陞（99）登字第148103號）；頁尾完整揭露不可刪。
+- 頁首：`/assets/logo-nra.png`、品牌連回 https://banqiaoasheng.com/ 、「看商圈地圖」（/map/）、同生活圈 2～3 個社區（頁面執行時讀 `data/communities.json`：同 area、deck 不是 null、排除自己）、常駐「加 LINE」按鈕（≥44px）。
+- 聯絡：LINE `https://line.me/R/ti/p/%40banqiao.asheng`、手機 `tel:0925635678` 直接點，複製按鈕保留當備用。只放手機＋LINE，不放店電話。
+- 章節記憶 localStorage 鍵 `'deck-ch:'+location.pathname`（每頁獨立，try/catch）。內文 ≥16px、章節按鈕 ≥44px。
+- 減重：不載 Google Fonts（系統字型）；照片（≤1100px）、航照（≤1600px）、地圖圖示是同資料夾的 WebP 獨立檔、`loading="lazy"`；three.js 延後載入（封面按「看 3D 模型」或進日照章才下載）。目標每頁整頁瀏覽 ≤2 MB。
+- og：每頁有 og:title／og:description／og:image（同資料夾 og.jpg，1200×630）；og 文字不寫屋齡數字、金額、禁用詞。
+- 影片版：`data/videos.json` 有這頁的影片才顯示「看影片版 ▶」，按了才載入 youtube-nocookie iframe，不預先載入。
+- `decks.json` 每筆有 `status`：`社區分析`（community/* 一律）、`銷售中`、`已成交`、`待確認`。物件狀態只有林津陞確認過才寫銷售中／已成交，其他一律待確認；首頁卡片顯示狀態（待確認顯示「狀態待確認」），已成交或下架的物件不可寫「還在賣」之類的字。發布程式會保留已有的 status。
+- 舊版頁（不是範本做的）：`community/新濠一滙/`、`S21140123/` 由 property-deck `legacy_page.py`（`deck_engine.py legacy <路徑>`）在 `<!-- SITE-CHROME:START/END -->` 之間加揭露列與頁首、拆 WebP、重寫 og；S21140123 有 CSP，只放靜態連結（影片版連到 YouTube）。
+- 只換版型的重發布不動 `data/communities.json`（地圖資料可能人工校過）。
 
 ## 結構化資料（JSON-LD）與 llms.txt（2026-11-03）
 
