@@ -4,7 +4,8 @@
 資料只用本站自己的資料，不參考、不描繪任何其他網站的圖：
   - 社區簡報內嵌的 window.SITE（建物輪廓 blds、道路 roads；座標為以社區為原點的公尺，x 向東、y 向北）
   - 選用：data/doors/<社區名>.json 門牌定位（property-deck scope_check 的國土測繪中心門牌定位結果）
-      格式：{"doors":[{"no":"191","lat":25.02,"lon":121.47}, ...]} 或 {"doors":[{"no":"191","x":12.3,"y":-4.5}]}
+      格式：{"origin":{"lat":..,"lon":..},"doors":[{"no":"191","lat":25.02,"lon":121.47}, ...]} 或 {"doors":[{"no":"191","x":12.3,"y":-4.5}]}
+      （origin＝簡報 SITE 的原點，沒有就用 data/communities.json 的座標）
   - data/communities.json 的社區名、臨路
 輸出：data/layout/<社區名>.svg
 
@@ -57,21 +58,26 @@ def doors_local(doors_path, site_ll):
         return []
     d = json.load(open(doors_path, encoding="utf-8"))
     out = []
-    lat0, lon0 = site_ll
+    # 原點：簡報 window.SITE 的原點（property-deck summary.json center，匯出時寫在 origin）。
+    # 地圖 communities.json 的點不一定等於 SITE 原點（綠如意差約 12 公尺），沒有 origin 才退回用地圖的點。
+    o = d.get("origin") or {}
+    lat0, lon0 = (o["lat"], o["lon"]) if "lat" in o and "lon" in o else site_ll
     for r in d.get("doors", []):
         if "x" in r:
             out.append((str(r["no"]), (float(r["x"]), float(r["y"]))))
         elif "lat" in r and lat0 is not None:
+            # 換算係數跟 property-deck site_data.py 產生 SITE 時相同（東西 111320×cos，南北 110574）
             x = (float(r["lon"]) - lon0) * 111320 * math.cos(math.radians(lat0))
-            y = (float(r["lat"]) - lat0) * 111320
+            y = (float(r["lat"]) - lat0) * 110574
             out.append((str(r["no"]), (x, y)))
     return out
 
 
 def short_nums(nums):
     def key(n):
-        digits = "".join(ch for ch in n if ch.isdigit())
-        return (int(digits) if digits else 0, n)
+        # 「92之1」排在 92 後面、100 前面（不可把數字全部接起來比，921 會排到 102 後面）
+        parts = [int(x) for x in "".join(ch if ch.isdigit() else " " for ch in n).split()]
+        return (parts or [0], n)
     nums = sorted(set(nums), key=key)
     return nums
 

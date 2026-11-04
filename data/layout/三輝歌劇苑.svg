@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 933" width="900" height="933" font-family="Noto Sans TC, Microsoft JhengHei, PingFang TC, sans-serif">
 <rect width="100%" height="100%" fill="#FFFFFF"/><rect width="100%" height="8" fill="#C8161D"/>
 <text x="40" y="58" font-size="30" font-weight="700" fill="#1F2B33">三輝歌劇苑</text>
-<text x="40" y="92" font-size="18" fill="#8A969E">棟別配置示意</text>
+<text x="40" y="92" font-size="18" fill="#8A969E">棟別門牌配置示意</text>
 <defs><clipPath id="c"><rect x="142.5" y="120.0" width="614.9" height="683.3" rx="12"/></clipPath></defs>
 <rect x="142.5" y="120.0" width="614.9" height="683.3" rx="12" fill="#F4F6F7" stroke="#DCE1E5"/>
 <g clip-path="url(#c)">
@@ -26,14 +26,19 @@
 <path d="M493.9,554.9 L565.0,426.3 L504.9,392.8 L433.7,521.4 Z" fill="#FFFFFF" stroke="#C8161D" stroke-width="3.5" stroke-linejoin="round"/>
 <path d="M572.8,417.6 L610.5,349.2 L461.7,267.0 L424.1,334.9 Z" fill="#FFFFFF" stroke="#C8161D" stroke-width="3.5" stroke-linejoin="round"/>
 </g>
-<text x="499.4" y="473.8" font-size="17" font-weight="700" fill="#C8161D" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">B棟</text>
-<text x="517.3" y="342.2" font-size="17" font-weight="700" fill="#C8161D" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">C棟</text>
+<text x="390.5" y="557.4" font-size="15" font-weight="600" fill="#1F2B33" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">31 31之1 31之2 31之3</text>
+<text x="390.5" y="579.4" font-size="15" font-weight="600" fill="#1F2B33" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">31之5 31之6 31之7 31之8號</text>
+<text x="499.4" y="462.8" font-size="17" font-weight="700" fill="#C8161D" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">B棟</text>
+<text x="499.4" y="484.8" font-size="15" font-weight="600" fill="#1F2B33" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">33 35號</text>
+<text x="517.3" y="320.2" font-size="17" font-weight="700" fill="#C8161D" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">C棟</text>
+<text x="517.3" y="342.2" font-size="15" font-weight="600" fill="#1F2B33" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">39 39之1 39之2 39之3</text>
+<text x="517.3" y="364.2" font-size="15" font-weight="600" fill="#1F2B33" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">39之5 39之6號</text>
 <circle cx="713.5" cy="168.0" r="26" fill="#FFFFFF" stroke="#C8161D" stroke-width="3"/>
 <path d="M713.5,150.0 L722.5,178.0 L713.5,172.0 L704.5,178.0 Z" fill="#C8161D"/>
 <text x="713.5" y="214.0" font-size="15" font-weight="700" fill="#C8161D" text-anchor="middle">北</text>
 <line x1="162.5" y1="781.3" x2="392.2" y2="781.3" stroke="#1F2B33" stroke-width="3"/>
 <text x="162.5" y="773.3" font-size="13" fill="#1F2B33">約 50 公尺</text>
-<text x="40" y="839.3" font-size="16" fill="#1F2B33">棟別配置示意，僅供參考；實際以現場、門牌及使用執照為準。</text>
-<text x="40" y="865.3" font-size="16" fill="#1F2B33">本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap，紅框為本社區。</text>
+<text x="40" y="839.3" font-size="16" fill="#1F2B33">棟別門牌配置示意，僅供參考；實際以現場、門牌及使用執照為準。</text>
+<text x="40" y="865.3" font-size="16" fill="#1F2B33">本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap、門牌位置 內政部國土測繪中心門牌定位。</text>
 <text x="40" y="891.3" font-size="13" fill="#8A969E">道路底圖 © OpenStreetMap 貢獻者</text>
 </svg>

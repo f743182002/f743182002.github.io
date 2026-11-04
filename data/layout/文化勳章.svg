@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 933" width="900" height="933" font-family="Noto Sans TC, Microsoft JhengHei, PingFang TC, sans-serif">
 <rect width="100%" height="100%" fill="#FFFFFF"/><rect width="100%" height="8" fill="#C8161D"/>
 <text x="40" y="58" font-size="30" font-weight="700" fill="#1F2B33">文化勳章</text>
-<text x="40" y="92" font-size="18" fill="#8A969E">棟別配置示意</text>
+<text x="40" y="92" font-size="18" fill="#8A969E">棟別門牌配置示意</text>
 <defs><clipPath id="c"><rect x="135.8" y="120.0" width="628.5" height="683.3" rx="12"/></clipPath></defs>
 <rect x="135.8" y="120.0" width="628.5" height="683.3" rx="12" fill="#F4F6F7" stroke="#DCE1E5"/>
 <g clip-path="url(#c)">
@@ -54,13 +54,16 @@
 <text x="666.0" y="523.5" font-size="17" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">文化路二段124巷34弄</text>
 <text x="666.0" y="523.5" font-size="17" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">莒光路15巷</text>
 <text x="279.4" y="344.9" font-size="17" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">松江街</text>
-<text x="463.2" y="458.6" font-size="17" font-weight="700" fill="#C8161D" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">文化勳章</text>
+<text x="463.2" y="425.6" font-size="17" font-weight="700" fill="#C8161D" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">文化勳章</text>
+<text x="463.2" y="447.6" font-size="15" font-weight="600" fill="#1F2B33" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">84 86 88 90</text>
+<text x="463.2" y="469.6" font-size="15" font-weight="600" fill="#1F2B33" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">92之1 96 98 100</text>
+<text x="463.2" y="491.6" font-size="15" font-weight="600" fill="#1F2B33" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">102號</text>
 <circle cx="720.2" cy="168.0" r="26" fill="#FFFFFF" stroke="#C8161D" stroke-width="3"/>
 <path d="M720.2,150.0 L729.2,178.0 L720.2,172.0 L711.2,178.0 Z" fill="#C8161D"/>
 <text x="720.2" y="214.0" font-size="15" font-weight="700" fill="#C8161D" text-anchor="middle">北</text>
 <line x1="155.8" y1="781.3" x2="405.2" y2="781.3" stroke="#1F2B33" stroke-width="3"/>
 <text x="155.8" y="773.3" font-size="13" fill="#1F2B33">約 50 公尺</text>
-<text x="40" y="839.3" font-size="16" fill="#1F2B33">棟別配置示意，僅供參考；實際以現場、門牌及使用執照為準。</text>
-<text x="40" y="865.3" font-size="16" fill="#1F2B33">本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap，紅框為本社區。</text>
+<text x="40" y="839.3" font-size="16" fill="#1F2B33">棟別門牌配置示意，僅供參考；實際以現場、門牌及使用執照為準。</text>
+<text x="40" y="865.3" font-size="16" fill="#1F2B33">本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap、門牌位置 內政部國土測繪中心門牌定位。</text>
 <text x="40" y="891.3" font-size="13" fill="#8A969E">道路底圖 © OpenStreetMap 貢獻者</text>
 </svg>

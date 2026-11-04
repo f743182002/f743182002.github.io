@@ -56,9 +56,18 @@
 
 ## 棟別門牌配置圖（2026-11-04）
 
-- `scripts/door_layout.py` 產生 `data/layout/<社區名>.svg` 與 `data/layout/index.json`；地圖資料卡有檔案才顯示「看棟別配置圖」。重跑：`python3 scripts/door_layout.py .`
+- `scripts/door_layout.py` 產生 `data/layout/<社區名>.svg` 與 `data/layout/index.json`；地圖資料卡有檔案才顯示「看棟別配置圖」。重跑：`python3 scripts/door_layout.py .`（Windows 用 `python`）
 - 資料只用本站自己的：簡報內嵌 `window.SITE` 的本社區建物輪廓（me=1）與道路、`data/doors/<社區名>.json` 門牌定位（property-deck scope_check 的國土測繪中心門牌定位結果，格式 `{"doors":[{"no":"191","lat":..,"lon":..}]}`）。門牌落在本社區輪廓 8 公尺內才標上去。
 - **不可以參考、描繪樂居或其他網站的配置圖或平面圖。** 只標門牌號，不標樓層、戶號、住戶資訊。
+
+## 門牌座標與每戶實價資料（2026-11-04 第三階段）
+
+兩種檔都由 property-deck `site_export.py` 產生，**不要手改**；要改資料請回工作資料夾修正後重跑（`python -X utf8 site_export.py --all --site <本 repo> --work-roots <工作根目錄…> [--units-to-site] [--layout]`，內容沒變不會改檔）。圖也不要手改 SVG，改產生器或資料。
+
+- `data/doors/<社區名>.json`：來源是工作資料夾 `scope_check.json` 的**內政部國土測繪中心門牌定位**，只取落在本社區輪廓的點；沒查到座標的門牌不寫。格式 `{"source":"內政部國土測繪中心門牌定位（scope_check）","checked":"YYYY-MM-DD","origin":{"lat":..,"lon":..},"doors":[{"no":"191","lat":..,"lon":..}]}`。`checked` 是 scope_check 實際查詢日；`origin` 是簡報 `window.SITE` 的原點（建物輪廓座標的 0,0），`door_layout.py` 用它換算（地圖 `communities.json` 的點不一定是原點，綠如意差約 12 公尺）。**只放門牌號與座標，不放樓層、戶號、住戶資訊。** 社區版發布時指揮艙會一起寫入並重跑 `door_layout.py`，跟簡報同一個 commit。
+- `data/units/<社區名>.json`：來源是**內政部實價登錄買賣**，跟社區簡報「實價登錄 N 筆」同一批（排除特殊交易、不含預售屋 B 檔），逐筆對回實價原始資料，只留主要用途「住家用」、單一樓層的成交；同一戶（門牌＋樓層＋之N）只留最新一筆。格式 `{"source":"內政部實價登錄 買賣（排除特殊交易）","period":"110S2～115S4","checked":"YYYY-MM-DD","units":[{"addr":"莊敬路203號","floor":11,"suffix":"之3","rooms":2,"main_ping":10.2,"area_ping":14.7,"parking":false}]}`（坪＝平方公尺×0.3025，小數一位；查不到的欄位不寫）。**不放金額、單價、交易日期、車位價、住戶資訊。**
+- `scripts/unit_grid.py` 讀 `data/units` 產生 `data/units/<社區名>.svg`（樓層×門牌格子圖，「309之5號」這種之N門牌各自一欄）。
+- **`data/units`（JSON 與格子圖）上線要林津陞核可**：核可前不 commit、不 push。指揮艙發布只把 units 寫在工作資料夾 `site_units.json`，`git add` 一律排除 `data/units`（`':(exclude)data/units'`）；核可後由人明確 `git add data/units/<檔名>` 再 commit。
 
 ## 屋齡（2026-11-04）
 

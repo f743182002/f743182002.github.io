@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 933" width="900" height="933" font-family="Noto Sans TC, Microsoft JhengHei, PingFang TC, sans-serif">
 <rect width="100%" height="100%" fill="#FFFFFF"/><rect width="100%" height="8" fill="#C8161D"/>
 <text x="40" y="58" font-size="30" font-weight="700" fill="#1F2B33">健華新城</text>
-<text x="40" y="92" font-size="18" fill="#8A969E">棟別配置示意</text>
+<text x="40" y="92" font-size="18" fill="#8A969E">棟別門牌配置示意</text>
 <defs><clipPath id="c"><rect x="91.6" y="120.0" width="716.8" height="683.3" rx="12"/></clipPath></defs>
 <rect x="91.6" y="120.0" width="716.8" height="683.3" rx="12" fill="#F4F6F7" stroke="#DCE1E5"/>
 <g clip-path="url(#c)">
@@ -41,12 +41,22 @@
 <path d="M393.5,642.4 L414.2,657.8 L429.3,669.0 L450.3,684.4 L469.1,698.2 L510.8,642.7 L486.8,592.7 L477.9,604.2 L462.2,592.4 L442.8,578.3 L427.3,598.7 L423.4,595.7 L407.0,617.4 L410.2,619.7 Z" fill="#FFFFFF" stroke="#C8161D" stroke-width="3.5" stroke-linejoin="round"/>
 </g>
 <text x="748.3" y="537.7" font-size="17" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">文化路一段</text>
+<text x="637.3" y="361.2" font-size="15" font-weight="600" fill="#1F2B33" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">309之31 309之32 309之33 309之34號</text>
+<text x="627.0" y="466.7" font-size="15" font-weight="600" fill="#1F2B33" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">309之35 309之36 309之37 309之38號</text>
+<text x="435.7" y="321.0" font-size="15" font-weight="600" fill="#1F2B33" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">309之23 309之24 309之25 309之26號</text>
+<text x="526.0" y="283.6" font-size="15" font-weight="600" fill="#1F2B33" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">309之27 309之28 309之29 309之30號</text>
+<text x="301.8" y="583.3" font-size="15" font-weight="600" fill="#1F2B33" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">309之9 309之10 309之11 309之12號</text>
+<text x="254.3" y="501.4" font-size="15" font-weight="600" fill="#1F2B33" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">309之13 309之14 309之15 309之16號</text>
+<text x="287.5" y="408.3" font-size="15" font-weight="600" fill="#1F2B33" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">309之17 309之18 309之19 309之20號</text>
+<text x="369.2" y="414.4" font-size="15" font-weight="600" fill="#1F2B33" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">309之21 309之22號</text>
+<text x="532.7" y="594.2" font-size="15" font-weight="600" fill="#1F2B33" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">309之1 309之2 309之3 309之4號</text>
+<text x="443.2" y="628.1" font-size="15" font-weight="600" fill="#1F2B33" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">309之5 309之6 309之7 309之8號</text>
 <circle cx="764.4" cy="168.0" r="26" fill="#FFFFFF" stroke="#C8161D" stroke-width="3"/>
 <path d="M764.4,150.0 L773.4,178.0 L764.4,172.0 L755.4,178.0 Z" fill="#C8161D"/>
 <text x="764.4" y="214.0" font-size="15" font-weight="700" fill="#C8161D" text-anchor="middle">北</text>
 <line x1="111.6" y1="781.3" x2="275.8" y2="781.3" stroke="#1F2B33" stroke-width="3"/>
 <text x="111.6" y="773.3" font-size="13" fill="#1F2B33">約 50 公尺</text>
-<text x="40" y="839.3" font-size="16" fill="#1F2B33">棟別配置示意，僅供參考；實際以現場、門牌及使用執照為準。</text>
-<text x="40" y="865.3" font-size="16" fill="#1F2B33">本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap，紅框為本社區。</text>
+<text x="40" y="839.3" font-size="16" fill="#1F2B33">棟別門牌配置示意，僅供參考；實際以現場、門牌及使用執照為準。</text>
+<text x="40" y="865.3" font-size="16" fill="#1F2B33">本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap、門牌位置 內政部國土測繪中心門牌定位。</text>
 <text x="40" y="891.3" font-size="13" fill="#8A969E">道路底圖 © OpenStreetMap 貢獻者</text>
 </svg>

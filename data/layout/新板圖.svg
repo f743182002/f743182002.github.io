@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 933" width="900" height="933" font-family="Noto Sans TC, Microsoft JhengHei, PingFang TC, sans-serif">
 <rect width="100%" height="100%" fill="#FFFFFF"/><rect width="100%" height="8" fill="#C8161D"/>
 <text x="40" y="58" font-size="30" font-weight="700" fill="#1F2B33">新板圖</text>
-<text x="40" y="92" font-size="18" fill="#8A969E">棟別配置示意</text>
+<text x="40" y="92" font-size="18" fill="#8A969E">棟別門牌配置示意</text>
 <defs><clipPath id="c"><rect x="69.8" y="120.0" width="760.4" height="683.3" rx="12"/></clipPath></defs>
 <rect x="69.8" y="120.0" width="760.4" height="683.3" rx="12" fill="#F4F6F7" stroke="#DCE1E5"/>
 <g clip-path="url(#c)">
@@ -58,13 +58,14 @@
 <path d="M298.1,573.7 L299.5,350.4 L418.6,348.3 L417.9,474.5 L484.2,475.2 L485.0,349.0 L601.9,349.7 L600.5,575.1 Z" fill="#FFFFFF" stroke="#C8161D" stroke-width="3.5" stroke-linejoin="round"/>
 </g>
 <text x="370.1" y="710.7" font-size="17" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">莊敬路</text>
-<text x="450.7" y="437.0" font-size="17" font-weight="700" fill="#C8161D" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">新板圖</text>
+<text x="450.7" y="426.0" font-size="17" font-weight="700" fill="#C8161D" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">新板圖</text>
+<text x="450.7" y="448.0" font-size="15" font-weight="600" fill="#1F2B33" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">1號</text>
 <circle cx="786.2" cy="168.0" r="26" fill="#FFFFFF" stroke="#C8161D" stroke-width="3"/>
 <path d="M786.2,150.0 L795.2,178.0 L786.2,172.0 L777.2,178.0 Z" fill="#C8161D"/>
 <text x="786.2" y="214.0" font-size="15" font-weight="700" fill="#C8161D" text-anchor="middle">北</text>
 <line x1="89.8" y1="781.3" x2="446.5" y2="781.3" stroke="#1F2B33" stroke-width="3"/>
 <text x="89.8" y="773.3" font-size="13" fill="#1F2B33">約 50 公尺</text>
-<text x="40" y="839.3" font-size="16" fill="#1F2B33">棟別配置示意，僅供參考；實際以現場、門牌及使用執照為準。</text>
-<text x="40" y="865.3" font-size="16" fill="#1F2B33">本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap，紅框為本社區。</text>
+<text x="40" y="839.3" font-size="16" fill="#1F2B33">棟別門牌配置示意，僅供參考；實際以現場、門牌及使用執照為準。</text>
+<text x="40" y="865.3" font-size="16" fill="#1F2B33">本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap、門牌位置 內政部國土測繪中心門牌定位。</text>
 <text x="40" y="891.3" font-size="13" fill="#8A969E">道路底圖 © OpenStreetMap 貢獻者</text>
 </svg>
