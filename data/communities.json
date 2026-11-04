@@ -148,7 +148,23 @@
     "車位不是每戶都有、四周是巷道"
    ],
    "deals": 132,
-   "deck": "community/欣璞綻/"
+   "deck": "community/欣璞綻/",
+   "ev": {
+    "status": [
+     "existing_needs_approval"
+    ],
+    "basis": {
+     "permit_no": "107板建字第00100號",
+     "commenced": "2018-12-14",
+     "use_permit_no": "112板使字第00124號",
+     "use_permit_issued": "2023-06-19",
+     "completed": "2023-03-20",
+     "use": "H2-集合住宅",
+     "rule": "既有建物（建照在108/7/1前）：個別加裝依公寓大廈管理條例第6條；建築技術規則設施編第62條第4款不適用",
+     "src": "參考政府公開資料"
+    },
+    "verified_at": "2026-11-04"
+   }
   },
   {
    "name": "民生捷座",
