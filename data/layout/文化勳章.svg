@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 933" width="900" height="933" font-family="Noto Sans TC, Microsoft JhengHei, PingFang TC, sans-serif">
+<rect width="100%" height="100%" fill="#FFFFFF"/><rect width="100%" height="8" fill="#C8161D"/>
+<text x="40" y="58" font-size="30" font-weight="700" fill="#1F2B33">文化勳章</text>
+<text x="40" y="92" font-size="18" fill="#8A969E">棟別配置示意</text>
+<defs><clipPath id="c"><rect x="135.8" y="120.0" width="628.5" height="683.3" rx="12"/></clipPath></defs>
+<rect x="135.8" y="120.0" width="628.5" height="683.3" rx="12" fill="#F4F6F7" stroke="#DCE1E5"/>
+<g clip-path="url(#c)">
+<path d="M325.8,15.3 L272.4,117.0 L235.0,97.6 L175.2,212.3 L63.4,154.4 L109.8,66.1 L133.8,78.6 L200.6,-49.1 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M451.0,1012.3 L447.5,986.4 L484.9,923.0 L531.3,950.0 L483.4,1032.3 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M264.5,919.1 L305.4,846.2 L345.8,868.2 L362.7,838.2 L445.5,884.1 L388.2,986.9 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M-121.1,-85.5 L-63.2,-111.9 L-30.3,-40.1 L-88.2,-14.2 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M1023.1,105.5 L1068.0,135.0 L965.2,288.1 L920.4,258.7 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M959.8,69.1 L1004.6,99.1 L901.9,252.2 L857.0,222.3 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M-80.2,565.4 L42.5,631.8 L115.3,497.6 L-7.4,431.7 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M418.1,861.2 L507.9,861.2 L507.9,771.4 L418.1,771.4 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M194.1,818.8 L283.9,818.8 L283.9,729.0 L194.1,729.0 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M797.2,-2563.0 L588.2,-2467.7 L284.9,-2360.5 L127.8,-2258.7 L60.5,-2179.4 L-35.3,-1994.8 L-178.0,-1598.3 L-234.3,-1375.4 L-273.7,-1116.0 L-280.7,-963.9 L-203.4,-294.5 L-148.5,-76.5 L-31.3,132.0 L101.8,263.6" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M797.2,-2563.0 L588.2,-2467.7 L284.9,-2360.5 L127.8,-2258.7 L60.5,-2179.4 L-35.3,-1994.8 L-178.0,-1598.3 L-234.3,-1375.4 L-273.7,-1116.0 L-280.7,-963.9 L-203.4,-294.5 L-148.5,-76.5 L-31.3,132.0 L101.8,263.6" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M39.0,207.3 L-411.9,1018.8" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M39.0,207.3 L-411.9,1018.8" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M413.6,-622.2 L402.1,-574.8 L164.7,-102.0 L93.9,0.8 L-31.3,132.0" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M413.6,-622.2 L402.1,-574.8 L164.7,-102.0 L93.9,0.8 L-31.3,132.0" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-102.2,5.8 L-821.4,376.9" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-102.2,5.8 L-821.4,376.9" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-315.6,1681.7 L107.8,868.2" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-315.6,1681.7 L107.8,868.2" fill="none" stroke="#F2C14E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1424.6,711.6 L448.5,207.3" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1424.6,711.6 L448.5,207.3" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M2535.4,1442.3 L2063.6,1457.2 L1563.3,1445.3 L1018.6,1342.5 L707.9,1199.9 L107.8,868.2" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M2535.4,1442.3 L2063.6,1457.2 L1563.3,1445.3 L1018.6,1342.5 L707.9,1199.9 L107.8,868.2" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M101.8,263.6 L448.5,207.3" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M101.8,263.6 L448.5,207.3" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M137.3,1583.4 L204.1,1371.9 L398.1,1034.3" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M137.3,1583.4 L204.1,1371.9 L398.1,1034.3" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M981.2,691.6 L707.9,1199.9" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M981.2,691.6 L707.9,1199.9" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M666.0,535.5 L1130.8,768.4 L1213.1,605.3" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M666.0,535.5 L1130.8,768.4 L1213.1,605.3" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M752.8,-581.8 L29.0,829.8" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M752.8,-581.8 L29.0,829.8" fill="none" stroke="#F2C14E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M398.1,1034.3 L666.0,535.5" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M398.1,1034.3 L666.0,535.5" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M101.8,263.6 L279.4,356.9" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M101.8,263.6 L279.4,356.9" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M29.0,829.8 L-275.2,1425.8" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M29.0,829.8 L-275.2,1425.8" fill="none" stroke="#F2C14E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M107.8,868.2 L29.0,829.8" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M107.8,868.2 L29.0,829.8" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M107.8,868.2 L824.6,-541.9" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M107.8,868.2 L824.6,-541.9" fill="none" stroke="#F2C14E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M474.4,279.6 L604.6,349.9 L547.8,452.7 L489.9,421.3 L367.2,643.7 L295.4,604.3 Z" fill="#FFFFFF" stroke="#C8161D" stroke-width="3.5" stroke-linejoin="round"/>
+</g>
+<text x="448.5" y="195.3" font-size="17" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">文化路二段124巷</text>
+<text x="666.0" y="523.5" font-size="17" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">文化路二段124巷34弄</text>
+<text x="666.0" y="523.5" font-size="17" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">莒光路15巷</text>
+<text x="279.4" y="344.9" font-size="17" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">松江街</text>
+<text x="463.2" y="458.6" font-size="17" font-weight="700" fill="#C8161D" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">文化勳章</text>
+<circle cx="720.2" cy="168.0" r="26" fill="#FFFFFF" stroke="#C8161D" stroke-width="3"/>
+<path d="M720.2,150.0 L729.2,178.0 L720.2,172.0 L711.2,178.0 Z" fill="#C8161D"/>
+<text x="720.2" y="214.0" font-size="15" font-weight="700" fill="#C8161D" text-anchor="middle">北</text>
+<line x1="155.8" y1="781.3" x2="405.2" y2="781.3" stroke="#1F2B33" stroke-width="3"/>
+<text x="155.8" y="773.3" font-size="13" fill="#1F2B33">約 50 公尺</text>
+<text x="40" y="839.3" font-size="16" fill="#1F2B33">棟別配置示意，僅供參考；實際以現場、門牌及使用執照為準。</text>
+<text x="40" y="865.3" font-size="16" fill="#1F2B33">本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap，紅框為本社區。</text>
+<text x="40" y="891.3" font-size="13" fill="#8A969E">道路底圖 © OpenStreetMap 貢獻者</text>
+</svg>

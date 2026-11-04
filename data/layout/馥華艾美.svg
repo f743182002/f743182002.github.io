@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 933" width="900" height="933" font-family="Noto Sans TC, Microsoft JhengHei, PingFang TC, sans-serif">
+<rect width="100%" height="100%" fill="#FFFFFF"/><rect width="100%" height="8" fill="#C8161D"/>
+<text x="40" y="58" font-size="30" font-weight="700" fill="#1F2B33">馥華艾美</text>
+<text x="40" y="92" font-size="18" fill="#8A969E">棟別配置示意</text>
+<defs><clipPath id="c"><rect x="71.6" y="120.0" width="756.9" height="683.3" rx="12"/></clipPath></defs>
+<rect x="71.6" y="120.0" width="756.9" height="683.3" rx="12" fill="#F4F6F7" stroke="#DCE1E5"/>
+<g clip-path="url(#c)">
+<path d="M199.2,959.2 L231.9,1035.3 L406.6,960.5 L373.9,885.1 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M429.9,811.5 L464.5,871.9 L674.4,753.0 L639.8,693.3 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M846.7,-82.4 L880.6,-59.2 L946.6,-154.1 L1062.3,-74.9 L1174.8,1.8 L1191.8,13.1 L1000.7,289.1 L766.2,129.4 L717.8,49.0 L775.0,-30.9 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M1174.8,1.8 L1062.3,-74.9 L1103.2,-134.0 L1037.8,-178.6 L944.1,-242.1 L1015.1,-344.6 L1109.4,-279.8 L1513.0,-3.8 L1442.6,98.0 L1215.7,-57.3 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M788.8,-97.5 L728.5,-67.3 L676.3,-171.1 L736.7,-201.2 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M1308.1,75.4 L1433.8,169.7 L1234.5,433.1 L1059.8,302.9 L1149.0,185.4 L1197.5,221.8 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M-165.4,306.7 L30.7,209.3 L52.1,250.8 L164.6,474.6 L191.6,461.4 L265.8,608.5 L42.6,719.7 L-31.5,572.6 L-144.7,348.2 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M-276.1,222.5 L-161.7,414.2 L-164.2,486.5 L103.6,921.5 L155.8,917.7 L544.9,690.2 L616.0,595.3 L766.2,502.8" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-276.1,222.5 L-161.7,414.2 L-164.2,486.5 L103.6,921.5 L155.8,917.7 L544.9,690.2 L616.0,595.3 L766.2,502.8" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M321.1,-84.9 L466.3,170.3 L805.8,543.1" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M321.1,-84.9 L466.3,170.3 L805.8,543.1" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M272.7,452.6 L532.4,321.2 L575.7,404.8 L596.5,394.1 L627.3,453.2 L333.7,602.2 L303.5,543.1 L316.1,536.2 Z" fill="#FFFFFF" stroke="#C8161D" stroke-width="3.5" stroke-linejoin="round"/>
+</g>
+<text x="616.0" y="583.3" font-size="17" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">中山路一段216巷</text>
+<text x="444.7" y="463.4" font-size="17" font-weight="700" fill="#C8161D" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">住宅棟</text>
+<circle cx="784.4" cy="168.0" r="26" fill="#FFFFFF" stroke="#C8161D" stroke-width="3"/>
+<path d="M784.4,150.0 L793.4,178.0 L784.4,172.0 L775.4,178.0 Z" fill="#C8161D"/>
+<text x="784.4" y="214.0" font-size="15" font-weight="700" fill="#C8161D" text-anchor="middle">北</text>
+<line x1="91.6" y1="781.3" x2="405.9" y2="781.3" stroke="#1F2B33" stroke-width="3"/>
+<text x="91.6" y="773.3" font-size="13" fill="#1F2B33">約 50 公尺</text>
+<text x="40" y="839.3" font-size="16" fill="#1F2B33">棟別配置示意，僅供參考；實際以現場、門牌及使用執照為準。</text>
+<text x="40" y="865.3" font-size="16" fill="#1F2B33">本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap，紅框為本社區。</text>
+<text x="40" y="891.3" font-size="13" fill="#8A969E">道路底圖 © OpenStreetMap 貢獻者</text>
+</svg>

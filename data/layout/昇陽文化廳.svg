@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 933" width="900" height="933" font-family="Noto Sans TC, Microsoft JhengHei, PingFang TC, sans-serif">
+<rect width="100%" height="100%" fill="#FFFFFF"/><rect width="100%" height="8" fill="#C8161D"/>
+<text x="40" y="58" font-size="30" font-weight="700" fill="#1F2B33">昇陽文化廳</text>
+<text x="40" y="92" font-size="18" fill="#8A969E">棟別配置示意</text>
+<defs><clipPath id="c"><rect x="98.3" y="120.0" width="703.4" height="683.3" rx="12"/></clipPath></defs>
+<rect x="98.3" y="120.0" width="703.4" height="683.3" rx="12" fill="#F4F6F7" stroke="#DCE1E5"/>
+<g clip-path="url(#c)">
+<path d="M113.4,244.4 L240.0,186.9 L258.4,226.5 L277.9,217.6 L325.3,319.7 L305.8,328.6 L327.0,373.3 L200.4,431.3 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M-137.1,1042.6 L-165.6,979.6 L-127.1,962.3 L-219.1,760.4 L-155.5,731.9 L-35.6,996.9 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M829.6,962.9 L956.8,977.4 L954.0,995.2 L951.2,1015.3 L1002.5,1025.9 L988.0,1073.3 L983.0,1121.9 L976.9,1182.7 L956.2,1198.8 L927.2,1192.7 L922.8,1221.7 L921.1,1234.0 L786.6,1211.1 L816.2,1040.4 L826.3,981.8 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M1002.5,1025.9 L988.0,1073.3 L983.0,1121.9 L976.9,1182.7 L956.2,1198.8 L1091.2,1220.6 L1128.0,1057.7 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M1487.3,1309.3 L956.2,1198.8 L927.2,1192.7 L922.8,1221.7 L921.1,1234.0 L786.6,1211.1 L816.2,1040.4 L826.3,981.8 L829.6,962.9 L956.8,977.4 L954.0,995.2 L951.2,1015.3 L1002.5,1025.9 L1512.4,1129.7 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M489.3,643.2 L481.0,658.3 L471.5,676.1 L545.1,716.3 L556.3,696.2 L563.0,683.4 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M289.6,1085.6 L-404.9,-426.1" fill="none" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M289.6,1085.6 L-404.9,-426.1" fill="none" stroke="#F2C14E" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M855.8,458.6 L413.5,237.7 L369.4,195.3 L-1324.2,-3421.1 L-1472.5,-3770.3" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M855.8,458.6 L413.5,237.7 L369.4,195.3 L-1324.2,-3421.1 L-1472.5,-3770.3" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1048.8,-600.7 L544.6,306.9" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1048.8,-600.7 L544.6,306.9" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-131.5,-173.4 L106.7,-166.2 L190.9,-187.9 L234.4,-162.8 L785.5,-126.6" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-131.5,-173.4 L106.7,-166.2 L190.9,-187.9 L234.4,-162.8 L785.5,-126.6" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M206.0,618.7 L131.2,393.9 L-210.2,-350.8" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M206.0,618.7 L131.2,393.9 L-210.2,-350.8" fill="none" stroke="#F2C14E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M652.2,1048.2 L1125.8,138.4" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M652.2,1048.2 L1125.8,138.4" fill="none" stroke="#F2C14E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M3840.7,780.5 L3313.0,797.2 L2753.0,783.8 L2143.8,668.9 L1796.3,509.4 L1125.8,138.4" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M3840.7,780.5 L3313.0,797.2 L2753.0,783.8 L2143.8,668.9 L1796.3,509.4 L1125.8,138.4" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M483.7,-615.8 L554.6,-489.7 L536.7,38.6 L413.5,237.7" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M483.7,-615.8 L554.6,-489.7 L536.7,38.6 L413.5,237.7" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M736.4,885.3 L1158.7,938.3 L1672.5,968.4" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M736.4,885.3 L1158.7,938.3 L1672.5,968.4" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-449.5,-120.4 L-94.7,650.5 L73.7,971.8" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-449.5,-120.4 L-94.7,650.5 L73.7,971.8" fill="none" stroke="#F2C14E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M2300.6,4272.4 L1772.3,3499.3 L895.4,2152.7 L555.7,1594.9 L289.6,1085.6" fill="none" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M2300.6,4272.4 L1772.3,3499.3 L895.4,2152.7 L555.7,1594.9 L289.6,1085.6" fill="none" stroke="#F2C14E" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1846.5,-1483.2 L1037.1,95.5" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1846.5,-1483.2 L1037.1,95.5" fill="none" stroke="#F2C14E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M206.0,618.7 L116.1,550.1 L-155.0,-25.0" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M206.0,618.7 L116.1,550.1 L-155.0,-25.0" fill="none" stroke="#F2C14E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-155.0,-25.0 L-249.8,-273.8 L-618.5,-1030.2" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-155.0,-25.0 L-249.8,-273.8 L-618.5,-1030.2" fill="none" stroke="#F2C14E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M458.6,1234.0 L222.7,720.2 L206.0,618.7" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M458.6,1234.0 L222.7,720.2 L206.0,618.7" fill="none" stroke="#F2C14E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1037.1,95.5 L697.4,762.1" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1037.1,95.5 L697.4,762.1" fill="none" stroke="#F2C14E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1125.8,138.4 L1037.1,95.5" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1125.8,138.4 L1037.1,95.5" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1125.8,138.4 L1927.4,-1438.6" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1125.8,138.4 L1927.4,-1438.6" fill="none" stroke="#F2C14E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M697.4,762.1 L458.6,1234.0" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M697.4,762.1 L458.6,1234.0" fill="none" stroke="#F2C14E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M512.8,1323.8 L652.2,1048.2" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M512.8,1323.8 L652.2,1048.2" fill="none" stroke="#F2C14E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M73.7,971.8 L202.0,1119.6 L360.5,1440.9" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M73.7,971.8 L202.0,1119.6 L360.5,1440.9" fill="none" stroke="#F2C14E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M412.9,569.0 L516.1,624.8 L623.2,428.5 L520.0,373.3 L499.9,410.1 L495.5,436.8 L455.9,508.8 L432.4,533.3 Z" fill="#FFFFFF" stroke="#C8161D" stroke-width="3.5" stroke-linejoin="round"/>
+<path d="M276.8,498.8 L379.4,552.3 L402.3,508.2 L407.3,477.0 L441.9,412.9 L461.4,396.7 L484.9,352.1 L382.2,298.5 Z" fill="#FFFFFF" stroke="#C8161D" stroke-width="3.5" stroke-linejoin="round"/>
+</g>
+<text x="369.4" y="183.3" font-size="17" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">光武街</text>
+<text x="544.6" y="294.9" font-size="17" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">光武街2巷</text>
+<text x="131.2" y="381.9" font-size="17" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">民生路三段</text>
+<text x="413.5" y="225.7" font-size="17" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">光武街4巷</text>
+<text x="697.4" y="750.1" font-size="17" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">文化路二段</text>
+<circle cx="757.7" cy="168.0" r="26" fill="#FFFFFF" stroke="#C8161D" stroke-width="3"/>
+<path d="M757.7,150.0 L766.7,178.0 L757.7,172.0 L748.7,178.0 Z" fill="#C8161D"/>
+<text x="757.7" y="214.0" font-size="15" font-weight="700" fill="#C8161D" text-anchor="middle">北</text>
+<line x1="118.3" y1="781.3" x2="397.2" y2="781.3" stroke="#1F2B33" stroke-width="3"/>
+<text x="118.3" y="773.3" font-size="13" fill="#1F2B33">約 50 公尺</text>
+<text x="40" y="839.3" font-size="16" fill="#1F2B33">棟別配置示意，僅供參考；實際以現場、門牌及使用執照為準。</text>
+<text x="40" y="865.3" font-size="16" fill="#1F2B33">本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap，紅框為本社區。</text>
+<text x="40" y="891.3" font-size="13" fill="#8A969E">道路底圖 © OpenStreetMap 貢獻者</text>
+</svg>

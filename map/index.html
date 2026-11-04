@@ -67,6 +67,7 @@
 .pop .good li::marker{content:"○ "}
 .pop .cta{display:block;text-align:center;margin-top:10px;background:#C8161D;color:#fff !important;text-decoration:none;border-radius:8px;padding:9px 8px;font-weight:700;font-size:14px}
 .pop .cta + .cta{margin-top:8px}
+.pop .cta.ghost{background:#fff;color:#C8161D !important;border:1.5px solid #C8161D}
 .pop .cta.alt{background:#06C755}
 .pop .note{font-size:12.5px;color:#8A6A2A;margin-top:4px}
 .area-lbl{transform:translateX(-50%);white-space:nowrap;background:rgba(255,255,255,.94);color:#1F2B33;border:1.5px solid #7A0D10;border-radius:6px;padding:1px 8px;font-size:13.5px;letter-spacing:.02em;font-weight:700;box-shadow:0 1px 3px rgba(0,0,0,.25);pointer-events:none}
@@ -966,6 +967,7 @@
   var map=L.map('map',{scrollWheelZoom:true}).setView([25.021,121.470],15);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap 貢獻者'}).addTo(map);
 
+  fetch('../data/layout/index.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():null}).then(function(j){window.LAYOUTS=j&&j.layouts||{}}).catch(function(){window.LAYOUTS={}});
   fetch('../data/communities.json',{cache:'no-cache'}).then(function(r){return r.json()}).then(init).catch(function(){
     document.getElementById('list').innerHTML='<li class="empty">社區資料載入失敗，請重新整理頁面。</li>';
   });
@@ -976,7 +978,7 @@
     var items=D.communities.map(function(c){
       var a=areaById[c.area]||{color:'#666',name:''};
       var icon=L.divIcon({className:'',html:'<div class="cm-pin'+(c.approx?' approx':'')+'"></div>',iconSize:[22,22],iconAnchor:[11,11],popupAnchor:[0,-10]});
-      var m=L.marker([c.lat,c.lon],{icon:icon,title:c.name}).bindPopup(popup(c,a),{maxHeight:window.innerWidth<=860?Math.max(260,Math.round(window.innerHeight*0.62)-70):null,autoPanPadding:[12,12]}).bindTooltip(c.name,{permanent:true,direction:'right',offset:[10,0],className:'cm-name'});
+      var m=L.marker([c.lat,c.lon],{icon:icon,title:c.name}).bindPopup(function(){return popup(c,a)},{maxHeight:window.innerWidth<=860?Math.max(260,Math.round(window.innerHeight*0.62)-70):null,autoPanPadding:[12,12]}).bindTooltip(c.name,{permanent:true,direction:'right',offset:[10,0],className:'cm-name'});
       return {c:c,a:a,m:m,era:eraOf(c)};
     });
 
@@ -1048,6 +1050,7 @@
       if(c.cautions&&c.cautions.length)h+='<ul class="warn">'+c.cautions.map(function(p){return '<li>看屋留意：'+esc(p)+'</li>'}).join('')+'</ul>';
       if(c.approx)h+='<div class="note">地圖位置為約略位置，以門牌與現場為準。</div>';
       if(c.deck)h+='<a class="cta" href="../'+encodeURI(c.deck)+'">看互動簡報（3D 日照・步行地圖・實價表）</a>';
+      if(window.LAYOUTS&&LAYOUTS[c.name])h+='<a class="cta ghost" href="../data/layout/'+encodeURIComponent(c.name)+'.svg" target="_blank" rel="noopener">看棟別配置圖</a>';
       h+='<a class="cta alt" href="https://line.me/R/ti/p/%40banqiao.asheng" target="_blank" rel="noopener">問阿陞：'+esc(c.name)+'有沒有房子在賣？</a></div>';
       return h;
     }

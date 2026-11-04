@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 933" width="900" height="933" font-family="Noto Sans TC, Microsoft JhengHei, PingFang TC, sans-serif">
+<rect width="100%" height="100%" fill="#FFFFFF"/><rect width="100%" height="8" fill="#C8161D"/>
+<text x="40" y="58" font-size="30" font-weight="700" fill="#1F2B33">鑑築</text>
+<text x="40" y="92" font-size="18" fill="#8A969E">棟別配置示意</text>
+<defs><clipPath id="c"><rect x="148.9" y="120.0" width="602.2" height="683.3" rx="12"/></clipPath></defs>
+<rect x="148.9" y="120.0" width="602.2" height="683.3" rx="12" fill="#F4F6F7" stroke="#DCE1E5"/>
+<g clip-path="url(#c)">
+<path d="M888.4,270.7 L846.9,360.8 L837.3,451.4 L838.0,567.7 L845.6,588.1 L1198.2,543.4 L1193.7,495.5 L1193.0,456.6 L1213.5,414.4 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M856.5,660.9 L834.8,731.8 L806.7,787.4 L823.9,897.9 L845.0,883.8 L926.7,879.3 L920.4,788.0 L940.1,777.1 L1199.4,745.9 L1190.5,628.3 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M518.0,-116.9 L437.5,-73.5 L382.0,-175.0 L463.7,-219.1 L476.5,-195.5 L502.0,-209.5 L531.4,-155.2 L505.2,-141.2 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M887.8,1081.1 L889.1,881.2 L995.7,880.0 L995.1,992.4 L1054.5,993.0 L1055.1,880.0 L1159.2,880.6 L1157.9,1083.1 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M-148.1,365.2 L-161.5,369.7 L-176.8,328.8 L-59.9,286.7 L-44.6,328.8 L-56.8,333.3 L-47.8,356.9 L-35.7,352.5 L-17.8,401.6 L-134.7,443.8 L-151.9,395.2 L-139.1,390.8 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M65.2,309.7 L56.9,284.8 L50.5,287.3 L38.4,253.5 L-15.2,272.0 L23.1,380.6 L45.4,444.4 L110.6,421.4 L116.3,436.8 L167.4,418.9 L170.0,425.3 L272.1,389.5 L267.7,375.5 L382.6,335.9 L356.4,262.4 L330.3,187.7 L261.3,212.0 L271.5,240.7 L256.8,246.4 L268.3,279.0 L280.4,275.2 L284.9,288.0 L291.3,306.5 L248.5,321.8 L232.5,326.9 L228.7,316.7 L207.0,323.7 L202.5,311.0 L155.3,326.9 L162.9,348.6 L145.1,355.0 L93.3,372.9 L83.7,376.1 L78.6,361.4 L85.0,358.8 L77.4,337.8 L83.7,335.9 L72.9,306.5 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M3014.4,-371.1 L2642.1,-289.4 L2253.8,-260.0 L1438.9,-277.2 L1139.4,-236.4 L1008.5,-152.7 L900.6,-51.2 L714.7,208.8 L681.5,339.0 L671.3,550.4 L638.1,733.7 L424.1,1075.4 L286.2,1215.9 L134.2,1332.1 L-550.4,1764.5" fill="none" stroke="#FFFFFF" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M3014.4,-371.1 L2642.1,-289.4 L2253.8,-260.0 L1438.9,-277.2 L1139.4,-236.4 L1008.5,-152.7 L900.6,-51.2 L714.7,208.8 L681.5,339.0 L671.3,550.4 L638.1,733.7 L424.1,1075.4 L286.2,1215.9 L134.2,1332.1 L-550.4,1764.5" fill="none" stroke="#F2C14E" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-439.9,1836.6 L235.7,1375.5 L515.5,1095.2 L671.9,846.1 L730.7,635.4 L772.2,280.9 L863.5,109.1 L1073.0,-119.5 L1203.3,-174.4 L1390.4,-208.3 L2212.9,-190.4 L2715.5,-228.7 L3053.4,-302.1" fill="none" stroke="#FFFFFF" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-439.9,1836.6 L235.7,1375.5 L515.5,1095.2 L671.9,846.1 L730.7,635.4 L772.2,280.9 L863.5,109.1 L1073.0,-119.5 L1203.3,-174.4 L1390.4,-208.3 L2212.9,-190.4 L2715.5,-228.7 L3053.4,-302.1" fill="none" stroke="#F2C14E" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-328.8,384.4 L-111.0,789.3" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-328.8,384.4 L-111.0,789.3" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M588.3,495.5 L35.2,836.5 L-111.0,789.3" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M588.3,495.5 L35.2,836.5 L-111.0,789.3" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M2265.9,-3904.0 L235.7,-771.5 L172.5,-636.1 L153.4,-518.0 L180.2,-286.8 L389.6,152.6 L661.1,614.9" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M2265.9,-3904.0 L235.7,-771.5 L172.5,-636.1 L153.4,-518.0 L180.2,-286.8 L389.6,152.6 L661.1,614.9" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M2256.4,866.6 L2177.2,971.9 L2021.3,1086.9 L1866.2,1132.9 L1560.3,1177.6 L1062.1,1221.0 L951.6,1214.6 L863.5,1184.6 L671.9,846.1 L603.6,798.2" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M2256.4,866.6 L2177.2,971.9 L2021.3,1086.9 L1866.2,1132.9 L1560.3,1177.6 L1062.1,1221.0 L951.6,1214.6 L863.5,1184.6 L671.9,846.1 L603.6,798.2" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M681.5,339.0 L632.3,371.6 L530.8,388.2" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M681.5,339.0 L632.3,371.6 L530.8,388.2" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M407.5,599.0 L536.5,519.1 L545.5,509.6 L546.8,495.5 L544.2,482.7 L447.8,324.4 L360.3,382.5 L399.9,441.9 L411.4,434.8 L447.1,483.4 L426.7,494.2 L410.1,473.2 L353.2,512.1 L377.5,547.9 L372.4,550.4 L387.7,576.0 L392.2,572.1 Z" fill="#FFFFFF" stroke="#C8161D" stroke-width="3.5" stroke-linejoin="round"/>
+</g>
+<text x="671.3" y="538.4" font-size="17" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">萬板路</text>
+<text x="588.3" y="483.5" font-size="17" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">民生路二段226巷</text>
+<text x="661.1" y="602.9" font-size="17" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">莊敬路</text>
+<text x="433.3" y="494.0" font-size="17" font-weight="700" fill="#C8161D" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">鑑築</text>
+<circle cx="707.1" cy="168.0" r="26" fill="#FFFFFF" stroke="#C8161D" stroke-width="3"/>
+<path d="M707.1,150.0 L716.1,178.0 L707.1,172.0 L698.1,178.0 Z" fill="#C8161D"/>
+<text x="707.1" y="214.0" font-size="15" font-weight="700" fill="#C8161D" text-anchor="middle">北</text>
+<line x1="168.9" y1="781.3" x2="488.2" y2="781.3" stroke="#1F2B33" stroke-width="3"/>
+<text x="168.9" y="773.3" font-size="13" fill="#1F2B33">約 50 公尺</text>
+<text x="40" y="839.3" font-size="16" fill="#1F2B33">棟別配置示意，僅供參考；實際以現場、門牌及使用執照為準。</text>
+<text x="40" y="865.3" font-size="16" fill="#1F2B33">本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap，紅框為本社區。</text>
+<text x="40" y="891.3" font-size="13" fill="#8A969E">道路底圖 © OpenStreetMap 貢獻者</text>
+</svg>
