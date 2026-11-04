@@ -1093,7 +1093,8 @@ window.__EV=EVX;
   if(!rows.length&&!plans.length){sec.remove();return}
   if(rows.length){
     setT('d-lay-sum','依實價登錄 '+lay.n+' 戶住宅成交的申報格局整理（同一戶只計一次），'+(lay.cutoff||'')+'。');
-    const rng=r=>r.main_ping?(r.main_ping[0]===r.main_ping[1]?'約 '+r.main_ping[0]+' 坪':r.main_ping[0]+'～'+r.main_ping[1]+' 坪'):'—';
+    const f1=x=>Number(x).toFixed(1);  // 坪數一律小數一位（10.0 不寫成 10）
+    const rng=r=>r.main_ping?(r.main_ping[0]===r.main_ping[1]?'約 '+f1(r.main_ping[0])+' 坪':f1(r.main_ping[0])+'～'+f1(r.main_ping[1])+' 坪'):'—';
     $('d-lay-table').innerHTML='<thead><tr><th>房數</th><th>筆數</th><th>主建物坪數範圍</th></tr></thead><tbody>'
       +rows.map(r=>'<tr><td>'+esc(r.label)+'</td><td class="n">'+esc(r.count)+'</td><td>'+esc(rng(r))+'</td></tr>').join('')+'</tbody>';
     setT('d-lay-src','資料來源：'+(lay.source||'內政部實價登錄')+'；'+(lay.cutoff||''));
