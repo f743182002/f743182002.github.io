@@ -1191,11 +1191,14 @@
    "deck": "community/鑽石名門/",
    "ev": {
     "status": [
-     "unverified"
+     "existing_needs_approval"
     ],
     "basis": {
-     "completed": "1997-11-04",
-     "rule": "完工日（建物登記）早於108年7月1日，但尚未查到使照或建照字號，暫列未查證",
+     "permit_no": "82中建字第01762號",
+     "use_permit_no": "86中使字第01164號",
+     "use_permit_issued": "1997-11-04",
+     "completed": "1997-07-22",
+     "rule": "既有建物（建照在108/7/1前）：個別加裝依公寓大廈管理條例第6條；建築技術規則設施編第62條第4款不適用",
      "src": "參考政府公開資料"
     },
     "verified_at": "2026-11-04"

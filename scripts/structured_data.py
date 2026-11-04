@@ -83,6 +83,10 @@ PARKING_NOTE = re.compile(r'扣除車位(?:的)?(?:坪數)?(?:\s*[及與和、]\
                           r'|(?:未|沒有|已|有)拆分(?:的)?車位(?:價格)?')
 
 
+# 單價沒寫車位說明時補的預設說明（林津陞 2026-11-04：「沒寫不用擋住阿 就寫是含車位計算 無分算」）
+DEFAULT_PARKING_NOTE = '單價含車位計算，車位未分算'
+
+
 def unit_price_missing_parking(text, context=''):
     """社區分析：text 寫了單價（萬/坪、每坪、單價），text 與 context（同段、同章節附註）卻沒寫車位有沒有分算 → 回傳那段單價文字。"""
     m = UNIT_PRICE.search(str(text or ''))
@@ -95,10 +99,7 @@ def money_hit(text, community=False, context=''):
     """有不能寫的金額／屋齡就回傳 match（或字串）；沒有回 None。
     community=True：實價登錄單價（萬/坪）放行，但要有車位分算說明（PARKING_NOTE，可在 context）；總價、售價、屋齡照擋。"""
     t = str(text or '')
-    if community:
-        miss = unit_price_missing_parking(t, context)
-        if miss:
-            return miss
+    if community:  # 單價沒寫車位說明不擋（林津陞 2026-11-04「沒寫不用擋住阿 就寫是含車位計算 無分算」；deck_engine 會自動補說明）
         t = PARKING_NOTE.sub(' ', UNIT_PRICE.sub(' ', t))
     m = MONEY.search(t)
     return m[0] if m else None
@@ -125,7 +126,11 @@ def clean(text, community=False):
         return ''
     parts = re.split(r'(?<=[。！？!?；])', text)
     keep = [p for p in parts if p.strip() and not money_hit(p, community, text) and not any(w in p for w in BANNED)]
-    return ''.join(keep).strip()
+    out = ''.join(keep).strip()
+    if community and unit_price_missing_parking(out):  # 沒寫車位說明 → 補預設（林津陞 2026-11-04「就寫是含車位計算 無分算」）
+        note = f'（{DEFAULT_PARKING_NOTE}）'
+        out = out[:-1] + note + out[-1] if out[-1:] in '。！？；' else out + note
+    return out
 
 
 def clean_segments(text, sep='｜', community=False):
