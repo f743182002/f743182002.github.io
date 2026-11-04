@@ -55,8 +55,27 @@ BANNED = ['免費估價', '免費鑑價', '專業估價', '保證獲利', '穩�
           '保證', '增值', '估價', '鑑價',
           '最划算', '最好', '最佳', '最優', '最頂級', '最熱門', '首選', '唯一',
           '後台', 'houseflow', 'HouseFlow', '根據後台', '8258', '8100']
+# 屋齡數字（2026-11-04 第二階段）：「屋齡29年」「屋齡：29 年」「屋齡約三十年」「30年屋」「三十年老屋」「29年屋齡」。
+# 寫死的文字（title、meta、og、JSON-LD、llms.txt、noscript、YouTube、字幕、配音、591 文案）一律不可有；
+# 只有簡報頁／地圖由瀏覽器即時計算的屋齡欄可以顯示（那段在 <script> 裡，靜態掃描不掃 script，見 static_text()）。
+# deck_engine、site_map 共用這一條。
+AGE_NUM = r'[\d０-９一二三四五六七八九十兩]'
+AGE = re.compile(r'屋齡[\s：:〕】）)」約為近達已滿逾超過]*' + AGE_NUM + r'|' + AGE_NUM + r'+\s*年(?:老|新成)?屋(?![頂主況內外前後])|' + AGE_NUM + r'+\s*年屋齡')
 # 價格與屋齡：句子裡有這些就整句拿掉（實價登錄的筆數、期間可以留，金額不留）
-MONEY = re.compile(r'\d[\d,.]*\s*(?:萬(?![字人次筆個])|元|億)|[一二三四五六七八九十百千兩]+萬(?![字人次筆個])|萬元|每坪|單價|總價|售價|開價|價格|價位|行情|屋齡\s*\d|\d+\s*年屋')
+MONEY = re.compile(r'\d[\d,.]*\s*(?:萬(?![字人次筆個])|元|億)|[一二三四五六七八九十百千兩]+萬(?![字人次筆個])|萬元|每坪|單價|總價|售價|開價|價格|價位|行情|'
+                   + AGE.pattern)
+
+
+def static_text(page_html):
+    """網頁的靜態文字：去掉 <script>、<style> 的內容（瀏覽器即時計算的屋齡欄只在 script 裡），留下 title、meta、og、
+    JSON-LD 以外的 HTML 文字與屬性。JSON-LD（type=application/ld+json）另由 audit() 檢查，也一起留著掃。"""
+    s = re.sub(r'<script(?![^>]*application/ld\+json)[^>]*>.*?</script>', ' ', str(page_html or ''), flags=re.S | re.I)
+    return re.sub(r'<style[^>]*>.*?</style>', ' ', s, flags=re.S | re.I)
+
+
+def static_age_problems(page_html):
+    """靜態 HTML（含 noscript 摘要、meta、og、JSON-LD）不可有屋齡數字。回傳找到的字串清單。"""
+    return [m[0] for m in AGE.finditer(static_text(page_html))]
 
 
 # ---------------------------------------------------------------------- 文字
@@ -800,6 +819,8 @@ def build_site(root, check=False):
         for p in audit(graph):
             problems.append(f'{key or "首頁"}：{p}')
         new = apply(text, key, graph, summary, ctx)
+        for s in static_age_problems(new):  # title、meta、og、noscript 等寫死的文字不可有屋齡數字（script 裡即時計算的不算）
+            problems.append(f'{key or "首頁"}：靜態文字含屋齡數字「{s}」')
         page = next((n for n in graph if n.get('@id', '').endswith('#webpage')), {})
         descs[key] = page.get('description') or meta_content(new, 'description')
         if new != text:
