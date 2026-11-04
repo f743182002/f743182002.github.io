@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="zh-Hant-TW"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light">
+<title>每戶成交實價｜板橋阿陞聊房</title>
+<style>
+:root{--red:#C8161D;--ink:#1F2B33;--muted:#5F6F78;--line:#E3E6E8;--bg:#FFFFFF;--soft:#F6F7F8;--card:#FFFFFF}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",system-ui,sans-serif;-webkit-text-size-adjust:100%;line-height:1.55}
+a{color:var(--red)}
+.top{display:flex;align-items:center;gap:10px;padding:8px 16px;border-bottom:1px solid var(--line);background:#fff}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);min-width:0}
+.brand img{height:30px;width:auto;padding-right:10px;border-right:1px solid #DCE1E5}
+.brand b{font-size:17px;white-space:nowrap}
+.top .sp{flex:1}
+.btn-line{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:22px;background:#06C755;color:#fff;text-decoration:none;font-weight:700;font-size:15px;white-space:nowrap}
+.disc{background:#7A0D10;color:#FFF2F2;font-size:13px;line-height:1.6;padding:5px 16px}
+main{max-width:1240px;margin:0 auto;padding:16px 16px 40px}
+.crumb{font-size:14px;margin:0 0 6px}.crumb a{text-decoration:none}
+h1{font-size:24px;line-height:1.3;margin:0 0 4px}
+.lead{color:var(--muted);font-size:15px;margin:0 0 14px}
+.sum{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,2fr);gap:10px;margin:0 0 8px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.card{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--card)}
+.card .l{font-size:13.5px;color:var(--muted)}
+.card .v{font-size:28px;font-weight:800;line-height:1.2;margin-top:2px;font-variant-numeric:tabular-nums}
+.card .v small{font-size:14px;font-weight:400;color:var(--muted);margin-left:3px}
+.card .s{font-size:13px;color:var(--muted);margin-top:2px}
+.card.hero .v{color:var(--red)}
+.basis{font-size:13px;color:var(--muted);margin:0 0 16px}
+.bar{position:sticky;top:0;z-index:30;background:#fff;border-bottom:1px solid var(--line);margin:0 -16px 10px;padding:8px 16px}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;min-height:40px;padding:0 14px;border-radius:20px;border:1px solid #D4D9DD;background:#fff;color:var(--ink);font-size:15px;font-family:inherit;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff;font-weight:700}
+.opts{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:6px 0 8px}
+.seg{display:inline-flex;border:1px solid #D4D9DD;border-radius:10px;overflow:hidden}
+.seg button{min-height:40px;padding:0 10px;border:0;background:#fff;font-size:14.5px;font-family:inherit;color:var(--ink);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--red);color:#fff;font-weight:700}
+.tog{display:inline-flex;align-items:center;gap:6px;font-size:14.5px;min-height:38px;cursor:pointer}
+.tog input{width:18px;height:18px;accent-color:var(--red)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;font-size:13.5px;margin:4px 0 14px}
+.legend .t{font-weight:700}
+.sw{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.sw i{display:inline-block;width:22px;height:16px;border-radius:4px}
+.sw i.em{background:#fff;box-shadow:inset 0 0 0 1px #E3E6E8}
+.groups{display:flex;flex-wrap:wrap;gap:22px 28px;align-items:flex-start}
+.g{min-width:0;max-width:100%}
+.g h2{font-size:19px;margin:0;line-height:1.3}
+.g .gs{font-size:13.5px;color:var(--muted);margin:2px 0 8px}
+.g .gs b{color:var(--ink)}
+.scroll{overflow:auto;max-height:78vh;max-width:100%;width:fit-content;border:1px solid var(--line);border-radius:10px;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+table{border-collapse:separate;border-spacing:0;font-variant-numeric:tabular-nums}
+th,td{padding:0}
+thead th{position:sticky;background:#F1F3F4;color:var(--ink);font-size:14px;font-weight:700;z-index:2;white-space:nowrap;text-align:center;border-bottom:1px solid var(--line)}
+thead tr.r1 th{top:0;height:32px;border-left:1px solid #fff}
+thead tr.r1 th.dh{text-align:left}
+thead tr.r1 th.dh span{position:sticky;left:64px;padding:0 10px}
+.hint{font-size:13px;color:var(--muted);margin:0 0 6px}
+thead tr.r2 th{top:32px;height:26px;font-size:13px;font-weight:400;color:var(--muted);background:#F7F8F9}
+th.fl{position:sticky;left:0;z-index:3;background:#fff;color:var(--muted);font-size:14px;font-weight:700;width:56px;min-width:56px;text-align:right;padding-right:8px;border-right:1px solid var(--line);white-space:nowrap}
+thead th.fl{z-index:4;background:#F1F3F4;font-weight:400;font-size:13px}
+td{width:66px;min-width:66px;height:62px;border-right:1px solid #F0F2F3;border-bottom:1px solid #F0F2F3}
+td>.c{display:flex;flex-direction:column;align-items:center;justify-content:center;margin:2px;height:57px;border-radius:6px;text-align:center;line-height:1.15;cursor:pointer;border:0;width:calc(100% - 4px);font-family:inherit;padding:0}
+td>.e{display:block}
+.c .p{font-size:17px;font-weight:800}
+.c .y{font-size:13px;margin-top:2px}
+.c .tg{font-size:12px;margin-top:1px;font-weight:700;opacity:.9}
+.c.gr{background:#fff;box-shadow:inset 0 0 0 1.5px #A4762A;color:var(--ink)}
+.c.bs{background:#fff;box-shadow:inset 0 0 0 1.5px #5D7B91;color:var(--ink)}
+.c.inc{background:#fff;box-shadow:inset 0 0 0 1.5px #AEB7BD;color:#4A565E}
+.c.inc .p{font-weight:700}
+.c:focus-visible{outline:3px solid #1F6FEB;outline-offset:1px}
+tr.gap th.fl{font-size:13px;font-weight:400;height:26px;color:#8A969E;background:#FAFBFB}
+tr.gap td{height:26px;background:#FAFBFB;border-right:0}
+tr.gap td.gl{font-size:13px;color:#8A969E;padding-left:8px;white-space:nowrap;text-align:left}
+td.no{background:#fff}
+.notes{margin-top:28px;border-top:1px solid var(--line);padding-top:14px;font-size:14px;line-height:1.75}
+.notes ul{margin:0;padding-left:20px}
+.notes li{margin:2px 0}
+.foot{margin-top:18px;font-size:13.5px;color:var(--muted);line-height:1.8}
+.foot b{color:var(--ink)}
+.dock{display:none;position:fixed;left:0;right:0;bottom:0;z-index:50;gap:8px;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--line)}
+.dock a{flex:1;display:flex;align-items:center;justify-content:center;min-height:46px;border-radius:12px;text-decoration:none;font-weight:700;font-size:16px}
+.dock .dl{background:#06C755;color:#fff}.dock .dt{border:1.5px solid var(--red);color:var(--red)}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;border-radius:16px 16px 0 0;box-shadow:0 -6px 24px rgba(0,0,0,.18);padding:16px 18px calc(18px + env(safe-area-inset-bottom));max-width:560px;margin:0 auto;transform:translateY(110%);transition:transform .18s ease}
+.sheet{visibility:hidden}
+.sheet.on{transform:none;visibility:visible}
+.sheet h3{margin:0 0 4px;font-size:18px}
+.sheet .big{font-size:30px;font-weight:800;color:var(--red)}
+.sheet .big small{font-size:15px;color:var(--muted);font-weight:400}
+.sheet dl{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:10px 0 0;font-size:15px}
+.sheet dt{color:var(--muted)}.sheet dd{margin:0}
+.sheet .x{position:absolute;right:10px;top:8px;min-width:44px;min-height:44px;border:0;background:none;font-size:24px;color:var(--muted);cursor:pointer}
+.msg{padding:40px 0;font-size:16px}
+@media (max-width:760px){
+  .dock{display:flex}
+  .top .btn-line{display:none}
+  main{padding-bottom:110px}
+  h1{font-size:21px}
+  .sum{grid-template-columns:1fr;gap:8px}
+  .stats{gap:8px}
+  .stats .card .v{font-size:21px}
+  .card{padding:10px 12px}
+  .card .v{font-size:24px}
+  .disc{font-size:12.5px}
+  .brand b{font-size:16px}
+  .groups{display:block}
+  .g{margin-bottom:24px}
+  .scroll{max-height:72vh}
+  td{width:60px;min-width:60px}
+  .c .p{font-size:16px}
+}
+@media print{.bar,.dock,.sheet,.top .btn-line{display:none}.scroll{max-height:none;overflow:visible}}
+</style></head>
+<body>
+<header class="top"><a class="brand" href="../../"><img src="../../assets/logo-nra.png" alt="全國不動產"><b>板橋阿陞聊房</b></a><span class="sp"></span>
+<a class="btn-line" href="https://line.me/R/ti/p/%40banqiao.asheng" target="_blank" rel="noopener">加 LINE</a></header>
+<div class="disc">全國不動產板橋加盟店｜經紀業 非凡不動產有限公司｜經紀人 謝政峯（99）北縣字第002181號｜營業員 林津陞（99）登字第148103號</div>
+<main id="app"><p class="msg">讀取中…</p></main>
+<div class="sheet" id="sheet" role="dialog" aria-modal="false" aria-labelledby="sh-t"><button class="x" type="button" aria-label="關閉">×</button><div id="sheet-b"></div></div>
+<nav class="dock" aria-label="聯絡阿陞"><a class="dl" href="https://line.me/R/ti/p/%40banqiao.asheng" target="_blank" rel="noopener">加 LINE 問阿陞</a><a class="dt" href="tel:0925635678">☎ 0925-635-678</a></nav>
+<script>
+(function(){
+var app=document.getElementById('app'),sheet=document.getElementById('sheet'),sb=document.getElementById('sheet-b');
+var n=new URLSearchParams(location.search).get('n')||'';
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function fail(){app.innerHTML='<p class="msg">找不到這個社區的成交資料。<a href="../../map/">回商圈地圖</a></p>'}
+if(!n||/[\/\\.]/.test(n)){fail();return}
+document.title=n+' 每戶成交實價｜板橋阿陞聊房';
+var st={b:-1,mode:'price',all:false};
+try{var sv=JSON.parse(localStorage.getItem('units-view')||'{}');if(sv.mode==='year')st.mode='year';if(sv.all)st.all=true}catch(e){}
+function save(){try{localStorage.setItem('units-view',JSON.stringify({mode:st.mode,all:st.all}))}catch(e){}}
+fetch(encodeURIComponent(n)+'.grid.json',{cache:'no-cache'}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(draw).catch(fail);
+var USE={'住家用':'','住商用':'住商','辦公用':'辦公','商業用':'商業','工業用':'工業'};
+function fl(f){return f<0?'B'+(-f):f+'F'}
+function rng(a,b){return a>0&&b>0?b+'–'+a+'F':fl(b)+'–'+fl(a)}
+function f1(x){return (Math.round(x*10)/10).toFixed(1)}
+function tags(u){var t=[];if(u.k==='included')t.push('含車位');var s=USE.hasOwnProperty(u.use)?USE[u.use]:u.use;if(s)t.push(s);if(u.span)t.push('跨層');if(u.n>1)t.push('共'+u.n+'筆');return t}
+function draw(M){
+  var S=M.summary,h='';
+  h+='<p class="crumb"><a href="../../map/">← 商圈地圖</a>'+(M.layout?'　<a href="../layout/view.html?n='+encodeURIComponent(M.name)+'">看棟別配置圖</a>':'')+'</p>';
+  h+='<h1>'+esc(M.name)+' 每戶成交實價</h1>';
+  h+='<p class="lead">每格＝一戶最新一筆成交：單價（萬/坪）＋成交年月，點格子看細節。資料'+esc(M.cutoff)+'。</p>';
+  var hero=S.recent_median!=null?['近一年成交單價中位數',S.recent_median,S.recent_since+' 起成交 '+S.recent_n+' 戶'+(S.all_median!=null?'・全部期間 '+f1(S.all_median):'')]
+    :S.all_median!=null?['成交單價中位數（全部期間）',S.all_median,S.all_n+' 戶・範圍 '+f1(S.min)+'～'+f1(S.max)]:null;
+  h+='<div class="sum">';
+  if(hero)h+=card('hero',hero[0],f1(hero[1]),'萬/坪',hero[2]);
+  else h+=card('hero','成交單價','—','','二樓以上可比較的成交不到 3 戶，不計中位數');
+  h+='<div class="stats">'+card('','有成交',''+S.units,'戶','共 '+S.deals+' 筆')+card('','近一年',''+S.recent_all,'戶',S.recent_since+' 起')+card('','最新成交',S.latest,'','成交年月')+'</div></div>';
+  h+='<p class="basis">中位數只算二樓以上、不含「含車位」，每戶只算最新一筆。資料期間 '+esc(M.period_text)+'。</p>';
+  if(M.groups.length>1){h+='<div class="bar"><div class="chips" role="group" aria-label="選棟"><button class="chip" data-b="-1">全部 '+M.groups.length+' 棟</button>';
+    M.groups.forEach(function(g,i){h+='<button class="chip" data-b="'+i+'">'+esc(g.title)+'</button>'});h+='</div></div>'}
+  h+='<div class="opts"><span class="seg" role="group" aria-label="上色方式"><button data-m="price">依單價上色</button><button data-m="year">依年份上色</button></span>';
+  h+='<label class="tog"><input type="checkbox" id="all">展開全部樓層</label></div>';
+  h+='<div class="legend" id="lg"></div><div class="groups" id="gs"></div>';
+  h+='<section class="notes"><ul>'+M.notes.map(function(t){return '<li>'+esc(t)+'</li>'}).join('')+'</ul>';
+  h+='<div class="foot"><b>板橋阿陞聊房・林津陞</b>　LINE <a href="https://line.me/R/ti/p/%40banqiao.asheng" target="_blank" rel="noopener">@banqiao.asheng</a>・手機 <a href="tel:0925635678">0925-635-678</a><br>全國不動產板橋加盟店｜經紀業 非凡不動產有限公司｜經紀人 謝政峯（99）北縣字第002181號｜營業員 林津陞（99）登字第148103號</div></section>';
+  app.innerHTML=h;
+  app.querySelectorAll('.chip').forEach(function(b){b.onclick=function(){st.b=+b.dataset.b;render(M)}});
+  app.querySelectorAll('.seg button').forEach(function(b){b.onclick=function(){st.mode=b.dataset.m;save();render(M)}});
+  var al=document.getElementById('all');al.checked=st.all;al.onchange=function(){st.all=al.checked;save();render(M)};
+  app.addEventListener('click',function(ev){var c=ev.target.closest('.c');if(c)show(M,+c.dataset.u)});
+  render(M);
+}
+function card(cls,l,v,u,s){return '<div class="card '+cls+'"><div class="l">'+esc(l)+'</div><div class="v">'+esc(v)+(u?'<small>'+esc(u)+'</small>':'')+'</div><div class="s">'+esc(s)+'</div></div>'}
+function binOf(p,c){var b=0;for(var i=0;i<c.length;i++)if(p>=c[i])b++;return b}
+function style(M,u){
+  if(u.f===1)return{cls:'gr',bg:'',fg:''};
+  if(u.f<0)return{cls:'bs',bg:'',fg:''};
+  if(st.mode==='price'&&u.k==='included')return{cls:'inc',bg:'',fg:''};
+  var i,ramp;
+  if(st.mode==='price'){i=binOf(u.p,M.cuts);ramp=M.ramp;var dark=['#D4444A','#9E1218'].indexOf(ramp[i])>=0}
+  else{i=M.years.indexOf(+u.ym.split('/')[0]);ramp=M.year_ramp;var dark=['#476F91','#24496A'].indexOf(ramp[i])>=0}
+  return{cls:'',bg:ramp[i],fg:dark?'#FFFFFF':'#1F2B33'}
+}
+function legend(M){
+  var h='';
+  if(st.mode==='price'){h+='<span class="t">單價（萬/坪）</span>';
+    M.ramp.forEach(function(c,i){var lo=i?M.cuts[i-1]:null,hi=i<M.cuts.length?M.cuts[i]:null;
+      var l=lo==null&&hi!=null?'未滿 '+hi:hi==null&&lo!=null?lo+' 以上':lo!=null?lo+'～'+hi:'全部';
+      h+='<span class="sw"><i style="background:'+c+'"></i>'+l+'</span>'});
+    h+='<span class="sw"><i style="background:#fff;box-shadow:inset 0 0 0 1.5px #8A969E"></i>含車位（不比較）</span>'}
+  else{h+='<span class="t">成交年（民國）</span>';M.years.forEach(function(y,i){h+='<span class="sw"><i style="background:'+M.year_ramp[i]+'"></i>'+y+'</span>'})}
+  h+='<span class="sw"><i style="background:#fff;box-shadow:inset 0 0 0 1.5px #A4762A"></i>一樓／店面</span>';
+  if(M.summary.base)h+='<span class="sw"><i style="background:#fff;box-shadow:inset 0 0 0 1.5px #5D7B91"></i>地下層</span>';
+  h+='<span class="sw"><i class="em"></i>無成交</span>';
+  return h}
+function rowsOf(g,has){
+  var rows=[],run=[];
+  function flush(){if(run.length>=2&&!st.all)rows.push({gap:[run[0],run[run.length-1]]});else run.forEach(function(f){rows.push({f:f})});run=[]}
+  g.floors.forEach(function(f){if(has[f]){flush();rows.push({f:f})}else run.push(f)});flush();return rows}
+function table(M,g){
+  var has={};Object.keys(g.cells).forEach(function(k){has[+k.split(',')[1]]=1});
+  var nc=g.cols.length,one=g.heads.length===1,h='<div class="scroll" data-n="'+nc+'"><table><thead>';
+  if(one){h+='<tr class="r1"><th class="fl">樓層</th>';g.cols.forEach(function(c){h+='<th>'+esc(c.t)+'</th>'});h+='</tr>'}
+  else{h+='<tr class="r1"><th class="fl" rowspan="'+(g.sub_row?2:1)+'">樓層</th>';
+    g.heads.forEach(function(d){h+='<th colspan="'+d.span+'"'+(d.span>1?' class="dh"':'')+'><span>'+esc(d.h||d.t)+'</span></th>'});h+='</tr>';
+    if(g.sub_row){h+='<tr class="r2">';g.cols.forEach(function(c){h+='<th>'+esc(c.t)+'</th>'});h+='</tr>'}}
+  h+='</thead><tbody>';
+  rowsOf(g,has).forEach(function(r){
+    if(r.gap){h+='<tr class="gap"><th class="fl">'+rng(r.gap[0],r.gap[1])+'</th><td class="gl" colspan="'+nc+'">'+(r.gap[0]-r.gap[1]+1)+' 層沒有成交</td></tr>';return}
+    h+='<tr><th class="fl">'+fl(r.f)+'</th>';
+    for(var j=0;j<nc;j++){var uid=g.cells[j+','+r.f];
+      if(uid==null){h+='<td><span class="e"></span></td>';continue}
+      var u=M.units[uid],s=style(M,u),t=tags(u),tg=t.length?t[0]+(t.length>1?'+':''):(u.f===1?'1F':'');
+      if(u.f===1&&t.length)tg=t[0]+(t.length>1?'+':'');
+      h+='<td><button type="button" class="c '+s.cls+'" data-u="'+uid+'"'+(s.bg?' style="background:'+s.bg+';color:'+s.fg+'"':'')+' aria-label="'+esc(fl(u.f)+' '+f1(u.p)+' 萬每坪 '+u.ym)+'"><span class="p">'+f1(u.p)+'</span><span class="y">'+esc(u.ym)+'</span>'+(tg?'<span class="tg">'+esc(tg)+'</span>':'')+'</button></td>'}
+    h+='</tr>'});
+  return h+'</tbody></table></div>'}
+function render(M){
+  app.querySelectorAll('.chip').forEach(function(b){b.setAttribute('aria-pressed',+b.dataset.b===st.b?'true':'false')});
+  app.querySelectorAll('.seg button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.m===st.mode?'true':'false')});
+  document.getElementById('lg').innerHTML=legend(M);
+  var h='';
+  M.groups.forEach(function(g,i){if(st.b>=0&&st.b!==i)return;
+    h+='<section class="g">';
+    if(M.groups.length>1)h+='<h2>'+esc(g.title||g.doors)+'</h2>';
+    h+='<p class="gs">'+esc(g.doors)+'・'+'<b>'+g.n+'</b> 戶有成交'+(g.median!=null?'・中位數 <b>'+f1(g.median)+'</b> 萬/坪':'')+'</p>';
+    h+=table(M,g)+'</section>'});
+  var gs=document.getElementById('gs');gs.innerHTML=h;
+  gs.querySelectorAll('.scroll').forEach(function(sc){if(sc.scrollWidth>sc.clientWidth+4){var p=document.createElement('p');p.className='hint';p.textContent='表格較寬，左右滑動可看全部 '+sc.dataset.n+' 欄 →';sc.parentNode.insertBefore(p,sc)}});
+}
+function show(M,uid){
+  var u=M.units[uid];if(!u)return;
+  var park=u.k==='included'?'含車位（未拆分，單價含車位）':u.k==='split'?'有車位，單價已扣除車位':'無車位';
+  var h='<h3 id="sh-t">'+esc(u.addr.replace(M.prefix,''))+' '+(u.f<0?'地下'+(-u.f)+'樓':u.f+'樓')+(u.s?'之'+u.s:'')+(u.span?'（跨層）':'')+'</h3>';
+  h+='<div class="big">'+f1(u.p)+' <small>萬/坪</small></div><dl>';
+  h+='<dt>成交年月</dt><dd>'+esc(u.ym)+'</dd><dt>車位</dt><dd>'+park+'</dd><dt>用途</dt><dd>'+esc(u.use||'—')+'</dd>';
+  h+='<dt>這戶筆數</dt><dd>'+(u.n>1?'資料期間內 '+u.n+' 筆，這裡是最新一筆':'1 筆')+'</dd>';
+  if(u.f===1)h+='<dt>注意</dt><dd>一樓／店面，不跟樓上住宅比</dd>';
+  if(u.f<0)h+='<dt>注意</dt><dd>地下層，不跟樓上住宅比</dd>';
+  h+='</dl>';sb.innerHTML=h;sheet.classList.add('on')}
+sheet.querySelector('.x').onclick=function(){sheet.classList.remove('on')};
+document.addEventListener('keydown',function(e){if(e.key==='Escape')sheet.classList.remove('on')});
+document.addEventListener('click',function(e){if(sheet.classList.contains('on')&&!sheet.contains(e.target)&&!e.target.closest('.c'))sheet.classList.remove('on')});
+})();
+</script></body></html>

@@ -1,0 +1,265 @@
+{
+ "source": "內政部不動產交易實價查詢服務網（已排除特殊交易）",
+ "period": "110S2～115S4",
+ "published_through": "115/11/01",
+ "cutoff": "截至 115/11/01 公布",
+ "scope": "新北市板橋區民生路三段66～68號（雙號）",
+ "floors": 31,
+ "door_floors": {
+  "民生路三段66號": 31,
+  "民生路三段68號": 31
+ },
+ "units": [
+  {
+   "addr": "民生路三段66號",
+   "floor": 1,
+   "ym": "114/06",
+   "price": 84.1,
+   "parking": "none",
+   "use": "商業用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段66號",
+   "floor": 2,
+   "suffix": "之3",
+   "ym": "113/11",
+   "price": 67.4,
+   "parking": "none",
+   "use": "辦公用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段66號",
+   "floor": 3,
+   "suffix": "之4",
+   "ym": "113/06",
+   "price": 63.7,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段66號",
+   "floor": 5,
+   "suffix": "之2",
+   "ym": "111/09",
+   "price": 71.1,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段66號",
+   "floor": 9,
+   "ym": "113/07",
+   "price": 60.6,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段66號",
+   "floor": 10,
+   "suffix": "之3",
+   "ym": "114/10",
+   "price": 76.4,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段66號",
+   "floor": 13,
+   "suffix": "之1",
+   "ym": "111/05",
+   "price": 66.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段66號",
+   "floor": 30,
+   "suffix": "之2",
+   "ym": "115/04",
+   "price": 73.3,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段66號",
+   "floor": 31,
+   "suffix": "之1",
+   "ym": "112/12",
+   "price": 51.2,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段66號",
+   "floor": 31,
+   "suffix": "之2",
+   "ym": "113/07",
+   "price": 72.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段68號",
+   "floor": 2,
+   "suffix": "之1",
+   "ym": "115/02",
+   "price": 67.8,
+   "parking": "split",
+   "use": "辦公用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段68號",
+   "floor": 4,
+   "ym": "111/10",
+   "price": 61.7,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段68號",
+   "floor": 4,
+   "suffix": "之4",
+   "ym": "114/08",
+   "price": 75.0,
+   "parking": "none",
+   "use": "住家用",
+   "n": 3
+  },
+  {
+   "addr": "民生路三段68號",
+   "floor": 6,
+   "ym": "115/06",
+   "price": 75.7,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段68號",
+   "floor": 6,
+   "suffix": "之3",
+   "ym": "111/04",
+   "price": 63.5,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段68號",
+   "floor": 9,
+   "suffix": "之1",
+   "ym": "110/05",
+   "price": 61.0,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段68號",
+   "floor": 10,
+   "ym": "114/10",
+   "price": 70.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段68號",
+   "floor": 10,
+   "suffix": "之4",
+   "ym": "110/04",
+   "price": 59.3,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段68號",
+   "floor": 11,
+   "ym": "110/05",
+   "price": 57.0,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段68號",
+   "floor": 12,
+   "ym": "113/10",
+   "price": 71.9,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段68號",
+   "floor": 15,
+   "suffix": "之1",
+   "ym": "113/11",
+   "price": 75.8,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段68號",
+   "floor": 15,
+   "suffix": "之3",
+   "ym": "113/03",
+   "price": 63.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段68號",
+   "floor": 17,
+   "suffix": "之3",
+   "ym": "110/10",
+   "price": 61.6,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段68號",
+   "floor": 23,
+   "suffix": "之1",
+   "ym": "113/05",
+   "price": 74.6,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段68號",
+   "floor": 30,
+   "ym": "111/08",
+   "price": 65.4,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段68號",
+   "floor": 31,
+   "ym": "114/10",
+   "price": 70.3,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  }
+ ]
+}

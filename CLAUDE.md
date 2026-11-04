@@ -73,11 +73,13 @@
   - **單價**（萬元/坪，小數一位）：原始資料有拆分車位價與車位面積的才扣，(總價−車位價)/(總面積−車位面積)；沒拆分的不估算，`parking:"included"`，圖上標「含車位」。
   - 格式 `{"source":"內政部不動產交易實價查詢服務網（已排除特殊交易）","period":"110S2～115S4","published_through":"115/11/01","cutoff":"截至 115/11/01 公布","scope":"…","floors":19,"door_floors":{"莊敬路191號":19},"units":[{"addr":"莊敬路203號","floor":11,"suffix":"之3","ym":"114/08","price":85.9,"parking":"none","use":"住家用","n":2}]}`。`floor` 地下層是負數；跨層（一層，夾層）畫在最低地上層並有 `span`。**成交只到年月，不放交易日、總價、車位價、住戶資訊。**
 - **「網頁不寫金額」的例外只限這張格子圖**：每格寫「成交年月＋成交單價（萬/坪）」，不寫幾房；同一戶多筆只畫最新一筆並標「共N筆」。圖下註記必含：資料來源「內政部不動產交易實價查詢服務網（已排除特殊交易）」、資料期間、資料公布截止日（「截至 115/11/01 公布」）、「之後的新成交未納入，以內政部最新資料為準」、「單價已扣除有拆分的車位；標『含車位』者未拆分」、「不依實際比例重繪，實際以現場及權狀為準」。
-- `scripts/unit_grid.py` 讀 `data/units`（門牌欄另外併入 `data/doors` 全部門牌，沒成交的留空欄、不跳號）產生 `data/units/<社區名>.svg`：門牌在上、樓層在左；總站主色紅 #C8161D 系統，**不可照抄樂居銷控表的配色、版面細節、特殊交易標示方式**；欄數多時每段最多 5 欄往下分段（手機看得清楚）；各棟樓高不同時（新巨蛋）超過該棟樓高的格子不畫；只給 viewBox；內容沒變不改檔。
+- `scripts/unit_grid.py` 讀 `data/units`（門牌欄另外併入 `data/doors` 全部門牌，沒成交的留空欄、不跳號），產生（2026-11-04 重新設計、林津陞核可上線）：
+  - `data/units/view.html?n=<社區名>`：手機優先看圖頁。最上面是單價中位數摘要（只算二樓以上、不含「含車位」、每戶最新一筆；近一年 ≥3 戶放近一年，否則放全部期間）、有成交戶數、近一年戶數、最新成交年月、資料公布截止日；下面一棟一張表（用 `data/doors` 座標對 SITE 本社區輪廓 me=1 分棟，有一戶歸不到棟就整個社區合成一張表），連續 2 層以上沒成交收成細列，表頭與樓層欄固定；成交格依單價（本社區分位數 5 階總站紅）或年份上色，一樓／地下層／含車位只加框不上色；點格子看細節。頁首深紅揭露列、頁尾完整揭露、只放手機與 LINE。
+  - `data/units/<社區名>.grid.json`（看圖頁讀的預算資料）、`<社區名>.svg`（同設計的靜態圖，給社群或列印）、`index.json`（有格子圖的社區清單，地圖資料卡據此顯示「看每戶成交實價」）。
+  - 門牌在上、樓層在左是通用排法；**不可照抄樂居銷控表的配色、版面細節、特殊交易標示方式**；「夾層」是禁用詞，寫「跨層」；內容沒變不改檔。
 - **每晚自動更新**：`C:\claude-work\nightly-9b-sync.ps1` 第 0b 步（實價快取 refresh 之後）跑 `site_export.py --all --units-only --units-to-site` 再跑 `scripts/unit_grid.py`，結果寫 `steps.units_refresh`，失敗只記 faults，不擋同步。腳本變數 `$unitsAutoPush`：
-  - `$false`（林津陞核可新版格子圖之前）：只更新本機 `data/units`，不 commit、不 push。
-  - 林津陞核可後改 `$true`：`data/units` 有變動才 commit＋push（只 add `data/units`）。
-- **`data/units`（JSON 與格子圖）上線要林津陞核可**：核可前不 commit、不 push。指揮艙發布只把 units 寫在工作資料夾 `site_units.json`，`git add` 一律排除 `data/units` 與 `scripts/unit_grid.py`（`PENDING_EXCLUDE`）；核可後由人明確 `git add` 再 commit，並把 `$unitsAutoPush` 改成 `$true`。
+  - 林津陞 2026-11-04 核可上線，已改 `$true`：`data/units` 有變動才 commit＋push（只 add `data/units`）。
+- 指揮艙發布只把 units 寫在工作資料夾 `site_units.json`，`git add` 一律排除 `data/units` 與 `scripts/unit_grid.py`（`PENDING_EXCLUDE`）：總站的 units 只由夜間同步更新，`unit_grid.py` 改版要另外 commit。改 `unit_grid.py` 的版面或收錄口徑要先給林津陞看截圖。
 
 ## 充電樁（2026-11-04 第四階段）
 

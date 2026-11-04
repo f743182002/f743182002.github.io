@@ -1,0 +1,381 @@
+{
+ "source": "內政部不動產交易實價查詢服務網（已排除特殊交易）",
+ "period": "110S2～115S4",
+ "published_through": "115/11/01",
+ "cutoff": "截至 115/11/01 公布",
+ "scope": "新北市板橋區民生路二段240巷68號（雙號）",
+ "floors": 25,
+ "door_floors": {
+  "民生路二段240巷68號": 25
+ },
+ "units": [
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 2,
+   "suffix": "之7",
+   "ym": "113/03",
+   "price": 85.4,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 3,
+   "suffix": "之1",
+   "ym": "113/07",
+   "price": 95.1,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 3,
+   "suffix": "之2",
+   "ym": "112/09",
+   "price": 79.0,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 4,
+   "suffix": "之2",
+   "ym": "114/04",
+   "price": 95.3,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 4,
+   "suffix": "之3",
+   "ym": "112/10",
+   "price": 80.9,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 6,
+   "suffix": "之1",
+   "ym": "112/09",
+   "price": 83.5,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 6,
+   "suffix": "之2",
+   "ym": "113/05",
+   "price": 94.0,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 6,
+   "suffix": "之8",
+   "ym": "113/08",
+   "price": 95.7,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 7,
+   "suffix": "之1",
+   "ym": "112/11",
+   "price": 79.6,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 7,
+   "suffix": "之10",
+   "ym": "113/03",
+   "price": 86.1,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 8,
+   "ym": "113/09",
+   "price": 92.2,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 8,
+   "suffix": "之2",
+   "ym": "113/04",
+   "price": 91.0,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 8,
+   "suffix": "之8",
+   "ym": "113/07",
+   "price": 96.5,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 8,
+   "suffix": "之10",
+   "ym": "113/03",
+   "price": 84.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 9,
+   "suffix": "之8",
+   "ym": "113/02",
+   "price": 85.9,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 9,
+   "suffix": "之9",
+   "ym": "113/02",
+   "price": 87.5,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 11,
+   "suffix": "之1",
+   "ym": "114/05",
+   "price": 99.2,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 12,
+   "suffix": "之7",
+   "ym": "113/07",
+   "price": 95.5,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 12,
+   "suffix": "之10",
+   "ym": "113/03",
+   "price": 88.9,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 13,
+   "suffix": "之1",
+   "ym": "113/10",
+   "price": 91.0,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 14,
+   "suffix": "之1",
+   "ym": "113/02",
+   "price": 89.8,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 14,
+   "suffix": "之2",
+   "ym": "113/02",
+   "price": 88.6,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 14,
+   "suffix": "之3",
+   "ym": "112/11",
+   "price": 84.6,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 16,
+   "suffix": "之6",
+   "ym": "114/03",
+   "price": 93.0,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 17,
+   "suffix": "之2",
+   "ym": "112/08",
+   "price": 82.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 17,
+   "suffix": "之10",
+   "ym": "113/07",
+   "price": 63.5,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 18,
+   "ym": "114/02",
+   "price": 40.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 18,
+   "suffix": "之5",
+   "ym": "113/03",
+   "price": 75.6,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 18,
+   "suffix": "之6",
+   "ym": "113/06",
+   "price": 90.8,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 19,
+   "suffix": "之10",
+   "ym": "114/09",
+   "price": 95.5,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 21,
+   "suffix": "之2",
+   "ym": "114/03",
+   "price": 96.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 21,
+   "suffix": "之3",
+   "ym": "113/10",
+   "price": 96.9,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 21,
+   "suffix": "之6",
+   "ym": "113/10",
+   "price": 93.8,
+   "parking": "none",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 22,
+   "suffix": "之5",
+   "ym": "112/12",
+   "price": 90.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 22,
+   "suffix": "之8",
+   "ym": "112/12",
+   "price": 88.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 24,
+   "suffix": "之5",
+   "ym": "113/01",
+   "price": 88.3,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路二段240巷68號",
+   "floor": 24,
+   "suffix": "之8",
+   "ym": "112/06",
+   "price": 81.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  }
+ ]
+}
