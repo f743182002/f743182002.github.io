@@ -1,61 +1,63 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 933" width="900" height="933" font-family="Noto Sans TC, Microsoft JhengHei, PingFang TC, sans-serif">
-<rect width="100%" height="100%" fill="#FFFFFF"/><rect width="100%" height="8" fill="#C8161D"/>
-<text x="40" y="58" font-size="30" font-weight="700" fill="#1F2B33">春池宇宙光</text>
-<text x="40" y="92" font-size="18" fill="#8A969E">棟別門牌配置示意</text>
-<defs><clipPath id="c"><rect x="99.2" y="120.0" width="701.6" height="683.3" rx="12"/></clipPath></defs>
-<rect x="99.2" y="120.0" width="701.6" height="683.3" rx="12" fill="#F4F6F7" stroke="#DCE1E5"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 785" preserveAspectRatio="xMidYMin meet" style="width:100%;height:auto;max-width:1280px" font-family="Noto Sans TC, Microsoft JhengHei, PingFang TC, sans-serif">
+<rect width="100%" height="100%" fill="#FFFFFF"/><rect width="100%" height="6" fill="#C8161D"/>
+<text x="20" y="44" font-size="24" font-weight="700" fill="#1F2B33">春池宇宙光</text>
+<text x="20" y="72" font-size="14" fill="#8A969E">棟別門牌配置示意</text>
+<defs><clipPath id="c"><rect x="20.0" y="96.0" width="600.0" height="582.5" rx="10"/></clipPath></defs>
+<rect x="20.0" y="96.0" width="600.0" height="582.5" rx="10" fill="#F4F6F7" stroke="#DCE1E5"/>
 <g clip-path="url(#c)">
-<path d="M619.9,1083.3 L758.0,1019.7 L778.2,1063.7 L799.6,1053.9 L851.6,1165.8 L830.8,1174.9 L853.4,1223.8 L714.6,1287.4 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
-<path d="M174.3,92.5 L164.6,71.1 L209.2,50.9 L206.1,44.2 L243.4,27.7 L259.3,63.8 L248.9,68.7 L281.9,141.4 L263.0,149.9 L288.0,205.0 L330.2,186.0 L369.9,273.4 L275.8,315.6 L216.5,185.4 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
-<path d="M90.0,14.9 L-35.3,71.1 L83.9,333.3 L121.8,416.4 L174.3,531.3 L299.0,475.1 L175.6,203.7 L216.5,185.4 L174.3,92.5 L133.4,110.8 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
-<path d="M813.0,2004.4 L51.5,348.6" fill="none" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M813.0,2004.4 L51.5,348.6" fill="none" stroke="#F2C14E" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M1433.4,1318.0 L948.1,1075.3 L899.8,1028.9 L-955.8,-2933.6 L-1118.4,-3316.2" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M1433.4,1318.0 L948.1,1075.3 L899.8,1028.9 L-955.8,-2933.6 L-1118.4,-3316.2" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M1644.3,157.3 L1091.8,1151.7" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M1644.3,157.3 L1091.8,1151.7" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M1471.3,-89.6 L590.0,364.5" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M1471.3,-89.6 L590.0,364.5" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M351.0,625.5 L612.0,632.8 L704.9,609.6 L752.5,636.5 L1355.8,676.2" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M351.0,625.5 L612.0,632.8 L704.9,609.6 L752.5,636.5 L1355.8,676.2" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M265.4,431.1 L196.9,461.7" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M265.4,431.1 L196.9,461.7" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M720.8,1493.4 L638.9,1247.1 L265.4,431.1" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M720.8,1493.4 L638.9,1247.1 L265.4,431.1" fill="none" stroke="#F2C14E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M-748.6,916.4 L-49.4,565.6" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M-748.6,916.4 L-49.4,565.6" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M1025.1,140.8 L1102.8,278.3 L1083.2,857.7 L948.1,1075.3" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M1025.1,140.8 L1102.8,278.3 L1083.2,857.7 L948.1,1075.3" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M-28.6,-179.5 L-553.6,-1314.5" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M-28.6,-179.5 L-553.6,-1314.5" fill="none" stroke="#F2C14E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M3.2,683.5 L391.3,1528.2 L575.9,1880.3" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M3.2,683.5 L391.3,1528.2 L575.9,1880.3" fill="none" stroke="#F2C14E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M196.9,461.7 L-49.4,565.6" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M196.9,461.7 L-49.4,565.6" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M-680.1,-747.9 L-114.2,476.3 L-49.4,565.6" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M-680.1,-747.9 L-114.2,476.3 L-49.4,565.6" fill="none" stroke="#F2C14E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M720.8,1493.4 L622.4,1417.6 L325.9,787.4" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M720.8,1493.4 L622.4,1417.6 L325.9,787.4" fill="none" stroke="#F2C14E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M265.4,431.1 L-28.6,-179.5" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M265.4,431.1 L-28.6,-179.5" fill="none" stroke="#F2C14E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M325.9,787.4 L222.0,514.8 L-182.6,-313.3" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M325.9,787.4 L222.0,514.8 L-182.6,-313.3" fill="none" stroke="#F2C14E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M-49.4,565.6 L3.2,683.5" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M-49.4,565.6 L3.2,683.5" fill="none" stroke="#F2C14E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M51.5,348.6 L-510.8,-915.4" fill="none" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M51.5,348.6 L-510.8,-915.4" fill="none" stroke="#F2C14E" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M369.9,504.5 L436.5,474.5 L450.0,503.8 L441.4,507.5 L467.7,564.4 L475.7,560.7 L497.1,607.7 L605.2,558.2 L583.2,510.6 L589.3,508.1 L562.5,448.8 L555.7,451.3 L541.1,420.1 L476.9,449.4 L463.4,420.7 L470.2,417.7 L443.3,360.2 L435.3,363.9 L413.3,315.6 L305.7,365.1 L327.7,412.2 L322.2,414.6 L349.8,474.5 L354.6,472.1 Z" fill="#FFFFFF" stroke="#C8161D" stroke-width="3.5" stroke-linejoin="round"/>
+<path d="M56.8,34.7 L47.4,14.3 L90.0,-5.0 L87.1,-11.4 L122.7,-27.2 L137.9,7.3 L128.0,12.0 L159.5,81.4 L141.4,89.6 L165.3,142.1 L205.6,124.0 L243.5,207.5 L153.6,247.8 L97.0,123.4 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M-23.8,-39.4 L-143.4,14.3 L-29.6,264.7 L6.6,344.1 L56.8,453.8 L175.8,400.1 L57.9,140.9 L97.0,123.4 L56.8,34.7 L17.6,52.2 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M666.7,1860.5 L-60.6,279.3" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M666.7,1860.5 L-60.6,279.3" fill="none" stroke="#F2C14E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1259.1,1205.0 L795.7,973.3 L749.6,928.9 L-1022.5,-2855.1 L-1177.7,-3220.5" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1259.1,1205.0 L795.7,973.3 L749.6,928.9 L-1022.5,-2855.1 L-1177.7,-3220.5" fill="none" stroke="#F2C14E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1295.3,-139.2 L453.7,294.5" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1295.3,-139.2 L453.7,294.5" fill="none" stroke="#F2C14E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M225.4,543.7 L474.7,550.7 L563.4,528.5 L608.9,554.2 L1185.0,592.1" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M225.4,543.7 L474.7,550.7 L563.4,528.5 L608.9,554.2 L1185.0,592.1" fill="none" stroke="#F2C14E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M143.7,358.1 L78.3,387.3" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M143.7,358.1 L78.3,387.3" fill="none" stroke="#F2C14E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M578.6,1372.5 L500.3,1137.3 L143.7,358.1" fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M578.6,1372.5 L500.3,1137.3 L143.7,358.1" fill="none" stroke="#F2C14E" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-824.6,821.5 L-156.9,486.5" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-824.6,821.5 L-156.9,486.5" fill="none" stroke="#F2C14E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M869.2,80.8 L943.4,212.2 L924.7,765.5 L795.7,973.3" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M869.2,80.8 L943.4,212.2 L924.7,765.5 L795.7,973.3" fill="none" stroke="#F2C14E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-137.0,-225.0 L-638.4,-1308.9" fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-137.0,-225.0 L-638.4,-1308.9" fill="none" stroke="#F2C14E" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-106.7,599.1 L264.0,1405.8 L440.2,1742.0" fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-106.7,599.1 L264.0,1405.8 L440.2,1742.0" fill="none" stroke="#F2C14E" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M78.3,387.3 L-156.9,486.5" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M78.3,387.3 L-156.9,486.5" fill="none" stroke="#F2C14E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-759.2,-767.8 L-218.7,401.3 L-156.9,486.5" fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-759.2,-767.8 L-218.7,401.3 L-156.9,486.5" fill="none" stroke="#F2C14E" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M578.6,1372.5 L484.6,1300.1 L201.5,698.4" fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M578.6,1372.5 L484.6,1300.1 L201.5,698.4" fill="none" stroke="#F2C14E" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M143.7,358.1 L-137.0,-225.0" fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M143.7,358.1 L-137.0,-225.0" fill="none" stroke="#F2C14E" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M201.5,698.4 L102.3,438.0 L-284.1,-352.8" fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M201.5,698.4 L102.3,438.0 L-284.1,-352.8" fill="none" stroke="#F2C14E" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-156.9,486.5 L-106.7,599.1" fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-156.9,486.5 L-106.7,599.1" fill="none" stroke="#F2C14E" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-60.6,279.3 L-597.6,-927.8" fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-60.6,279.3 L-597.6,-927.8" fill="none" stroke="#F2C14E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M243.5,428.1 L307.1,399.5 L320.0,427.5 L311.8,431.0 L336.9,485.3 L344.5,481.8 L364.9,526.8 L468.2,479.5 L447.2,433.9 L453.1,431.6 L427.4,375.0 L421.0,377.3 L407.0,347.6 L345.7,375.6 L332.8,348.1 L339.3,345.2 L313.6,290.4 L306.0,293.9 L285.0,247.8 L182.2,295.0 L203.3,340.0 L198.0,342.3 L224.3,399.5 L228.9,397.2 Z" fill="#FFFFFF" stroke="#C8161D" stroke-width="2.5" stroke-linejoin="round"/>
 </g>
-<text x="590.0" y="352.5" font-size="17" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">光武街36巷</text>
-<text x="265.4" y="419.1" font-size="17" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">民生路三段</text>
-<text x="455.7" y="450.9" font-size="17" font-weight="700" fill="#C8161D" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">春池宇宙光</text>
-<text x="455.7" y="472.9" font-size="15" font-weight="600" fill="#1F2B33" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">66 68之1號</text>
-<circle cx="756.8" cy="168.0" r="26" fill="#FFFFFF" stroke="#C8161D" stroke-width="3"/>
-<path d="M756.8,150.0 L765.8,178.0 L756.8,172.0 L747.8,178.0 Z" fill="#C8161D"/>
-<text x="756.8" y="214.0" font-size="15" font-weight="700" fill="#C8161D" text-anchor="middle">北</text>
-<line x1="119.2" y1="781.3" x2="424.8" y2="781.3" stroke="#1F2B33" stroke-width="3"/>
-<text x="119.2" y="773.3" font-size="13" fill="#1F2B33">約 50 公尺</text>
-<text x="40" y="839.3" font-size="16" fill="#1F2B33">棟別門牌配置示意，僅供參考；實際以現場、門牌及使用執照為準。</text>
-<text x="40" y="865.3" font-size="16" fill="#1F2B33">本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap、門牌位置 內政部國土測繪中心門牌定位。</text>
-<text x="40" y="891.3" font-size="13" fill="#8A969E">道路底圖 © OpenStreetMap 貢獻者</text>
+<text x="453.7" y="285.5" font-size="14" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">光武街36巷</text>
+<text x="143.7" y="349.1" font-size="14" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">民生路三段</text>
+<circle cx="171.8" cy="307.8" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="214.1" cy="389.8" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
+<rect x="176.8" y="298.8" width="40.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
+<text x="197.2" y="311.8" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">68之1</text>
+<rect x="219.1" y="380.8" width="21.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
+<text x="230.1" y="393.8" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">66</text>
+<circle cx="590.0" cy="130.0" r="18" fill="#FFFFFF" stroke="#C8161D" stroke-width="2.5"/>
+<path d="M590.0,117.0 L597.0,138.0 L590.0,133.0 L583.0,138.0 Z" fill="#C8161D"/>
+<text x="590.0" y="164.0" font-size="12" font-weight="700" fill="#C8161D" text-anchor="middle">北</text>
+<line x1="34.0" y1="662.5" x2="325.8" y2="662.5" stroke="#1F2B33" stroke-width="2.5"/>
+<text x="34.0" y="655.5" font-size="12" fill="#1F2B33">約 50 公尺</text>
+<text x="20" y="704.5" font-size="13" fill="#1F2B33">棟別門牌配置示意，不依實際比例重繪，僅供參考；實際以現場、門牌及使用執照為準。</text>
+<text x="20" y="723.5" font-size="13" fill="#1F2B33">本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap、門牌位置 內政部國土測繪中心門牌定位</text>
+<text x="20" y="742.5" font-size="13" fill="#1F2B33">（紅點為門牌實際位置）。</text>
+<text x="20" y="765.5" font-size="11" fill="#8A969E">道路底圖 © OpenStreetMap 貢獻者</text>
 </svg>
