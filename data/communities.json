@@ -528,6 +528,40 @@
      "src": "參考政府公開資料"
     },
     "verified_at": "2026-11-04"
+   },
+   "layouts": {
+    "source": "內政部實價登錄（已排除特殊交易與預售屋）",
+    "basis": "住宅用途；同一戶多次成交只計一次；依申報的建物現況格局（房數）與主建物面積",
+    "period": "110S2～115S4",
+    "published_through": "115/11/01",
+    "cutoff": "截至 115/11/01 公布",
+    "n": 10,
+    "rows": [
+     {
+      "rooms": 3,
+      "label": "3房",
+      "count": 3,
+      "main_ping": [
+       20.8,
+       28.3
+      ]
+     },
+     {
+      "rooms": "4+",
+      "label": "4房以上",
+      "count": 5,
+      "main_ping": [
+       39.1,
+       41.1
+      ]
+     },
+     {
+      "rooms": null,
+      "label": "其他",
+      "count": 2,
+      "main_ping": null
+     }
+    ]
    }
   },
   {
