@@ -205,7 +205,21 @@
     "東南側緊鄰31層高樓，車位多為機械式"
    ],
    "deals": 35,
-   "deck": "community/民生捷座/"
+   "deck": "community/民生捷座/",
+   "ev": {
+    "status": [
+     "existing_needs_approval"
+    ],
+    "basis": {
+     "permit_no": "83板建字第01667號",
+     "use_permit_no": "88板使字第01144號",
+     "use_permit_issued": "1999-10-25",
+     "completed": "1999-05-20",
+     "rule": "既有建物（建照在108/7/1前）：個別加裝依公寓大廈管理條例第6條；建築技術規則設施編第62條第4款不適用",
+     "src": "參考政府公開資料"
+    },
+    "verified_at": "2026-11-04"
+   }
   },
   {
    "name": "昇陽文化廳",
@@ -650,7 +664,22 @@
     "西側緊鄰酒店棟，低樓層會被遮"
    ],
    "deals": 222,
-   "deck": "community/馥華艾美/"
+   "deck": "community/馥華艾美/",
+   "ev": {
+    "status": [
+     "existing_needs_approval"
+    ],
+    "basis": {
+     "permit_no": "103板建字第00510號",
+     "commenced": "2014-12-15",
+     "use_permit_no": "114板使字第00337號",
+     "use_permit_issued": "2025-10-23",
+     "use": "G3:店舖、B4:旅館、G2:一般事務所、H2:集合住宅",
+     "rule": "既有建物（建照在108/7/1前）：個別加裝依公寓大廈管理條例第6條；建築技術規則設施編第62條第4款不適用",
+     "src": "參考政府公開資料"
+    },
+    "verified_at": "2026-11-04"
+   }
   },
   {
    "name": "鑽石名門",
