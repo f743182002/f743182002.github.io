@@ -43,6 +43,8 @@ section.blk > p{margin:0 0 16px;color:var(--muted);font-size:15.5px;line-height:
 .grid a:hover{border-color:var(--brand);box-shadow:0 4px 12px rgba(0,0,0,.08)}
 .grid b{font-size:18px;line-height:1.4}
 .grid span{display:block;color:var(--muted);font-size:14.5px;margin-top:4px;line-height:1.55}
+.grid .st{align-self:flex-start;font-style:normal;font-size:13px;font-weight:700;line-height:1;padding:5px 9px;border-radius:999px;margin-bottom:8px;background:#EEF2F5;color:#3A4850}
+.grid .st-s{background:#E6F4EA;color:#0B6B2E}.grid .st-d{background:#F1F1F1;color:#555}.grid .st-u{background:#FFF4DC;color:#7A5200}
 .grid .go{color:var(--brand);font-size:14.5px;font-weight:700;margin-top:auto;padding-top:10px;display:block}
 .tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
 .tools a{display:block;padding:18px;background:var(--card);border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--ink)}
@@ -384,7 +386,7 @@ section.blk > p{margin:0 0 16px;color:var(--muted);font-size:15.5px;line-height:
 
   <section class="blk" id="listings">
     <h2>我的物件</h2>
-    <p>物件 3D 看房與分析簡報。目前還在賣的物件，歡迎 LINE 預約看屋。</p>
+    <p>物件 3D 看房與分析簡報，每筆都標示目前狀態；想看房或詢問其他物件，歡迎 LINE 聯絡。</p>
     <ul class="grid" id="listingList">
 <!-- DECKS:START listing -->
 <li><a href="S21140123/"><b>景平大勇街3樓</b><span>3房2廳2衛公寓・3D 看房</span><span>新北市中和區・大勇街</span><span class="go">看物件簡報 →</span></a></li>
@@ -434,8 +436,11 @@ section.blk > p{margin:0 0 16px;color:var(--muted);font-size:15.5px;line-height:
 (function(){
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]})}
   /* 卡片格式要和 scripts/build_site.py 的 card() 一致：JS 載入成功後會整段替換靜態清單，不會重複顯示 */
+  /* status 要和 scripts/build_site.py 的 STATUS 一致：待確認或沒填一律「狀態待確認」 */
+  var ST={'社區分析':['社區分析','c'],'銷售中':['銷售中','s'],'已成交':['已成交','d']};
+  function badge(d){var s=ST[d.status]||['狀態待確認','u'];return '<i class="st st-'+s[1]+'">'+s[0]+'</i>'}
   function card(path,d,cta){
-    return '<li><a href="'+encodeURI(path)+'/"><b>'+esc(d.name)+'</b><span>'+esc(d.subtitle)+'</span><span>'+esc(d.area)+'</span><span class="go">'+cta+' →</span></a></li>';
+    return '<li><a href="'+encodeURI(path)+'/">'+badge(d)+'<b>'+esc(d.name)+'</b><span>'+esc(d.subtitle)+'</span><span>'+esc(d.area)+'</span><span class="go">'+cta+' →</span></a></li>';
   }
   fetch('decks.json',{cache:'no-cache'}).then(function(r){return r.json()}).then(function(D){
     var keys=Object.keys(D).sort(function(a,b){return (D[b].updated||'').localeCompare(D[a].updated||'')});

@@ -40,10 +40,20 @@ def esc(s):
     return html.escape("" if s is None else str(s), quote=True).replace("&#x27;", "'")
 
 
+# decks.json 的 status（2026-11-04）：社區分析／銷售中／已成交；其他（待確認、沒填）一律顯示「狀態待確認」，
+# 不會把已成交或下架的物件寫成還在賣
+STATUS = {"社區分析": ("社區分析", "c"), "銷售中": ("銷售中", "s"), "已成交": ("已成交", "d")}
+
+
+def status_badge(d):
+    label, cls = STATUS.get(d.get("status"), ("狀態待確認", "u"))
+    return '<i class="st st-' + cls + '">' + label + "</i>"
+
+
 def card(path, d, cta):
     # 和 index.html 裡 JS 的 card() 產生一樣的標記
     return (
-        '<li><a href="' + quote(path, safe=ENCODE_URI_SAFE) + '/"><b>' + esc(d.get("name"))
+        '<li><a href="' + quote(path, safe=ENCODE_URI_SAFE) + '/">' + status_badge(d) + "<b>" + esc(d.get("name"))
         + "</b><span>" + esc(d.get("subtitle")) + "</span><span>" + esc(d.get("area"))
         + '</span><span class="go">' + cta + " →</span></a></li>"
     )
