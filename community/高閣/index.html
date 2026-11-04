@@ -770,6 +770,40 @@ $('d-price').hidden=true;
 // 值很長的列（例：臨路「80 米（都市計畫寬度，含台64 快速道路高架）」）跨兩欄，不擠成三行
 $('d-facts').innerHTML=D.facts.map(f=>'<div'+((String(f[1]||'')+String(f[2]||'')).length>14?' class="wide"':'')+'><dt>'+esc(f[0])+'</dt><dd>'+esc(f[1])+(f[2]?'<small> '+esc(f[2])+'</small>':'')+'</dd></div>').join('');
 setT('d-facts-src',D.factsSrc);
+// ── 屋齡（2026-11-04 第二階段）：一律不寫死。打開頁面時依事實欄「完工」的完工年月與當天日期（台灣時間 UTC+8）即時計算，
+// 每年自動更新。算法與總站 map/index.html 的 ageInfo()／ageText() 相同（tests/test_age_live.cjs 比對兩邊結果）。
+// 只有完工年、沒有月份（例：「民國84年」）→ 只顯示「待查證完工月份」，不估算；興建中 → 不顯示；
+// 錄影版（recbuild.py 設 window.__NOAGE）不顯示：影片字幕與配音不可有屋齡數字。
+const AGE=(function(){
+  function twToday(){var n=new Date(Date.now()+8*3600*1000);return {y:n.getUTCFullYear(),m:n.getUTCMonth()+1}}
+  function ageInfo(built,today){
+    var t=today||twToday(),m=/民國(\d+)年(?:(\d+)月)?/.exec(built||'');
+    if(!m)return {kind:'build'};
+    if(!m[2])return {kind:'nomonth'};
+    var months=(t.y-(+m[1]+1911))*12+(t.m-(+m[2]));
+    if(months<0)return {kind:'build'};
+    return {kind:'age',months:months,years:Math.floor(months/12)};
+  }
+  function ageText(built,today){
+    var i=ageInfo(built,today);
+    if(i.kind==='nomonth')return '待查證完工月份';
+    if(i.kind!=='age')return '';
+    return i.years<1?'未滿 1 年':i.years+' 年';
+  }
+  return {ageInfo:ageInfo,ageText:ageText};
+})();
+window.__AGE=AGE;
+(function(){
+  if(window.__NOAGE)return;
+  const k=(D.facts||[]).findIndex(f=>f&&f[0]==='完工');if(k<0)return;
+  const built=(String(D.facts[k][1]||'')+String(D.facts[k][2]||'')).replace(/\s+/g,'');
+  if(/興建中/.test(built))return;
+  const t=AGE.ageText(built);if(!t)return;
+  const el=document.createElement('div');el.id='d-age';el.className='agefact';
+  el.innerHTML='<dt>屋齡</dt><dd>'+(/^待查/.test(t)?'<small>'+esc(t)+'</small>':esc(t)+'<small> 依完工年月自動計算</small>')+'</dd>';
+  const box=$('d-facts'),ref=box.children[k];
+  if(ref)ref.insertAdjacentElement('afterend',el);else box.appendChild(el);
+})();
 const lg=(c,t)=>'<span><i class="sw" style="background:var('+c+')"></i>'+esc(t)+'</span>';
 document.documentElement.style.setProperty('--me-wall',(D.facade&&D.facade.wall)||'#D0C9BC');
 const lgMe=t=>'<span><i class="sw" style="background:var(--me-wall);outline:2px solid #F2C46A"></i>'+esc(t)+'</span>';
