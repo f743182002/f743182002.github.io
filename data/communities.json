@@ -278,7 +278,21 @@
     "停車場柱位與轉彎空間"
    ],
    "deals": 16,
-   "deck": "community/綠如意/"
+   "deck": "community/綠如意/",
+   "ev": {
+    "status": [
+     "existing_needs_approval"
+    ],
+    "basis": {
+     "permit_no": "84板建字第00226號",
+     "use_permit_no": "86板使字第00886號",
+     "use_permit_issued": "1997-08-02",
+     "completed": "1997-05-01",
+     "rule": "既有建物（建照在108/7/1前）：個別加裝依公寓大廈管理條例第6條；建築技術規則設施編第62條第4款不適用",
+     "src": "參考政府公開資料"
+    },
+    "verified_at": "2026-11-04"
+   }
   },
   {
    "name": "新板圖",
