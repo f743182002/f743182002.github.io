@@ -358,7 +358,22 @@
     "每戶都有車位，含在公設內"
    ],
    "deals": 50,
-   "deck": "community/健華新城/"
+   "deck": "community/健華新城/",
+   "ev": {
+    "status": [
+     "existing_needs_approval"
+    ],
+    "basis": {
+     "permit_no": "90板建字第00156號",
+     "commenced": "2002-03-29",
+     "use_permit_no": "95板使字第00024號",
+     "use_permit_issued": "2005-12-09",
+     "completed": "2005-01-30",
+     "rule": "既有建物（建照在108/7/1前）：個別加裝依公寓大廈管理條例第6條；建築技術規則設施編第62條第4款不適用",
+     "src": "參考政府公開資料"
+    },
+    "verified_at": "2026-11-04"
+   }
   },
   {
    "name": "高閣",
