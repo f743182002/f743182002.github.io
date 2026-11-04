@@ -65,6 +65,43 @@ AGE = re.compile(r'屋齡[\s：:〕】）)」約為近達已滿逾超過]*' + AG
 # 價格與屋齡：句子裡有這些就整句拿掉（實價登錄的筆數、期間可以留，金額不留）
 MONEY = re.compile(r'\d[\d,.]*\s*(?:萬(?![字人次筆個])|元|億)|[一二三四五六七八九十百千兩]+萬(?![字人次筆個])|萬元|每坪|單價|總價|售價|開價|價格|價位|行情|'
                    + AGE.pattern)
+# 2026-11-04 林津陞「社區分析可以寫單價了」：社區分析（社區簡報、社區影片字幕／旁白、YouTube 說明欄、社區頁 JSON-LD）
+# 可以寫實價登錄成交單價（萬/坪），例如「近一年成交單價約 60～68 萬/坪」「每坪大約八十三萬到一百萬」。
+# 仍然不行：物件（listing）的售價／單價／總價、任何地方的屋齡數字、社區分析的總價／售價（只開放單價）。
+# 同日補充：單價要寫清楚車位坪數與價格有沒有分算（參考樂居「成交單價皆已扣除車位的坪數及價格」）——
+# 同一段文字（或同章節附註）要有 PARKING_NOTE 這類說明；不准自己估車位價拆分，只能照實價登錄原始資料有沒有拆分。
+_PNUM = r'[\d０-９零一二兩三四五六七八九十百千,.]+'
+_PRANGE = _PNUM + r'(?:\s*萬元?)?(?:\s*(?:～|~|〜|－|-|–|到|至)\s*' + _PNUM + r')?'
+UNIT_PRICE = re.compile(
+    r'(?:成交)?(?:單價|每坪)(?:[\s:：]*(?:約為|大約|大概|約|多在|落在|介於|在|為|是)?\s*' + _PRANGE + r'\s*萬元?(?:\s*[/／]\s*坪)?)?'
+    r'(?:\s*[（(]\s*萬元?\s*[/／]\s*坪\s*[）)])?'
+    r'|' + _PRANGE + r'\s*萬元?\s*(?:[/／]\s*坪|一坪)'
+    r'|[（(]\s*萬元?\s*[/／]\s*坪\s*[）)]')
+# 「含車位」只在講單價／拆分時才算（「57～69 坪（含車位）」講的是面積，不算車位分算說明）
+PARKING_NOTE = re.compile(r'扣除車位(?:的)?(?:坪數)?(?:\s*[及與和、]\s*(?:車位)?價格)?|(?:單價|拆分)[^。；，,]{0,8}含車位|含車位(?:價格|價)'
+                          r'|車位(?:價格)?(?:未|沒有|已|有)(?:另外)?拆分'
+                          r'|(?:未|沒有|已|有)拆分(?:的)?車位(?:價格)?')
+
+
+def unit_price_missing_parking(text, context=''):
+    """社區分析：text 寫了單價（萬/坪、每坪、單價），text 與 context（同段、同章節附註）卻沒寫車位有沒有分算 → 回傳那段單價文字。"""
+    m = UNIT_PRICE.search(str(text or ''))
+    if m and not PARKING_NOTE.search(str(text or '') + ' ' + str(context or '')):
+        return m[0]
+    return None
+
+
+def money_hit(text, community=False, context=''):
+    """有不能寫的金額／屋齡就回傳 match（或字串）；沒有回 None。
+    community=True：實價登錄單價（萬/坪）放行，但要有車位分算說明（PARKING_NOTE，可在 context）；總價、售價、屋齡照擋。"""
+    t = str(text or '')
+    if community:
+        miss = unit_price_missing_parking(t, context)
+        if miss:
+            return miss
+        t = PARKING_NOTE.sub(' ', UNIT_PRICE.sub(' ', t))
+    m = MONEY.search(t)
+    return m[0] if m else None
 
 
 def static_text(page_html):
@@ -80,24 +117,25 @@ def static_age_problems(page_html):
 
 
 # ---------------------------------------------------------------------- 文字
-def clean(text):
-    """去掉含金額、屋齡、禁用詞的句子；回傳剩下的文字（可能是空字串）。"""
+def clean(text, community=False):
+    """去掉含金額、屋齡、禁用詞的句子；回傳剩下的文字（可能是空字串）。
+    community=True（社區頁）：寫了實價登錄單價而且整段有車位分算說明的句子留著（money_hit）。"""
     text = re.sub(r'\s+', ' ', str(text or '')).strip()
     if not text:
         return ''
     parts = re.split(r'(?<=[。！？!?；])', text)
-    keep = [p for p in parts if p.strip() and not MONEY.search(p) and not any(w in p for w in BANNED)]
+    keep = [p for p in parts if p.strip() and not money_hit(p, community, text) and not any(w in p for w in BANNED)]
     return ''.join(keep).strip()
 
 
-def clean_segments(text, sep='｜'):
-    """畫面字卡「A｜B・C」：逐段去掉有金額或禁用詞的段落。"""
+def clean_segments(text, sep='｜', community=False):
+    """畫面字卡「A｜B・C」：逐段去掉有金額或禁用詞的段落（community 見 clean）。"""
     segs = [s.strip() for s in re.split(r'[｜|]', str(text or '')) if s.strip()]
-    return sep.join(s for s in segs if not MONEY.search(s) and not any(w in s for w in BANNED))
+    return sep.join(s for s in segs if not money_hit(s, community, text) and not any(w in s for w in BANNED))
 
 
-def audit(graph):
-    """最後一道：整份 JSON-LD 不可有金額、屋齡、禁用詞。"""
+def audit(graph, community=False):
+    """最後一道：整份 JSON-LD 不可有金額、屋齡、禁用詞（社區頁的單價見 money_hit）。"""
     problems = []
 
     def visit(v, path):
@@ -108,9 +146,9 @@ def audit(graph):
             for i, x in enumerate(v):
                 visit(x, f'{path}[{i}]')
         elif isinstance(v, str) and not v.startswith('http'):
-            m = MONEY.search(v)
+            m = money_hit(v, community)
             if m:
-                problems.append(f'{path} 含金額／屋齡「{m[0]}」')
+                problems.append(f'{path} 含金額／屋齡「{m}」')
             for w in BANNED:
                 if w in v:
                     problems.append(f'{path} 含禁用詞「{w}」')
@@ -263,12 +301,13 @@ def video_nodes(url, place_id, name, videos, narration, page_key):
     """VideoObject：YouTube 網址與章節；有口播稿就放 transcript，每段畫面字卡放成 Clip。"""
     out = []
     narr = narration or {}
+    com = str(page_key or '').startswith('community/')  # 社區頁：單價（附車位分算說明）放行
     for v in videos or []:
         vid = v['id']
         watch = f'https://www.youtube.com/watch?v={vid}'
         thumb = f'https://i.ytimg.com/vi/{vid}/maxresdefault.jpg'
         node = {'@type': 'VideoObject', '@id': f'{url}#video-{vid}',
-                'name': clean_segments(v.get('name'), '｜') or name,
+                'name': clean_segments(v.get('name'), '｜', com) or name,
                 'url': watch, 'embedUrl': f'https://www.youtube.com/embed/{vid}',
                 'thumbnailUrl': [thumb, f'https://i.ytimg.com/vi/{vid}/hqdefault.jpg'],
                 'uploadDate': v['uploadDate'], 'inLanguage': 'zh-TW',
@@ -284,8 +323,8 @@ def video_nodes(url, place_id, name, videos, narration, page_key):
         clips, t = [], 0.0
         for sc in scenes:
             d = float(sc.get('d') or 0)
-            title = clean_segments(sc.get('t'), '｜')
-            screen = clean_segments(sc.get('s'), '｜')
+            title = clean_segments(sc.get('t'), '｜', com)
+            screen = clean_segments(sc.get('s'), '｜', com)
             if title and d:
                 clip = {'@type': 'Clip', 'name': title, 'startOffset': int(t), 'endOffset': int(t + d),
                         'url': f'{watch}&t={int(t)}s'}
@@ -295,7 +334,7 @@ def video_nodes(url, place_id, name, videos, narration, page_key):
             t += d
         if not clips:
             for start, title in v.get('chapters') or []:
-                title = clean_segments(title)
+                title = clean_segments(title, community=com)
                 if title:
                     clips.append({'@type': 'Clip', 'name': title, 'startOffset': int(start), 'url': f'{watch}&t={int(start)}s'})
             for i, c in enumerate(clips):
@@ -306,14 +345,14 @@ def video_nodes(url, place_id, name, videos, narration, page_key):
             node['hasPart'] = clips
         chapters = '、'.join(c['name'] for c in clips[:10])
         desc = v.get('summary') or (f'{name}的影片介紹' + (f'，段落：{chapters}' if chapters else '') + '。')
-        node['description'] = clean(desc + f'互動簡報：{url}') or name
-        transcript = clean(''.join(sc.get('v') or '' for sc in scenes))
+        node['description'] = clean(desc + f'互動簡報：{url}', com) or name
+        transcript = clean(''.join(sc.get('v') or '' for sc in scenes), com)
         if transcript:
             node['transcript'] = transcript
         image = {'@type': 'ImageObject', '@id': f'{url}#thumb-{vid}', 'contentUrl': thumb, 'url': thumb,
                  'caption': f'{name}影片封面', 'representativeOfPage': False}
         if v.get('thumbText'):
-            image['description'] = '圖上文字：' + clean_segments(v['thumbText'])
+            image['description'] = '圖上文字：' + clean_segments(v['thumbText'], community=com)
         node['thumbnail'] = {'@id': image['@id']}
         out += [node, image]
     return out
@@ -329,10 +368,10 @@ def faq(url, qa):
              'author': {'@id': PERSON_ID}}]
 
 
-def sun_text(narration):
+def sun_text(narration, community=False):
     for sc in (narration or {}).get('scenes') or []:
         if '日照' in str(sc.get('t') or ''):
-            return clean(sc.get('v'))
+            return clean(sc.get('v'), community)
     return ''
 
 
@@ -393,6 +432,7 @@ def deck_seo(deck, facts, walks, listing, county, district, road):
 def deck_graph(key, text, ctx):
     deck, site = grab(text, 'DECK'), grab(text, 'SITE')
     listing = not key.startswith('community/')
+    com = not listing  # 社區頁：實價登錄單價（附車位分算說明）放行；物件頁照擋
     url = page_url(key)
     entry = ctx['decks'].get(key, {})
     name = str(deck.get('name') or entry.get('name') or '').strip()
@@ -425,7 +465,7 @@ def deck_graph(key, text, ctx):
         if len(row) >= 3 and row[1]:
             amen.append({'@type': 'LocationFeatureSpecification', 'name': f'{row[0]} {row[1]}',
                          'value': '、'.join(x for x in row[2:] if x)})
-    sun = sun_text(narration)
+    sun = sun_text(narration, com)
     if sun:
         props.append({'@type': 'PropertyValue', 'name': '日照模擬（冬至晴天，示意）', 'value': sun,
                       'description': '太陽位置以天文公式計算，周邊建物高度為估計，實際以現場為準'})
@@ -444,11 +484,11 @@ def deck_graph(key, text, ctx):
         graph.append({'@type': 'ImageObject', '@id': url + '#cover', 'contentUrl': url + 'og.jpg', 'url': url + 'og.jpg',
                       'width': 1200, 'height': 630,
                       'caption': f"{name}｜{caps.get(cover) or ('社區航照' if not listing else '物件照片')}",
-                      'description': clean(deck.get('interiorText')) or None})
+                      'description': clean(deck.get('interiorText'), com) or None})
 
     place = {'@type': 'Apartment' if listing else 'ApartmentComplex', '@id': place_id,
              'name': f"{name} {deck.get('floor')}F" if listing and deck.get('floor') else name,
-             'description': clean(deck.get('interiorText') if listing else (deck.get('interiorText') or deck.get('subtitle'))) or None,
+             'description': clean(deck.get('interiorText') if listing else (deck.get('interiorText') or deck.get('subtitle')), com) or None,
              'url': url, 'address': address,
              'geo': {'@type': 'GeoCoordinates', 'latitude': lat, 'longitude': lon} if lat and lon else None,
              'containedInPlace': contained, 'additionalProperty': props or None, 'amenityFeature': amen or None,
@@ -464,30 +504,30 @@ def deck_graph(key, text, ctx):
             place['numberOfRooms'] = int(mm[1])
             place['numberOfBedrooms'] = int(mm[1])
             place['numberOfBathroomsTotal'] = int(mm[3])
-        place['photo'] = [{'@type': 'ImageObject', 'caption': clean(c)} for pid, c in caps.items() if clean(c)]
+        place['photo'] = [{'@type': 'ImageObject', 'caption': clean(c, com)} for pid, c in caps.items() if clean(c, com)]
     else:
         units = next((v for k, v in facts if k == '戶數'), '')
         n = re.match(r'(\d+)\s*戶', units.replace(',', ''))
         if n:
             place['numberOfAccommodationUnits'] = {'@type': 'QuantitativeValue', 'value': int(n[1]), 'unitText': '戶'}
         # 舊簡報的照片說明可能有後來才禁用的字（塔樓、街屋），整句不放
-        place['photo'] = [{'@type': 'ImageObject', 'caption': f'{name}｜{clean(c)}'} for pid, c in caps.items() if clean(c)]
+        place['photo'] = [{'@type': 'ImageObject', 'caption': f'{name}｜{clean(c, com)}'} for pid, c in caps.items() if clean(c, com)]
     graph.append({k: v for k, v in place.items() if v not in (None, [], '')})
 
     videos = video_nodes(url, place_id, name, ctx['videos'].get(key), narration, key)
-    pros = [clean(f"{p.get('h')}：{p.get('p')}") for p in deck.get('pros') or []]
-    cons = [clean(f"{p.get('h')}：{p.get('p')}") for p in deck.get('cons') or []]
+    pros = [clean(f"{p.get('h')}：{p.get('p')}", com) for p in deck.get('pros') or []]
+    cons = [clean(f"{p.get('h')}：{p.get('p')}", com) for p in deck.get('cons') or []]
     stations = [w for w in walks if w.get('k') == 'station'][:3]
     life = [w for w in walks if w.get('k') not in ('station', 'school', 'bus_stop')][:6]
     built = next((v for k, v in facts if k == '完工'), '')
     floors = next((v for k, v in facts if k == '樓高'), '')
     where = f'{name}位於{county}{district}{street}' + (f'，屬{area_name}' if area_name else '') + \
             (f'，{built}完工' if built else '') + (f'，{floors}' if floors else '') + '。'
-    qa = [(f'{name}在哪裡？', clean(where)),
+    qa = [(f'{name}在哪裡？', clean(where, com)),
           (f'{name}到捷運站走路多久？',
-           clean('；'.join(f'{walk_name(w)}{walk_text(w)}' for w in stations) + f'。{WALK_NOTE}。') if stations else ''),
+           clean('；'.join(f'{walk_name(w)}{walk_text(w)}' for w in stations) + f'。{WALK_NOTE}。', com) if stations else ''),
           (f'{name}附近的生活機能有哪些？',
-           clean('；'.join(f'{walk_name(w)}{walk_text(w)}' for w in life) + f'。{WALK_NOTE}。') if life else ''),
+           clean('；'.join(f'{walk_name(w)}{walk_text(w)}' for w in life) + f'。{WALK_NOTE}。', com) if life else ''),
           (f'{name}的學區是哪裡？',
            f"依政府公開資料，{name}的學區為{comm['school'].replace('・', '、')}，{SCHOOL_NOTE}。" if comm and comm.get('school') else ''),
           (f'{name}的日照情況如何？', sun),
@@ -531,22 +571,22 @@ def simple_community_graph(key, text, ctx):
     if comm.get('mrt'):
         amen.append({'@type': 'LocationFeatureSpecification', 'name': '捷運', 'value': comm['mrt'], 'description': WALK_NOTE})
     place = {'@type': 'ApartmentComplex', '@id': place_id, 'name': name, 'url': url,
-             'description': clean(entry.get('subtitle')) or None,
+             'description': clean(entry.get('subtitle'), True) or None,
              'address': {'@type': 'PostalAddress', 'addressCountry': 'TW', 'addressRegion': county or '新北市',
                          'addressLocality': district, 'streetAddress': road},
              'geo': {'@type': 'GeoCoordinates', 'latitude': comm['lat'], 'longitude': comm['lon']} if comm.get('lat') else None,
              'containedInPlace': contained, 'additionalProperty': props or None, 'amenityFeature': amen or None}
     desc = meta_content(text, 'description') or describe_simple(key, ctx)
     videos = video_nodes(url, place_id, name, ctx['videos'].get(key), ctx['narration'].get(key), key)
-    pros, cons = [clean(p) for p in comm.get('pros') or []], [clean(p) for p in comm.get('cautions') or []]
+    pros, cons = [clean(p, True) for p in comm.get('pros') or []], [clean(p, True) for p in comm.get('cautions') or []]
     page = {'@type': 'WebPage', '@id': url + '#webpage', 'url': url, 'name': title_of(text) or name, 'description': desc,
             'inLanguage': 'zh-Hant-TW', 'isPartOf': {'@id': WEBSITE_ID}, 'about': {'@id': place_id},
             'mainEntity': {'@id': place_id}, 'dateModified': entry.get('updated'),
             'author': {'@id': PERSON_ID}, 'publisher': {'@id': AGENT_ID},
             'video': [{'@id': n['@id']} for n in videos if n['@type'] == 'VideoObject'] or None,
             'breadcrumb': {'@id': url + '#breadcrumb'}}
-    qa = [(f'{name}在哪裡？', clean(f'{name}位於{county}{district}{road}' + (f'，屬{area_name}' if area_name else '') + '。')),
-          (f'{name}到捷運站走路多久？', clean(f"{comm['mrt']}。{WALK_NOTE}。") if comm.get('mrt') else ''),
+    qa = [(f'{name}在哪裡？', clean(f'{name}位於{county}{district}{road}' + (f'，屬{area_name}' if area_name else '') + '。', True)),
+          (f'{name}到捷運站走路多久？', clean(f"{comm['mrt']}。{WALK_NOTE}。", True) if comm.get('mrt') else ''),
           (f'{name}有哪些看點？', sentences(pros)),
           (f'看{name}時要留意什麼？', sentences(cons))]
     graph = [{k: v for k, v in page.items() if v not in (None, [], '')},
@@ -564,7 +604,7 @@ def describe_simple(key, ctx):
     if comm.get('mrt'):
         parts.append(f"{comm['mrt']}。")
     parts.append(f"互動簡報整理{entry.get('subtitle') or '社區資訊'}，實際以現場為準。")
-    return clean(''.join(parts))
+    return clean(''.join(parts), str(key).startswith('community/'))
 
 
 # ---------------------------------------------------------------------- 獨立物件頁（S21140123：自己的 config.js／photos.js）
@@ -817,7 +857,7 @@ def build_site(root, check=False):
         f = Path(root) / key / 'index.html'
         text = f.read_text(encoding='utf-8')
         graph, summary = page_graph(key, text, ctx)
-        for p in audit(graph):
+        for p in audit(graph, community=key.startswith('community/')):
             problems.append(f'{key or "首頁"}：{p}')
         new = apply(text, key, graph, summary, ctx)
         for s in static_age_problems(new):  # title、meta、og、noscript 等寫死的文字不可有屋齡數字（script 裡即時計算的不算）
@@ -843,12 +883,12 @@ def build_site(root, check=False):
 
 
 # ---------------------------------------------------------------------- 指揮艙發布時用
-def narration_entry(scenes, video_id=None):
+def narration_entry(scenes, video_id=None, community=False):
     """把 scenes.voice.json 整理成 data/narration.json 的一筆（先過法遵：去掉金額句）。"""
     out = []
     for sc in scenes:
-        out.append({'t': clean_segments(sc.get('t')), 's': clean_segments(sc.get('s')),
-                    'v': clean(sc.get('v')), 'd': round(float(sc.get('d') or 0), 2)})
+        out.append({'t': clean_segments(sc.get('t'), community=community), 's': clean_segments(sc.get('s'), community=community),
+                    'v': clean(sc.get('v'), community), 'd': round(float(sc.get('d') or 0), 2)})
     return {'video': video_id, 'scenes': out}
 
 
@@ -914,7 +954,7 @@ def save_narration(root, key, scenes, video_id=None):
     nf = Path(root) / 'data' / 'narration.json'
     narr = json.loads(nf.read_text(encoding='utf-8')) if nf.exists() else {}
     old = narr.get(key) or {}
-    entry = narration_entry(scenes, video_id or None)
+    entry = narration_entry(scenes, video_id or None, community=str(key).startswith('community/'))
     # 重新發布、影片還沒重傳：口播長度沒變就保留原本綁定的影片
     if not entry['video'] and old.get('video'):
         same = abs(sum(s['d'] for s in entry['scenes']) - sum(float(s.get('d') or 0) for s in old.get('scenes') or [])) <= 2

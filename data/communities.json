@@ -1188,7 +1188,43 @@
     "西側4～5層公寓，低樓層傍晚會被遮蔽"
    ],
    "deals": 16,
-   "deck": "community/鑽石名門/"
+   "deck": "community/鑽石名門/",
+   "ev": {
+    "status": [
+     "unverified"
+    ],
+    "basis": {
+     "completed": "1997-11-04",
+     "rule": "缺使照／建照字號：依 ev_problems，法定基準標籤要有字號，先標 unverified",
+     "src": "參考政府公開資料"
+    },
+    "verified_at": "2026-11-04"
+   },
+   "layouts": {
+    "source": "內政部實價登錄（已排除特殊交易與預售屋）",
+    "basis": "住宅用途；同一戶多次成交只計一次；依申報的建物現況格局（房數）與主建物面積",
+    "period": "110S2～115S4",
+    "published_through": "115/11/01",
+    "cutoff": "截至 115/11/01 公布",
+    "n": 16,
+    "rows": [
+     {
+      "rooms": "4+",
+      "label": "4房以上",
+      "count": 14,
+      "main_ping": [
+       36.1,
+       43.1
+      ]
+     },
+     {
+      "rooms": null,
+      "label": "其他",
+      "count": 2,
+      "main_ping": null
+     }
+    ]
+   }
   }
  ],
  "links": {
