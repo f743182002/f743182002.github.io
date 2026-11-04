@@ -230,7 +230,21 @@
     "兩棟並排、旁邊就是民生捷座"
    ],
    "deals": 34,
-   "deck": "community/昇陽文化廳/"
+   "deck": "community/昇陽文化廳/",
+   "ev": {
+    "status": [
+     "existing_needs_approval"
+    ],
+    "basis": {
+     "permit_no": "83板建字第01520號",
+     "use_permit_no": "89板使字第00721號",
+     "use_permit_issued": "2000-08-18",
+     "completed": "2000-06-10",
+     "rule": "既有建物（建照在108/7/1前）：個別加裝依公寓大廈管理條例第6條；建築技術規則設施編第62條第4款不適用",
+     "src": "參考政府公開資料"
+    },
+    "verified_at": "2026-11-04"
+   }
   },
   {
    "name": "文化勳章",
