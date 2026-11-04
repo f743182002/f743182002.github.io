@@ -285,6 +285,24 @@ def render(name, site, comm, doors, out_path=None):
     return svg
 
 
+VIEWER = """<!doctype html>
+<html lang="zh-Hant-TW"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>棟別配置圖｜板橋阿陞聊房</title>
+<style>html,body{margin:0;background:#fff;font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif;color:#1F2B33}
+main{max-width:960px;margin:0 auto;padding:8px}img{display:block;width:100%;height:auto}
+a{color:#C8161D;font-size:15px;display:inline-block;padding:10px 8px}</style></head>
+<body><main><a href="../../map/">← 回商圈地圖</a><img id="g" alt="棟別配置圖"><p id="m" hidden>找不到這個社區的配置圖。</p></main>
+<script>
+(function(){var n=new URLSearchParams(location.search).get('n')||'';var g=document.getElementById('g');
+if(!n||/[\\/\\\\.]/.test(n)){g.hidden=true;document.getElementById('m').hidden=false;return}
+document.title=n+' 棟別配置圖｜板橋阿陞聊房';g.alt=n+' 棟別配置圖';g.src=encodeURIComponent(n)+'.svg';
+g.onerror=function(){g.hidden=true;document.getElementById('m').hidden=false}})();
+</script></body></html>
+"""
+
+
 def write_if_changed(path, text):
     if os.path.exists(path) and open(path, encoding="utf-8").read() == text:
         return False
@@ -314,6 +332,8 @@ def main():
         doors = doors_local(os.path.join(root, "data/doors", n + ".json"), (c.get("lat"), c.get("lon")))
         if render(n, site, c, doors, os.path.join(root, "data/layout", n + ".svg")):
             done.append((n, len(doors)))
+    # 手機看圖頁：直接開 .svg 時手機瀏覽器用 980px 版面寬度，只看得到左半；地圖的「看棟別配置圖」改開這頁（有 viewport）
+    write_if_changed(os.path.join(root, "data/layout/view.html"), VIEWER)
     if not only:
         idx = os.path.join(root, "data/layout/index.json")
         layouts = {n: {"doors": k} for n, k in done}

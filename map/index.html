@@ -1169,7 +1169,7 @@
       if(c.cautions&&c.cautions.length)h+='<ul class="warn">'+c.cautions.map(function(p){return '<li>看屋留意：'+esc(p)+'</li>'}).join('')+'</ul>';
       if(c.approx)h+='<div class="note">地圖位置為約略位置，以門牌與現場為準。</div>';
       if(c.deck)h+='<a class="cta" href="../'+encodeURI(c.deck)+'">看互動簡報（3D 日照・步行地圖・實價表）</a>';
-      if(window.LAYOUTS&&LAYOUTS[c.name])h+='<a class="cta ghost" href="../data/layout/'+encodeURIComponent(c.name)+'.svg" target="_blank" rel="noopener">看棟別配置圖</a>';
+      if(window.LAYOUTS&&LAYOUTS[c.name])h+='<a class="cta ghost" href="../data/layout/view.html?n='+encodeURIComponent(c.name)+'" target="_blank" rel="noopener">看棟別配置圖</a>';
       h+='<a class="cta alt" href="https://line.me/R/ti/p/%40banqiao.asheng" target="_blank" rel="noopener">問阿陞：'+esc(c.name)+'有沒有房子在賣？</a></div>';
       return h;
     }
