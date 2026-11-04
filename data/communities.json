@@ -501,7 +501,23 @@
     "巷弄社區、面中庭的低樓層要看採光"
    ],
    "deals": 16,
-   "deck": "community/三輝歌劇苑/"
+   "deck": "community/三輝歌劇苑/",
+   "ev": {
+    "status": [
+     "existing_needs_approval"
+    ],
+    "basis": {
+     "permit_no": "96板建字第00192號",
+     "commenced": "2007-05-07",
+     "use_permit_no": "105板使字第00417號",
+     "use_permit_issued": "2016-10-04",
+     "completed": "2016-07-11",
+     "use": "集合住宅",
+     "rule": "既有建物（建照在108/7/1前）：個別加裝依公寓大廈管理條例第6條；建築技術規則設施編第62條第4款不適用",
+     "src": "參考政府公開資料"
+    },
+    "verified_at": "2026-11-04"
+   }
   },
   {
    "name": "春池宇宙光",
