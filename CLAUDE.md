@@ -56,8 +56,10 @@
 
 ## 棟別門牌配置圖（2026-11-04）
 
-- `scripts/door_layout.py` 產生 `data/layout/<社區名>.svg` 與 `data/layout/index.json`；地圖資料卡有檔案才顯示「看棟別配置圖」。重跑：`python3 scripts/door_layout.py .`（Windows 用 `python`）
+- `scripts/door_layout.py` 產生 `data/layout/<社區名>.svg`、`data/layout/index.json` 與手機看圖頁 `data/layout/view.html`；地圖資料卡有檔案才顯示「看棟別配置圖」，連到 `data/layout/view.html?n=<社區名>`（有 viewport，圖寬 100%；直接開 .svg 時手機用 980px 版面只看得到左半）。重跑：`python3 scripts/door_layout.py .`（Windows 用 `python`）；內容沒變不改檔（index.json 也不會因日期每天變）。
 - 資料只用本站自己的：簡報內嵌 `window.SITE` 的本社區建物輪廓（me=1）與道路、`data/doors/<社區名>.json` 門牌定位（property-deck scope_check 的國土測繪中心門牌定位結果，格式 `{"doors":[{"no":"191","lat":..,"lon":..}]}`）。門牌落在本社區輪廓 8 公尺內才標上去。
+- 門牌畫法（2026-11-04 修正）：每個門牌在國土測繪中心座標畫紅點＋獨立小標籤，標籤彼此不重疊（放不下往外推、拉引線），也不蓋住棟名、指北針、比例尺；全部門牌同一主號都有之N（健華新城 309之1～之38）時標籤只寫「之N」，副標註明主號。SVG 只給 viewBox（寬度自適應）。**不手改 SVG，改 door_layout.py。**
+- `scripts/door_layout.py` 只由它自己的修改流程 commit：指揮艙發布的 `git add` 排除它（`PENDING_EXCLUDE`；2026-11-04 欣璞綻發布 26381ca 曾把改到一半的版本帶上線），發布時重產的 `data/layout/*.svg` 照常 commit。
 - **不可以參考、描繪樂居或其他網站的配置圖或平面圖。** 只標門牌號，不標樓層、戶號、住戶資訊。
 
 ## 門牌座標與每戶實價資料（2026-11-04 第三階段）
@@ -65,9 +67,17 @@
 兩種檔都由 property-deck `site_export.py` 產生，**不要手改**；要改資料請回工作資料夾修正後重跑（`python -X utf8 site_export.py --all --site <本 repo> --work-roots <工作根目錄…> [--units-to-site] [--layout]`，內容沒變不會改檔）。圖也不要手改 SVG，改產生器或資料。
 
 - `data/doors/<社區名>.json`：來源是工作資料夾 `scope_check.json` 的**內政部國土測繪中心門牌定位**，只取落在本社區輪廓的點；沒查到座標的門牌不寫。格式 `{"source":"內政部國土測繪中心門牌定位（scope_check）","checked":"YYYY-MM-DD","origin":{"lat":..,"lon":..},"doors":[{"no":"191","lat":..,"lon":..}]}`。`checked` 是 scope_check 實際查詢日；`origin` 是簡報 `window.SITE` 的原點（建物輪廓座標的 0,0），`door_layout.py` 用它換算（地圖 `communities.json` 的點不一定是原點，綠如意差約 12 公尺）。**只放門牌號與座標，不放樓層、戶號、住戶資訊。** 社區版發布時指揮艙會一起寫入並重跑 `door_layout.py`，跟簡報同一個 commit。
-- `data/units/<社區名>.json`：來源是**內政部實價登錄買賣**，跟社區簡報「實價登錄 N 筆」同一批（排除特殊交易、不含預售屋 B 檔），逐筆對回實價原始資料，只留主要用途「住家用」、單一樓層的成交；同一戶（門牌＋樓層＋之N）只留最新一筆。格式 `{"source":"內政部實價登錄 買賣（排除特殊交易）","period":"110S2～115S4","checked":"YYYY-MM-DD","units":[{"addr":"莊敬路203號","floor":11,"suffix":"之3","rooms":2,"main_ping":10.2,"area_ping":14.7,"parking":false}]}`（坪＝平方公尺×0.3025，小數一位；查不到的欄位不寫）。**不放金額、單價、交易日期、車位價、住戶資訊。**
-- `scripts/unit_grid.py` 讀 `data/units` 產生 `data/units/<社區名>.svg`（樓層×門牌格子圖，「309之5號」這種之N門牌各自一欄）。
-- **`data/units`（JSON 與格子圖）上線要林津陞核可**：核可前不 commit、不 push。指揮艙發布只把 units 寫在工作資料夾 `site_units.json`，`git add` 一律排除 `data/units`（`':(exclude)data/units'`）；核可後由人明確 `git add data/units/<檔名>` 再 commit。
+- `data/units/<社區名>.json`（每戶成交實價格子圖，林津陞 2026-11-04 定案）：
+  - **資料新舊**：不用簡報 deals 快照。直接從每晚更新的本機實價快取（realprice market_cache）取社區全部成交，依工作資料夾 `facts_verified.json` 的門牌範圍（address 列，含單雙號）、建築完成年月、總樓層數不超過地上層數篩選。
+  - **口徑（照樂居均價口徑 leju.com.tw/faq/2：單價扣除車位坪數與價格；只借口徑，樣式不照抄）**：全部用途都列（住家、住商、辦公、商業、其他）；一樓、地下層照收，圖上用另一種底色標示（一樓／店面、地下層），不跟住宅樓層混比；排除特殊交易（property-deck `SPECIAL_KEYWORDS`）、單獨車位／土地、預售屋（交易日早於建築完成年月＝蓋好前簽約）；同一戶（門牌＋樓層＋之N）只留最新一筆，`n` 記該戶筆數。
+  - **單價**（萬元/坪，小數一位）：原始資料有拆分車位價與車位面積的才扣，(總價−車位價)/(總面積−車位面積)；沒拆分的不估算，`parking:"included"`，圖上標「含車位」。
+  - 格式 `{"source":"內政部不動產交易實價查詢服務網（已排除特殊交易）","period":"110S2～115S4","published_through":"115/11/01","cutoff":"截至 115/11/01 公布","scope":"…","floors":19,"door_floors":{"莊敬路191號":19},"units":[{"addr":"莊敬路203號","floor":11,"suffix":"之3","ym":"114/08","price":85.9,"parking":"none","use":"住家用","n":2}]}`。`floor` 地下層是負數；跨層（一層，夾層）畫在最低地上層並有 `span`。**成交只到年月，不放交易日、總價、車位價、住戶資訊。**
+- **「網頁不寫金額」的例外只限這張格子圖**：每格寫「成交年月＋成交單價（萬/坪）」，不寫幾房；同一戶多筆只畫最新一筆並標「共N筆」。圖下註記必含：資料來源「內政部不動產交易實價查詢服務網（已排除特殊交易）」、資料期間、資料公布截止日（「截至 115/11/01 公布」）、「之後的新成交未納入，以內政部最新資料為準」、「單價已扣除有拆分的車位；標『含車位』者未拆分」、「不依實際比例重繪，實際以現場及權狀為準」。
+- `scripts/unit_grid.py` 讀 `data/units`（門牌欄另外併入 `data/doors` 全部門牌，沒成交的留空欄、不跳號）產生 `data/units/<社區名>.svg`：門牌在上、樓層在左；總站主色紅 #C8161D 系統，**不可照抄樂居銷控表的配色、版面細節、特殊交易標示方式**；欄數多時每段最多 5 欄往下分段（手機看得清楚）；各棟樓高不同時（新巨蛋）超過該棟樓高的格子不畫；只給 viewBox；內容沒變不改檔。
+- **每晚自動更新**：`C:\claude-work\nightly-9b-sync.ps1` 第 0b 步（實價快取 refresh 之後）跑 `site_export.py --all --units-only --units-to-site` 再跑 `scripts/unit_grid.py`，結果寫 `steps.units_refresh`，失敗只記 faults，不擋同步。腳本變數 `$unitsAutoPush`：
+  - `$false`（林津陞核可新版格子圖之前）：只更新本機 `data/units`，不 commit、不 push。
+  - 林津陞核可後改 `$true`：`data/units` 有變動才 commit＋push（只 add `data/units`）。
+- **`data/units`（JSON 與格子圖）上線要林津陞核可**：核可前不 commit、不 push。指揮艙發布只把 units 寫在工作資料夾 `site_units.json`，`git add` 一律排除 `data/units` 與 `scripts/unit_grid.py`（`PENDING_EXCLUDE`）；核可後由人明確 `git add` 再 commit，並把 `$unitsAutoPush` 改成 `$true`。
 
 ## 充電樁（2026-11-04 第四階段）
 
