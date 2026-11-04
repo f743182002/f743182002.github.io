@@ -123,7 +123,23 @@
     "臨文化路路口、A～D棟並排"
    ],
    "deals": 242,
-   "deck": "community/新巨蛋/"
+   "deck": "community/新巨蛋/",
+   "ev": {
+    "status": [
+     "existing_needs_approval"
+    ],
+    "basis": {
+     "permit_no": "85板建字第01159號",
+     "commenced": "1997-06-12",
+     "use_permit_no": "99板使字第00278號",
+     "use_permit_issued": "2010-07-15",
+     "completed": "2010-03-18",
+     "use": "集合住宅、辦公室、店鋪、健身房",
+     "rule": "既有建物（建照在108/7/1前）：個別加裝依公寓大廈管理條例第6條；建築技術規則設施編第62條第4款不適用",
+     "src": "參考政府公開資料"
+    },
+    "verified_at": "2026-11-04"
+   }
   },
   {
    "name": "欣璞綻",
