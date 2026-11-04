@@ -166,6 +166,12 @@ tr.hl td{background:var(--accent-soft)}
 .notes ol{padding-left:1.4em;margin:6px 0 14px}
 .notes li{margin-bottom:4px;max-width:80ch}
 .notes h3{color:var(--ink)}
+/* 停車與充電（2026-11-04 第四階段） */
+.evtags{list-style:none;padding:0;margin:8px 0 12px;display:grid;gap:10px}
+.evtags li{border:1px solid var(--line,#E2E6EA);border-left:4px solid var(--data);border-radius:8px;padding:10px 12px;background:#fff}
+.evtags b{display:block;font-size:16px;color:var(--ink)}
+.evtags p{margin:6px 0 0}
+.evtags .recheck{color:#C8161D;font-weight:700}
 @media (max-width:860px){
   body{height:auto}
   main{flex:none}
@@ -839,6 +845,26 @@ tr.hl td{background:var(--accent-soft)}
   <div class="stage"><div class="cards" id="d-cards"></div></div>
 </section>
 
+<!-- 停車與充電（2026-11-04 第四階段）：DECK.ev（查證表 ev 列）有資料才顯示，放在聯絡前面；
+     錄影版（recbuild.py 設 window.__NOEV）整節拿掉，影片 scenes 的章節編號（聯絡＝6）不變 -->
+<section class="ch" id="c-ev" aria-label="停車與充電" hidden>
+  <div class="panel">
+    <p class="eyebrow">停車與充電</p>
+    <h2>停車位與電動車充電</h2>
+    <p id="d-ev-park"></p>
+    <h3>充電設備</h3>
+    <ul class="evtags" id="d-ev-tags"></ul>
+    <p class="small mute" id="d-ev-note"></p>
+    <p class="src" id="d-ev-src"></p>
+  </div>
+  <div class="stage"><div class="notes">
+    <h3>看屋時可以問管委會</h3>
+    <ol id="d-ev-ask"></ol>
+    <h3>相關規定</h3>
+    <ol id="d-ev-law"></ol>
+  </div></div>
+</section>
+
 <!-- 07 contact -->
 <section class="ch" id="c7" aria-label="聯絡與揭露" hidden>
   <div class="panel">
@@ -941,10 +967,37 @@ setT('d-deal-h2',D.dealsH2);$('d-deal-p').innerHTML=(D.dealsText||[]).map(t=>'<p
 $('d-cards').innerHTML=D.pros.map((c,i)=>'<article class="card pro"><div class="k">適合理由 '+(i+1)+'</div><h4>'+esc(c.h)+'</h4><p>'+esc(c.p)+'</p><p class="src">'+esc(c.src)+'</p></article>').join('')
   +D.cons.map((c,i)=>'<article class="card con"><div class="k">考量 '+(i+1)+'</div><h4>'+esc(c.h)+'</h4><p>'+esc(c.p)+'</p><p class="src">'+esc(c.src)+'</p></article>').join('');
 $('d-sources').innerHTML=D.sources.map(t=>'<li>'+esc(t)+'</li>').join('');
+/* ---------- 停車與充電（2026-11-04 第四階段） ---------- */
+// 標籤與說明是發布時依查證表 ev 列寫好的標準說法（研究報告 A2）；has_* 的查證日超過 12 個月
+// 由這裡用瀏覽器當天日期（台灣時間）判斷，顯示「待重新確認」，不寫死，不會過期失準。總站 map/index.html 用同一算法。
+const EVX=(function(){
+  function stale(d,now){var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(d||'');if(!m)return true;
+    var t=new Date((now==null?Date.now():now)+8*3600*1000);
+    var days=(Date.UTC(t.getUTCFullYear(),t.getUTCMonth(),t.getUTCDate())-Date.UTC(+m[1],+m[2]-1,+m[3]))/864e5;
+    return days>365}
+  function dateText(d){var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(d||'');return m?m[1]+'/'+m[2]+'/'+m[3]:''}
+  return {stale:stale,dateText:dateText};
+})();
+window.__EV=EVX;
+(function(){
+  const sec=$('c-ev');if(!sec)return;
+  const ev=window.__NOEV?null:D.ev;
+  if(!ev||!(ev.tags||[]).length){sec.remove();return}
+  setT('d-ev-park',ev.parking);
+  $('d-ev-tags').innerHTML=ev.tags.map(t=>{
+    let s='<li><b>'+esc(t.short)+'</b>';
+    if(t.recheck){const dt=EVX.dateText(ev.verified_at);s+='<p class="small'+(EVX.stale(ev.verified_at)?' recheck">'+(dt?'查證日 '+esc(dt)+'，':'')+'超過 12 個月，待重新確認':' mute">查證日 '+esc(dt))+'</p>'}
+    if(t.text)s+='<p>'+esc(t.text)+'</p>';
+    return s+'</li>'}).join('');
+  setT('d-ev-note',ev.note);setT('d-ev-src',ev.src);
+  $('d-ev-ask').innerHTML=(ev.ask||[]).map(t=>'<li>'+esc(t)+'</li>').join('');
+  $('d-ev-law').innerHTML=(ev.laws||[]).map(t=>'<li>'+esc(t)+'</li>').join('');
+})();
 
 /* ---------- chapters ---------- */
 const chapters=[...document.querySelectorAll('.ch')];
 const titles=['物件摘要','室內與坪數','區位與交通','日照模擬','社區成交','評析','聯絡與揭露'];
+if($('c-ev'))titles.splice(6,0,'停車與充電');  // 停車與充電頁在聯絡前面（沒有 ev 資料或錄影版已拿掉）
 const rail=$('rail');
 titles.forEach((t,i)=>{const b=document.createElement('button');b.type='button';b.innerHTML='<span>'+String(i+1).padStart(2,'0')+'</span>'+t;b.onclick=()=>go(i);rail.appendChild(b)});
 let cur=0;
