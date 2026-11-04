@@ -1041,8 +1041,18 @@
       return b;
     }
 
+    // 屋齡：不寫死，打開頁面時依「完工年月」與當天日期（台灣時間）即時計算，所以不會過期
+    function ageText(built){
+      var m=/民國(\d+)年(?:(\d+)月)?/.exec(built||'');if(!m)return '';
+      var y=+m[1]+1911,mo=m[2]?+m[2]:null;
+      var now=new Date(Date.now()+8*3600*1000),ny=now.getUTCFullYear(),nm=now.getUTCMonth()+1;
+      var age=ny-y;if(mo&&nm<mo)age--;
+      if(age<0)return '';
+      if(age<1)return '未滿 1 年';
+      return (mo?'':'約 ')+age+' 年';
+    }
     function popup(c,a){
-      var rows=[['生活圈',a.name],['位置',c.road],['完工',c.built],['樓層',c.floors],['規模',c.units],['結構',c.structure],['捷運',c.mrt],['學區',c.school?c.school+'（以教育局公告為準）':''],['實價登錄',c.deals?('近五年 '+c.deals+' 筆（已排除特殊交易）'):'']];
+      var rows=[['生活圈',a.name],['位置',c.road],['完工',c.built],['屋齡',ageText(c.built)?ageText(c.built)+(/月/.test(c.built)?'（依完工年月自動計算）':'（依完工年自動推算）'):''],['樓層',c.floors],['規模',c.units],['結構',c.structure],['捷運',c.mrt],['學區',c.school?c.school+'（以教育局公告為準）':''],['實價登錄',c.deals?('近五年 '+c.deals+' 筆（已排除特殊交易）'):'']];
       var h='<div class="pop"><h3>'+esc(c.name)+'</h3><div class="sub">新北市'+(c.area==='zhonghe'?'':'板橋區')+esc(c.road)+'</div><table>';
       rows.forEach(function(r){if(r[1])h+='<tr><td>'+r[0]+'</td><td>'+esc(r[1])+'</td></tr>'});
       h+='</table>';

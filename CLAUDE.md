@@ -45,3 +45,8 @@
 - `scripts/door_layout.py` 產生 `data/layout/<社區名>.svg` 與 `data/layout/index.json`；地圖資料卡有檔案才顯示「看棟別配置圖」。重跑：`python3 scripts/door_layout.py .`
 - 資料只用本站自己的：簡報內嵌 `window.SITE` 的本社區建物輪廓（me=1）與道路、`data/doors/<社區名>.json` 門牌定位（property-deck scope_check 的國土測繪中心門牌定位結果，格式 `{"doors":[{"no":"191","lat":..,"lon":..}]}`）。門牌落在本社區輪廓 8 公尺內才標上去。
 - **不可以參考、描繪樂居或其他網站的配置圖或平面圖。** 只標門牌號，不標樓層、戶號、住戶資訊。
+
+## 屋齡（2026-11-04）
+
+- 網頁上的屋齡**一律不寫死**：由瀏覽器在打開頁面時，依 `built`（完工年月）與當天日期（台灣時間）即時計算，例：地圖資料卡「屋齡 29 年（依完工年月自動計算）」。只有完工年沒有月份時顯示「約 N 年（依完工年自動推算）」。
+- 靜態文字（title、meta description、og、JSON-LD、llms.txt、YouTube 說明、591 文案、影片字幕）仍然**不寫屋齡數字**，只寫完工年，因為這些不會自動更新。
