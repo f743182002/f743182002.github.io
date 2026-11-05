@@ -1,0 +1,181 @@
+{
+ "source": "內政部不動產交易實價查詢服務網（已排除特殊交易）",
+ "period": "110S2～115S4",
+ "published_through": "115/11/01",
+ "cutoff": "截至 115/11/01 公布",
+ "scope": "新北市中和區中正路797～799號（單號）",
+ "floors": 27,
+ "door_floors": {
+  "中正路797號": 27,
+  "中正路799號": 27
+ },
+ "units": [
+  {
+   "addr": "中正路797號",
+   "floor": 2,
+   "ym": "112/08",
+   "price": 31.4,
+   "parking": "split",
+   "use": "商業用",
+   "n": 1
+  },
+  {
+   "addr": "中正路797號",
+   "floor": 2,
+   "suffix": "之9",
+   "ym": "115/09",
+   "price": 66.5,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "中正路797號",
+   "floor": 6,
+   "ym": "111/04",
+   "price": 36.9,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "中正路797號",
+   "floor": 13,
+   "suffix": "之2",
+   "ym": "113/06",
+   "price": 41.9,
+   "parking": "split",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "中正路797號",
+   "floor": 16,
+   "suffix": "之2",
+   "ym": "113/01",
+   "price": 44.3,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "中正路797號",
+   "floor": 19,
+   "suffix": "之1",
+   "ym": "115/08",
+   "price": 42.9,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "中正路797號",
+   "floor": 21,
+   "suffix": "之1",
+   "ym": "113/05",
+   "price": 43.9,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "中正路797號",
+   "floor": 21,
+   "suffix": "之2",
+   "ym": "110/05",
+   "price": 34.6,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "中正路797號",
+   "floor": 27,
+   "ym": "111/06",
+   "price": 36.5,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "中正路797號",
+   "floor": 27,
+   "suffix": "之1",
+   "ym": "111/04",
+   "price": 38.4,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "中正路799號",
+   "floor": 4,
+   "suffix": "之2",
+   "ym": "110/10",
+   "price": 35.5,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "中正路799號",
+   "floor": 9,
+   "suffix": "之2",
+   "ym": "112/06",
+   "price": 37.6,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "中正路799號",
+   "floor": 16,
+   "suffix": "之1",
+   "ym": "113/02",
+   "price": 41.2,
+   "parking": "split",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "中正路799號",
+   "floor": 17,
+   "suffix": "之1",
+   "ym": "112/12",
+   "price": 43.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "中正路799號",
+   "floor": 18,
+   "suffix": "之1",
+   "ym": "114/02",
+   "price": 44.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "中正路799號",
+   "floor": 26,
+   "suffix": "之1",
+   "ym": "111/08",
+   "price": 36.8,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "中正路799號",
+   "floor": 27,
+   "suffix": "之1",
+   "ym": "115/01",
+   "price": 44.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  }
+ ]
+}
