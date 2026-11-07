@@ -45,7 +45,7 @@
 .btn-clear:hover{background:#F1F3F4}
 .btn-clear:focus-visible{outline:2px solid #C8161D;outline-offset:2px}
 .layout{display:grid;grid-template-columns:1fr 380px;height:calc(100vh - 92px);min-height:560px;max-height:1000px}
-#map{height:100%;width:100%;z-index:1;scroll-margin-top:96px}
+#map{height:100%;width:100%;z-index:1;scroll-margin-top:104px}
 .side{border-left:1px solid var(--line);background:var(--card);display:flex;flex-direction:column;min-height:0}
 .side-head{padding:14px 16px;border-bottom:1px solid var(--line)}
 .side-head h2{margin:0 0 10px;font-size:18px;color:var(--ink)}
@@ -963,14 +963,14 @@
   <details><summary>生活圈怎麼分的？</summary><p>生活圈名稱與範圍參考樂居的板橋區分區，地圖上的生活圈名稱為約略位置。</p></details>
   <details><summary>位置準嗎？</summary><p>社區位置以建物輪廓定位，不是用刊登平台的地圖座標。標示虛線框的社區為約略位置，看房前請以門牌與現場為準。</p></details>
   <details><summary>屋齡怎麼算的？</summary><p>屋齡依各社區的完工年月與您打開頁面當天的日期自動計算，所以每年會自動更新；只查到完工年份、還沒查到月份的社區不顯示屋齡，標「待查證完工月份」。實際以建物登記謄本為準。</p></details>
-  <details><summary>步行時間怎麼算的？</summary><p>步行距離與時間依 OpenStreetMap 步行路線規劃，實際可能因步行速度、道路施工、交通狀況、天氣等而有出入。</p></details>
+  <details><summary>步行時間怎麼算的？</summary><p>步行距離與時間依 Google 地圖規劃建議路線（起點為社區建物），實際可能因步行速度、道路施工、交通狀況、天氣等而有出入，以現場為準。</p></details>
   <details><summary>學區準嗎？</summary><p>學區依新北市教育局學區查詢整理，實際以教育局最新公告為準。</p></details>
   <details><summary>實價登錄筆數是怎麼算的？</summary><p>資料來源為內政部不動產交易實價查詢服務網買賣資料，已排除親友、特殊關係等特殊交易，照原始資料引用，不代表個別房屋價格。完整表格在各社區的互動簡報裡。</p></details>
 </main>
 
 <footer class="site-foot"><div class="wrap">
   <b>☆預約看屋請聯絡：林津陞 0925-635-678</b><br>
-  加官方 LINE：@banqiao.asheng<br>
+  加官方 LINE：@banqiao.asheng，聊天室輸入「攻略」，系統自動傳送《買房避坑攻略》電子檔（約2萬字／38頁）<br>
   全國不動產板橋加盟店<br>
   經紀業｜非凡不動產有限公司<br>
   經紀人｜謝政峯（99）北縣字第002181號<br>
@@ -1046,12 +1046,13 @@
 
   // 手機：單指滑動讓給頁面捲動（才滑得到下面的社區清單），地圖用兩指移動／縮放
   var mobile=L.Browser.mobile;
-  var map=L.map('map',{scrollWheelZoom:true,dragging:!mobile,tap:false}).setView([25.021,121.470],15);
+  var map=L.map('map',{scrollWheelZoom:true,dragging:!mobile,tap:false,zoomControl:false}).setView([25.021,121.470],15);
+  L.control.zoom({position:'bottomright'}).addTo(map);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap 貢獻者'}).addTo(map);
   if(mobile){
     var hint=document.getElementById('touchHint'),ht=null,mc=map.getContainer();
     mc.addEventListener('touchmove',function(e){
-      if(e.touches.length!==1)return;
+      if(e.touches.length!==1||(e.target.closest&&e.target.closest('.leaflet-popup')))return;
       hint.classList.add('show');clearTimeout(ht);ht=setTimeout(function(){hint.classList.remove('show')},1200);
     },{passive:true});
     mc.addEventListener('touchstart',function(e){if(e.touches.length>1)hint.classList.remove('show')},{passive:true});
@@ -1059,6 +1060,18 @@
 
   fetch('../data/layout/index.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():null}).then(function(j){window.LAYOUTS=j&&j.layouts||{}}).catch(function(){window.LAYOUTS={}});
   fetch('../data/units/index.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():null}).then(function(j){window.UNITS=j&&j.units||[]}).catch(function(){window.UNITS=[]});
+  // 資料卡「實價登錄」：跟「看每戶成交實價」同一份資料（每晚更新、已排除特殊交易與預售屋），兩頁數字才會一致
+  var unitSum={};
+  map.on('popupopen',function(e){
+    var td=e.popup.getElement()&&e.popup.getElement().querySelector('.u-deals');if(!td)return;
+    var n=td.getAttribute('data-n');
+    function show(g){
+      if(!g||!g.summary){td.textContent='見「看每戶成交實價」';return}
+      td.textContent='有成交 '+g.summary.units+' 戶、共 '+g.summary.deals+' 筆（'+(g.cutoff||'')+'；已排除特殊交易與預售屋）';
+    }
+    if(unitSum[n]!==undefined){show(unitSum[n]);return}
+    fetch('../data/units/'+encodeURIComponent(n)+'.grid.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():null}).then(function(g){unitSum[n]=g;show(g)}).catch(function(){show(null)});
+  });
   fetch('../data/communities.json',{cache:'no-cache'}).then(function(r){return r.json()}).then(init).catch(function(){
     document.getElementById('list').innerHTML='<li class="empty">社區資料載入失敗，請重新整理頁面。</li>';
   });
@@ -1069,7 +1082,7 @@
     var items=D.communities.map(function(c,i){
       var a=areaById[c.area]||{color:'#666',name:''};
       var icon=L.divIcon({className:'',html:'<div class="cm-pin'+(c.approx?' approx':'')+'"></div>',iconSize:[22,22],iconAnchor:[11,11],popupAnchor:[0,-10]});
-      var m=L.marker([c.lat,c.lon],{icon:icon,title:c.name}).bindPopup(function(){return popup(c,a)},{maxHeight:window.innerWidth<=860?Math.max(260,Math.round(window.innerHeight*0.62)-70):null,autoPanPadding:[12,12]}).bindTooltip(c.name,{permanent:true,direction:'right',offset:[10,0],className:'cm-name'});
+      var m=L.marker([c.lat,c.lon],{icon:icon,title:c.name}).bindPopup(function(){return popup(c,a)},{maxHeight:window.innerWidth<=860?Math.max(260,Math.round(window.innerHeight*0.62)-70):Math.max(300,map.getSize().y-90),autoPanPadding:[12,12]}).bindTooltip(c.name,{permanent:true,direction:'right',offset:[10,0],className:'cm-name'});
       var ai=ageInfo(c.built),mn=mrtMin(c.mrt);
       return {c:c,a:a,m:m,i:i,area:c.area,age:ageBucket(c),months:ai.kind==='age'?ai.months:(ai.kind==='build'?-1:null),min:mn,mrt:mrtBucket(mn)};
     });
@@ -1147,7 +1160,7 @@
       });
       if(first&&shown.length){
         first=false;
-        var core=shown.filter(function(x){return x.c.area!=='zhonghe'});
+        var core=shown.filter(function(x){return x.c.area!=='jisui'});
         map.fitBounds(L.latLngBounds((core.length?core:shown).map(function(x){return x.m.getLatLng()})).pad(0.15));
       }
     }
@@ -1162,9 +1175,10 @@
 
     function popup(c,a){
       var at=ageText(c.built);
-      var rows=[['生活圈',a.name],['位置',c.road],['完工',c.built],['屋齡',at?(/^待查/.test(at)?at:at+'（依完工年月自動計算）'):''],['樓層',c.floors],['規模',c.units],['結構',c.structure],['捷運',c.mrt],['學區',c.school?c.school+'（以教育局公告為準）':''],['充電',evText(c.ev)],['實價登錄',c.deals?('近五年 '+c.deals+' 筆（已排除特殊交易）'):'']];
-      var h='<div class="pop"><h3>'+esc(c.name)+'</h3><div class="sub">新北市'+(c.area==='zhonghe'?'':'板橋區')+esc(c.road)+'</div><table>';
+      var rows=[['生活圈',a.name],['位置',c.road],['完工',c.built],['屋齡',at?(/^待查/.test(at)?at:at+'（依完工年月自動計算）'):''],['樓層',c.floors],['規模',c.units],['結構',c.structure],['捷運',c.mrt],['學區',c.school?c.school+'（以教育局公告為準）':''],['充電',evText(c.ev)]];
+      var h='<div class="pop"><h3>'+esc(c.name)+'</h3><div class="sub">新北市'+(/區/.test(c.road||'')?'':'板橋區')+esc(c.road)+'</div><table>';
       rows.forEach(function(r){if(r[1])h+='<tr><td>'+r[0]+'</td><td>'+esc(r[1])+'</td></tr>'});
+      if(window.UNITS&&UNITS.indexOf(c.name)>=0)h+='<tr><td>實價登錄</td><td class="u-deals" data-n="'+esc(c.name)+'">讀取中…</td></tr>';
       h+='</table>';
       if(c.pros&&c.pros.length)h+='<ul class="good">'+c.pros.map(function(p){return '<li>'+esc(p)+'</li>'}).join('')+'</ul>';
       if(c.cautions&&c.cautions.length)h+='<ul class="warn">'+c.cautions.map(function(p){return '<li>看屋留意：'+esc(p)+'</li>'}).join('')+'</ul>';
