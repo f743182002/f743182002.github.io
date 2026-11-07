@@ -1639,8 +1639,8 @@ function drawPrices(){
   $('pricechart').querySelectorAll('circle[data-i]').forEach(c=>c.onclick=()=>{sel=+c.dataset.i;drawPrices();drawTable()});
 }
 function drawTable(){
-  let h='<thead><tr><th>交易日</th><th>門牌</th><th>樓層</th><th>面積(坪)</th><th>單價(萬/坪)</th><th>車位</th><th>車位價(萬)</th></tr></thead><tbody>';
-  deals.forEach((d,i)=>h+='<tr class="'+(i===sel?'hl ':'')+(d[8]?'own-deal':'')+'"'+' data-i="'+i+'"><td>'+d[0]+'</td><td>'+esc(d[1])+(d[8]?'<span class="own-badge">阿陞成交</span>':'')+'</td><td>'+d[2]+'</td><td>'+d[3].toFixed(2)+'</td><td>'+d[5].toFixed(2)+'</td><td>'+d[6]+'</td><td>'+(d[7]==null?'—':d[7])+'</td></tr>');
+  let h='<thead><tr><th>交易日</th><th>門牌</th><th>樓層</th><th>面積(坪)</th><th>單價(萬/坪)</th><th>車位</th></tr></thead><tbody>';
+  deals.forEach((d,i)=>h+='<tr class="'+(i===sel?'hl ':'')+(d[8]?'own-deal':'')+'"'+' data-i="'+i+'"><td>'+d[0]+'</td><td>'+esc(d[1])+(d[8]?'<span class="own-badge">阿陞成交</span>':'')+'</td><td>'+d[2]+'</td><td>'+d[3].toFixed(2)+'</td><td>'+d[5].toFixed(2)+'</td><td>'+d[6]+'</td></tr>');
   $('ptable').innerHTML=h+'</tbody>';
   $('ptable').querySelectorAll('tr[data-i]').forEach(r=>r.onclick=()=>{sel=+r.dataset.i;drawPrices();drawTable()});
 }
