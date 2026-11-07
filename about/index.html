@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="../assets/site.css">
 <style>
 html{scroll-behavior:smooth}
-img{max-width:100%;display:block}
+img{max-width:100%;height:auto;display:block}
 .ab-main{overflow-x:clip}
 
 /* HERO：與首頁同款淡紅漸層 */
@@ -37,7 +37,7 @@ img{max-width:100%;display:block}
 .hero h1{margin:0;font-size:32px;line-height:1.35;letter-spacing:.03em}
 .hero h1 em{font-style:normal;display:block;color:var(--brand)}
 .hero p{margin:12px 0 0;color:var(--muted);font-size:16.5px;line-height:1.75;max-width:640px}
-.hphoto img{width:100%;max-width:260px;margin:0 auto;border-radius:50%;border:4px solid var(--card);box-shadow:0 0 0 2px #C8161D,0 10px 28px rgba(0,0,0,.14)}
+.hphoto img{width:100%;max-width:260px;aspect-ratio:1/1;object-fit:cover;margin:0 auto;border-radius:50%;border:4px solid var(--card);box-shadow:0 0 0 2px #C8161D,0 10px 28px rgba(0,0,0,.14)}
 
 /* 按鈕 */
 .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
@@ -69,7 +69,7 @@ section.blk h2 em{font-style:normal;display:block;color:var(--muted);font-weight
 
 /* ABOUT */
 .about{display:grid;grid-template-columns:.8fr 1.2fr;gap:36px;align-items:start}
-.about > div:first-child img{border-radius:12px;border:1px solid var(--line);box-shadow:0 6px 18px rgba(0,0,0,.10)}
+.about > div:first-child img{max-width:360px;border-radius:50%;border:1px solid var(--line);box-shadow:0 6px 18px rgba(0,0,0,.10)}
 .about .txt p{margin:14px 0 0;font-size:16px;line-height:1.85}
 .qbox{margin-top:18px;padding:18px 22px;border-left:4px solid #C8161D}
 .qbox p{margin:0!important;font-size:17.5px!important;font-weight:700;line-height:1.8}
