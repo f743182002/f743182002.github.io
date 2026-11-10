@@ -3,23 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>板橋房仲・新北房仲 林津陞｜全國不動產板橋加盟店</title>
+<title>板橋房仲・新北房仲 林津陞｜板橋阿陞聊房</title>
 <meta name="description" content="板橋房仲林津陞（阿陞），16年資歷，服務於全國不動產板橋加盟店。加入官方LINE並輸入「攻略」，即可取得約2萬字／38頁《買房避坑攻略》。">
 <meta name="theme-color" content="#FFFFFF">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:site_name" content="板橋阿陞聊房">
-<meta property="og:title" content="板橋房仲・新北房仲 林津陞｜全國不動產板橋加盟店">
+<meta property="og:title" content="板橋房仲・新北房仲 林津陞｜板橋阿陞聊房">
 <meta property="og:description" content="16年資歷板橋在地房產顧問。加入官方LINE並輸入「攻略」，即可取得約2萬字／38頁《買房避坑攻略》。">
 <link rel="canonical" href="https://banqiaoasheng.com/about/">
 <meta property="og:url" content="https://banqiaoasheng.com/about/">
-<meta property="og:image" content="https://banqiaoasheng.com/about/og-home-v2.png">
+<meta property="og:image" content="https://banqiaoasheng.com/assets/brand/og-1200x630.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:type" content="image/png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://banqiaoasheng.com/about/og-home-v2.png">
+<meta name="twitter:image" content="https://banqiaoasheng.com/assets/brand/og-1200x630.png">
 <link rel="icon" href="../assets/favicon-64.png" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="stylesheet" href="../assets/site.css">
@@ -28,42 +28,43 @@ html{scroll-behavior:smooth}
 img{max-width:100%;height:auto;display:block}
 .ab-main{overflow-x:clip}
 
-/* HERO：與首頁同款淡紅漸層 */
-.hero{background:linear-gradient(180deg,#FDECEA 0,var(--bg) 100%)}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .hero{background:linear-gradient(180deg,#2A1518 0,var(--bg) 100%)}}
-:root[data-theme="dark"] .hero{background:linear-gradient(180deg,#2A1518 0,var(--bg) 100%)}
+/* HERO：與首頁同款淡藍漸層（2026-11-10 個人品牌配色） */
+.hero{background:linear-gradient(180deg,#E4F4FA 0,var(--bg) 100%)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .hero{background:linear-gradient(180deg,#0F2C3D 0,var(--bg) 100%)}}
+:root[data-theme="dark"] .hero{background:linear-gradient(180deg,#0F2C3D 0,var(--bg) 100%)}
 .hero .wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center;padding-top:40px;padding-bottom:28px}
-.eye{font-size:13.5px;font-weight:700;color:var(--brand);letter-spacing:.04em;margin-bottom:10px}
+.eye{font-size:13.5px;font-weight:700;color:var(--brand-ink);letter-spacing:.04em;margin-bottom:10px}
 .hero h1{margin:0;font-size:32px;line-height:1.35;letter-spacing:.03em}
-.hero h1 em{font-style:normal;display:block;color:var(--brand)}
+.hero h1 em{font-style:normal;display:block;color:var(--brand-ink)}
 .hero p{margin:12px 0 0;color:var(--muted);font-size:16.5px;line-height:1.75;max-width:640px}
-.hphoto img{width:100%;max-width:260px;aspect-ratio:1/1;object-fit:cover;margin:0 auto;border-radius:50%;border:4px solid var(--card);box-shadow:0 0 0 2px #C8161D,0 10px 28px rgba(0,0,0,.14)}
+.hphoto img{width:100%;max-width:260px;aspect-ratio:1/1;object-fit:cover;margin:0 auto;border-radius:50%;padding:5px;background:var(--grad);box-shadow:0 10px 28px rgba(3,105,161,.22)}
 
 /* 按鈕 */
 .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
 .btn{display:inline-block;text-decoration:none;font-weight:700;font-size:16px;line-height:1.3;padding:11px 20px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);transition:border-color .15s,filter .15s}
 .btn:hover{border-color:var(--brand)}
-.btn.red{background:#C8161D;border-color:#C8161D;color:#fff}
-.btn.red:hover{filter:brightness(.93)}
+.btn.pri{background:var(--grad-btn);border-color:transparent;color:#fff}
+.btn.pri:hover{background:var(--grad-btn-hover)}
 .btn.green{background:var(--line-green);border-color:var(--line-green);color:#fff}
 .btn.green:hover{filter:brightness(.95)}
 
 /* 資歷條 */
 .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px}
-.st{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 12px;text-align:center;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.st{position:relative;overflow:hidden;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 12px;text-align:center;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.st::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--grad)}
 .st b{display:block;font-size:18px;line-height:1.4;color:var(--ink)}
 .st span{display:block;font-size:14px;color:var(--muted);margin-top:2px}
 
 /* 本頁目錄 */
 .toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
 .toc a{text-decoration:none;font-size:15px;font-weight:500;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 14px}
-.toc a:hover{border-color:var(--brand);color:var(--brand)}
+.toc a:hover{border-color:var(--brand);color:var(--brand-ink)}
 
 /* 段落 */
 section.blk{margin-top:52px;scroll-margin-top:90px}
 @media (max-width:760px){section.blk{scroll-margin-top:112px}}
-.tag{font-size:12.5px;font-weight:700;letter-spacing:.12em;color:var(--brand);margin:0 0 6px}
-section.blk h2{font-size:24px;margin:0;padding-left:12px;border-left:4px solid #C8161D;line-height:1.4}
+.tag{font-size:12.5px;font-weight:700;letter-spacing:.12em;color:var(--brand-ink);margin:0 0 6px}
+section.blk h2{font-size:24px;margin:0;padding-left:12px;border-left:4px solid var(--brand);border-image:linear-gradient(180deg,#0369A1,#06B6D4) 1;line-height:1.4}
 section.blk h2 em{font-style:normal;display:block;color:var(--muted);font-weight:700;font-size:19px}
 .lead{margin:12px 0 0;color:var(--muted);font-size:15.5px;line-height:1.75;max-width:760px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 1px 2px rgba(0,0,0,.05)}
@@ -72,7 +73,7 @@ section.blk h2 em{font-style:normal;display:block;color:var(--muted);font-weight
 .about{display:grid;grid-template-columns:.8fr 1.2fr;gap:36px;align-items:start}
 .about > div:first-child img{max-width:360px;border-radius:50%;border:1px solid var(--line);box-shadow:0 6px 18px rgba(0,0,0,.10)}
 .about .txt p{margin:14px 0 0;font-size:16px;line-height:1.85}
-.qbox{margin-top:18px;padding:18px 22px;border-left:4px solid #C8161D}
+.qbox{margin-top:18px;padding:18px 22px;border-left:4px solid var(--brand)}
 .qbox p{margin:0!important;font-size:17.5px!important;font-weight:700;line-height:1.8}
 
 /* 工具卡 */
@@ -86,7 +87,7 @@ section.blk h2 em{font-style:normal;display:block;color:var(--muted);font-weight
 
 /* 手冊 */
 .bk{display:grid;grid-template-columns:.7fr 1.3fr;gap:32px;align-items:start;margin-top:20px}
-.bkcover{background:#C8161D;color:#fff;border-radius:12px;padding:36px 26px;text-align:center;box-shadow:0 8px 22px rgba(200,22,29,.22)}
+.bkcover{background:linear-gradient(135deg,#075985 0,#0369A1 45%,#0891B2 100%);color:#fff;border-radius:12px;padding:36px 26px;text-align:center;box-shadow:0 8px 22px rgba(3,105,161,.25)}
 .bkcover .e{font-size:13px;opacity:.92;letter-spacing:.06em;margin-bottom:14px}
 .bkcover h3{margin:0;font-size:30px;line-height:1.35;letter-spacing:.04em}
 .bkcover .s{font-size:14px;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.4);line-height:1.7}
@@ -94,29 +95,31 @@ section.blk h2 em{font-style:normal;display:block;color:var(--muted);font-weight
 .bkbody .lead{margin-top:0;color:var(--ink)}
 .bklist{list-style:none;margin:14px 0 0;padding:0}
 .bklist li{position:relative;padding:8px 0 8px 22px;border-bottom:1px dashed var(--line);font-size:15.5px}
-.bklist li::before{content:"";position:absolute;left:4px;top:18px;width:7px;height:7px;border-radius:50%;background:#C8161D}
+.bklist li::before{content:"";position:absolute;left:4px;top:18px;width:7px;height:7px;border-radius:50%;background:var(--accent)}
 .claim-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
 .claim-step{background:var(--sun);border-radius:10px;padding:12px 14px}
-.claim-step b{display:block;font-size:12.5px;letter-spacing:.1em;color:var(--brand);margin-bottom:2px}
+.claim-step b{display:block;font-size:12.5px;letter-spacing:.1em;color:var(--brand-ink);margin-bottom:2px}
 .claim-step span{display:block;font-size:14.5px;line-height:1.6}
 .keyword{display:inline-block;margin-top:14px;padding:6px 14px;border:1px solid var(--line);border-radius:8px;font-size:15px}
-.keyword strong{color:var(--brand)}
+.keyword strong{color:var(--brand-ink)}
 .claim-note{margin:10px 0 0;font-size:14px;color:var(--muted)}
 
 /* 區域、承諾 */
 .areas{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
-.area{padding:18px 20px;border-top:3px solid #C8161D}
+.area{position:relative;overflow:hidden;padding:18px 20px}
+.area::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--grad)}
 .area h3{font-size:18px;margin:0 0 6px}
 .area p{margin:0;font-size:15px;color:var(--muted);line-height:1.7}
 .vows{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:20px}
 .vow{padding:18px 20px}
-.vow h3{font-size:18px;margin:0 0 6px;color:var(--brand)}
+.vow h3{font-size:18px;margin:0 0 6px;color:var(--brand-ink)}
 .vow p{margin:0;font-size:15px;color:var(--muted);line-height:1.75}
 
 /* 流程 */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
-.step{padding:16px 18px;border-top:3px solid #C8161D}
-.step b{font-size:12.5px;letter-spacing:.1em;color:var(--brand)}
+.step{position:relative;overflow:hidden;padding:16px 18px}
+.step::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--grad)}
+.step b{font-size:12.5px;letter-spacing:.1em;color:var(--brand-ink)}
 .step h3{font-size:18px;margin:4px 0 6px}
 .step p{margin:0;font-size:15px;color:var(--muted);line-height:1.7}
 
@@ -125,7 +128,7 @@ section.blk h2 em{font-style:normal;display:block;color:var(--muted);font-weight
 .cbox{padding:8px 22px 20px}
 .crow{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);align-items:center}
 .crow:last-of-type{border-bottom:none}
-.crow i{font-style:normal;width:36px;height:36px;flex:none;border-radius:50%;background:rgba(200,22,29,.10);color:var(--brand);display:grid;place-items:center;font-weight:700;font-size:15px}
+.crow i{font-style:normal;width:36px;height:36px;flex:none;border-radius:50%;background:var(--brand-soft);color:var(--brand-ink);display:grid;place-items:center;font-weight:700;font-size:15px}
 .crow s{text-decoration:none;display:block;font-size:12px;letter-spacing:.12em;color:var(--muted)}
 .crow b{display:block;font-size:17px;overflow-wrap:anywhere}
 .crow a{color:var(--ink);text-decoration:none}
@@ -144,10 +147,10 @@ section.blk h2 em{font-style:normal;display:block;color:var(--muted);font-weight
 .foot-more a:hover{color:var(--brand)}
 
 /* 手機快捷列 */
-.dock{position:fixed;left:0;right:0;bottom:0;z-index:900;display:none;background:#FFFFFF;border-top:1px solid #E6E9EC;box-shadow:0 -1px 6px rgba(0,0,0,.10)}
-.dock a{flex:1;text-align:center;padding:8px 2px 9px;text-decoration:none;font-size:12.5px;color:#3A4850;line-height:1.35}
-.dock a b{display:block;font-size:16px;color:#C8161D}
-.dock a.hi b{color:var(--line-green)}
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:900;display:none;background:#FFFFFF;border-top:1px solid #D7E6EF;box-shadow:0 -1px 6px rgba(0,0,0,.10)}
+.dock a{flex:1;text-align:center;padding:8px 2px 9px;text-decoration:none;font-size:12.5px;color:#33475A;line-height:1.35}
+.dock a b{display:block;font-size:16px;color:#0369A1}
+.dock a.hi b{color:#06893E}
 
 @media (max-width:900px){
   .tools,.areas{grid-template-columns:1fr}
@@ -320,7 +323,7 @@ section.blk h2 em{font-style:normal;display:block;color:var(--muted);font-weight
 </head>
 <body>
 <header class="topbar"><div class="topbar-in">
-  <a class="brand" href="../"><img src="../assets/logo-nra.png" alt="全國不動產"><span class="brand-t"><b>板橋阿陞聊房</b><small>全國不動產板橋加盟店・林津陞</small></span></a>
+  <a class="brand" href="../" aria-label="板橋阿陞聊房 首頁"><img src="../assets/brand/logo_wide.png" alt="板橋阿陞聊房" width="880" height="189"><span class="brand-t"><small>林津陞｜板橋在地房產顧問</small></span></a>
   <nav class="nav" aria-label="主選單">
     <a href="../">首頁</a>
     <a href="../map/">商圈地圖</a>
@@ -337,11 +340,11 @@ section.blk h2 em{font-style:normal;display:block;color:var(--muted);font-weight
 
 <section class="hero" id="top"><div class="wrap">
   <div>
-    <div class="eye">板橋房仲・新北房仲・全國不動產板橋加盟店</div>
+    <div class="eye">板橋阿陞聊房・板橋在地房產顧問</div>
     <h1>買房賣房，<em>阿陞幫你想在前面。</em></h1>
     <p>行情、屋況、貸款、稅務、交易流程，我把該講的話先講清楚。少一點話術，多一點站在你這邊的判斷。做這行 16 年，我寧可你這次不買，也不要你買錯。</p>
     <div class="btns">
-      <a class="btn red" href="#book">免費領取《買房避坑攻略》</a>
+      <a class="btn pri" href="#book">免費領取《買房避坑攻略》</a>
       <a class="btn" href="#contact">直接找我聊聊</a>
     </div>
   </div>
@@ -371,7 +374,7 @@ section.blk h2 em{font-style:normal;display:block;color:var(--muted);font-weight
       <div class="txt">
         <div class="tag">ABOUT</div>
         <h2>房子是價格，<em>成家是人生。</em></h2>
-        <p>我是<strong>林津陞</strong>，大家都叫我阿陞，服務於<strong>全國不動產板橋加盟店</strong>，專注板橋與新北的房地產買賣，到今年剛好 16 年。</p>
+        <p>我是<strong>林津陞</strong>，大家都叫我阿陞，服務於全國不動產板橋加盟店，專注板橋與新北的房地產買賣，到今年剛好 16 年。</p>
         <p>這些年我最常聽到客戶說的一句話是「早知道就好了」。早知道契稅不是用成交價算的、早知道實價登錄現在查得到門牌、早知道履約保證是什麼——這些事情都不難，難的是沒有人跟你講。</p>
         <p>所以我做的方式跟很多人不太一樣：我會主動講這間房子的缺點，會告訴你我查了什麼、什麼查不到，也會在你該踩煞車的時候叫你先等一下。</p>
         <div class="qbox card"><p>買錯的客戶不會再回來，也不會介紹朋友給我。<br>那我這 16 年，就白做了。</p></div>
@@ -410,7 +413,7 @@ section.blk h2 em{font-style:normal;display:block;color:var(--muted);font-weight
     <h2>不是催你趕快買，<em>是希望你知道哪裡該多問一句。</em></h2>
     <div class="bk">
       <div class="bkcover">
-        <div class="e">全國不動產 ｜ 專業顧問 林津陞</div>
+        <div class="e">板橋阿陞聊房 ｜ 林津陞</div>
         <h3>買房避坑攻略</h3>
         <div class="s">給台灣購屋客戶的完全手冊<br>2026 年版 ・ 免費贈閱</div>
       </div>
@@ -492,7 +495,7 @@ section.blk h2 em{font-style:normal;display:block;color:var(--muted);font-weight
         <div class="crow"><i>⌂</i><div><s>ADDRESS</s><b>新北市板橋區文化路二段 37 號</b></div></div>
         <div class="btns">
           <a class="btn green" href="https://line.me/R/ti/p/%40banqiao.asheng" target="_blank" rel="noopener">加 LINE 找阿陞</a>
-          <a class="btn red" href="tel:0925635678">直接撥電話</a>
+          <a class="btn pri" href="tel:0925635678">直接撥電話</a>
         </div>
       </div>
       <div>
@@ -511,17 +514,18 @@ section.blk h2 em{font-style:normal;display:block;color:var(--muted);font-weight
 <footer class="site-foot"><div class="wrap">
   <b>☆預約看屋請聯絡：林津陞 0925-635-678</b><br>
   加官方 LINE：@banqiao.asheng，聊天室輸入「攻略」，系統自動傳送《買房避坑攻略》電子檔（約2萬字／38頁）<br>
-  全國不動產板橋加盟店<br>
+  <div class="disc-full">全國不動產板橋加盟店<br>
   經紀業｜非凡不動產有限公司<br>
   經紀人｜謝政峯（99）北縣字第002181號<br>
-  營業員｜林津陞（99）登字第148103號
+  營業員｜林津陞（99）登字第148103號</div>
   <div class="foot-more">
     <b>林津陞（阿陞）</b>　板橋在地房產顧問，16 年資歷。全國不動產 板橋加盟店　副理<br>
     新北市板橋區文化路二段 37 號<br>
     免費工具：<a href="https://loan.banqiaoasheng.com/" target="_blank" rel="noopener">青安 3.0 專區</a><a href="https://tax.banqiaoasheng.com/" target="_blank" rel="noopener">房產稅務小幫手</a><a href="#book">買房避坑攻略領取方式</a><br>
     聯絡方式：<a href="tel:0925635678">手機 0925-635-678</a><a href="https://line.me/R/ti/p/%40banqiao.asheng" target="_blank" rel="noopener">LINE @banqiao.asheng</a>
   </div>
-  <span class="fine">本網站資訊依內政部、財政部及各地方主管機關公告資料整理，僅供參考。個別案件情形不同，實際交易請依個案狀況並諮詢地政士、律師、會計師等專業人士意見。所有稅費與貸款試算均為概算，實際金額以稅捐機關核定及承辦銀行審核為準。本網站不構成投資建議。<br>© 2026 林津陞</span>
+  <span class="fine">本網站資訊依內政部、財政部及各地方主管機關公告資料整理，僅供參考。個別案件情形不同，實際交易請依個案狀況並諮詢地政士、律師、會計師等專業人士意見。所有稅費與貸款試算均為概算，實際金額以稅捐機關核定及承辦銀行審核為準。本網站不構成投資建議。</span>
+  <div class="copy">© 林津陞　板橋阿陞聊房</div>
 </div></footer>
 
 <nav class="dock" aria-label="快捷連結">

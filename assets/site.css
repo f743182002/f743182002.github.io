@@ -1,61 +1,76 @@
-/* 板橋阿陞聊房 總站共用樣式 */
+/* 板橋阿陞聊房 總站共用樣式
+   2026-11-10 個人品牌改版（林津陞：不再用公司 LOGO、不再用紅色當主色，改「C 漸層科技」配色）。
+   主色深藍 #0369a1、深藍字 #075985、點綴青 #06b6d4；漸層只用在點綴（頂部光帶、主要按鈕、卡片上緣）。
+   酒紅 #8B1E3F 只在 LOGO 圖裡出現，不當介面色。LINE 按鈕維持 LINE 綠。 */
 :root{
-  --bg:#F5FAFD; --card:#FFFFFF; --ink:#1F2B33; --muted:#5F6F78; --line:#DCE6EC;
-  --brand:#C8161D; --brand-ink:#FFFFFF; --sun:#FFF3D6; --accent:#F2A93B; --line-green:#06C755;
+  --bg:#F2F8FB; --card:#FFFFFF; --ink:#0F2233; --muted:#4C5E6E; --line:#D7E6EF; --line-strong:#B9D0DE;
+  --brand:#0369A1; --brand-ink:#075985; --brand-on:#FFFFFF; --brand-soft:#E4F4FA; --brand-line:#A5DBEA;
+  --accent:#06B6D4; --surface:#F6FBFD; --sun:#E4F4FA; --warn:#B26A00; --line-green:#06893E;
+  --grad:linear-gradient(90deg,#0369A1,#06B6D4);
+  --grad-btn:linear-gradient(90deg,#0369A1,#0891B2);
+  --grad-btn-hover:linear-gradient(90deg,#075985,#0E7490);
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#10181E; --card:#18232B; --ink:#E8EEF2; --muted:#9AAAB4; --line:#2A3943;
-    --brand:#FF7A7A; --brand-ink:#FFFFFF; --sun:#2A2416;
+    --bg:#0B1620; --card:#12212D; --ink:#E6F0F6; --muted:#9DB0BF; --line:#23384A; --line-strong:#2F4A60;
+    --brand:#5CC8EC; --brand-ink:#7DD3FC; --brand-soft:#0F2C3D; --brand-line:#1E5470; --surface:#0E1B25; --sun:#0F2C3D; --warn:#F6C27A;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#10181E; --card:#18232B; --ink:#E8EEF2; --muted:#9AAAB4; --line:#2A3943;
-  --brand:#FF7A7A; --brand-ink:#FFFFFF; --sun:#2A2416;
+  --bg:#0B1620; --card:#12212D; --ink:#E6F0F6; --muted:#9DB0BF; --line:#23384A; --line-strong:#2F4A60;
+  --brand:#5CC8EC; --brand-ink:#7DD3FC; --brand-soft:#0F2C3D; --brand-line:#1E5470; --surface:#0E1B25; --sun:#0F2C3D; --warn:#F6C27A;
 }
 *{box-sizing:border-box}
 html,body{margin:0}
 body{font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;-webkit-text-size-adjust:100%}
 a{color:var(--brand)}
-.topbar{position:sticky;top:0;z-index:1000;background:#FFFFFF;color:#1F2B33;border-bottom:1px solid #E6E9EC;box-shadow:0 1px 6px rgba(0,0,0,.12)}
-.topbar-in{max-width:1200px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:16px}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#1F2B33;line-height:1.25;white-space:nowrap;min-width:0}
-.brand img{height:34px;width:auto;flex:0 0 auto;padding-right:12px;border-right:1px solid #DCE1E5}
-.brand-t{display:flex;flex-direction:column;min-width:0}
-.brand b{font-size:19px;letter-spacing:.02em}
-.brand small{font-size:12.5px;color:#56656E}
+
+/* 頁首：深色模式也維持白底，LOGO 才看得清楚 */
+.topbar{position:sticky;top:0;z-index:1000;background:#FFFFFF;color:#0F2233;border-bottom:1px solid #D7E6EF;box-shadow:0 1px 6px rgba(15,34,51,.10)}
+.topbar::before{content:"";display:block;height:3px;background:var(--grad)}
+.topbar-in{max-width:1200px;margin:0 auto;padding:9px 16px;display:flex;align-items:center;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#0F2233;line-height:1.25;white-space:nowrap;min-width:0}
+.brand img{height:38px;width:auto;flex:0 0 auto;display:block}
+.brand-t{display:flex;flex-direction:column;min-width:0;padding-left:12px;border-left:1px solid #D7E6EF}
+.brand small{font-size:13px;color:#4C5E6E;font-weight:500}
 .nav{display:flex;gap:2px;flex:1;overflow-x:auto;scrollbar-width:none}
 .nav::-webkit-scrollbar{display:none}
-.nav a{white-space:nowrap;text-decoration:none;color:#3A4850;padding:7px 11px;border-radius:8px;font-size:15.5px;font-weight:500}
-.nav a:hover{color:#C8161D;background:#FDECEC}
-.nav a[aria-current="page"]{color:#C8161D;background:#FDECEC;font-weight:700}
+.nav a{white-space:nowrap;text-decoration:none;color:#33475A;padding:7px 11px;border-radius:8px;font-size:15.5px;font-weight:500}
+.nav a:hover{color:#075985;background:#E4F4FA}
+.nav a[aria-current="page"]{color:#075985;background:#E4F4FA;font-weight:700;box-shadow:inset 0 -2px 0 #06B6D4}
 .btn-line{display:inline-flex;align-items:center;min-height:40px;white-space:nowrap;background:#06893E;color:#fff;text-decoration:none;font-weight:700;padding:9px 18px;border-radius:999px;font-size:15px;line-height:1.3}
 .btn-line:hover{filter:brightness(.95)}
 .wrap{max-width:1200px;margin:0 auto;padding:0 16px}
-.disc-bar{background:#7A0D10;color:#FFF2F2;font-size:13px;line-height:1.6;letter-spacing:.01em}
-.disc-bar .wrap{padding-top:5px;padding-bottom:5px}
-.site-foot{border-top:3px solid #C8161D;background:var(--card);margin-top:48px}
+
+/* 法定揭露（不動產經紀業管理條例 §21）：小字、中性色，但對比 ≥ 4.5:1，不可刪 */
+.disc-bar{background:var(--surface);color:var(--muted);border-bottom:1px solid var(--line);font-size:12.5px;line-height:1.6;letter-spacing:.01em}
+.disc-bar .wrap{padding-top:4px;padding-bottom:4px}
+
+/* 頁尾 */
+.site-foot{background:var(--card);margin-top:48px;border-top:1px solid var(--line)}
+.site-foot::before{content:"";display:block;height:3px;background:var(--grad)}
 .site-foot .wrap{padding-top:22px;padding-bottom:32px;font-size:14px;color:var(--ink);line-height:1.9}
 .site-foot b{color:var(--ink);font-size:15px}
+.site-foot .disc-full{margin-top:10px;font-size:13px;line-height:1.75;color:var(--muted)}
 .site-foot .fine{display:block;margin-top:8px;color:var(--muted);font-size:13px;line-height:1.7}
+.site-foot .copy{margin-top:12px;padding-top:10px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+
 @media (max-width:760px){
   .topbar-in{flex-wrap:wrap;gap:6px 8px;padding:8px 16px 4px}
   .brand{flex:1;gap:8px}
-  .brand img{height:22px;padding-right:8px}
-  .brand b{font-size:17px}
-  .brand small{font-size:11.5px;white-space:normal}
+  .brand img{height:30px}
+  .brand-t{padding-left:8px}
+  .brand small{font-size:12px;white-space:normal}
   .btn-line{padding:7px 13px;font-size:14px}
   .nav{order:3;flex-basis:100%;margin:0 -16px;padding:0 10px 2px}
   .nav a{font-size:15px;padding:7px 10px}
-  .disc-bar{font-size:12.5px}
 }
 @media (max-width:440px){
-  .brand small{display:none}
-  .brand b{font-size:18px}
+  .brand-t{display:none}
 }
 /* 手機底部快捷列（首頁、地圖） */
-.dock2{position:fixed;left:0;right:0;bottom:0;z-index:1200;display:none;gap:8px;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:#FFFFFF;border-top:1px solid #E6E9EC;box-shadow:0 -2px 8px rgba(0,0,0,.12)}
+.dock2{position:fixed;left:0;right:0;bottom:0;z-index:1200;display:none;gap:8px;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:#FFFFFF;border-top:1px solid #D7E6EF;box-shadow:0 -2px 8px rgba(15,34,51,.12)}
 .dock2 a{flex:1;display:flex;align-items:center;justify-content:center;min-height:46px;border-radius:999px;font-weight:700;font-size:16px;text-decoration:none}
 .dock2 .d-line{background:#06893E;color:#fff}
-.dock2 .d-tel{background:#fff;color:#C8161D;border:2px solid #C8161D}
+.dock2 .d-tel{background:#fff;color:#075985;border:2px solid #0369A1}
 @media (max-width:760px){.dock2{display:flex}body.has-dock2{padding-bottom:72px}}

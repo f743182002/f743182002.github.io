@@ -8,15 +8,18 @@
       （origin＝簡報 SITE 的原點，沒有就用 data/communities.json 的座標）
   - data/communities.json 的社區名、臨路
 輸出：data/layout/<社區名>.svg（只給 viewBox，寬度自適應，手機寬度看得完整；內容沒變不改檔）
-門牌：每個門牌依國土測繪中心座標畫紅點＋獨立小標籤，標籤彼此不重疊（放不下往外推、拉引線）。
+門牌：每個門牌依國土測繪中心座標畫藍點＋獨立小標籤，標籤彼此不重疊（放不下往外推、拉引線）。
 
 
 用法：python3 scripts/door_layout.py [repo根目錄] [社區名 ...]
 """
 import json, math, os, sys, html
 
-RED = "#C8161D"
-INK = "#1F2B33"
+# 2026-11-10 個人品牌配色（C 漸層科技）：主色深藍、深藍字、點綴青；不再用總站紅
+BRAND = "#0369A1"
+BRAND_INK = "#075985"
+CYAN = "#06B6D4"
+INK = "#0F2233"
 GREY = "#8A969E"
 
 
@@ -197,8 +200,8 @@ def render(name, site, comm, doors, out_path=None):
     placed = place_labels([(n, labs[n], P(q)) for n, q in kept], (ox + 2, oy + 2, ox + mapW - 2, oy + mapH - 2), 12, keep_out)
     # 附註（依寬度換行）
     notes = [("棟別門牌配置示意" if kept else "棟別配置示意") + "，僅供參考；實際以現場、門牌及使用執照為準。",
-             ("本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap、門牌位置 內政部國土測繪中心門牌定位（紅點為門牌實際位置）。"
-              if kept else "本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap，紅框為本社區。")]
+             ("本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap、門牌位置 內政部國土測繪中心門牌定位（藍點為門牌實際位置）。"
+              if kept else "本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap，藍框為本社區。")]
     note_lines = []
     for t in notes:
         cur = ""
@@ -211,7 +214,8 @@ def render(name, site, comm, doors, out_path=None):
     o = []
     o.append('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 %d %d" preserveAspectRatio="xMidYMin meet" '
              'style="width:100%%;height:auto;max-width:%dpx" font-family="Noto Sans TC, Microsoft JhengHei, PingFang TC, sans-serif">' % (W, H, W * 2))
-    o.append('<rect width="100%" height="100%" fill="#FFFFFF"/><rect width="100%" height="6" fill="{0}"/>'.format(RED))
+    o.append('<defs><linearGradient id="band" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="{0}"/><stop offset="1" stop-color="{1}"/></linearGradient></defs>'.format(BRAND, CYAN))
+    o.append('<rect width="100%" height="100%" fill="#FFFFFF"/><rect width="100%" height="6" fill="url(#band)"/>')
     o.append('<text x="%d" y="44" font-size="24" font-weight="700" fill="%s">%s</text>' % (M, INK, e(name)))
     sub = "棟別門牌配置示意" if kept else "棟別配置示意"
     if common:
@@ -240,7 +244,7 @@ def render(name, site, comm, doors, out_path=None):
         if r.get("n") and vis:
             labels.append((r["n"], vis))
     for b in me:
-        o.append('<path d="%s" fill="#FFFFFF" stroke="%s" stroke-width="2.5" stroke-linejoin="round"/>' % (path(b["p"]), RED))
+        o.append('<path d="%s" fill="#FFFFFF" stroke="%s" stroke-width="2.5" stroke-linejoin="round"/>' % (path(b["p"]), BRAND))
     o.append('</g>')
     used = set()
     for n, vis in labels:
@@ -254,23 +258,23 @@ def render(name, site, comm, doors, out_path=None):
     # 棟名（有名字才寫，放在棟中心；門牌另外用小標籤）
     for title, cx, cy in titles:
         if True:
-            o.append('<text x="%.1f" y="%.1f" font-size="14" font-weight="700" fill="%s" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">%s</text>' % (cx, cy + 5, RED, e(title)))
-    # 門牌：紅點＝國土測繪中心門牌定位；標籤彼此不重疊，離點遠的拉引線
+            o.append('<text x="%.1f" y="%.1f" font-size="14" font-weight="700" fill="%s" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">%s</text>' % (cx, cy + 5, BRAND_INK, e(title)))
+    # 門牌：藍點＝國土測繪中心門牌定位；標籤彼此不重疊，離點遠的拉引線
     for no, lab, (px, py), box, lead in placed:
         if lead:
             bx = min(max(px, box[0]), box[2]); by = min(max(py, box[1]), box[3])
             o.append('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="%s" stroke-width="1"/>' % (px, py, bx, by, GREY))
     for no, lab, (px, py), box, lead in placed:
-        o.append('<circle cx="%.1f" cy="%.1f" r="3.2" fill="%s" stroke="#FFFFFF" stroke-width="1.2"/>' % (px, py, RED))
+        o.append('<circle cx="%.1f" cy="%.1f" r="3.2" fill="%s" stroke="#FFFFFF" stroke-width="1.2"/>' % (px, py, BRAND))
     for no, lab, (px, py), box, lead in placed:
         o.append('<rect x="%.1f" y="%.1f" width="%.1f" height="%.1f" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="%s" stroke-width="1"/>' % (
-            box[0], box[1], box[2] - box[0], box[3] - box[1], RED))
+            box[0], box[1], box[2] - box[0], box[3] - box[1], BRAND))
         o.append('<text x="%.1f" y="%.1f" font-size="12" font-weight="700" fill="%s" text-anchor="middle">%s</text>' % (
             (box[0] + box[2]) / 2, box[3] - 5, INK, e(lab)))
     # 指北針
-    o.append('<circle cx="%.1f" cy="%.1f" r="18" fill="#FFFFFF" stroke="%s" stroke-width="2.5"/>' % (nx, ny, RED))
-    o.append('<path d="M%.1f,%.1f L%.1f,%.1f L%.1f,%.1f L%.1f,%.1f Z" fill="%s"/>' % (nx, ny - 13, nx + 7, ny + 8, nx, ny + 3, nx - 7, ny + 8, RED))
-    o.append('<text x="%.1f" y="%.1f" font-size="12" font-weight="700" fill="%s" text-anchor="middle">北</text>' % (nx, ny + 34, RED))
+    o.append('<circle cx="%.1f" cy="%.1f" r="18" fill="#FFFFFF" stroke="%s" stroke-width="2.5"/>' % (nx, ny, BRAND))
+    o.append('<path d="M%.1f,%.1f L%.1f,%.1f L%.1f,%.1f L%.1f,%.1f Z" fill="%s"/>' % (nx, ny - 13, nx + 7, ny + 8, nx, ny + 3, nx - 7, ny + 8, BRAND))
+    o.append('<text x="%.1f" y="%.1f" font-size="12" font-weight="700" fill="%s" text-anchor="middle">北</text>' % (nx, ny + 34, BRAND_INK))
     # 比例尺 50m
     o.append('<line x1="%.1f" y1="%.1f" x2="%.1f" y2="%.1f" stroke="%s" stroke-width="2.5"/>' % (sx, sy, sx + 50 * scale, sy, INK))
     o.append('<text x="%.1f" y="%.1f" font-size="12" fill="%s">約 50 公尺</text>' % (sx, sy - 7, INK))
@@ -290,25 +294,26 @@ VIEWER = """<!doctype html>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>棟別配置圖｜板橋阿陞聊房</title>
-<style>html,body{margin:0;background:#fff;font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif;color:#1F2B33;-webkit-text-size-adjust:100%}
-.top{display:flex;align-items:center;gap:10px;padding:8px 16px;border-bottom:1px solid #E3E6E8;background:#fff}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#1F2B33;min-width:0}
-.brand img{height:30px;width:auto;padding-right:10px;border-right:1px solid #DCE1E5}
-.brand b{font-size:17px;white-space:nowrap}.top .sp{flex:1}
+<style>html,body{margin:0;background:#fff;font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif;color:#0F2233;-webkit-text-size-adjust:100%}
+.top{display:flex;align-items:center;gap:10px;padding:8px 16px;border-bottom:1px solid #D7E6EF;background:#fff;border-top:3px solid #0369A1;border-image:linear-gradient(90deg,#0369A1,#06B6D4) 1 0 0 0}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#0F2233;min-width:0}
+.brand img{height:34px;width:auto;display:block}
+.top .sp{flex:1}
 .btn-line{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:22px;background:#06893E;color:#fff;text-decoration:none;font-weight:700;font-size:15px;white-space:nowrap}
-.disc{background:#7A0D10;color:#FFF2F2;font-size:13px;line-height:1.6;padding:5px 16px}
+.disc{background:#F6FBFD;color:#4C5E6E;border-bottom:1px solid #D7E6EF;font-size:12.5px;line-height:1.6;padding:4px 16px}
 main{max-width:960px;margin:0 auto;padding:8px}img{display:block;width:100%;height:auto}
-main a{color:#C8161D;font-size:15px;display:inline-block;padding:10px 8px}
-.foot{max-width:960px;margin:8px auto 0;padding:14px 16px 28px;border-top:1px solid #E3E6E8;font-size:13.5px;line-height:1.8;color:#5F6F78}
-.foot a{color:#1F2B33}
-@media (max-width:420px){.brand img{height:24px;padding-right:8px}.brand b{font-size:15px}.disc{font-size:12.5px}}</style></head>
-<body><header class="top"><a class="brand" href="../../"><img src="../../assets/logo-nra.png" alt="全國不動產"><b>板橋阿陞聊房</b></a><span class="sp"></span>
+main a{color:#075985;font-size:15px;display:inline-block;padding:10px 8px}
+.foot{max-width:960px;margin:8px auto 0;padding:14px 16px 28px;border-top:1px solid #D7E6EF;font-size:13.5px;line-height:1.8;color:#4C5E6E}
+.foot a{color:#075985}.foot b{color:#0F2233}
+.foot .copy{margin-top:8px;font-size:13px}
+@media (max-width:420px){.brand img{height:28px}}</style></head>
+<body><header class="top"><a class="brand" href="../../"><img src="../../assets/brand/logo_wide.png" alt="板橋阿陞聊房" width="880" height="189"></a><span class="sp"></span>
 <a class="btn-line" href="https://line.me/R/ti/p/%40banqiao.asheng" target="_blank" rel="noopener">加 LINE</a></header>
 <div class="disc">全國不動產板橋加盟店｜經紀業 非凡不動產有限公司｜經紀人 謝政峯（99）北縣字第002181號｜營業員 林津陞（99）登字第148103號</div>
 <main><a href="../../map/">← 回商圈地圖</a><img id="g" alt="棟別配置圖"><p id="m" hidden>找不到這個社區的配置圖。</p></main>
 <footer class="foot"><b>☆預約看屋請聯絡：林津陞 <a href="tel:0925635678">0925-635-678</a></b><br>
 加官方 LINE：<a href="https://line.me/R/ti/p/%40banqiao.asheng" target="_blank" rel="noopener">@banqiao.asheng</a>，聊天室輸入「攻略」，系統自動傳送《買房避坑攻略》電子檔（約2萬字／38頁）<br>
-全國不動產板橋加盟店<br>經紀業｜非凡不動產有限公司<br>經紀人｜謝政峯（99）北縣字第002181號<br>營業員｜林津陞（99）登字第148103號</footer>
+全國不動產板橋加盟店<br>經紀業｜非凡不動產有限公司<br>經紀人｜謝政峯（99）北縣字第002181號<br>營業員｜林津陞（99）登字第148103號<div class="copy">© 林津陞　板橋阿陞聊房</div></footer>
 <script>
 (function(){var n=new URLSearchParams(location.search).get('n')||'';var g=document.getElementById('g');
 if(!n||/[\\/\\\\.]/.test(n)){g.hidden=true;document.getElementById('m').hidden=false;return}

@@ -1,6 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 803" preserveAspectRatio="xMidYMin meet" style="width:100%;height:auto;max-width:1280px" font-family="Noto Sans TC, Microsoft JhengHei, PingFang TC, sans-serif">
-<rect width="100%" height="100%" fill="#FFFFFF"/><rect width="100%" height="6" fill="#C8161D"/>
-<text x="20" y="44" font-size="24" font-weight="700" fill="#1F2B33">鑑築</text>
+<defs><linearGradient id="band" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#0369A1"/><stop offset="1" stop-color="#06B6D4"/></linearGradient></defs>
+<rect width="100%" height="100%" fill="#FFFFFF"/><rect width="100%" height="6" fill="url(#band)"/>
+<text x="20" y="44" font-size="24" font-weight="700" fill="#0F2233">鑑築</text>
 <text x="20" y="72" font-size="14" fill="#8A969E">棟別門牌配置示意</text>
 <defs><clipPath id="c"><rect x="60.1" y="96.0" width="519.8" height="600.0" rx="10"/></clipPath></defs>
 <rect x="60.1" y="96.0" width="519.8" height="600.0" rx="10" fill="#F4F6F7" stroke="#DCE1E5"/>
@@ -25,39 +26,39 @@
 <path d="M2106.4,796.4 L2028.1,900.6 L1874.0,1014.3 L1720.5,1059.8 L1418.0,1104.0 L925.4,1146.9 L816.1,1140.6 L728.9,1110.9 L539.5,776.2 L471.9,728.8" fill="none" stroke="#F2C14E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M548.9,274.7 L500.3,306.9 L399.9,323.4" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M548.9,274.7 L500.3,306.9 L399.9,323.4" fill="none" stroke="#F2C14E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M278.0,531.8 L405.6,452.8 L414.4,443.4 L415.7,429.5 L413.2,416.8 L317.8,260.2 L231.3,317.7 L270.4,376.4 L281.8,369.5 L317.2,417.5 L296.9,428.2 L280.5,407.4 L224.3,445.9 L248.3,481.3 L243.3,483.8 L258.4,509.1 L262.8,505.3 Z" fill="#FFFFFF" stroke="#C8161D" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M278.0,531.8 L405.6,452.8 L414.4,443.4 L415.7,429.5 L413.2,416.8 L317.8,260.2 L231.3,317.7 L270.4,376.4 L281.8,369.5 L317.2,417.5 L296.9,428.2 L280.5,407.4 L224.3,445.9 L248.3,481.3 L243.3,483.8 L258.4,509.1 L262.8,505.3 Z" fill="#FFFFFF" stroke="#0369A1" stroke-width="2.5" stroke-linejoin="round"/>
 </g>
 <text x="538.8" y="474.8" font-size="14" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">萬板路</text>
 <text x="456.7" y="420.5" font-size="14" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">民生路二段226巷</text>
 <text x="528.7" y="538.6" font-size="14" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">莊敬路</text>
-<circle cx="296.3" cy="270.9" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
-<circle cx="313.9" cy="474.0" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
-<circle cx="320.9" cy="313.9" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
-<circle cx="343.7" cy="346.1" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
-<circle cx="350.2" cy="458.0" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
-<circle cx="372.7" cy="376.4" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
-<circle cx="380.8" cy="436.3" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
-<rect x="301.3" y="261.9" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
-<text x="315.8" y="274.9" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">160</text>
-<rect x="318.9" y="465.0" width="114.8" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
-<text x="376.3" y="478.0" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">民生路二段226巷35</text>
-<rect x="325.9" y="304.9" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
-<text x="340.4" y="317.9" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">162</text>
-<rect x="348.7" y="337.1" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
-<text x="363.1" y="350.1" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">166</text>
-<rect x="248.5" y="439.0" width="114.8" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
-<text x="305.9" y="452.0" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">民生路二段226巷37</text>
-<rect x="377.7" y="367.4" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
-<text x="392.2" y="380.4" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">168</text>
-<rect x="385.8" y="427.3" width="114.8" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
-<text x="443.2" y="440.3" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">民生路二段226巷39</text>
-<circle cx="549.9" cy="130.0" r="18" fill="#FFFFFF" stroke="#C8161D" stroke-width="2.5"/>
-<path d="M549.9,117.0 L556.9,138.0 L549.9,133.0 L542.9,138.0 Z" fill="#C8161D"/>
-<text x="549.9" y="164.0" font-size="12" font-weight="700" fill="#C8161D" text-anchor="middle">北</text>
-<line x1="74.1" y1="680.0" x2="389.9" y2="680.0" stroke="#1F2B33" stroke-width="2.5"/>
-<text x="74.1" y="673.0" font-size="12" fill="#1F2B33">約 50 公尺</text>
-<text x="20" y="722.0" font-size="13" fill="#1F2B33">棟別門牌配置示意，僅供參考；實際以現場、門牌及使用執照為準。</text>
-<text x="20" y="741.0" font-size="13" fill="#1F2B33">本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap、門牌位置 內政部國土測繪中心門牌定位</text>
-<text x="20" y="760.0" font-size="13" fill="#1F2B33">（紅點為門牌實際位置）。</text>
+<circle cx="296.3" cy="270.9" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="313.9" cy="474.0" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="320.9" cy="313.9" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="343.7" cy="346.1" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="350.2" cy="458.0" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="372.7" cy="376.4" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="380.8" cy="436.3" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<rect x="301.3" y="261.9" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="315.8" y="274.9" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">160</text>
+<rect x="318.9" y="465.0" width="114.8" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="376.3" y="478.0" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">民生路二段226巷35</text>
+<rect x="325.9" y="304.9" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="340.4" y="317.9" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">162</text>
+<rect x="348.7" y="337.1" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="363.1" y="350.1" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">166</text>
+<rect x="248.5" y="439.0" width="114.8" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="305.9" y="452.0" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">民生路二段226巷37</text>
+<rect x="377.7" y="367.4" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="392.2" y="380.4" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">168</text>
+<rect x="385.8" y="427.3" width="114.8" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="443.2" y="440.3" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">民生路二段226巷39</text>
+<circle cx="549.9" cy="130.0" r="18" fill="#FFFFFF" stroke="#0369A1" stroke-width="2.5"/>
+<path d="M549.9,117.0 L556.9,138.0 L549.9,133.0 L542.9,138.0 Z" fill="#0369A1"/>
+<text x="549.9" y="164.0" font-size="12" font-weight="700" fill="#075985" text-anchor="middle">北</text>
+<line x1="74.1" y1="680.0" x2="389.9" y2="680.0" stroke="#0F2233" stroke-width="2.5"/>
+<text x="74.1" y="673.0" font-size="12" fill="#0F2233">約 50 公尺</text>
+<text x="20" y="722.0" font-size="13" fill="#0F2233">棟別門牌配置示意，僅供參考；實際以現場、門牌及使用執照為準。</text>
+<text x="20" y="741.0" font-size="13" fill="#0F2233">本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap、門牌位置 內政部國土測繪中心門牌定位</text>
+<text x="20" y="760.0" font-size="13" fill="#0F2233">（藍點為門牌實際位置）。</text>
 <text x="20" y="783.0" font-size="11" fill="#8A969E">道路底圖 © OpenStreetMap 貢獻者</text>
 </svg>

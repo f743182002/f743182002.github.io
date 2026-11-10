@@ -1,6 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 784" preserveAspectRatio="xMidYMin meet" style="width:100%;height:auto;max-width:1280px" font-family="Noto Sans TC, Microsoft JhengHei, PingFang TC, sans-serif">
-<rect width="100%" height="100%" fill="#FFFFFF"/><rect width="100%" height="6" fill="#C8161D"/>
-<text x="20" y="44" font-size="24" font-weight="700" fill="#1F2B33">昇陽文化廳</text>
+<defs><linearGradient id="band" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#0369A1"/><stop offset="1" stop-color="#06B6D4"/></linearGradient></defs>
+<rect width="100%" height="100%" fill="#FFFFFF"/><rect width="100%" height="6" fill="url(#band)"/>
+<text x="20" y="44" font-size="24" font-weight="700" fill="#0F2233">昇陽文化廳</text>
 <text x="20" y="72" font-size="14" fill="#8A969E">棟別門牌配置示意</text>
 <defs><clipPath id="c"><rect x="20.0" y="96.0" width="600.0" height="581.1" rx="10"/></clipPath></defs>
 <rect x="20.0" y="96.0" width="600.0" height="581.1" rx="10" fill="#F4F6F7" stroke="#DCE1E5"/>
@@ -47,60 +48,60 @@
 <path d="M379.2,1199.2 L510.6,939.5" fill="none" stroke="#F2C14E" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M-34.7,867.4 L86.3,1006.8 L235.6,1309.7" fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M-34.7,867.4 L86.3,1006.8 L235.6,1309.7" fill="none" stroke="#F2C14E" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M285.0,487.8 L382.3,540.3 L483.3,355.2 L386.0,303.2 L367.1,337.9 L362.9,363.1 L325.5,431.0 L303.4,454.1 Z" fill="#FFFFFF" stroke="#C8161D" stroke-width="2.5" stroke-linejoin="round"/>
-<path d="M156.7,421.5 L253.5,472.0 L275.0,430.4 L279.8,401.0 L312.4,340.5 L330.8,325.3 L352.9,283.2 L256.1,232.7 Z" fill="#FFFFFF" stroke="#C8161D" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M285.0,487.8 L382.3,540.3 L483.3,355.2 L386.0,303.2 L367.1,337.9 L362.9,363.1 L325.5,431.0 L303.4,454.1 Z" fill="#FFFFFF" stroke="#0369A1" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M156.7,421.5 L253.5,472.0 L275.0,430.4 L279.8,401.0 L312.4,340.5 L330.8,325.3 L352.9,283.2 L256.1,232.7 Z" fill="#FFFFFF" stroke="#0369A1" stroke-width="2.5" stroke-linejoin="round"/>
 </g>
 <text x="244.0" y="126.4" font-size="14" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">光武街</text>
 <text x="409.1" y="231.6" font-size="14" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">光武街2巷</text>
 <text x="89.9" y="525.6" font-size="14" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">民生路三段</text>
 <text x="285.6" y="166.4" font-size="14" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">光武街4巷</text>
 <text x="553.2" y="660.7" font-size="14" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">文化路二段</text>
-<circle cx="228.8" cy="443.7" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
-<circle cx="254.8" cy="252.4" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
-<circle cx="276.0" cy="265.2" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
-<circle cx="281.3" cy="368.7" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
-<circle cx="307.8" cy="280.3" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
-<circle cx="332.7" cy="290.2" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
-<circle cx="356.1" cy="403.5" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
-<circle cx="361.4" cy="518.7" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
-<circle cx="394.3" cy="318.7" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
-<circle cx="409.6" cy="322.7" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
-<circle cx="422.4" cy="332.6" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
-<circle cx="441.5" cy="343.7" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
-<circle cx="465.3" cy="358.8" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
-<rect x="233.8" y="434.7" width="21.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
-<text x="244.7" y="447.7" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">10</text>
-<rect x="191.8" y="243.4" width="57.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
-<text x="220.8" y="256.4" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">光武街17</text>
-<rect x="281.0" y="256.2" width="57.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
-<text x="309.9" y="269.2" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">光武街15</text>
-<rect x="286.3" y="359.7" width="21.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
-<text x="297.2" y="372.7" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">12</text>
-<rect x="254.7" y="281.2" width="57.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
-<text x="283.7" y="294.2" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">光武街13</text>
-<rect x="337.7" y="281.2" width="57.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
-<text x="366.7" y="294.2" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">光武街11</text>
-<rect x="361.1" y="394.5" width="15.0" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
-<text x="368.5" y="407.5" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">8</text>
-<rect x="366.4" y="509.7" width="15.0" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
-<text x="373.9" y="522.7" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">6</text>
-<rect x="338.3" y="309.7" width="51.0" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
-<text x="363.8" y="322.7" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">光武街9</text>
-<rect x="405.8" y="303.8" width="51.0" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
-<text x="431.3" y="316.8" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">光武街7</text>
-<rect x="375.3" y="333.5" width="51.0" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
-<text x="400.7" y="346.5" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">光武街5</text>
-<rect x="446.5" y="334.7" width="51.0" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
-<text x="471.9" y="347.7" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">光武街3</text>
-<rect x="439.9" y="363.8" width="51.0" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
-<text x="465.3" y="376.8" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">光武街1</text>
-<circle cx="590.0" cy="130.0" r="18" fill="#FFFFFF" stroke="#C8161D" stroke-width="2.5"/>
-<path d="M590.0,117.0 L597.0,138.0 L590.0,133.0 L583.0,138.0 Z" fill="#C8161D"/>
-<text x="590.0" y="164.0" font-size="12" font-weight="700" fill="#C8161D" text-anchor="middle">北</text>
-<line x1="34.0" y1="661.1" x2="296.9" y2="661.1" stroke="#1F2B33" stroke-width="2.5"/>
-<text x="34.0" y="654.1" font-size="12" fill="#1F2B33">約 50 公尺</text>
-<text x="20" y="703.1" font-size="13" fill="#1F2B33">棟別門牌配置示意，僅供參考；實際以現場、門牌及使用執照為準。</text>
-<text x="20" y="722.1" font-size="13" fill="#1F2B33">本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap、門牌位置 內政部國土測繪中心門牌定位</text>
-<text x="20" y="741.1" font-size="13" fill="#1F2B33">（紅點為門牌實際位置）。</text>
+<circle cx="228.8" cy="443.7" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="254.8" cy="252.4" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="276.0" cy="265.2" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="281.3" cy="368.7" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="307.8" cy="280.3" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="332.7" cy="290.2" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="356.1" cy="403.5" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="361.4" cy="518.7" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="394.3" cy="318.7" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="409.6" cy="322.7" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="422.4" cy="332.6" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="441.5" cy="343.7" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="465.3" cy="358.8" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<rect x="233.8" y="434.7" width="21.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="244.7" y="447.7" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">10</text>
+<rect x="191.8" y="243.4" width="57.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="220.8" y="256.4" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">光武街17</text>
+<rect x="281.0" y="256.2" width="57.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="309.9" y="269.2" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">光武街15</text>
+<rect x="286.3" y="359.7" width="21.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="297.2" y="372.7" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">12</text>
+<rect x="254.7" y="281.2" width="57.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="283.7" y="294.2" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">光武街13</text>
+<rect x="337.7" y="281.2" width="57.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="366.7" y="294.2" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">光武街11</text>
+<rect x="361.1" y="394.5" width="15.0" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="368.5" y="407.5" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">8</text>
+<rect x="366.4" y="509.7" width="15.0" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="373.9" y="522.7" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">6</text>
+<rect x="338.3" y="309.7" width="51.0" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="363.8" y="322.7" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">光武街9</text>
+<rect x="405.8" y="303.8" width="51.0" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="431.3" y="316.8" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">光武街7</text>
+<rect x="375.3" y="333.5" width="51.0" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="400.7" y="346.5" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">光武街5</text>
+<rect x="446.5" y="334.7" width="51.0" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="471.9" y="347.7" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">光武街3</text>
+<rect x="439.9" y="363.8" width="51.0" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="465.3" y="376.8" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">光武街1</text>
+<circle cx="590.0" cy="130.0" r="18" fill="#FFFFFF" stroke="#0369A1" stroke-width="2.5"/>
+<path d="M590.0,117.0 L597.0,138.0 L590.0,133.0 L583.0,138.0 Z" fill="#0369A1"/>
+<text x="590.0" y="164.0" font-size="12" font-weight="700" fill="#075985" text-anchor="middle">北</text>
+<line x1="34.0" y1="661.1" x2="296.9" y2="661.1" stroke="#0F2233" stroke-width="2.5"/>
+<text x="34.0" y="654.1" font-size="12" fill="#0F2233">約 50 公尺</text>
+<text x="20" y="703.1" font-size="13" fill="#0F2233">棟別門牌配置示意，僅供參考；實際以現場、門牌及使用執照為準。</text>
+<text x="20" y="722.1" font-size="13" fill="#0F2233">本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap、門牌位置 內政部國土測繪中心門牌定位</text>
+<text x="20" y="741.1" font-size="13" fill="#0F2233">（藍點為門牌實際位置）。</text>
 <text x="20" y="764.1" font-size="11" fill="#8A969E">道路底圖 © OpenStreetMap 貢獻者</text>
 </svg>
