@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 761" preserveAspectRatio="xMidYMin meet" style="width:100%;height:auto;max-width:1280px" font-family="Noto Sans TC, Microsoft JhengHei, PingFang TC, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 780" preserveAspectRatio="xMidYMin meet" style="width:100%;height:auto;max-width:1280px" font-family="Noto Sans TC, Microsoft JhengHei, PingFang TC, sans-serif">
 <rect width="100%" height="100%" fill="#FFFFFF"/><rect width="100%" height="6" fill="#C8161D"/>
 <text x="20" y="44" font-size="24" font-weight="700" fill="#1F2B33">欣璞綻</text>
-<text x="20" y="72" font-size="14" fill="#8A969E">棟別配置示意</text>
+<text x="20" y="72" font-size="14" fill="#8A969E">棟別門牌配置示意</text>
 <defs><clipPath id="c"><rect x="20.0" y="96.0" width="600.0" height="577.0" rx="10"/></clipPath></defs>
 <rect x="20.0" y="96.0" width="600.0" height="577.0" rx="10" fill="#F4F6F7" stroke="#DCE1E5"/>
 <g clip-path="url(#c)">
@@ -24,13 +24,16 @@
 </g>
 <text x="524.4" y="285.9" font-size="14" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">莒光路40巷</text>
 <text x="546.7" y="548.6" font-size="14" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">民生路二段234巷24弄</text>
-<text x="305.9" y="360.2" font-size="14" font-weight="700" fill="#C8161D" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">欣璞綻</text>
+<circle cx="403.9" cy="317.1" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
+<rect x="408.9" y="308.1" width="21.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
+<text x="419.8" y="321.1" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">68</text>
 <circle cx="590.0" cy="130.0" r="18" fill="#FFFFFF" stroke="#C8161D" stroke-width="2.5"/>
 <path d="M590.0,117.0 L597.0,138.0 L590.0,133.0 L583.0,138.0 Z" fill="#C8161D"/>
 <text x="590.0" y="164.0" font-size="12" font-weight="700" fill="#C8161D" text-anchor="middle">北</text>
 <line x1="34.0" y1="657.0" x2="352.8" y2="657.0" stroke="#1F2B33" stroke-width="2.5"/>
 <text x="34.0" y="650.0" font-size="12" fill="#1F2B33">約 50 公尺</text>
-<text x="20" y="699.0" font-size="13" fill="#1F2B33">棟別配置示意，僅供參考；實際以現場、門牌及使用執照為準。</text>
-<text x="20" y="718.0" font-size="13" fill="#1F2B33">本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap，紅框為本社區。</text>
-<text x="20" y="741.0" font-size="11" fill="#8A969E">道路底圖 © OpenStreetMap 貢獻者</text>
+<text x="20" y="699.0" font-size="13" fill="#1F2B33">棟別門牌配置示意，僅供參考；實際以現場、門牌及使用執照為準。</text>
+<text x="20" y="718.0" font-size="13" fill="#1F2B33">本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap、門牌位置 內政部國土測繪中心門牌定位</text>
+<text x="20" y="737.0" font-size="13" fill="#1F2B33">（紅點為門牌實際位置）。</text>
+<text x="20" y="760.0" font-size="11" fill="#8A969E">道路底圖 © OpenStreetMap 貢獻者</text>
 </svg>

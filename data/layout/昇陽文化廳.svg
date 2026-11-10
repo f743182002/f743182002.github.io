@@ -56,8 +56,17 @@
 <text x="285.6" y="166.4" font-size="14" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">光武街4巷</text>
 <text x="553.2" y="660.7" font-size="14" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">文化路二段</text>
 <circle cx="228.8" cy="443.7" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="281.3" cy="368.7" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="356.1" cy="403.5" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="361.4" cy="518.7" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
 <rect x="233.8" y="434.7" width="21.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
 <text x="244.7" y="447.7" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">10</text>
+<rect x="286.3" y="359.7" width="21.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
+<text x="297.2" y="372.7" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">12</text>
+<rect x="361.1" y="394.5" width="15.0" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
+<text x="368.5" y="407.5" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">8</text>
+<rect x="366.4" y="509.7" width="15.0" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
+<text x="373.9" y="522.7" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">6</text>
 <circle cx="590.0" cy="130.0" r="18" fill="#FFFFFF" stroke="#C8161D" stroke-width="2.5"/>
 <path d="M590.0,117.0 L597.0,138.0 L590.0,133.0 L583.0,138.0 Z" fill="#C8161D"/>
 <text x="590.0" y="164.0" font-size="12" font-weight="700" fill="#C8161D" text-anchor="middle">北</text>
