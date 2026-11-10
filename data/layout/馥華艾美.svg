@@ -26,6 +26,7 @@
 <circle cx="353.1" cy="273.2" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
 <circle cx="354.8" cy="392.0" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
 <circle cx="406.7" cy="363.2" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="438.5" cy="319.8" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
 <rect x="218.0" y="450.3" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
 <text x="232.4" y="463.3" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">240</text>
 <rect x="224.3" y="341.4" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
@@ -42,6 +43,8 @@
 <text x="374.2" y="396.0" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">236</text>
 <rect x="411.7" y="354.2" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
 <text x="426.2" y="367.2" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">232</text>
+<rect x="443.5" y="310.8" width="54.8" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
+<text x="470.9" y="323.8" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">216巷89</text>
 <circle cx="590.0" cy="130.0" r="18" fill="#FFFFFF" stroke="#C8161D" stroke-width="2.5"/>
 <path d="M590.0,117.0 L597.0,138.0 L590.0,133.0 L583.0,138.0 Z" fill="#C8161D"/>
 <text x="590.0" y="164.0" font-size="12" font-weight="700" fill="#C8161D" text-anchor="middle">北</text>

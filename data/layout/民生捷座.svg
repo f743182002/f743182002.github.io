@@ -39,21 +39,42 @@
 <text x="487.2" y="259.2" font-size="14" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">光武街</text>
 <text x="220.4" y="482.8" font-size="14" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">民生路三段</text>
 <text x="537.3" y="306.8" font-size="14" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">光武街4巷</text>
+<circle cx="215.5" cy="327.4" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="228.8" cy="355.7" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="240.2" cy="382.1" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
 <circle cx="251.5" cy="407.0" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
 <circle cx="266.7" cy="429.8" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="291.3" cy="486.6" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="343.8" cy="286.5" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
 <circle cx="376.6" cy="308.0" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
 <circle cx="384.8" cy="334.3" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="406.3" cy="362.7" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
 <circle cx="417.7" cy="447.2" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="419.6" cy="399.4" r="3.2" fill="#C8161D" stroke="#FFFFFF" stroke-width="1.2"/>
+<rect x="220.5" y="318.4" width="21.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
+<text x="231.5" y="331.4" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">38</text>
+<rect x="233.8" y="346.7" width="21.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
+<text x="244.7" y="359.7" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">36</text>
+<rect x="245.2" y="373.1" width="21.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
+<text x="256.1" y="386.1" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">34</text>
 <rect x="256.5" y="398.0" width="21.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
 <text x="267.5" y="411.0" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">32</text>
 <rect x="271.7" y="420.8" width="21.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
 <text x="282.6" y="433.8" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">30</text>
+<rect x="296.3" y="477.6" width="21.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
+<text x="307.3" y="490.6" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">26</text>
+<rect x="348.8" y="277.5" width="40.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
+<text x="369.2" y="290.5" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">32之3</text>
 <rect x="381.6" y="299.0" width="40.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
 <text x="402.1" y="312.0" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">32之2</text>
 <rect x="389.8" y="325.3" width="40.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
 <text x="410.3" y="338.3" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">32之1</text>
+<rect x="411.3" y="353.7" width="40.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
+<text x="431.7" y="366.7" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">30之3</text>
 <rect x="422.7" y="438.2" width="40.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
 <text x="443.1" y="451.2" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">30之1</text>
+<rect x="424.6" y="390.4" width="40.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#C8161D" stroke-width="1"/>
+<text x="445.0" y="403.4" font-size="12" font-weight="700" fill="#1F2B33" text-anchor="middle">30之2</text>
 <circle cx="572.5" cy="130.0" r="18" fill="#FFFFFF" stroke="#C8161D" stroke-width="2.5"/>
 <path d="M572.5,117.0 L579.5,138.0 L572.5,133.0 L565.5,138.0 Z" fill="#C8161D"/>
 <text x="572.5" y="164.0" font-size="12" font-weight="700" fill="#C8161D" text-anchor="middle">北</text>
