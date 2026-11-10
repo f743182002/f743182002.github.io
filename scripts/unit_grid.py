@@ -11,9 +11,10 @@
   2. 以「棟」分組：data/doors 的國土測繪中心門牌座標＋簡報 window.SITE 的本社區建物輪廓（me=1），把門牌歸到所在建物；
      成交門牌不在定位清單時用同主號的已定位門牌判斷；有任一戶歸不到棟（多棟社區）就整個社區一張表，不亂分。
   3. 每棟只畫該棟實際樓層（實價登錄總樓層數）；連續 2 層以上沒有成交收成一條細列（看圖頁可展開）。
-  4. 成交格用單價色階（總站紅單色相、淺→深 5 階，亮度單調，色盲也分得出深淺）；可切換依成交年上色（藍灰單色相）。
+  4. 成交格用單價色階（品牌藍青單色相、淺→深 5 階，亮度單調，色盲也分得出深淺）；可切換依成交年上色（中性灰單色相）。
+     2026-11-10 個人品牌改版：原總站紅色階改為藍青色階（林津陞：所有網站不再用紅色當主色）。
   5. 門牌在上、樓層在左；同一個門牌的「樓之N」欄並排在門牌底下。
-- 配色、版面是本站自己的（總站紅 #C8161D、系統字型、白底、淡灰邊），不參考、不照抄任何其他網站的銷控表。
+- 配色、版面是本站自己的（品牌深藍 #0369A1／點綴青 #06B6D4、系統字型、白底、淡藍灰邊），不參考、不照抄任何其他網站的銷控表。
 - 「夾層」是禁用詞：跨層一律寫「跨層」。不寫屋齡數字。
 - 內容沒變就不改檔（夜間同步重跑不產生 diff）。
 
@@ -33,17 +34,17 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import door_layout as DL  # noqa: E402  （同資料夾：讀簡報 SITE 建物輪廓、門牌座標換算）
 
-RED = "#C8161D"; INK = "#1F2B33"; GREY = "#5F6F78"; LINE = "#E3E6E8"
+BRAND = "#0369A1"; BRAND_INK = "#075985"; CYAN = "#06B6D4"; INK = "#0F2233"; GREY = "#4C5E6E"; LINE = "#D7E6EF"
 FILL_EMPTY = "#F6F7F8"     # 沒有成交：幾乎白
 FILL_GROUND = "#FFFFFF"    # 一樓／店面：白底＋金褐細框＋「1F」標（不進色階）
 EDGE_GROUND = "#A4762A"
 FILL_BASE = "#FFFFFF"      # 地下層：白底＋灰藍細框（不進色階）
 EDGE_BASE = "#5D7B91"
 EDGE_INCL = "#8A969E"      # 含車位：白底＋灰虛線框（不進色階）
-# 單價色階（總站紅單色相，淺→深；後兩階白字）。亮度單調遞增，紅綠色盲也分得出深淺。
-PRICE_RAMP = ["#FDEBEA", "#F8C6C2", "#EE8C86", "#D4444A", "#9E1218"]
-# 成交年色階（藍灰單色相，舊→新由淺到深）
-YEAR_RAMP = ["#DCE6EE", "#BFD0DE", "#98B3C9", "#6F93B1", "#476F91", "#24496A"]
+# 單價色階（品牌藍青單色相，淺→深；後兩階白字）。亮度單調遞增，色盲也分得出深淺。
+PRICE_RAMP = ["#E4F4FA", "#A5DBEA", "#5BBAD8", "#0B7FB5", "#0B4A73"]
+# 成交年色階（中性灰單色相，舊→新由淺到深；跟單價藍色階分開）
+YEAR_RAMP = ["#E9ECEF", "#D3D8DE", "#B4BCC6", "#8E98A5", "#5F6B7A", "#3A4552"]
 DARK_TEXT_FROM = 3         # 色階第幾階起用白字
 FONT = "Noto Sans TC, Microsoft JhengHei, PingFang TC, sans-serif"
 MAX_COLS = 5               # （舊版分段用；新版不分段，保留常數給舊呼叫者）
@@ -459,8 +460,10 @@ def render_svg(model):
     inner = W - 2 * PAD
     body = []
     y = 0
-    body.append('<rect x="0" y="0" width="%d" height="34" fill="#7A0D10"/>' % W)
-    body.append('<text x="%d" y="22" font-size="13" fill="#FFF2F2">%s</text>' % (PAD, e(DISCLOSURE)))
+    body.append('<defs><linearGradient id="band" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="%s"/><stop offset="1" stop-color="%s"/></linearGradient></defs>' % (BRAND, CYAN))
+    body.append('<rect x="0" y="0" width="%d" height="6" fill="url(#band)"/>' % W)
+    body.append('<rect x="0" y="6" width="%d" height="30" fill="#F6FBFD"/>' % W)
+    body.append('<text x="%d" y="26" font-size="13" fill="%s">%s</text>' % (PAD, GREY, e(DISCLOSURE)))
     y = 80
     body.append('<text x="%d" y="%d" font-size="30" font-weight="700" fill="%s">%s 每戶成交實價</text>' % (PAD, y, INK, e(model["name"])))
     y += 30
@@ -482,7 +485,7 @@ def render_svg(model):
         body.append('<rect x="%.1f" y="%d" width="%.1f" height="96" rx="10" fill="#FFFFFF" stroke="%s"/>' % (x, y, cw, LINE))
         body.append('<text x="%.1f" y="%d" font-size="14" fill="%s">%s</text>' % (x + 16, y + 26, GREY, e(lab)))
         body.append('<text x="%.1f" y="%d" font-size="32" font-weight="700" fill="%s">%s<tspan font-size="15" font-weight="400" fill="%s"> %s</tspan></text>' % (
-            x + 16, y + 64, RED if i == 0 else INK, e(big), GREY, e(unit)))
+            x + 16, y + 64, BRAND_INK if i == 0 else INK, e(big), GREY, e(unit)))
         body.append('<text x="%.1f" y="%d" font-size="13" fill="%s">%s</text>' % (x + 16, y + 86, GREY, e(sub)))
     y += 96 + 34
     # 圖例
@@ -522,7 +525,7 @@ def render_svg(model):
             body.append('<text x="%d" y="%d" font-size="14" fill="%s">%s</text>' % (PAD + (14 if j else 0), y, INK, e(line)))
             y += 21
     y += 8
-    body.append('<text x="%d" y="%d" font-size="14" font-weight="700" fill="%s">板橋阿陞聊房 banqiaoasheng.com｜LINE @banqiao.asheng｜手機 0925-635-678</text>' % (PAD, y, RED))
+    body.append('<text x="%d" y="%d" font-size="14" font-weight="700" fill="%s">板橋阿陞聊房 banqiaoasheng.com｜LINE @banqiao.asheng｜手機 0925-635-678</text>' % (PAD, y, BRAND_INK))
     y += 22
     H = int(y)
     head = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 %d %d" preserveAspectRatio="xMidYMin meet" '
@@ -593,17 +596,16 @@ VIEW_HTML = r"""<!doctype html>
 <meta name="color-scheme" content="light">
 <title>每戶成交實價｜板橋阿陞聊房</title>
 <style>
-:root{--red:#C8161D;--ink:#1F2B33;--muted:#5F6F78;--line:#E3E6E8;--bg:#FFFFFF;--soft:#F6F7F8;--card:#FFFFFF}
+:root{--brand:#0369A1;--brand-ink:#075985;--ink:#0F2233;--muted:#4C5E6E;--line:#D7E6EF;--bg:#FFFFFF;--soft:#F6FBFD;--card:#FFFFFF}
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",system-ui,sans-serif;-webkit-text-size-adjust:100%;line-height:1.55}
-a{color:var(--red)}
-.top{display:flex;align-items:center;gap:10px;padding:8px 16px;border-bottom:1px solid var(--line);background:#fff}
+a{color:var(--brand-ink)}
+.top{display:flex;align-items:center;gap:10px;padding:8px 16px;border-bottom:1px solid var(--line);background:#fff;border-top:3px solid var(--brand);border-image:linear-gradient(90deg,#0369A1,#06B6D4) 1 0 0 0}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);min-width:0}
-.brand img{height:30px;width:auto;padding-right:10px;border-right:1px solid #DCE1E5}
-.brand b{font-size:17px;white-space:nowrap}
+.brand img{height:34px;width:auto;display:block}
 .top .sp{flex:1}
-.btn-line{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:22px;background:#06C755;color:#fff;text-decoration:none;font-weight:700;font-size:15px;white-space:nowrap}
-.disc{background:#7A0D10;color:#FFF2F2;font-size:13px;line-height:1.6;padding:5px 16px}
+.btn-line{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:22px;background:#06893E;color:#fff;text-decoration:none;font-weight:700;font-size:15px;white-space:nowrap}
+.disc{background:#F6FBFD;color:#4C5E6E;border-bottom:1px solid var(--line);font-size:12.5px;line-height:1.6;padding:4px 16px}
 main{max-width:1240px;margin:0 auto;padding:16px 16px 40px}
 .crumb{font-size:14px;margin:0 0 6px}.crumb a{text-decoration:none}
 h1{font-size:24px;line-height:1.3;margin:0 0 4px}
@@ -615,7 +617,9 @@ h1{font-size:24px;line-height:1.3;margin:0 0 4px}
 .card .v{font-size:28px;font-weight:800;line-height:1.2;margin-top:2px;font-variant-numeric:tabular-nums}
 .card .v small{font-size:14px;font-weight:400;color:var(--muted);margin-left:3px}
 .card .s{font-size:13px;color:var(--muted);margin-top:2px}
-.card.hero .v{color:var(--red)}
+.card.hero{position:relative;overflow:hidden}
+.card.hero::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,#0369A1,#06B6D4)}
+.card.hero .v{color:var(--brand-ink)}
 .basis{font-size:13px;color:var(--muted);margin:0 0 16px}
 .bar{position:sticky;top:0;z-index:30;background:#fff;border-bottom:1px solid var(--line);margin:0 -16px 10px;padding:8px 16px}
 .chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
@@ -625,9 +629,9 @@ h1{font-size:24px;line-height:1.3;margin:0 0 4px}
 .opts{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:6px 0 8px}
 .seg{display:inline-flex;border:1px solid #D4D9DD;border-radius:10px;overflow:hidden}
 .seg button{min-height:40px;padding:0 10px;border:0;background:#fff;font-size:14.5px;font-family:inherit;color:var(--ink);cursor:pointer}
-.seg button[aria-pressed="true"]{background:var(--red);color:#fff;font-weight:700}
+.seg button[aria-pressed="true"]{background:var(--brand);color:#fff;font-weight:700}
 .tog{display:inline-flex;align-items:center;gap:6px;font-size:14.5px;min-height:38px;cursor:pointer}
-.tog input{width:18px;height:18px;accent-color:var(--red)}
+.tog input{width:18px;height:18px;accent-color:var(--brand)}
 .legend{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;font-size:13.5px;margin:4px 0 14px}
 .legend .t{font-weight:700}
 .sw{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
@@ -671,12 +675,12 @@ td.no{background:#fff}
 .foot b{color:var(--ink)}
 .dock{display:none;position:fixed;left:0;right:0;bottom:0;z-index:50;gap:8px;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--line)}
 .dock a{flex:1;display:flex;align-items:center;justify-content:center;min-height:46px;border-radius:12px;text-decoration:none;font-weight:700;font-size:16px}
-.dock .dl{background:#06C755;color:#fff}.dock .dt{border:1.5px solid var(--red);color:var(--red)}
+.dock .dl{background:#06893E;color:#fff}.dock .dt{border:1.5px solid var(--brand);color:var(--brand-ink)}
 .sheet{position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;border-radius:16px 16px 0 0;box-shadow:0 -6px 24px rgba(0,0,0,.18);padding:16px 18px calc(18px + env(safe-area-inset-bottom));max-width:560px;margin:0 auto;transform:translateY(110%);transition:transform .18s ease}
 .sheet{visibility:hidden}
 .sheet.on{transform:none;visibility:visible}
 .sheet h3{margin:0 0 4px;font-size:18px}
-.sheet .big{font-size:30px;font-weight:800;color:var(--red)}
+.sheet .big{font-size:30px;font-weight:800;color:var(--brand-ink)}
 .sheet .big small{font-size:15px;color:var(--muted);font-weight:400}
 .sheet dl{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:10px 0 0;font-size:15px}
 .sheet dt{color:var(--muted)}.sheet dd{margin:0}
@@ -693,7 +697,7 @@ td.no{background:#fff}
   .card{padding:10px 12px}
   .card .v{font-size:24px}
   .disc{font-size:12.5px}
-  .brand b{font-size:16px}
+  .brand img{height:28px}
   .groups{display:block}
   .g{margin-bottom:24px}
   .scroll{max-height:72vh}
@@ -703,7 +707,7 @@ td.no{background:#fff}
 @media print{.bar,.dock,.sheet,.top .btn-line{display:none}.scroll{max-height:none;overflow:visible}}
 </style></head>
 <body>
-<header class="top"><a class="brand" href="../../"><img src="../../assets/logo-nra.png" alt="全國不動產"><b>板橋阿陞聊房</b></a><span class="sp"></span>
+<header class="top"><a class="brand" href="../../"><img src="../../assets/brand/logo_wide.png" alt="板橋阿陞聊房" width="880" height="189"></a><span class="sp"></span>
 <a class="btn-line" href="https://line.me/R/ti/p/%40banqiao.asheng" target="_blank" rel="noopener">加 LINE</a></header>
 <div class="disc">全國不動產板橋加盟店｜經紀業 非凡不動產有限公司｜經紀人 謝政峯（99）北縣字第002181號｜營業員 林津陞（99）登字第148103號</div>
 <main id="app"><p class="msg">讀取中…</p></main>
@@ -744,7 +748,7 @@ function draw(M){
   h+='<label class="tog"><input type="checkbox" id="all">展開全部樓層</label></div>';
   h+='<div class="legend" id="lg"></div><div class="groups" id="gs"></div>';
   h+='<section class="notes"><ul>'+M.notes.map(function(t){return '<li>'+esc(t)+'</li>'}).join('')+'</ul>';
-  h+='<div class="foot"><b>板橋阿陞聊房・林津陞</b>　LINE <a href="https://line.me/R/ti/p/%40banqiao.asheng" target="_blank" rel="noopener">@banqiao.asheng</a>・手機 <a href="tel:0925635678">0925-635-678</a><br>全國不動產板橋加盟店｜經紀業 非凡不動產有限公司｜經紀人 謝政峯（99）北縣字第002181號｜營業員 林津陞（99）登字第148103號</div></section>';
+  h+='<div class="foot"><b>板橋阿陞聊房・林津陞</b>　LINE <a href="https://line.me/R/ti/p/%40banqiao.asheng" target="_blank" rel="noopener">@banqiao.asheng</a>・手機 <a href="tel:0925635678">0925-635-678</a><br>全國不動產板橋加盟店｜經紀業 非凡不動產有限公司｜經紀人 謝政峯（99）北縣字第002181號｜營業員 林津陞（99）登字第148103號<br>© 林津陞　板橋阿陞聊房</div></section>';
   app.innerHTML=h;
   app.querySelectorAll('.chip').forEach(function(b){b.onclick=function(){st.b=+b.dataset.b;render(M)}});
   app.querySelectorAll('.seg button').forEach(function(b){b.onclick=function(){st.mode=b.dataset.m;save();render(M)}});
@@ -759,9 +763,9 @@ function style(M,u){
   if(u.f<0)return{cls:'bs',bg:'',fg:''};
   if(st.mode==='price'&&u.k==='included')return{cls:'inc',bg:'',fg:''};
   var i,ramp;
-  if(st.mode==='price'){i=binOf(u.p,M.cuts);ramp=M.ramp;var dark=['#D4444A','#9E1218'].indexOf(ramp[i])>=0}
-  else{i=M.years.indexOf(+u.ym.split('/')[0]);ramp=M.year_ramp;var dark=['#476F91','#24496A'].indexOf(ramp[i])>=0}
-  return{cls:'',bg:ramp[i],fg:dark?'#FFFFFF':'#1F2B33'}
+  if(st.mode==='price'){i=binOf(u.p,M.cuts);ramp=M.ramp;var dark=['#0B7FB5','#0B4A73'].indexOf(ramp[i])>=0}
+  else{i=M.years.indexOf(+u.ym.split('/')[0]);ramp=M.year_ramp;var dark=['#5F6B7A','#3A4552'].indexOf(ramp[i])>=0}
+  return{cls:'',bg:ramp[i],fg:dark?'#FFFFFF':'#0F2233'}
 }
 function legend(M){
   var h='';
