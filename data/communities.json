@@ -814,7 +814,7 @@
    "lon": 121.4714101,
    "built": "民國92年3月",
    "year": 92,
-   "floors": "地上14層／地下2層",
+   "floors": "地上14層／地下3層",
    "units": "59戶",
    "structure": "鋼筋混凝土造",
    "mrt": "新埔站 步行約5分鐘",
@@ -835,7 +835,7 @@
      "existing_needs_approval"
     ],
     "basis": {
-     "permit_no": "084板建字第00905號",
+     "permit_no": "87板建字第1048號",
      "use_permit_no": "92板使字第00106號",
      "use_permit_issued": "2003-03-17",
      "completed": "2002-10-25",
