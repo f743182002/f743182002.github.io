@@ -1,0 +1,2189 @@
+{
+ "source": "政府實價登錄（已排除特殊交易）",
+ "period": "108S1～115S4",
+ "published_through": "115/11/11",
+ "cutoff": "截至 115/11/11 公布",
+ "scope": "新北市板橋區藝文街366～398號、永翠路350～352號",
+ "floors": 18,
+ "door_floors": {
+  "藝文街366號": 18,
+  "藝文街368號": 18,
+  "藝文街370號": 18,
+  "藝文街372號": 18,
+  "藝文街376號": 18,
+  "藝文街378號": 18,
+  "藝文街380號": 18,
+  "藝文街382號": 18,
+  "藝文街386號": 18,
+  "藝文街388號": 18,
+  "藝文街390號": 18,
+  "藝文街392號": 18,
+  "藝文街396號": 18,
+  "藝文街398號": 18
+ },
+ "units": [
+  {
+   "addr": "藝文街366號",
+   "floor": 1,
+   "span": "一層,見其他登記事項",
+   "ym": "111/01",
+   "price": 58.5,
+   "parking": "split",
+   "use": "其他",
+   "n": 1
+  },
+  {
+   "addr": "藝文街366號",
+   "floor": 2,
+   "ym": "110/05",
+   "price": 48.8,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街366號",
+   "floor": 3,
+   "ym": "109/11",
+   "price": 48.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街366號",
+   "floor": 4,
+   "ym": "110/11",
+   "price": 48.5,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街366號",
+   "floor": 5,
+   "ym": "110/04",
+   "price": 48.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街366號",
+   "floor": 6,
+   "ym": "113/03",
+   "price": 61.3,
+   "parking": "split",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "藝文街366號",
+   "floor": 7,
+   "ym": "109/10",
+   "price": 45.3,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街366號",
+   "floor": 8,
+   "ym": "109/12",
+   "price": 46.3,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街366號",
+   "floor": 9,
+   "ym": "110/02",
+   "price": 46.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街366號",
+   "floor": 10,
+   "ym": "110/03",
+   "price": 50.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街366號",
+   "floor": 11,
+   "ym": "109/08",
+   "price": 46.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街366號",
+   "floor": 12,
+   "ym": "110/03",
+   "price": 50.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街366號",
+   "floor": 13,
+   "ym": "110/03",
+   "price": 46.3,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街366號",
+   "floor": 14,
+   "ym": "110/05",
+   "price": 50.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街366號",
+   "floor": 15,
+   "ym": "110/03",
+   "price": 47.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街366號",
+   "floor": 16,
+   "ym": "109/08",
+   "price": 48.5,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街366號",
+   "floor": 17,
+   "ym": "109/12",
+   "price": 47.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街366號",
+   "floor": 18,
+   "ym": "110/07",
+   "price": 51.3,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街368號",
+   "floor": 1,
+   "span": "一層,見其他登記事項",
+   "ym": "113/03",
+   "price": 59.2,
+   "parking": "included",
+   "use": "其他",
+   "n": 2
+  },
+  {
+   "addr": "藝文街368號",
+   "floor": 2,
+   "ym": "115/02",
+   "price": 53.8,
+   "parking": "split",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "藝文街368號",
+   "floor": 3,
+   "ym": "110/07",
+   "price": 48.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街368號",
+   "floor": 4,
+   "ym": "110/02",
+   "price": 47.5,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街368號",
+   "floor": 5,
+   "ym": "114/09",
+   "price": 55.9,
+   "parking": "split",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "藝文街368號",
+   "floor": 6,
+   "ym": "110/03",
+   "price": 44.8,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街368號",
+   "floor": 7,
+   "ym": "109/12",
+   "price": 44.6,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街368號",
+   "floor": 8,
+   "ym": "109/08",
+   "price": 44.1,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街368號",
+   "floor": 9,
+   "ym": "110/01",
+   "price": 45.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街368號",
+   "floor": 10,
+   "ym": "109/10",
+   "price": 47.8,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街368號",
+   "floor": 11,
+   "ym": "110/05",
+   "price": 46.6,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街368號",
+   "floor": 12,
+   "ym": "110/04",
+   "price": 50.2,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街368號",
+   "floor": 13,
+   "ym": "110/04",
+   "price": 47.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街368號",
+   "floor": 14,
+   "ym": "114/10",
+   "price": 60.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "藝文街368號",
+   "floor": 15,
+   "ym": "110/03",
+   "price": 49.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街368號",
+   "floor": 16,
+   "ym": "110/08",
+   "price": 50.6,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街368號",
+   "floor": 17,
+   "ym": "110/04",
+   "price": 49.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街368號",
+   "floor": 18,
+   "ym": "110/08",
+   "price": 50.5,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街370號",
+   "floor": 1,
+   "span": "一層,見其他登記事項",
+   "ym": "111/06",
+   "price": 58.2,
+   "parking": "split",
+   "use": "其他",
+   "n": 1
+  },
+  {
+   "addr": "藝文街370號",
+   "floor": 2,
+   "ym": "110/03",
+   "price": 48.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街370號",
+   "floor": 3,
+   "ym": "109/11",
+   "price": 46.5,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街370號",
+   "floor": 4,
+   "ym": "109/08",
+   "price": 46.9,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街370號",
+   "floor": 6,
+   "ym": "109/08",
+   "price": 44.2,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街370號",
+   "floor": 7,
+   "ym": "109/09",
+   "price": 44.2,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街370號",
+   "floor": 8,
+   "ym": "115/02",
+   "price": 60.5,
+   "parking": "split",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "藝文街370號",
+   "floor": 9,
+   "ym": "109/11",
+   "price": 45.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街370號",
+   "floor": 10,
+   "ym": "110/03",
+   "price": 45.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街370號",
+   "floor": 11,
+   "ym": "110/02",
+   "price": 46.5,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街370號",
+   "floor": 12,
+   "ym": "110/03",
+   "price": 46.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街370號",
+   "floor": 13,
+   "ym": "112/12",
+   "price": 61.6,
+   "parking": "split",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "藝文街370號",
+   "floor": 14,
+   "ym": "110/04",
+   "price": 46.9,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街370號",
+   "floor": 15,
+   "ym": "113/04",
+   "price": 64.2,
+   "parking": "split",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "藝文街370號",
+   "floor": 16,
+   "ym": "110/05",
+   "price": 51.4,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街370號",
+   "floor": 17,
+   "ym": "110/04",
+   "price": 47.4,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街370號",
+   "floor": 18,
+   "ym": "110/09",
+   "price": 51.4,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街372號",
+   "floor": 2,
+   "ym": "110/03",
+   "price": 48.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街372號",
+   "floor": 3,
+   "ym": "109/12",
+   "price": 46.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街372號",
+   "floor": 4,
+   "ym": "109/09",
+   "price": 45.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街372號",
+   "floor": 5,
+   "ym": "109/08",
+   "price": 44.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街372號",
+   "floor": 6,
+   "ym": "109/08",
+   "price": 44.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街372號",
+   "floor": 7,
+   "ym": "109/08",
+   "price": 43.8,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街372號",
+   "floor": 8,
+   "ym": "109/10",
+   "price": 44.4,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街372號",
+   "floor": 9,
+   "ym": "109/11",
+   "price": 44.5,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街372號",
+   "floor": 10,
+   "ym": "109/09",
+   "price": 44.5,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街372號",
+   "floor": 11,
+   "ym": "109/10",
+   "price": 45.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街372號",
+   "floor": 12,
+   "ym": "110/03",
+   "price": 49.3,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街372號",
+   "floor": 13,
+   "ym": "110/03",
+   "price": 46.3,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街372號",
+   "floor": 14,
+   "ym": "113/03",
+   "price": 59.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "藝文街372號",
+   "floor": 15,
+   "ym": "109/08",
+   "price": 45.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街372號",
+   "floor": 16,
+   "ym": "114/08",
+   "price": 60.8,
+   "parking": "split",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "藝文街372號",
+   "floor": 17,
+   "ym": "110/05",
+   "price": 50.3,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街372號",
+   "floor": 18,
+   "ym": "110/05",
+   "price": 51.6,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街376號",
+   "floor": 2,
+   "ym": "110/04",
+   "price": 47.4,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街376號",
+   "floor": 3,
+   "ym": "110/04",
+   "price": 46.6,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街376號",
+   "floor": 4,
+   "ym": "110/03",
+   "price": 47.2,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街376號",
+   "floor": 5,
+   "ym": "110/02",
+   "price": 44.4,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街376號",
+   "floor": 6,
+   "ym": "110/06",
+   "price": 48.8,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街376號",
+   "floor": 7,
+   "ym": "109/12",
+   "price": 45.8,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街376號",
+   "floor": 8,
+   "ym": "111/09",
+   "price": 51.9,
+   "parking": "split",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "藝文街376號",
+   "floor": 9,
+   "ym": "110/03",
+   "price": 48.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街376號",
+   "floor": 10,
+   "ym": "110/03",
+   "price": 45.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街376號",
+   "floor": 11,
+   "ym": "110/05",
+   "price": 47.5,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街376號",
+   "floor": 12,
+   "ym": "109/09",
+   "price": 44.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街376號",
+   "floor": 13,
+   "ym": "110/04",
+   "price": 48.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街376號",
+   "floor": 14,
+   "ym": "110/05",
+   "price": 46.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街376號",
+   "floor": 15,
+   "ym": "113/04",
+   "price": 52.4,
+   "parking": "included",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "藝文街376號",
+   "floor": 16,
+   "ym": "110/06",
+   "price": 50.6,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街376號",
+   "floor": 17,
+   "ym": "110/04",
+   "price": 49.9,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街376號",
+   "floor": 18,
+   "ym": "110/07",
+   "price": 49.2,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街378號",
+   "floor": 2,
+   "ym": "110/02",
+   "price": 47.3,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街378號",
+   "floor": 3,
+   "ym": "110/11",
+   "price": 47.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街378號",
+   "floor": 4,
+   "ym": "109/12",
+   "price": 48.5,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街378號",
+   "floor": 5,
+   "ym": "110/03",
+   "price": 46.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街378號",
+   "floor": 6,
+   "ym": "110/05",
+   "price": 45.3,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街378號",
+   "floor": 7,
+   "ym": "109/12",
+   "price": 45.5,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街378號",
+   "floor": 8,
+   "ym": "109/09",
+   "price": 45.6,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街378號",
+   "floor": 9,
+   "ym": "110/04",
+   "price": 49.5,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街378號",
+   "floor": 10,
+   "ym": "109/11",
+   "price": 49.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街378號",
+   "floor": 11,
+   "ym": "109/08",
+   "price": 45.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街378號",
+   "floor": 12,
+   "ym": "109/08",
+   "price": 45.6,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街378號",
+   "floor": 13,
+   "ym": "110/02",
+   "price": 49.9,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街378號",
+   "floor": 14,
+   "ym": "110/03",
+   "price": 46.9,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街378號",
+   "floor": 15,
+   "ym": "109/08",
+   "price": 45.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街378號",
+   "floor": 16,
+   "ym": "110/07",
+   "price": 51.6,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街378號",
+   "floor": 17,
+   "ym": "109/08",
+   "price": 46.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街378號",
+   "floor": 18,
+   "ym": "110/08",
+   "price": 51.6,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街380號",
+   "floor": 2,
+   "ym": "112/06",
+   "price": 55.7,
+   "parking": "split",
+   "use": "其他",
+   "n": 2
+  },
+  {
+   "addr": "藝文街380號",
+   "floor": 3,
+   "ym": "109/12",
+   "price": 50.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街380號",
+   "floor": 4,
+   "ym": "110/04",
+   "price": 49.5,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街380號",
+   "floor": 5,
+   "ym": "109/09",
+   "price": 44.9,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街380號",
+   "floor": 6,
+   "ym": "109/11",
+   "price": 45.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街380號",
+   "floor": 7,
+   "ym": "109/09",
+   "price": 45.5,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街380號",
+   "floor": 8,
+   "ym": "109/10",
+   "price": 46.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街380號",
+   "floor": 9,
+   "ym": "109/11",
+   "price": 46.4,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街380號",
+   "floor": 10,
+   "ym": "109/09",
+   "price": 46.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街380號",
+   "floor": 11,
+   "ym": "109/11",
+   "price": 46.2,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街380號",
+   "floor": 12,
+   "ym": "115/08",
+   "price": 64.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "藝文街380號",
+   "floor": 13,
+   "ym": "109/09",
+   "price": 46.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街380號",
+   "floor": 14,
+   "ym": "109/12",
+   "price": 46.8,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街380號",
+   "floor": 15,
+   "ym": "109/08",
+   "price": 46.8,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街380號",
+   "floor": 16,
+   "ym": "110/01",
+   "price": 51.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街380號",
+   "floor": 17,
+   "ym": "109/12",
+   "price": 47.3,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街380號",
+   "floor": 18,
+   "ym": "110/01",
+   "price": 47.9,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街382號",
+   "floor": 2,
+   "ym": "109/09",
+   "price": 45.5,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街382號",
+   "floor": 3,
+   "ym": "110/01",
+   "price": 45.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街382號",
+   "floor": 4,
+   "ym": "110/03",
+   "price": 46.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街382號",
+   "floor": 5,
+   "ym": "112/09",
+   "price": 59.2,
+   "parking": "split",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "藝文街382號",
+   "floor": 6,
+   "ym": "112/07",
+   "price": 48.5,
+   "parking": "included",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "藝文街382號",
+   "floor": 7,
+   "ym": "110/03",
+   "price": 46.9,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街382號",
+   "floor": 8,
+   "ym": "109/08",
+   "price": 44.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街382號",
+   "floor": 9,
+   "ym": "109/12",
+   "price": 45.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街382號",
+   "floor": 10,
+   "ym": "110/03",
+   "price": 45.4,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街382號",
+   "floor": 11,
+   "ym": "109/12",
+   "price": 45.5,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街382號",
+   "floor": 12,
+   "ym": "110/06",
+   "price": 47.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街382號",
+   "floor": 13,
+   "ym": "110/03",
+   "price": 46.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街382號",
+   "floor": 14,
+   "ym": "110/03",
+   "price": 47.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街382號",
+   "floor": 15,
+   "ym": "109/09",
+   "price": 45.5,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街382號",
+   "floor": 16,
+   "ym": "110/05",
+   "price": 48.5,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街382號",
+   "floor": 17,
+   "ym": "109/09",
+   "price": 45.5,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街382號",
+   "floor": 18,
+   "ym": "111/05",
+   "price": 39.6,
+   "parking": "included",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "藝文街386號",
+   "floor": 2,
+   "ym": "109/09",
+   "price": 42.2,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街386號",
+   "floor": 3,
+   "ym": "110/02",
+   "price": 45.4,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街386號",
+   "floor": 4,
+   "ym": "109/12",
+   "price": 45.4,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街386號",
+   "floor": 5,
+   "ym": "109/09",
+   "price": 42.2,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街386號",
+   "floor": 6,
+   "ym": "110/03",
+   "price": 46.4,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街386號",
+   "floor": 7,
+   "ym": "110/03",
+   "price": 43.5,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街386號",
+   "floor": 8,
+   "ym": "110/03",
+   "price": 46.8,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街386號",
+   "floor": 9,
+   "ym": "112/04",
+   "price": 53.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "藝文街386號",
+   "floor": 10,
+   "ym": "115/04",
+   "price": 56.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "藝文街386號",
+   "floor": 11,
+   "ym": "114/11",
+   "price": 57.2,
+   "parking": "split",
+   "use": "住家用",
+   "n": 3
+  },
+  {
+   "addr": "藝文街386號",
+   "floor": 12,
+   "ym": "110/04",
+   "price": 47.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街386號",
+   "floor": 13,
+   "ym": "113/02",
+   "price": 50.3,
+   "parking": "included",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "藝文街386號",
+   "floor": 14,
+   "ym": "110/04",
+   "price": 44.8,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街386號",
+   "floor": 15,
+   "ym": "110/04",
+   "price": 46.6,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街386號",
+   "floor": 16,
+   "ym": "110/09",
+   "price": 46.2,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街386號",
+   "floor": 17,
+   "ym": "110/05",
+   "price": 47.8,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街386號",
+   "floor": 18,
+   "ym": "110/05",
+   "price": 46.6,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街388號",
+   "floor": 2,
+   "ym": "109/11",
+   "price": 42.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街388號",
+   "floor": 3,
+   "ym": "113/07",
+   "price": 50.5,
+   "parking": "included",
+   "use": "住家用",
+   "n": 3
+  },
+  {
+   "addr": "藝文街388號",
+   "floor": 4,
+   "ym": "109/10",
+   "price": 44.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街388號",
+   "floor": 5,
+   "ym": "109/11",
+   "price": 44.4,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街388號",
+   "floor": 6,
+   "ym": "109/12",
+   "price": 45.4,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街388號",
+   "floor": 7,
+   "ym": "109/11",
+   "price": 43.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街388號",
+   "floor": 8,
+   "ym": "110/02",
+   "price": 45.4,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街388號",
+   "floor": 9,
+   "ym": "109/12",
+   "price": 45.4,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街388號",
+   "floor": 10,
+   "ym": "110/03",
+   "price": 43.9,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街388號",
+   "floor": 11,
+   "ym": "113/03",
+   "price": 60.3,
+   "parking": "split",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "藝文街388號",
+   "floor": 12,
+   "ym": "110/03",
+   "price": 46.9,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街388號",
+   "floor": 13,
+   "ym": "110/05",
+   "price": 46.9,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街388號",
+   "floor": 14,
+   "ym": "110/04",
+   "price": 45.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街388號",
+   "floor": 15,
+   "ym": "110/03",
+   "price": 46.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街388號",
+   "floor": 16,
+   "ym": "115/03",
+   "price": 48.9,
+   "parking": "included",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "藝文街388號",
+   "floor": 17,
+   "ym": "114/08",
+   "price": 57.3,
+   "parking": "split",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "藝文街388號",
+   "floor": 18,
+   "ym": "110/06",
+   "price": 48.8,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街390號",
+   "floor": 2,
+   "ym": "109/10",
+   "price": 42.3,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街390號",
+   "floor": 3,
+   "ym": "109/11",
+   "price": 44.8,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街390號",
+   "floor": 4,
+   "ym": "109/10",
+   "price": 44.4,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街390號",
+   "floor": 5,
+   "ym": "110/03",
+   "price": 46.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街390號",
+   "floor": 6,
+   "ym": "110/01",
+   "price": 45.9,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街390號",
+   "floor": 7,
+   "ym": "110/02",
+   "price": 43.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街390號",
+   "floor": 8,
+   "ym": "110/07",
+   "price": 44.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街390號",
+   "floor": 9,
+   "ym": "110/01",
+   "price": 45.9,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街390號",
+   "floor": 10,
+   "ym": "110/03",
+   "price": 45.9,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街390號",
+   "floor": 11,
+   "ym": "115/01",
+   "price": 58.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "藝文街390號",
+   "floor": 12,
+   "ym": "114/06",
+   "price": 45.7,
+   "parking": "included",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "藝文街390號",
+   "floor": 13,
+   "ym": "110/07",
+   "price": 46.8,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街390號",
+   "floor": 14,
+   "ym": "111/12",
+   "price": 45.1,
+   "parking": "included",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "藝文街390號",
+   "floor": 15,
+   "ym": "110/04",
+   "price": 47.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街390號",
+   "floor": 16,
+   "ym": "110/04",
+   "price": 45.3,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街390號",
+   "floor": 17,
+   "ym": "110/01",
+   "price": 47.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街390號",
+   "floor": 18,
+   "ym": "109/09",
+   "price": 44.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街392號",
+   "floor": 2,
+   "ym": "109/11",
+   "price": 42.5,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街392號",
+   "floor": 3,
+   "ym": "114/09",
+   "price": 62.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "藝文街392號",
+   "floor": 4,
+   "ym": "109/09",
+   "price": 44.3,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街392號",
+   "floor": 5,
+   "ym": "109/09",
+   "price": 42.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街392號",
+   "floor": 6,
+   "ym": "110/03",
+   "price": 45.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街392號",
+   "floor": 7,
+   "ym": "110/01",
+   "price": 43.8,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街392號",
+   "floor": 8,
+   "ym": "110/05",
+   "price": 46.3,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街392號",
+   "floor": 9,
+   "ym": "110/01",
+   "price": 47.2,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街392號",
+   "floor": 10,
+   "ym": "113/05",
+   "price": 50.6,
+   "parking": "included",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "藝文街392號",
+   "floor": 11,
+   "ym": "110/03",
+   "price": 47.2,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街392號",
+   "floor": 12,
+   "ym": "110/04",
+   "price": 47.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街392號",
+   "floor": 13,
+   "ym": "110/04",
+   "price": 45.2,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街392號",
+   "floor": 14,
+   "ym": "110/05",
+   "price": 47.2,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街392號",
+   "floor": 15,
+   "ym": "110/06",
+   "price": 46.3,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街392號",
+   "floor": 16,
+   "ym": "109/11",
+   "price": 44.3,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街392號",
+   "floor": 17,
+   "ym": "110/04",
+   "price": 48.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街392號",
+   "floor": 18,
+   "ym": "110/05",
+   "price": 46.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街396號",
+   "floor": 2,
+   "ym": "109/08",
+   "price": 44.3,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街396號",
+   "floor": 3,
+   "ym": "109/12",
+   "price": 46.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街396號",
+   "floor": 4,
+   "ym": "109/08",
+   "price": 46.5,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街396號",
+   "floor": 5,
+   "ym": "109/09",
+   "price": 44.2,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街396號",
+   "floor": 6,
+   "ym": "110/02",
+   "price": 47.4,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街396號",
+   "floor": 7,
+   "ym": "110/01",
+   "price": 47.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街396號",
+   "floor": 8,
+   "ym": "109/09",
+   "price": 43.2,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街396號",
+   "floor": 9,
+   "ym": "110/05",
+   "price": 44.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街396號",
+   "floor": 10,
+   "ym": "109/10",
+   "price": 44.6,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街396號",
+   "floor": 11,
+   "ym": "109/12",
+   "price": 45.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街396號",
+   "floor": 12,
+   "ym": "109/08",
+   "price": 44.8,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街396號",
+   "floor": 13,
+   "ym": "113/04",
+   "price": 62.4,
+   "parking": "split",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "藝文街396號",
+   "floor": 14,
+   "ym": "114/07",
+   "price": 61.5,
+   "parking": "split",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "藝文街396號",
+   "floor": 15,
+   "ym": "110/04",
+   "price": 46.8,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街396號",
+   "floor": 16,
+   "ym": "109/09",
+   "price": 46.2,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街396號",
+   "floor": 17,
+   "ym": "110/04",
+   "price": 46.2,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街396號",
+   "floor": 18,
+   "ym": "113/03",
+   "price": 55.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 3
+  },
+  {
+   "addr": "藝文街398號",
+   "floor": 2,
+   "ym": "109/12",
+   "price": 48.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街398號",
+   "floor": 3,
+   "ym": "109/11",
+   "price": 48.8,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街398號",
+   "floor": 4,
+   "ym": "109/08",
+   "price": 48.6,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街398號",
+   "floor": 5,
+   "ym": "109/08",
+   "price": 45.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街398號",
+   "floor": 6,
+   "ym": "109/08",
+   "price": 45.5,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街398號",
+   "floor": 7,
+   "ym": "109/08",
+   "price": 45.8,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街398號",
+   "floor": 8,
+   "ym": "114/03",
+   "price": 52.4,
+   "parking": "included",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "藝文街398號",
+   "floor": 9,
+   "ym": "109/09",
+   "price": 45.9,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街398號",
+   "floor": 10,
+   "ym": "109/08",
+   "price": 47.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街398號",
+   "floor": 11,
+   "ym": "109/08",
+   "price": 46.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街398號",
+   "floor": 12,
+   "ym": "109/08",
+   "price": 46.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街398號",
+   "floor": 13,
+   "ym": "109/09",
+   "price": 46.4,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街398號",
+   "floor": 14,
+   "ym": "109/08",
+   "price": 47.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街398號",
+   "floor": 15,
+   "ym": "109/08",
+   "price": 47.4,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街398號",
+   "floor": 16,
+   "ym": "110/05",
+   "price": 50.2,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街398號",
+   "floor": 17,
+   "ym": "109/08",
+   "price": 46.9,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "藝文街398號",
+   "floor": 18,
+   "ym": "109/09",
+   "price": 46.3,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  }
+ ]
+}

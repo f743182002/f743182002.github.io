@@ -1,8 +1,8 @@
 {
- "source": "內政部不動產交易實價查詢服務網（已排除特殊交易）",
- "period": "110S2～115S4",
- "published_through": "115/11/01",
- "cutoff": "截至 115/11/01 公布",
+ "source": "政府實價登錄（已排除特殊交易）",
+ "period": "108S1～115S4",
+ "published_through": "115/11/11",
+ "cutoff": "截至 115/11/11 公布",
  "scope": "新北市板橋區文化路一段360～368號（雙號）",
  "floors": 46,
  "door_floors": {
@@ -44,13 +44,43 @@
   },
   {
    "addr": "文化路一段360號",
+   "floor": 4,
+   "suffix": "之13",
+   "ym": "108/04",
+   "price": 63.3,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 5,
+   "suffix": "之1",
+   "ym": "109/11",
+   "price": 76.9,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 5,
+   "suffix": "之3",
+   "ym": "108/06",
+   "price": 72.8,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
    "floor": 5,
    "suffix": "之5",
    "ym": "113/07",
    "price": 100.0,
    "parking": "none",
    "use": "住家用",
-   "n": 1
+   "n": 2
   },
   {
    "addr": "文化路一段360號",
@@ -74,6 +104,26 @@
   },
   {
    "addr": "文化路一段360號",
+   "floor": 5,
+   "suffix": "之20",
+   "ym": "109/12",
+   "price": 72.1,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 6,
+   "suffix": "之5",
+   "ym": "108/12",
+   "price": 70.4,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
    "floor": 6,
    "suffix": "之6",
    "ym": "112/12",
@@ -88,6 +138,16 @@
    "suffix": "之10",
    "ym": "114/04",
    "price": 100.1,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 6,
+   "suffix": "之19",
+   "ym": "109/12",
+   "price": 71.7,
    "parking": "none",
    "use": "住家用",
    "n": 1
@@ -149,7 +209,7 @@
    "price": 79.3,
    "parking": "none",
    "use": "住家用",
-   "n": 1
+   "n": 2
   },
   {
    "addr": "文化路一段360號",
@@ -194,12 +254,22 @@
   {
    "addr": "文化路一段360號",
    "floor": 8,
+   "suffix": "之12",
+   "ym": "108/09",
+   "price": 67.7,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 8,
    "suffix": "之15",
    "ym": "111/06",
    "price": 82.5,
    "parking": "none",
    "use": "住家用",
-   "n": 1
+   "n": 2
   },
   {
    "addr": "文化路一段360號",
@@ -214,9 +284,39 @@
   {
    "addr": "文化路一段360號",
    "floor": 9,
+   "suffix": "之1",
+   "ym": "108/11",
+   "price": 71.2,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 9,
    "suffix": "之2",
    "ym": "113/03",
    "price": 91.5,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 9,
+   "suffix": "之5",
+   "ym": "109/12",
+   "price": 71.6,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 9,
+   "suffix": "之9",
+   "ym": "109/06",
+   "price": 75.7,
    "parking": "none",
    "use": "住家用",
    "n": 1
@@ -238,6 +338,36 @@
    "ym": "113/04",
    "price": 97.3,
    "parking": "none",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 9,
+   "suffix": "之16",
+   "ym": "108/04",
+   "price": 72.5,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 9,
+   "suffix": "之17",
+   "ym": "109/09",
+   "price": 77.2,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 9,
+   "suffix": "之18",
+   "ym": "108/09",
+   "price": 51.1,
+   "parking": "included",
    "use": "住家用",
    "n": 1
   },
@@ -284,9 +414,39 @@
   {
    "addr": "文化路一段360號",
    "floor": 10,
+   "suffix": "之12",
+   "ym": "108/11",
+   "price": 68.1,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 10,
+   "suffix": "之13",
+   "ym": "108/04",
+   "price": 49.3,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 10,
    "suffix": "之16",
    "ym": "112/05",
    "price": 87.0,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 10,
+   "suffix": "之20",
+   "ym": "108/07",
+   "price": 72.3,
    "parking": "none",
    "use": "住家用",
    "n": 1
@@ -314,9 +474,39 @@
   {
    "addr": "文化路一段360號",
    "floor": 11,
+   "suffix": "之12",
+   "ym": "109/06",
+   "price": 74.8,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 11,
+   "suffix": "之13",
+   "ym": "109/10",
+   "price": 79.7,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 11,
    "suffix": "之15",
    "ym": "110/10",
    "price": 77.8,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 11,
+   "suffix": "之16",
+   "ym": "108/04",
+   "price": 66.9,
    "parking": "none",
    "use": "住家用",
    "n": 1
@@ -334,9 +524,29 @@
   {
    "addr": "文化路一段360號",
    "floor": 12,
+   "suffix": "之6",
+   "ym": "109/03",
+   "price": 63.2,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 12,
    "suffix": "之15",
    "ym": "113/12",
    "price": 71.6,
+   "parking": "none",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 12,
+   "suffix": "之17",
+   "ym": "108/11",
+   "price": 70.6,
    "parking": "none",
    "use": "住家用",
    "n": 1
@@ -403,6 +613,16 @@
   {
    "addr": "文化路一段360號",
    "floor": 13,
+   "suffix": "之13",
+   "ym": "107/12",
+   "price": 67.7,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 13,
    "suffix": "之15",
    "ym": "113/08",
    "price": 106.6,
@@ -416,6 +636,26 @@
    "suffix": "之16",
    "ym": "115/04",
    "price": 97.3,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 13,
+   "suffix": "之20",
+   "ym": "108/12",
+   "price": 64.3,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 14,
+   "suffix": "之6",
+   "ym": "109/03",
+   "price": 67.8,
    "parking": "none",
    "use": "住家用",
    "n": 1
@@ -487,7 +727,7 @@
    "price": 95.0,
    "parking": "none",
    "use": "住家用",
-   "n": 1
+   "n": 2
   },
   {
    "addr": "文化路一段360號",
@@ -505,6 +745,15 @@
    "suffix": "之20",
    "ym": "113/05",
    "price": 102.3,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 16,
+   "ym": "109/11",
+   "price": 76.6,
    "parking": "none",
    "use": "住家用",
    "n": 1
@@ -551,6 +800,36 @@
   },
   {
    "addr": "文化路一段360號",
+   "floor": 16,
+   "suffix": "之16",
+   "ym": "108/01",
+   "price": 62.8,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 16,
+   "suffix": "之20",
+   "ym": "107/12",
+   "price": 62.9,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 16,
+   "suffix": "之21",
+   "ym": "110/01",
+   "price": 73.3,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
    "floor": 17,
    "suffix": "之1",
    "ym": "114/12",
@@ -562,9 +841,29 @@
   {
    "addr": "文化路一段360號",
    "floor": 17,
+   "suffix": "之3",
+   "ym": "107/10",
+   "price": 77.0,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 17,
    "suffix": "之12",
    "ym": "111/04",
    "price": 91.5,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 17,
+   "suffix": "之15",
+   "ym": "109/10",
+   "price": 79.4,
    "parking": "none",
    "use": "住家用",
    "n": 1
@@ -601,6 +900,26 @@
   },
   {
    "addr": "文化路一段360號",
+   "floor": 17,
+   "suffix": "之20",
+   "ym": "109/05",
+   "price": 70.4,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 18,
+   "suffix": "之6",
+   "ym": "108/08",
+   "price": 74.9,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
    "floor": 18,
    "suffix": "之8",
    "ym": "110/08",
@@ -612,10 +931,30 @@
   {
    "addr": "文化路一段360號",
    "floor": 18,
+   "suffix": "之10",
+   "ym": "109/09",
+   "price": 72.0,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 18,
    "suffix": "之11",
    "ym": "112/06",
    "price": 55.8,
    "parking": "included",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 18,
+   "suffix": "之12",
+   "ym": "109/05",
+   "price": 76.5,
+   "parking": "none",
    "use": "住家用",
    "n": 1
   },
@@ -642,9 +981,58 @@
   {
    "addr": "文化路一段360號",
    "floor": 20,
+   "ym": "108/08",
+   "price": 77.9,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 20,
+   "suffix": "之3",
+   "ym": "108/12",
+   "price": 76.6,
+   "parking": "none",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 20,
+   "suffix": "之12",
+   "ym": "108/05",
+   "price": 50.1,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 20,
+   "suffix": "之15",
+   "ym": "109/09",
+   "price": 78.3,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 20,
    "suffix": "之19",
    "ym": "115/04",
    "price": 94.8,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 21,
+   "suffix": "之6",
+   "ym": "109/03",
+   "price": 76.2,
    "parking": "none",
    "use": "住家用",
    "n": 1
@@ -677,7 +1065,7 @@
    "price": 82.2,
    "parking": "none",
    "use": "住家用",
-   "n": 1
+   "n": 2
   },
   {
    "addr": "文化路一段360號",
@@ -691,10 +1079,30 @@
   {
    "addr": "文化路一段360號",
    "floor": 22,
+   "suffix": "之6",
+   "ym": "109/07",
+   "price": 79.2,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 22,
    "suffix": "之10",
    "ym": "113/08",
    "price": 113.3,
    "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 22,
+   "suffix": "之13",
+   "ym": "108/09",
+   "price": 47.6,
+   "parking": "included",
    "use": "住家用",
    "n": 1
   },
@@ -731,10 +1139,50 @@
   {
    "addr": "文化路一段360號",
    "floor": 23,
+   "suffix": "之5",
+   "ym": "108/08",
+   "price": 79.4,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 23,
+   "suffix": "之8",
+   "ym": "109/05",
+   "price": 45.6,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 23,
    "suffix": "之10",
    "ym": "110/12",
    "price": 79.4,
    "parking": "none",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 23,
+   "suffix": "之11",
+   "ym": "109/04",
+   "price": 66.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 23,
+   "suffix": "之13",
+   "ym": "107/12",
+   "price": 40.3,
+   "parking": "included",
    "use": "住家用",
    "n": 1
   },
@@ -751,9 +1199,29 @@
   {
    "addr": "文化路一段360號",
    "floor": 23,
+   "suffix": "之17",
+   "ym": "108/03",
+   "price": 77.2,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 23,
    "suffix": "之19",
    "ym": "112/09",
    "price": 87.8,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 24,
+   "suffix": "之1",
+   "ym": "108/12",
+   "price": 73.6,
    "parking": "none",
    "use": "住家用",
    "n": 1
@@ -771,9 +1239,58 @@
   {
    "addr": "文化路一段360號",
    "floor": 24,
+   "suffix": "之8",
+   "ym": "109/11",
+   "price": 76.6,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 24,
+   "suffix": "之12",
+   "ym": "108/05",
+   "price": 77.2,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 24,
+   "suffix": "之18",
+   "ym": "108/11",
+   "price": 72.6,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 24,
    "suffix": "之19",
    "ym": "112/10",
    "price": 87.1,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 24,
+   "suffix": "之20",
+   "ym": "109/09",
+   "price": 71.0,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 25,
+   "ym": "109/06",
+   "price": 72.2,
    "parking": "none",
    "use": "住家用",
    "n": 1
@@ -801,9 +1318,29 @@
   {
    "addr": "文化路一段360號",
    "floor": 25,
+   "suffix": "之6",
+   "ym": "108/08",
+   "price": 74.9,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 25,
    "suffix": "之15",
    "ym": "113/07",
    "price": 103.5,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 25,
+   "suffix": "之16",
+   "ym": "109/01",
+   "price": 73.3,
    "parking": "none",
    "use": "住家用",
    "n": 1
@@ -871,12 +1408,22 @@
   {
    "addr": "文化路一段360號",
    "floor": 26,
+   "suffix": "之7",
+   "ym": "109/09",
+   "price": 73.9,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 26,
    "suffix": "之10",
    "ym": "111/03",
    "price": 73.9,
    "parking": "none",
    "use": "住家用",
-   "n": 1
+   "n": 2
   },
   {
    "addr": "文化路一段360號",
@@ -916,7 +1463,7 @@
    "price": 91.2,
    "parking": "none",
    "use": "住家用",
-   "n": 1
+   "n": 2
   },
   {
    "addr": "文化路一段360號",
@@ -926,13 +1473,33 @@
    "price": 103.2,
    "parking": "none",
    "use": "住家用",
-   "n": 1
+   "n": 2
   },
   {
    "addr": "文化路一段360號",
    "floor": 27,
    "ym": "110/04",
    "price": 77.5,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 27,
+   "suffix": "之7",
+   "ym": "108/10",
+   "price": 69.9,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 27,
+   "suffix": "之8",
+   "ym": "108/10",
+   "price": 70.0,
    "parking": "none",
    "use": "住家用",
    "n": 1
@@ -955,7 +1522,7 @@
    "price": 95.9,
    "parking": "none",
    "use": "住家用",
-   "n": 1
+   "n": 2
   },
   {
    "addr": "文化路一段360號",
@@ -1018,11 +1585,51 @@
   },
   {
    "addr": "文化路一段360號",
+   "floor": 28,
+   "suffix": "之10",
+   "ym": "109/08",
+   "price": 72.4,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 28,
+   "suffix": "之13",
+   "ym": "109/06",
+   "price": 73.0,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 28,
+   "suffix": "之18",
+   "ym": "109/09",
+   "price": 55.6,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
    "floor": 29,
    "suffix": "之6",
    "ym": "111/02",
    "price": 84.7,
    "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 29,
+   "suffix": "之15",
+   "ym": "109/06",
+   "price": 47.7,
+   "parking": "included",
    "use": "住家用",
    "n": 1
   },
@@ -1059,6 +1666,26 @@
   {
    "addr": "文化路一段360號",
    "floor": 30,
+   "suffix": "之8",
+   "ym": "109/08",
+   "price": 70.0,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 30,
+   "suffix": "之15",
+   "ym": "107/12",
+   "price": 72.0,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 30,
    "suffix": "之16",
    "ym": "115/07",
    "price": 104.7,
@@ -1078,10 +1705,60 @@
   },
   {
    "addr": "文化路一段360號",
+   "floor": 31,
+   "suffix": "之1",
+   "ym": "109/09",
+   "price": 76.5,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 31,
+   "suffix": "之17",
+   "ym": "108/12",
+   "price": 77.2,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 31,
+   "suffix": "之18",
+   "ym": "109/04",
+   "price": 71.8,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 31,
+   "suffix": "之19",
+   "ym": "108/06",
+   "price": 67.4,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
    "floor": 32,
    "ym": "113/01",
    "price": 89.8,
    "parking": "none",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 32,
+   "suffix": "之2",
+   "ym": "109/09",
+   "price": 75.5,
+   "parking": "split",
    "use": "住家用",
    "n": 1
   },
@@ -1091,6 +1768,16 @@
    "suffix": "之7",
    "ym": "110/05",
    "price": 80.1,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 32,
+   "suffix": "之11",
+   "ym": "108/10",
+   "price": 70.0,
    "parking": "none",
    "use": "住家用",
    "n": 1
@@ -1118,9 +1805,49 @@
   {
    "addr": "文化路一段360號",
    "floor": 33,
+   "suffix": "之1",
+   "ym": "107/09",
+   "price": 69.4,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 33,
    "suffix": "之3",
    "ym": "115/01",
    "price": 107.5,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 33,
+   "suffix": "之20",
+   "ym": "108/05",
+   "price": 65.1,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 34,
+   "suffix": "之2",
+   "ym": "109/11",
+   "price": 80.6,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 34,
+   "suffix": "之3",
+   "ym": "109/09",
+   "price": 77.7,
    "parking": "none",
    "use": "住家用",
    "n": 1
@@ -1131,6 +1858,25 @@
    "suffix": "之7",
    "ym": "114/04",
    "price": 101.2,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 34,
+   "suffix": "之18",
+   "ym": "109/10",
+   "price": 75.5,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 35,
+   "ym": "109/07",
+   "price": 76.0,
    "parking": "none",
    "use": "住家用",
    "n": 1
@@ -1178,6 +1924,26 @@
   {
    "addr": "文化路一段360號",
    "floor": 36,
+   "suffix": "之9",
+   "ym": "108/03",
+   "price": 72.5,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 36,
+   "suffix": "之10",
+   "ym": "109/11",
+   "price": 77.8,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 36,
    "suffix": "之11",
    "ym": "111/01",
    "price": 84.6,
@@ -1198,9 +1964,48 @@
   {
    "addr": "文化路一段360號",
    "floor": 36,
+   "suffix": "之13",
+   "ym": "109/03",
+   "price": 66.9,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 36,
+   "suffix": "之17",
+   "ym": "108/02",
+   "price": 79.4,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 36,
    "suffix": "之19",
    "ym": "110/04",
    "price": 81.5,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 37,
+   "ym": "108/07",
+   "price": 64.1,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 37,
+   "suffix": "之2",
+   "ym": "109/06",
+   "price": 77.2,
    "parking": "none",
    "use": "住家用",
    "n": 1
@@ -1218,10 +2023,50 @@
   {
    "addr": "文化路一段360號",
    "floor": 37,
+   "suffix": "之11",
+   "ym": "109/12",
+   "price": 78.6,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 37,
    "suffix": "之12",
    "ym": "110/10",
    "price": 83.0,
    "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 37,
+   "suffix": "之13",
+   "ym": "109/04",
+   "price": 70.8,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 37,
+   "suffix": "之15",
+   "ym": "109/12",
+   "price": 80.9,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 37,
+   "suffix": "之20",
+   "ym": "108/02",
+   "price": 66.7,
+   "parking": "none",
    "use": "住家用",
    "n": 1
   },
@@ -1280,6 +2125,16 @@
    "floor": 39,
    "ym": "113/06",
    "price": 92.2,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段360號",
+   "floor": 39,
+   "suffix": "之2",
+   "ym": "109/09",
+   "price": 82.2,
    "parking": "none",
    "use": "住家用",
    "n": 1
@@ -1366,10 +2221,40 @@
   },
   {
    "addr": "文化路一段362號",
+   "floor": 4,
+   "suffix": "之1",
+   "ym": "109/11",
+   "price": 60.8,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段362號",
+   "floor": 4,
+   "suffix": "之2",
+   "ym": "108/03",
+   "price": 63.6,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段362號",
    "floor": 21,
    "ym": "113/03",
    "price": 81.0,
    "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段362號",
+   "floor": 24,
+   "suffix": "之3",
+   "ym": "108/04",
+   "price": 60.3,
+   "parking": "included",
    "use": "住家用",
    "n": 1
   },
@@ -1401,7 +2286,7 @@
    "price": 82.5,
    "parking": "split",
    "use": "住家用",
-   "n": 1
+   "n": 2
   },
   {
    "addr": "文化路一段362號",
@@ -1434,6 +2319,16 @@
   },
   {
    "addr": "文化路一段362號",
+   "floor": 34,
+   "suffix": "之2",
+   "ym": "108/08",
+   "price": 56.5,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段362號",
    "floor": 36,
    "suffix": "之2",
    "ym": "110/04",
@@ -1459,6 +2354,44 @@
    "ym": "115/05",
    "price": 70.2,
    "parking": "split",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "文化路一段362號",
+   "floor": 41,
+   "ym": "108/09",
+   "price": 62.0,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段362號",
+   "floor": 43,
+   "ym": "108/03",
+   "price": 66.8,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段362號",
+   "floor": 43,
+   "suffix": "之3",
+   "ym": "108/11",
+   "price": 69.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段366號",
+   "floor": 5,
+   "suffix": "之2",
+   "ym": "109/11",
+   "price": 74.2,
+   "parking": "none",
    "use": "住家用",
    "n": 1
   },
@@ -1514,10 +2447,40 @@
   {
    "addr": "文化路一段366號",
    "floor": 7,
+   "suffix": "之1",
+   "ym": "108/10",
+   "price": 51.1,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段366號",
+   "floor": 7,
+   "suffix": "之3",
+   "ym": "109/12",
+   "price": 58.7,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段366號",
+   "floor": 7,
    "suffix": "之5",
    "ym": "112/06",
    "price": 67.6,
    "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段366號",
+   "floor": 7,
+   "suffix": "之10",
+   "ym": "107/11",
+   "price": 62.9,
+   "parking": "none",
    "use": "住家用",
    "n": 1
   },
@@ -1529,7 +2492,7 @@
    "price": 72.5,
    "parking": "split",
    "use": "住家用",
-   "n": 1
+   "n": 2
   },
   {
    "addr": "文化路一段366號",
@@ -1539,7 +2502,7 @@
    "price": 91.0,
    "parking": "split",
    "use": "住家用",
-   "n": 1
+   "n": 2
   },
   {
    "addr": "文化路一段366號",
@@ -1573,6 +2536,16 @@
   },
   {
    "addr": "文化路一段366號",
+   "floor": 12,
+   "suffix": "之1",
+   "ym": "108/07",
+   "price": 69.3,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段366號",
    "floor": 13,
    "ym": "110/01",
    "price": 59.0,
@@ -1598,7 +2571,17 @@
    "price": 78.9,
    "parking": "none",
    "use": "住家用",
-   "n": 2
+   "n": 3
+  },
+  {
+   "addr": "文化路一段366號",
+   "floor": 13,
+   "suffix": "之10",
+   "ym": "109/06",
+   "price": 72.6,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
   },
   {
    "addr": "文化路一段366號",
@@ -1617,6 +2600,16 @@
    "ym": "113/09",
    "price": 96.5,
    "parking": "none",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "文化路一段366號",
+   "floor": 14,
+   "suffix": "之8",
+   "ym": "109/10",
+   "price": 54.6,
+   "parking": "included",
    "use": "住家用",
    "n": 1
   },
@@ -1652,6 +2645,35 @@
   },
   {
    "addr": "文化路一段366號",
+   "floor": 16,
+   "suffix": "之2",
+   "ym": "108/01",
+   "price": 56.7,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段366號",
+   "floor": 16,
+   "suffix": "之7",
+   "ym": "109/04",
+   "price": 69.9,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段366號",
+   "floor": 17,
+   "ym": "109/10",
+   "price": 66.6,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段366號",
    "floor": 17,
    "suffix": "之7",
    "ym": "112/05",
@@ -1667,6 +2689,16 @@
    "ym": "110/04",
    "price": 63.3,
    "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段366號",
+   "floor": 19,
+   "suffix": "之8",
+   "ym": "108/03",
+   "price": 70.2,
+   "parking": "none",
    "use": "住家用",
    "n": 1
   },
@@ -1718,7 +2750,7 @@
    "price": 78.0,
    "parking": "included",
    "use": "住家用",
-   "n": 1
+   "n": 2
   },
   {
    "addr": "文化路一段366號",
@@ -1762,10 +2794,58 @@
   },
   {
    "addr": "文化路一段366號",
+   "floor": 24,
+   "suffix": "之8",
+   "ym": "109/12",
+   "price": 73.0,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段366號",
+   "floor": 26,
+   "ym": "110/01",
+   "price": 64.4,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段366號",
+   "floor": 26,
+   "suffix": "之6",
+   "ym": "107/12",
+   "price": 58.1,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段366號",
    "floor": 28,
    "suffix": "之3",
    "ym": "111/04",
    "price": 66.6,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段366號",
+   "floor": 28,
+   "suffix": "之5",
+   "ym": "108/12",
+   "price": 67.4,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段366號",
+   "floor": 30,
+   "ym": "109/02",
+   "price": 59.9,
    "parking": "included",
    "use": "住家用",
    "n": 1
@@ -1777,6 +2857,25 @@
    "ym": "115/05",
    "price": 101.6,
    "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段366號",
+   "floor": 32,
+   "ym": "109/01",
+   "price": 54.5,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段366號",
+   "floor": 33,
+   "suffix": "之5",
+   "ym": "108/07",
+   "price": 59.2,
+   "parking": "included",
    "use": "住家用",
    "n": 1
   },
@@ -1871,6 +2970,16 @@
   {
    "addr": "文化路一段368號",
    "floor": 4,
+   "suffix": "之7",
+   "ym": "109/09",
+   "price": 77.3,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段368號",
+   "floor": 4,
    "suffix": "之8",
    "ym": "115/04",
    "price": 96.6,
@@ -1910,10 +3019,50 @@
   },
   {
    "addr": "文化路一段368號",
+   "floor": 6,
+   "suffix": "之3",
+   "ym": "108/04",
+   "price": 67.7,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段368號",
+   "floor": 6,
+   "suffix": "之9",
+   "ym": "115/06",
+   "price": 93.0,
+   "parking": "none",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "文化路一段368號",
    "floor": 7,
    "ym": "110/04",
    "price": 73.8,
    "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段368號",
+   "floor": 7,
+   "suffix": "之1",
+   "ym": "109/10",
+   "price": 74.8,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段368號",
+   "floor": 7,
+   "suffix": "之2",
+   "ym": "109/08",
+   "price": 55.2,
+   "parking": "included",
    "use": "住家用",
    "n": 1
   },
@@ -1935,6 +3084,26 @@
    "price": 80.0,
    "parking": "none",
    "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "文化路一段368號",
+   "floor": 7,
+   "suffix": "之9",
+   "ym": "108/04",
+   "price": 67.7,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段368號",
+   "floor": 7,
+   "suffix": "之10",
+   "ym": "108/10",
+   "price": 59.2,
+   "parking": "included",
+   "use": "住家用",
    "n": 1
   },
   {
@@ -1954,6 +3123,16 @@
    "ym": "110/01",
    "price": 63.8,
    "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段368號",
+   "floor": 8,
+   "suffix": "之7",
+   "ym": "109/11",
+   "price": 70.2,
+   "parking": "none",
    "use": "住家用",
    "n": 1
   },
@@ -1990,6 +3169,16 @@
   {
    "addr": "文化路一段368號",
    "floor": 10,
+   "suffix": "之6",
+   "ym": "109/10",
+   "price": 73.6,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段368號",
+   "floor": 10,
    "suffix": "之7",
    "ym": "110/02",
    "price": 71.2,
@@ -2019,6 +3208,16 @@
   },
   {
    "addr": "文化路一段368號",
+   "floor": 16,
+   "suffix": "之10",
+   "ym": "108/06",
+   "price": 67.3,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段368號",
    "floor": 17,
    "suffix": "之3",
    "ym": "114/02",
@@ -2034,6 +3233,16 @@
    "ym": "112/11",
    "price": 88.5,
    "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段368號",
+   "floor": 17,
+   "suffix": "之9",
+   "ym": "108/05",
+   "price": 70.4,
+   "parking": "split",
    "use": "住家用",
    "n": 1
   },
@@ -2085,7 +3294,7 @@
    "price": 84.2,
    "parking": "none",
    "use": "住家用",
-   "n": 1
+   "n": 2
   },
   {
    "addr": "文化路一段368號",
@@ -2110,9 +3319,29 @@
   {
    "addr": "文化路一段368號",
    "floor": 21,
+   "suffix": "之3",
+   "ym": "109/05",
+   "price": 63.8,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段368號",
+   "floor": 21,
    "suffix": "之9",
    "ym": "112/07",
    "price": 91.8,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段368號",
+   "floor": 22,
+   "suffix": "之9",
+   "ym": "109/11",
+   "price": 78.8,
    "parking": "none",
    "use": "住家用",
    "n": 1
@@ -2149,11 +3378,71 @@
   },
   {
    "addr": "文化路一段368號",
+   "floor": 25,
+   "suffix": "之1",
+   "ym": "107/10",
+   "price": 73.9,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段368號",
+   "floor": 25,
+   "suffix": "之9",
+   "ym": "109/11",
+   "price": 68.6,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段368號",
+   "floor": 25,
+   "suffix": "之10",
+   "ym": "109/10",
+   "price": 68.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段368號",
+   "floor": 26,
+   "suffix": "之1",
+   "ym": "108/03",
+   "price": 56.1,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段368號",
+   "floor": 26,
+   "suffix": "之5",
+   "ym": "109/05",
+   "price": 67.9,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段368號",
    "floor": 26,
    "suffix": "之6",
    "ym": "114/12",
    "price": 101.8,
    "parking": "none",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "文化路一段368號",
+   "floor": 26,
+   "suffix": "之8",
+   "ym": "109/08",
+   "price": 68.4,
+   "parking": "split",
    "use": "住家用",
    "n": 1
   },
@@ -2179,6 +3468,26 @@
   },
   {
    "addr": "文化路一段368號",
+   "floor": 28,
+   "suffix": "之7",
+   "ym": "109/05",
+   "price": 55.3,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段368號",
+   "floor": 29,
+   "suffix": "之6",
+   "ym": "109/07",
+   "price": 73.3,
+   "parking": "none",
+   "use": "住家用",
+   "n": 2
+  },
+  {
+   "addr": "文化路一段368號",
    "floor": 30,
    "suffix": "之6",
    "ym": "111/10",
@@ -2200,10 +3509,30 @@
   {
    "addr": "文化路一段368號",
    "floor": 32,
+   "suffix": "之7",
+   "ym": "108/05",
+   "price": 67.2,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段368號",
+   "floor": 32,
    "suffix": "之8",
    "ym": "113/08",
    "price": 94.1,
    "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段368號",
+   "floor": 33,
+   "suffix": "之5",
+   "ym": "109/08",
+   "price": 56.0,
+   "parking": "included",
    "use": "住家用",
    "n": 1
   },
@@ -2219,10 +3548,39 @@
   },
   {
    "addr": "文化路一段368號",
+   "floor": 34,
+   "suffix": "之5",
+   "ym": "108/02",
+   "price": 71.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段368號",
    "floor": 35,
    "suffix": "之6",
    "ym": "115/05",
    "price": 91.7,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段368號",
+   "floor": 35,
+   "suffix": "之9",
+   "ym": "109/03",
+   "price": 57.3,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段368號",
+   "floor": 37,
+   "ym": "108/12",
+   "price": 79.2,
    "parking": "none",
    "use": "住家用",
    "n": 1
@@ -2244,6 +3602,16 @@
    "ym": "113/09",
    "price": 102.5,
    "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段368號",
+   "floor": 40,
+   "suffix": "之3",
+   "ym": "109/05",
+   "price": 64.5,
+   "parking": "included",
    "use": "住家用",
    "n": 1
   },
@@ -2303,6 +3671,16 @@
    "suffix": "之2",
    "ym": "110/04",
    "price": 66.6,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "文化路一段368號",
+   "floor": 42,
+   "suffix": "之6",
+   "ym": "108/09",
+   "price": 48.0,
    "parking": "included",
    "use": "住家用",
    "n": 1

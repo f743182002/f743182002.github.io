@@ -1,8 +1,8 @@
 {
- "source": "內政部不動產交易實價查詢服務網（已排除特殊交易）",
- "period": "110S2～115S4",
- "published_through": "115/11/01",
- "cutoff": "截至 115/11/01 公布",
+ "source": "政府實價登錄（已排除特殊交易）",
+ "period": "108S1～115S4",
+ "published_through": "115/11/11",
+ "cutoff": "截至 115/11/11 公布",
  "scope": "新北市中和區中正路797～799號（單號）",
  "floors": 27,
  "door_floors": {
@@ -17,6 +17,16 @@
    "price": 31.4,
    "parking": "split",
    "use": "商業用",
+   "n": 1
+  },
+  {
+   "addr": "中正路797號",
+   "floor": 2,
+   "suffix": "之5",
+   "ym": "115/09",
+   "price": 58.2,
+   "parking": "none",
+   "use": "住家用",
    "n": 1
   },
   {
@@ -40,6 +50,16 @@
   },
   {
    "addr": "中正路797號",
+   "floor": 11,
+   "suffix": "之1",
+   "ym": "108/02",
+   "price": 28.3,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "中正路797號",
    "floor": 13,
    "suffix": "之2",
    "ym": "113/06",
@@ -47,6 +67,15 @@
    "parking": "split",
    "use": "住家用",
    "n": 2
+  },
+  {
+   "addr": "中正路797號",
+   "floor": 16,
+   "ym": "109/12",
+   "price": 32.8,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
   },
   {
    "addr": "中正路797號",
@@ -90,6 +119,16 @@
   },
   {
    "addr": "中正路797號",
+   "floor": 25,
+   "suffix": "之2",
+   "ym": "107/10",
+   "price": 30.8,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "中正路797號",
    "floor": 27,
    "ym": "111/06",
    "price": 36.5,
@@ -108,6 +147,16 @@
    "n": 1
   },
   {
+   "addr": "中正路797號",
+   "floor": 27,
+   "suffix": "之2",
+   "ym": "108/01",
+   "price": 31.4,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
    "addr": "中正路799號",
    "floor": 4,
    "suffix": "之2",
@@ -119,11 +168,31 @@
   },
   {
    "addr": "中正路799號",
+   "floor": 7,
+   "suffix": "之1",
+   "ym": "107/11",
+   "price": 28.7,
+   "parking": "included",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "中正路799號",
    "floor": 9,
    "suffix": "之2",
    "ym": "112/06",
    "price": 37.6,
    "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "中正路799號",
+   "floor": 13,
+   "suffix": "之1",
+   "ym": "108/12",
+   "price": 30.1,
+   "parking": "included",
    "use": "住家用",
    "n": 1
   },

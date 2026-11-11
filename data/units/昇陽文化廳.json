@@ -1,8 +1,8 @@
 {
- "source": "內政部不動產交易實價查詢服務網（已排除特殊交易）",
- "period": "110S2～115S4",
- "published_through": "115/11/01",
- "cutoff": "截至 115/11/01 公布",
+ "source": "政府實價登錄（已排除特殊交易）",
+ "period": "108S1～115S4",
+ "published_through": "115/11/11",
+ "cutoff": "截至 115/11/11 公布",
  "scope": "新北市板橋區民生路三段6～12號（雙號）",
  "floors": 31,
  "door_floors": {
@@ -71,6 +71,16 @@
    "n": 1
   },
   {
+   "addr": "民生路三段6號",
+   "floor": 25,
+   "suffix": "之3",
+   "ym": "108/08",
+   "price": 63.1,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
    "addr": "民生路三段8號",
    "floor": 4,
    "ym": "113/01",
@@ -112,6 +122,16 @@
   {
    "addr": "民生路三段8號",
    "floor": 16,
+   "suffix": "之1",
+   "ym": "108/05",
+   "price": 62.5,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段8號",
+   "floor": 16,
    "suffix": "之3",
    "ym": "112/10",
    "price": 79.9,
@@ -125,6 +145,16 @@
    "ym": "111/06",
    "price": 75.3,
    "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段8號",
+   "floor": 21,
+   "suffix": "之1",
+   "ym": "109/11",
+   "price": 66.4,
+   "parking": "split",
    "use": "住家用",
    "n": 1
   },
@@ -149,10 +179,40 @@
   },
   {
    "addr": "民生路三段8號",
+   "floor": 23,
+   "suffix": "之1",
+   "ym": "107/11",
+   "price": 64.0,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段8號",
+   "floor": 27,
+   "suffix": "之2",
+   "ym": "108/09",
+   "price": 61.1,
+   "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段8號",
    "floor": 28,
    "ym": "113/05",
    "price": 88.2,
    "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段8號",
+   "floor": 28,
+   "suffix": "之3",
+   "ym": "108/09",
+   "price": 63.9,
+   "parking": "none",
    "use": "住家用",
    "n": 1
   },
@@ -164,7 +224,7 @@
    "price": 83.9,
    "parking": "none",
    "use": "住家用",
-   "n": 1
+   "n": 2
   },
   {
    "addr": "民生路三段10號",
@@ -183,6 +243,25 @@
    "ym": "111/02",
    "price": 61.6,
    "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段10號",
+   "floor": 7,
+   "suffix": "之3",
+   "ym": "109/08",
+   "price": 56.0,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段10號",
+   "floor": 11,
+   "ym": "109/05",
+   "price": 65.8,
+   "parking": "none",
    "use": "住家用",
    "n": 1
   },
@@ -246,10 +325,30 @@
   },
   {
    "addr": "民生路三段12號",
+   "floor": 5,
+   "suffix": "之3",
+   "ym": "109/06",
+   "price": 59.3,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段12號",
    "floor": 8,
    "suffix": "之3",
    "ym": "111/08",
    "price": 63.2,
+   "parking": "none",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段12號",
+   "floor": 9,
+   "suffix": "之3",
+   "ym": "109/10",
+   "price": 61.0,
    "parking": "none",
    "use": "住家用",
    "n": 1
@@ -281,6 +380,16 @@
    "ym": "112/03",
    "price": 70.4,
    "parking": "split",
+   "use": "住家用",
+   "n": 1
+  },
+  {
+   "addr": "民生路三段12號",
+   "floor": 15,
+   "suffix": "之2",
+   "ym": "109/10",
+   "price": 61.5,
+   "parking": "none",
    "use": "住家用",
    "n": 1
   },
