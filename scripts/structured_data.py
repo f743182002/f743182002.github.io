@@ -1206,13 +1206,32 @@ def permit_entry(annex):
     return e if e['builder'] or e['contractor'] else None
 
 
+# 2026-11-11 林津陞核准（大禾「可以 寫上興富發」）：存根影像起造人欄空白時，可在 permits.json 人工加
+# "builder_open": ["…"]＋"builder_open_src": "參考政府公開資料"（新北市使照開放資料的起造人欄）。只限起造人名稱，
+# 層數、戶數、車位等數字一律仍以存根影像為準；存根看得到起造人（builder 有值）時不用開放資料。
+OPEN_KEYS = ('builder_open', 'builder_open_src')
+
+
+def builder_open(permit):
+    """存根起造人空白時，permits.json 人工標註的開放資料起造人（只收公司名稱）。"""
+    if not permit or permit.get('builder'):
+        return []
+    v = permit.get('builder_open') or []
+    v = [v] if isinstance(v, str) else v
+    return [x.strip() for x in v if isinstance(x, str) and re.search(r'(公司|工程|營造|建設|開發)', x) and not re.search(r'\d', x)]
+
+
 def save_permit(root, name, annex):
-    """社區版發布時把使照起造人／承造人寫進總站 data/permits.json（文章「基本資料」與常見問題用）；判讀不到就不動。"""
+    """社區版發布時把使照起造人／承造人寫進總站 data/permits.json（文章「基本資料」與常見問題用）；判讀不到就不動。
+    人工加的開放資料起造人（builder_open／builder_open_src）重新發布時保留。"""
     e = permit_entry(annex)
     if not e:
         return None
     pf = Path(root) / 'data' / 'permits.json'
     data = json.loads(pf.read_text(encoding='utf-8')) if pf.exists() else {}
+    old = data.get(name) or {}
+    if old.get('license') == e['license']:
+        e.update({k: old[k] for k in OPEN_KEYS if old.get(k)})
     if data.get(name) != e:
         data[name] = e
         write_json(pf, data)
@@ -1223,6 +1242,13 @@ def permit_answer(name, permit):
     if not permit:
         return None
     b, c = '、'.join(permit.get('builder') or []), '、'.join(permit.get('contractor') or [])
+    bo = '、'.join(builder_open(permit))
+    if bo:  # 存根起造人欄空白：起造人照開放資料寫，註明出處
+        src = permit.get('builder_open_src') or '參考政府公開資料'
+        lead = f"起造人（建設公司）是{bo}（{src}；使用執照存根影像的起造人欄空白）"
+        if c:
+            return (f'{name}是哪家建設公司、營造廠蓋的？', f"{lead}，使用執照（{permit['license']}）登記的承造人（營造廠）是{c}。")
+        return (f'{name}是哪家建設公司蓋的？', f"{lead}。")
     if b and c:
         return (f'{name}是哪家建設公司、營造廠蓋的？', f"使用執照（{permit['license']}）登記的起造人是{b}，承造人（營造廠）是{c}。")
     if c:
