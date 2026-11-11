@@ -32,11 +32,19 @@
 
 ## 結構化資料（JSON-LD）與 llms.txt（2026-11-03）
 
-- 各頁 `<head>` 的 `<!-- LD:START -->…<!-- LD:END -->`、簡報頁 `<main>` 前的 `<!-- LD-SUMMARY -->` noscript 摘要、`/llms.txt` 都由 `scripts/structured_data.py` 產生，**不要手改**；GitHub Actions 每次 push 會重跑。
+- 各頁 `<head>` 的 `<!-- LD:START -->…<!-- LD:END -->`、物件頁 `<main>` 前的 `<!-- LD-SUMMARY -->` noscript 摘要（社區頁改放可見文章，見下一節）、`/llms.txt` 都由 `scripts/structured_data.py` 產生，**不要手改**；GitHub Actions 每次 push 會重跑。
 - 這支程式的唯一來源是 9b-houseflow-tools `tools/property-deck/structured_data.py`，指揮艙發布時會複製過來；要改請改那邊。
 - 資料來源：頁面內嵌的 DECK／SITE、`data/communities.json`、`data/videos.json`（YouTube 影片）、`data/narration.json`（影片字卡與口播稿，發布時寫入）、`decks.json`。
 - 影片上傳 YouTube 後執行 `python scripts/structured_data.py add-video . community/<社區名> https://youtu.be/<編號>` 再 commit／push（Shorts 一樣）。
 - 法遵：金額、屋齡、禁用詞整句不寫；有一頁沒過，程式整批不寫檔。
+
+## 社區頁看得見的分析文章（2026-11-11）
+
+- 每個社區頁在章節列 `<nav class="rail">` 後面有 `<!-- ARTICLE:START -->…<!-- ARTICLE:END -->`（`<article id="analysis">`，純 HTML、Google 讀得到）；頁首「看商圈地圖」旁的 `<!-- ARTICLE-LINK -->`「看文字版分析」；地圖頁 footer 前的 `<!-- MAPLINKS -->` 社區文章清單。都由 `scripts/structured_data.py` 產生，**不要手改**，Actions 每次 push 重跑（內容沒變不改檔）。
+- 社區頁的 `<title>`／meta description／og／JSON-LD `WebPage.name`、`headline` 是問句型「○○可以買嗎？交通、日照、學區與看屋重點｜板橋阿陞聊房」（沒有資料的主題不列），摘要以「○○社區分析：」開頭。社區頁不再放 `<noscript>` 摘要（文章已是可見文字，避免同一份內容出現兩次）；物件頁（S*）照舊。
+- 文章、常見問題（與 JSON-LD FAQPage 同一份）**不寫金額（含實價登錄單價）、屋齡數字、興建中站點**；完整揭露四行＋攻略兩行固定在文末。
+- 起造人／承造人：`data/permits.json`（使照存根影像判讀，看不清楚的不收），社區版發布時 property-deck 自動寫入；手動補 `python scripts/structured_data.py permit . <社區名> <_使照存根庫\字號\annex.json>`。
+- 首頁社區卡片與地圖資料卡的連結文字是「看○○社區分析」（內部連結錨文字）。
 
 ## 生活圈分類
 

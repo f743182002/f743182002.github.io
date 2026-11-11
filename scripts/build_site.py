@@ -85,7 +85,8 @@ def build_index(decks):
     groups = {"community": [], "listing": []}
     for k in sorted_keys(decks):
         if k.startswith("community/"):
-            groups["community"].append(card(k, decks[k], "看社區簡報"))
+            # 2026-11-11 錨文字帶「社區名＋社區分析」（Google 從首頁連到社區頁時讀得到）
+            groups["community"].append(card(k, decks[k], "看" + esc(decks[k].get("name")) + "社區分析"))
         else:
             groups["listing"].append(card(k, decks[k], "看物件簡報"))
 
