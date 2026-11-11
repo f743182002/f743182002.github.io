@@ -569,13 +569,8 @@ def deck_graph(key, text, ctx):
     art = None
     if com:  # 2026-11-11 社區頁：問句型標題＋看得見的分析文章（title、h1、meta、JSON-LD 同一套文字）
         town = re.sub(r'區$', '', district) or county.rstrip('市')
-        parts = topic_parts(bool(stations), bool(sun), bool(school))
-        title, h1 = question_title(name, parts), question_h1(name, town + road, parts)
         st = stations[0] if stations else None
-        desc = question_desc(name, f'位於{county}{district}{road}' + (f'，{built}完工' if built else '') +
-                             (f"、{floors.replace(' ', '')}" if floors else '') + '。',
-                             f'{walk_name(st)}{walk_text(st)}。' if st else '', parts)
-        art = {'kind': 'deck', 'name': name, 'h1': h1, 'title': title, 'desc': desc, 'url': url, 'key': key,
+        art = {'kind': 'deck', 'name': name, 'url': url, 'key': key,
                'updated': entry.get('updated'), 'where': clean(where, com), 'area_name': area_name,
                'interior': clean(deck.get('interiorText')), 'interior_h2': clean(deck.get('interiorH2')),
                'facts': facts, 'facts_src': clean(deck.get('factsSrc')), 'permit': permit,
@@ -592,8 +587,13 @@ def deck_graph(key, text, ctx):
                'deals_h2': clean(deck.get('dealsH2')), 'deals': [x for x in (clean(t) for t in deck.get('dealsText') or []) if x],
                'layouts': deck.get('layouts') or None, 'ev': deck.get('ev') or None,
                'sources': [clean(s) for s in deck.get('sources') or [] if clean(s)],
-               'videos': ctx['videos'].get(key) or [], 'qa': [(q, a) for q, a in qa if q and a],
+               'videos': ctx['videos'].get(key) or [],
                'nearby': nearby_communities(ctx, name, (comm or {}).get('lat') or lat, (comm or {}).get('lon') or lon)}
+        finish_article(art, ctx.get('keywords', {}).get(name), town + road,
+                       f'位於{county}{district}{road}' + (f'，{built}完工' if built else '') +
+                       (f"、{floors.replace(' ', '')}" if floors else '') + '。',
+                       f'{walk_name(st)}{walk_text(st)}。' if st else '')
+        title, desc, qa = art['title'], art['desc'], art['qa']
 
     if not title or title in GENERIC_TITLES or not desc:
         t2, d2 = deck_seo(deck, facts, walks, listing, county, district, road)
@@ -643,28 +643,10 @@ def simple_community_graph(key, text, ctx):
     wnote = 'OpenStreetMap 步行路網規劃，實際以現場為準'
     mrt = clean(comm.get('mrt'), True)
     town = re.sub(r'區$', '', district) or county.rstrip('市')
-    parts = topic_parts(bool(mrt), False, bool(comm.get('school')))
-    title, h1 = question_title(name, parts), question_h1(name, town + road, parts)
     built = comm.get('built') or ''
-    desc = question_desc(name, f'位於{county}{district}{road}' + (f'，{built}' if built and '完工' not in built and not re.search(r'\d', built)
-                                                                    else (f'，{built}完工' if built else '')) + '。',
-                         f'捷運{mrt}。' if mrt else '', parts)
     where = clean(f'{name}位於{county}{district}{road}' + (f'，屬{area_name}' if area_name else '') + '。', True)
-    page = {'@type': 'WebPage', '@id': url + '#webpage', 'url': url, 'name': title, 'headline': h1, 'description': desc,
-            'inLanguage': 'zh-Hant-TW', 'isPartOf': {'@id': WEBSITE_ID}, 'about': {'@id': place_id},
-            'mainEntity': {'@id': place_id}, 'dateModified': entry.get('updated'),
-            'author': {'@id': PERSON_ID}, 'publisher': {'@id': AGENT_ID},
-            'video': [{'@id': n['@id']} for n in videos if n['@type'] == 'VideoObject'] or None,
-            'breadcrumb': {'@id': url + '#breadcrumb'}}
-    qa = [(f'{name}在哪裡？', where),
-          (f'{name}到捷運站走路多久？', clean(f"捷運{mrt}。步行距離資料來源：{wnote}。", True) if mrt else ''),
-          (f'{name}有哪些看點？', sentences(pros)),
-          (f'看{name}時要留意什麼？', sentences(cons))]
-    graph = [{k: v for k, v in page.items() if v not in (None, [], '')},
-             {k: v for k, v in place.items() if v not in (None, [], '')}] + videos + faq(url, qa) + \
-            [breadcrumb(url, [(BRAND, SITE), (name, url)])]
     facts = [(k, comm[f]) for k, f in (('完工', 'built'), ('樓高', 'floors'), ('戶數', 'units'), ('結構', 'structure')) if comm.get(f)]
-    art = {'kind': 'simple', 'name': name, 'h1': h1, 'title': title, 'desc': desc, 'url': url, 'key': key,
+    art = {'kind': 'simple', 'name': name, 'url': url, 'key': key,
            'updated': entry.get('updated'), 'where': where, 'area_name': area_name, 'interior': '', 'interior_h2': '',
            'facts': facts, 'facts_src': '', 'permit': ctx.get('permits', {}).get(name),
            'stations': [('捷運' + mrt.split(' ')[0], ' '.join(mrt.split(' ')[1:]))] if mrt else [], 'buses': [], 'life': [],
@@ -672,7 +654,21 @@ def simple_community_graph(key, text, ctx):
            'school': (comm.get('school') or '').replace('・', '、'), 'sun': '', 'sun_src': '',
            'pros': [(p, '') for p in pros if p], 'cons': [(p, '') for p in cons if p], 'deals_h2': '', 'deals': [],
            'layouts': None, 'ev': None, 'sources': [], 'videos': ctx['videos'].get(key) or [],
-           'qa': [(q, a) for q, a in qa if q and a], 'nearby': nearby_communities(ctx, name, comm.get('lat'), comm.get('lon'))}
+           'nearby': nearby_communities(ctx, name, comm.get('lat'), comm.get('lon'))}
+    finish_article(art, ctx.get('keywords', {}).get(name), town + road,
+                   f'位於{county}{district}{road}' + (f'，{built}' if built and not re.search(r'\d', built)
+                                                     else (f'，{built}完工' if built else '')) + '。',
+                   f'捷運{mrt}。' if mrt else '')
+    title, h1, desc = art['title'], art['h1'], art['desc']
+    page = {'@type': 'WebPage', '@id': url + '#webpage', 'url': url, 'name': title, 'headline': h1, 'description': desc,
+            'inLanguage': 'zh-Hant-TW', 'isPartOf': {'@id': WEBSITE_ID}, 'about': {'@id': place_id},
+            'mainEntity': {'@id': place_id}, 'dateModified': entry.get('updated'),
+            'author': {'@id': PERSON_ID}, 'publisher': {'@id': AGENT_ID},
+            'video': [{'@id': n['@id']} for n in videos if n['@type'] == 'VideoObject'] or None,
+            'breadcrumb': {'@id': url + '#breadcrumb'}}
+    graph = [{k: v for k, v in page.items() if v not in (None, [], '')},
+             {k: v for k, v in place.items() if v not in (None, [], '')}] + videos + faq(url, art['qa']) + \
+            [breadcrumb(url, [(BRAND, SITE), (name, url)])]
     return graph, {'article': art}
 
 
@@ -826,26 +822,273 @@ def walk_source(walks):
     return f"步行距離資料來源：{'、'.join(srcs)}，實際以現場為準" if srcs else WALK_NOTE
 
 
-def topic_parts(has_station, has_sun, has_school):
-    """標題、h1 的主題：有資料的才列（沒有學區資料就不寫「學區」，文章與標題不互相矛盾）。"""
-    return [p for p, ok in (('交通', has_station), ('日照', has_sun), ('學區', has_school)) if ok]
+# 2026-11-11 第二輪（林津陞：「優化成就是買方會搜的關鍵字」）：data/keywords.json 存每個社區的 Google 搜尋自動完成與
+# 「其他人也搜尋了」；依搜尋詞出現次數排主題順序，決定 title、h1、h2 問句與 FAQ。只寫有資料的主題（沒資料整題不寫）。
+# 房價、行情、租金、增值不寫（法遵）；凶宅、跳樓等負面詞只記在 keywords.json 的 excluded，不進文章。
+TOPICS = {  # 主題：（標題用字，搜尋詞裡出現就算一次）
+    '捷運': ('捷運', ['捷運', '站', '共構', '交通']),
+    '日照': ('日照', ['日照', '採光', '西曬', '座向']),
+    '學區': ('學區', ['學區', '國小', '國中', '學校']),
+    '車位': ('車位', ['車位', '停車']),
+    '公設': ('公設', ['公設', '健身房', '游泳池', '泳池', '操場', '中庭']),
+    '管委會': ('管委會', ['管委會', '管理委員會', '管理室', '管理中心', '管理費', '保全']),
+    '建商': ('建商', ['建商', '建設', '營造', '起造']),
+    '格局': ('格局', ['格局', '平面圖', '坪數', '戶型', '套房']),
+    '生活': ('生活機能', ['全家', '全聯', '超市', '市場', '生活', '醫院', '公園']),
+    '完工': ('完工年', ['屋齡', '完工', '幾年']),
+    '實價': ('實價登錄', ['實價登錄', '實價', '成交']),
+}
+TOPIC_DEFAULT = list(TOPICS)
+NEGATIVE_WORDS = re.compile(r'凶宅|跳樓|上吊|意外|命案|自殺|法拍|釘子戶|災難|車禍|死')
 
 
-def question_title(name, parts):
-    mid = '、'.join(parts)
-    return f'{name}可以買嗎？' + (f'{mid}與看屋重點' if mid else '看屋重點整理') + f'｜{BRAND}'
+def topic_order(kw):
+    """依搜尋詞出現次數排主題（同分照預設順序）。kw 是 keywords.json 的一筆；沒有就用預設順序。"""
+    qs = [q for q in (kw or {}).get('queries') or [] if not NEGATIVE_WORDS.search(q)]
+    score = {t: sum(1 for q in qs if any(w in q for w in words)) for t, (_, words) in TOPICS.items()}
+    return sorted(TOPIC_DEFAULT, key=lambda t: (-score[t], TOPIC_DEFAULT.index(t)))
 
 
-def question_h1(name, place, parts):
-    mid = '、'.join(parts)
-    return f'{name}可以買嗎？{place}社區分析：' + (f'{mid}與看屋重點' if mid else '看屋重點整理')
+def question_title(name, labels):
+    lab = [x for x in labels if x][:3]
+    mid = ('、'.join(lab[:-1]) + '與' + lab[-1]) if len(lab) > 1 else (lab[0] if lab else '看屋重點')
+    return f'{name}可以買嗎？優缺點、{mid}｜{BRAND}'
 
 
-def question_desc(name, where, station, parts):
+def question_h1(name, place, labels):
+    lab = [x for x in labels if x][:5]
+    return f'{name}可以買嗎？{place}社區優缺點' + (f"、{'、'.join(lab)}" if lab else '') + '與看屋重點'
+
+
+def question_desc(name, where, station, labels):
     """meta description：社區名＋「社區分析」開頭（搜尋「○○ 社區分析」對得上），只寫已查證的位置、完工年月、捷運步行。"""
-    topics = '、'.join(parts + ['生活機能'])
+    topics = '、'.join(['優缺點'] + [x for x in labels if x][:5])
     return clean(_fit([f'{name}社區分析：{where}', station, f'整理{topics}，以及看屋要留意的地方。',
                        '資料依政府公開資料查證，實際以現場為準。'], 120))
+
+
+def _join(items, sep='、'):
+    return sep.join(x for x in items if x)
+
+
+def _sent(text):
+    t = str(text or '').strip()
+    return t if not t or t[-1] in '。！？' else t + '。'
+
+
+def _first_sentences(text, n=2):
+    parts = [p for p in re.split(r'(?<=[。！？])', str(text or '')) if p.strip()]
+    return ''.join(parts[:n]), ''.join(parts[n:])
+
+
+def article_sections(a):
+    """文章的問答章節：每節 = {topic, q(h2 問句), lead(直接講結論的第一段，也是 FAQ 答案), body(HTML)}。
+    資料只來自 a（頁面已有資料＋使照判讀）；沒資料的主題不產生。順序：結論 → 依關鍵字排的主題 → 優缺點 → 看屋確認。"""
+    e = html.escape
+    name, f = a['name'], dict(a['facts'])
+    secs = {}
+
+    # 位置、完工、樓層
+    built, floors = f.get('完工', ''), f.get('樓高', '')
+    if built or floors:
+        bits = _join([f'{built}完工' if built and re.search(r'\d', built) else built, floors,
+                      f"地下{f['地下層']}" if f.get('地下層') else '',
+                      re.sub(r'（全案合計）$', '', f.get('戶數', '')), f.get('棟數', ''), f.get('結構', '')], '、')
+        rows = [(k, re.sub(r'（全案合計）$', '', v) if v.startswith('全案') else v) for k, v in a['facts']]
+        p = a.get('permit')
+        if p:
+            rows = [r for r in rows if r[0] not in ('建設', '營造')]
+            rows.append(('使用執照', p['license']))
+        body = '<table><tbody>' + ''.join(f'<tr><th scope="row">{e(k)}</th><td>{e(v)}</td></tr>' for k, v in rows) + '</tbody></table>'
+        notes = _join([a.get('facts_src'), '使用執照依新北市政府工務局使用執照存根影像。' if p else ''], '')
+        if notes:
+            body += f'<p class="sa-note">{e(notes)}</p>'
+        secs['完工'] = {'q': f'{name}是哪一年完工的？幾層樓、幾戶？', 'lead': clean(f'{name}{bits}。'), 'body': body}
+
+    # 捷運
+    st = a['stations']
+    if st:
+        lead = '；'.join(f'{n}{t}' for n, t in st) + '。'
+        body = ''
+        if a['buses']:
+            body += '<p>最近的公車站：' + '；'.join(f'{e(n)}{e(t)}' for n, t in a['buses']) + '。</p>'
+        body += f'<p class="sa-note">{e(a["walk_note"])}。</p>'
+        secs['捷運'] = {'q': f'{name}到捷運站走路多久？', 'lead': clean(lead), 'body': body}
+
+    # 生活機能
+    if a['life'] or a['near_extra']:
+        lead = '步行可到：' + '；'.join(f'{n}{t}' for n, t, _ in a['life'][:5]) + '。' if a['life'] else ''
+        body = ('<ul>' + _li([(f'{n}（{k}）' if k else n, t) for n, t, k in a['life']]) + '</ul>') if a['life'] else ''
+        if a['near_extra']:
+            body += '<ul>' + _li(a['near_extra']) + '</ul>'
+        if a['life']:
+            body += f'<p class="sa-note">{e(a["walk_note"])}。地點名稱與位置參考政府開放資料與連鎖店官方門市查詢。</p>'
+        if lead:
+            secs['生活'] = {'q': f'{name}生活機能方便嗎？超市、超商、市場走路多久？', 'lead': clean(lead), 'body': body}
+
+    # 學區
+    if a['school']:
+        body = '<p>學區每年可能調整，入學前記得再向學校或教育局確認。</p>'
+        if a['schools_walk']:
+            body += '<p>走路到學校：' + '；'.join(f'{e(n)}{e(t)}' for n, t in a['schools_walk']) + f'（{e(a["walk_note"])}）。</p>'
+        secs['學區'] = {'q': f'{name}學區是哪裡？', 'lead': f'依政府公開資料，{name}的學區為{a["school"]}，實際以教育局公告為準。', 'body': body}
+
+    # 日照
+    if a['sun']:
+        lead, rest = _first_sentences(a['sun'], 2)
+        body = (f'<p>{e(rest)}</p>' if rest else '') + \
+            '<p>日照會因為面向、樓層、前後棟距差很多，看屋時建議上午、下午各去一次，站到窗邊看實際的採光與視野。</p>' + \
+            (f'<p class="sa-note">{e(a["sun_src"])}</p>' if a.get('sun_src') else '')
+        secs['日照'] = {'q': f'{name}日照好嗎？冬天曬得到太陽嗎？', 'lead': lead, 'body': body}
+
+    # 車位
+    ev = a.get('ev') or {}
+    car = []
+    if f.get('停車位'):
+        car.append(f"依使照資料，停車位為{f['停車位']}")
+    if f.get('機車位'):
+        car.append(f"機車位{f['機車位']}")
+    if f.get('車位'):
+        car.append(f"車位類型：{f['車位']}")
+    deal_car = next((x for x in a['deals'] if re.match(r'^\s*車位[：:]', x)), '')
+    if deal_car:
+        car.append('實價登錄交易中，' + re.sub(r'^\s*車位[：:]\s*', '', re.split(r'(?<=[。])', deal_car)[0]).rstrip('。'))
+    if car:
+        asks = [x for x in (clean(y) for y in ev.get('ask') or []) if x]
+        body = '<p>看屋時建議確認車位的產權登記方式、位置與進出動線，機車位是否需要另外申請。</p>'
+        if asks:
+            body += '<h3>電動車充電：可以先問管委會的事</h3><ul>' + ''.join(f'<li>{e(x)}</li>' for x in asks) + '</ul>'
+            note = re.sub(r'[；;，,、]$', '。', clean(ev.get('note')))
+            if note:
+                body += f'<p class="sa-note">{e(note)}</p>'
+        secs['車位'] = {'q': f'{name}有車位嗎？車位有多少？', 'lead': clean('；'.join(car) + '。'), 'body': body}
+
+    # 公設
+    if f.get('公設') or f.get('公設比'):
+        lead = _join([f"公設有{f['公設']}" if f.get('公設') else '', f"公設比{f['公設比']}" if f.get('公設比') else ''], '；') + '。'
+        secs['公設'] = {'q': f'{name}公設有哪些？公設比多少？', 'lead': clean(lead),
+                      'body': '<p>公設實際開放時間與使用規定，以管委會公告與規約為準，看屋時可以請管理室帶看。</p>'}
+
+    # 管委會
+    if f.get('管理'):
+        secs['管委會'] = {'q': f'{name}有管委會嗎？管理方式怎麼樣？', 'lead': clean(f"管理方式：{f['管理']}。"),
+                        'body': '<p>看屋時可以向管理室確認：社區規約、管理費收取方式、公共基金與近期公共修繕計畫，'
+                                '以及有沒有進行中的社區爭議。</p>'}
+
+    # 建商
+    p = a.get('permit')
+    ans = permit_answer(name, p)
+    if ans:
+        secs['建商'] = {'q': ans[0], 'lead': ans[1], 'body': ''}
+    elif f.get('建設') or f.get('營造'):
+        secs['建商'] = {'q': f'{name}是哪家建設公司蓋的？',
+                      'lead': clean(_join([f"建設：{f['建設']}" if f.get('建設') else '', f"營造：{f['營造']}" if f.get('營造') else ''], '；') + '。'),
+                      'body': ''}
+
+    # 格局（實價登錄戶型分布）
+    lay = a.get('layouts') or {}
+    rows = [r for r in lay.get('rows') or [] if r.get('count')]
+    if rows:
+        top = max(rows, key=lambda r: r['count'])
+        mp = top.get('main_ping') or []
+        lead = (f"依實價登錄申報資料（{lay.get('cutoff') or ''}），{name}有成交紀錄的住宅以{top['label']}最多（{top['count']}筆）"
+                + (f"，主建物約{mp[0]}～{mp[1]}坪" if len(mp) == 2 else '') + '。')
+        body = ('<table><thead><tr><th scope="col">房數</th><th scope="col">筆數</th><th scope="col">主建物坪數</th></tr></thead><tbody>' +
+                ''.join(f'<tr><td>{e(str(r.get("label")))}</td><td>{e(str(r.get("count")))}</td><td>'
+                        + (e(f'{r["main_ping"][0]}～{r["main_ping"][1]} 坪') if len(r.get('main_ping') or []) == 2 else '')
+                        + '</td></tr>' for r in rows) + '</tbody></table>')
+        notes = ''.join(x for x in (clean(y) for y in lay.get('notes') or []) if x)
+        if notes:
+            body += f'<p class="sa-note">{e(notes)}</p>'
+        secs['格局'] = {'q': f'{name}格局有哪些？幾房、幾坪？', 'lead': clean(lead), 'body': body}
+
+    # 實價登錄（只寫筆數與期間；金額句已拿掉）
+    deals = []
+    for x in a['deals']:
+        x = re.sub(r'^這[是些][^。]*。', '', x.strip()).strip()
+        x = re.sub(r'[；;，,、]$', '。', x)
+        if x and not re.match(r'^\s*車位[：:]', x):
+            deals.append(x)
+    if deals:
+        lead, rest = _first_sentences(deals[0], 1)
+        body = ''.join(f'<p>{e(x)}</p>' for x in ([rest] if rest else []) + deals[1:])
+        secs['實價'] = {'q': f'{name}實價登錄有幾筆成交？', 'lead': lead, 'body': body}
+
+    out = []
+    # 結論（第一節）
+    pros_h = [h or b for h, b in a['pros']][:3]
+    cons_h = [h or b for h, b in a['cons']][:3]
+    lead = _sent(a['where']) + (f'走到{st[0][0]}{st[0][1]}。' if st else '') + \
+        (f"優點是{'、'.join(pros_h)}；" if pros_h else '') + (f"要留意的是{'、'.join(cons_h)}。" if cons_h else '')
+    lead = lead.replace('；。', '。').rstrip('；') + ('' if lead.endswith('。') else '。')
+    body = '<p>適不適合，要看你最在意的是什麼。下面把買方最常搜尋的問題一題一題整理，每題第一段先講結論，數字都標了出處，實際狀況還是以現場為準。</p>'
+    if a.get('interior'):
+        body += f'<h3>{e(a.get("interior_h2") or "從空中看" + name)}</h3><p>{e(a["interior"])}</p>'
+    out.append({'topic': '結論', 'q': f'{name}可以買嗎？先說結論', 'lead': clean(lead), 'body': body})
+    order = a.get('topic_order') or TOPIC_DEFAULT
+    out += [dict(secs[t], topic=t) for t in order if t in secs]
+    # 優缺點、看屋確認
+    if a['pros'] or a['cons']:
+        lead = (f"優點：{'；'.join(pros_h)}。" if pros_h else '') + (f"要留意：{'；'.join(cons_h)}。" if cons_h else '')
+        body = ''.join((f'<h3>{e(h)}</h3>' if h else '') + (f'<p>{e(b)}</p>' if b else '') for h, b in a['pros'])
+        out.append({'topic': '優缺點', 'q': f'{name}優缺點有哪些？', 'lead': clean(lead), 'body': body})
+    if a['cons']:
+        lead = f"看{name}要先確認的是：{'；'.join(cons_h)}。"
+        body = ''.join((f'<h3>{e(h)}</h3>' if h else '') + (f'<p>{e(b)}</p>' if b else '') for h, b in a['cons'])
+        out.append({'topic': '看屋', 'q': f'{name}缺點是什麼？看屋時要確認什麼？', 'lead': clean(lead), 'body': body})
+    return [s for s in out if s['lead']]
+
+
+KEYWORD_SEEDS = ['', '優缺點', '可以買嗎', '缺點', '日照', '捷運', '學區', '管委會', '車位', '公設', '建商', '評價', '社區',
+                 '格局', '坪數']
+
+
+def fetch_keywords(name, seeds=KEYWORD_SEEDS, pause=0.4):
+    """Google 搜尋框自動完成（社區名＋空白、＋優缺點…），只留含社區名的詞；負面詞放 excluded。只用標準函式庫。"""
+    import time
+    import urllib.request
+    got = []
+    for s in seeds:
+        q = f'{name} {s}'.strip() + ('' if s else ' ')
+        u = 'https://suggestqueries.google.com/complete/search?client=chrome&hl=zh-TW&gl=tw&q=' + quote(q)
+        d = json.loads(urllib.request.urlopen(urllib.request.Request(u, headers={'User-Agent': 'Mozilla/5.0'}), timeout=20)
+                       .read().decode('utf-8', 'replace'))
+        got += [re.sub(r'\s+', '', x) for x in d[1] if re.sub(r'\s+', '', x) not in got]
+        time.sleep(pause)
+    mine = [x for x in dict.fromkeys(got) if name in x and not re.search(r'[乐价录卖电]', x)]
+    return {'queries': [x for x in mine if not NEGATIVE_WORDS.search(x)],
+            'excluded': [x for x in mine if NEGATIVE_WORDS.search(x)]}
+
+
+def save_keywords(root, name, fetched=None):
+    """data/keywords.json 合併新抓的自動完成（保留原本人工查的「其他人也搜尋了」等）。"""
+    kf = Path(root) / 'data' / 'keywords.json'
+    data = json.loads(kf.read_text(encoding='utf-8')) if kf.exists() else {}
+    new = fetched if fetched is not None else fetch_keywords(name)
+    old = data.get(name) or {}
+    entry = {'queries': list(dict.fromkeys((old.get('queries') or []) + new['queries'])),
+             'related': old.get('related') or [],
+             'excluded': list(dict.fromkeys((old.get('excluded') or []) + new['excluded'])),
+             'checked': __import__('datetime').date.today().isoformat(),
+             'source': old.get('source') or 'Google 搜尋自動完成（社區名＋空白與優缺點、可以買嗎、日照、捷運、學區、管委會、車位、公設、建商等）'}
+    if entry != old:
+        data[name] = entry
+        write_json(kf, data)
+    return entry
+
+
+def finish_article(a, kw, place, where_short, station):
+    """依關鍵字排序主題，產生章節、title、h1、meta description、FAQ（＝章節問句＋第一段）。"""
+    a['topic_order'] = topic_order(kw)
+    a['keywords'] = [q for q in (kw or {}).get('queries') or [] if not NEGATIVE_WORDS.search(q)]
+    a['sections'] = article_sections(a)
+    # 標題不放「實價登錄」「完工年」：搜這兩個詞的人多半要看房價，文章不寫價格，放標題會答非所問（章節照留）
+    labels = [TOPICS[s['topic']][0] for s in a['sections'] if s['topic'] in TOPICS and s['topic'] not in ('實價', '完工')]
+    a['title'] = question_title(a['name'], labels)
+    a['h1'] = question_h1(a['name'], place, labels)
+    a['desc'] = question_desc(a['name'], where_short, station, labels)
+    a['qa'] = [(s['q'], s['lead']) for s in a['sections']]
+    return a
 
 
 def hp_rows(items, community=True):
@@ -930,6 +1173,9 @@ ARTICLE_CSS = (
     '#analysis p{margin:0 0 12px}#analysis ul,#analysis ol{margin:0 0 12px;padding-left:1.4em}#analysis li{margin:2px 0}'
     '#analysis a{color:#0F2233;text-decoration:underline;text-decoration-color:#0369A1;text-underline-offset:3px}'
     '#analysis .sa-meta,#analysis .sa-note{color:#3F4F5E;font-size:14px}'
+    '#analysis .sa-lead{font-weight:600}'
+    '#analysis .sa-toc{background:#F2F8FB;border:1px solid #D7E6EF;border-radius:8px;padding:10px 14px;margin:8px 0 4px;font-size:15px}'
+    '#analysis .sa-toc p{margin:0 0 4px;font-weight:600}#analysis .sa-toc ol{margin:0}'
     '#analysis .sa-kicker{display:inline-block;font-size:13px;color:#3F4F5E;border:1px solid #D7E6EF;border-radius:999px;padding:1px 10px}'
     '#analysis table{border-collapse:collapse;width:100%;margin:0 0 12px;font-size:15px}'
     '#analysis th,#analysis td{border-bottom:1px solid #D7E6EF;padding:6px 8px;text-align:left;vertical-align:top;'
@@ -956,113 +1202,18 @@ def article_html(a):
     name = a['name']
     out = [f'<p class="sa-kicker">社區分析・文字版</p>', f'<h1>{e(a["h1"])}</h1>',
            f'<p class="sa-meta">整理：林津陞（阿陞）' + (f'｜更新：{e(a["updated"])}' if a.get('updated') else '') + '</p>']
-    topics = '、'.join(x for x, ok in (('離捷運多遠', a['stations']), ('冬天曬不曬得到太陽', a['sun']),
-                                       ('學區在哪', a['school']), ('生活方不方便', a['life'])) if ok)
-    out.append(f'<p>帶看{e(name)}時，大家最常問我的是' + (f'{e(topics)}，' if topics else '') +
-               '還有看屋要注意什麼。我把查過的資料整理在這篇，跟上面的互動簡報（3D 模型、日照模擬、步行地圖）是同一份資料，'
-               '數字都標了出處，實際狀況還是要以現場為準。</p>')
+    secs = a.get('sections') or []
+    out.append(f'<p>帶看{e(name)}時，買方最常問的就是下面這幾題。我把查過的資料整理在這篇，每一題第一段先講結論，'
+               '跟上面的互動簡報（3D 模型、日照模擬、步行地圖）是同一份資料，數字都標了出處，實際狀況還是要以現場為準。</p>')
+    if len(secs) > 2:  # 目錄：讓讀者（與搜尋引擎）一眼看到這篇回答哪些問題
+        out.append('<nav class="sa-toc" aria-label="本文問題"><p>這篇回答：</p><ol>' +
+                   ''.join(f'<li><a href="#q-{i + 1}">{e(x["q"])}</a></li>' for i, x in enumerate(secs)) + '</ol></nav>')
+    for i, x in enumerate(secs):
+        out.append(f'<h2 id="q-{i + 1}">{e(x["q"])}</h2>')
+        out.append(f'<p class="sa-lead">{e(x["lead"])}</p>')
+        if x.get('body'):
+            out.append(x['body'])
 
-    # 位置與基本資料
-    out.append(f'<h2>{e(name)}在哪裡？位置與基本資料</h2>')
-    if a['where']:
-        out.append(f'<p>{e(a["where"])}</p>')
-    rows = [(k, re.sub(r'（全案合計）$', '', v) if v.startswith('全案') else v) for k, v in a['facts']]
-    p = a.get('permit')
-    if p:
-        rows = [r for r in rows if r[0] not in ('建設', '營造')]
-        rows.append(('使用執照', p['license']))
-        if p.get('builder'):
-            rows.append(('起造人', '、'.join(p['builder'])))
-        if p.get('contractor'):
-            rows.append(('承造人（營造廠）', '、'.join(p['contractor'])))
-    if rows:
-        out.append('<table><tbody>' + ''.join(f'<tr><th scope="row">{e(k)}</th><td>{e(v)}</td></tr>' for k, v in rows) + '</tbody></table>')
-    notes = [x for x in (a.get('facts_src'), '起造人、承造人依新北市政府工務局使用執照存根影像判讀。' if p else '') if x]
-    if notes:
-        out.append(f'<p class="sa-note">{e("".join(notes))}</p>')
-    if a.get('interior'):
-        out.append(f'<h3>{e(a.get("interior_h2") or "從空中看" + name)}</h3><p>{e(a["interior"])}</p>')
-
-    # 交通
-    if a['stations'] or a['buses']:
-        out.append(f'<h2>{e(name)}交通：到捷運站走路多久？</h2>')
-        st = a['stations']
-        if st:
-            out.append(f'<p>從社區走到捷運站，{e(st[0][0])}{e(st[0][1])}。' +
-                       ('其他可以走到的站：' + '；'.join(f'{e(n)}{e(t)}' for n, t in st[1:]) + '。' if len(st) > 1 else '') + '</p>')
-        if a['buses']:
-            out.append('<p>最近的公車站：' + '；'.join(f'{e(n)}{e(t)}' for n, t in a['buses']) + '。</p>')
-        out.append(f'<p class="sa-note">{e(a["walk_note"])}。</p>')
-
-    # 生活機能
-    if a['life'] or a['near_extra']:
-        out.append(f'<h2>{e(name)}生活機能：買菜、超商、公園多遠？</h2>')
-        if a['life']:
-            out.append('<ul>' + _li([(f'{n}（{k}）' if k else n, t) for n, t, k in a['life']]) + '</ul>')
-        if a['near_extra']:
-            out.append('<ul>' + _li(a['near_extra']) + '</ul>')
-        if a['life']:
-            out.append(f'<p class="sa-note">{e(a["walk_note"])}。地點名稱與位置參考政府開放資料與連鎖店官方門市查詢。</p>')
-
-    # 學區
-    if a['school']:
-        out.append(f'<h2>{e(name)}學區是哪裡？</h2>')
-        out.append(f'<p>依政府公開資料，{e(name)}的學區為{e(a["school"])}。學區每年可能調整，'
-                   '實際以教育局公告為準，入學前記得再向學校或教育局確認。</p>')
-        if a['schools_walk']:
-            out.append('<p>走路到學校：' + '；'.join(f'{e(n)}{e(t)}' for n, t in a['schools_walk']) + f'（{e(a["walk_note"])}）。</p>')
-
-    # 日照
-    if a['sun']:
-        out.append(f'<h2>{e(name)}日照：冬天曬得到太陽嗎？</h2>')
-        out.append(f'<p>{e(a["sun"])}</p>')
-        out.append('<p>日照會因為面向、樓層、前後棟距差很多，看屋時建議上午、下午各去一次，站到窗邊看實際的採光與視野。</p>')
-        if a.get('sun_src'):
-            out.append(f'<p class="sa-note">{e(a["sun_src"])}</p>')
-
-    # 優點／留意
-    if a['pros']:
-        out.append(f'<h2>{e(name)}的優點</h2>')
-        out += [(f'<h3>{e(h)}</h3>' if h else '') + (f'<p>{e(b)}</p>' if b else '') for h, b in a['pros']]
-    cons, ev = a['cons'], a.get('ev') or {}
-    if cons or ev.get('ask'):
-        out.append(f'<h2>看{e(name)}要留意什麼？看屋時怎麼確認</h2>')
-        out += [(f'<h3>{e(h)}</h3>' if h else '') + (f'<p>{e(b)}</p>' if b else '') for h, b in cons]
-        asks = [clean(x) for x in ev.get('ask') or []]
-        asks = [x for x in asks if x]
-        if asks:
-            park = clean(ev.get('parking'))
-            out.append('<h3>停車與電動車充電：可以先問管委會的事</h3>' + (f'<p>{e(park)}</p>' if park else '') +
-                       '<ul>' + ''.join(f'<li>{e(x)}</li>' for x in asks) + '</ul>')
-            note = re.sub(r'[；;，,、]$', '。', clean(ev.get('note')))
-            if note:
-                out.append(f'<p class="sa-note">{e(note)}</p>')
-
-    # 實價登錄（只寫筆數、期間、戶型；總價整句拿掉，見 clean）
-    lay = a.get('layouts') or {}
-    if a['deals'] or lay.get('rows'):
-        out.append(f'<h2>{e(name)}實價登錄：成交筆數與戶型</h2>')
-        for x in a['deals']:
-            # 金額句被拿掉後，接在後面指回去的「這是…」也拿掉；句尾殘留的分號改句號
-            x = re.sub(r'^這[是些][^。]*。', '', x.strip()).strip()
-            x = re.sub(r'[；;，,、]$', '。', x)
-            if x:
-                out.append(f'<p>{e(x)}</p>')
-        if lay.get('rows'):
-            out.append('<table><thead><tr><th scope="col">房數</th><th scope="col">筆數</th><th scope="col">主建物坪數</th></tr></thead><tbody>' +
-                       ''.join(f'<tr><td>{e(str(r.get("label")))}</td><td>{e(str(r.get("count")))}</td><td>'
-                               + (e(f'{r["main_ping"][0]}～{r["main_ping"][1]} 坪') if len(r.get('main_ping') or []) == 2 else '')
-                               + '</td></tr>' for r in lay['rows']) + '</tbody></table>')
-            notes = [clean(x) for x in lay.get('notes') or []]
-            if any(notes):
-                out.append('<p class="sa-note">' + e(''.join(x for x in notes if x)) + '</p>')
-
-    # 常見問題（與 JSON-LD FAQPage 同一份）
-    if a['qa']:
-        out.append(f'<h2>{e(name)}常見問題</h2>')
-        out += [f'<h3>{e(q)}</h3><p>{e(ans)}</p>' for q, ans in a['qa']]
-
-    # 影片
     vids = [v for v in a['videos'] if re.fullmatch(r'[\w-]{11}', str(v.get('id') or ''))]
     if vids:
         out.append(f'<h2>{e(name)}社區分析影片</h2>')
@@ -1275,7 +1426,7 @@ def load_ctx(root):
             'communities': {c['name']: c for c in comm.get('communities', [])},
             'areas': {a['id']: a for a in comm.get('areas', [])},
             'videos': rd('data/videos.json', {}), 'narration': rd('data/narration.json', {}),
-            'permits': rd('data/permits.json', {})}
+            'permits': rd('data/permits.json', {}), 'keywords': rd('data/keywords.json', {})}
 
 
 def pages(root):
@@ -1433,7 +1584,8 @@ USAGE = """用法：
   python structured_data.py add-video <網站資料夾> <頁面> <YouTube網址> [影片檔網址]
         例：add-video . community/高閣 https://youtu.be/xxxxxxxxxxx
   python structured_data.py narration <網站資料夾> <頁面> <scenes.voice.json> [YouTube網址]
-  python structured_data.py permit <網站資料夾> <社區名> <使照存根庫\\字號\\annex.json>"""
+  python structured_data.py permit <網站資料夾> <社區名> <使照存根庫\\字號\\annex.json>
+  python structured_data.py keywords <網站資料夾> <社區名>     （Google 自動完成 → data/keywords.json）"""
 
 
 def main(argv):
@@ -1447,6 +1599,10 @@ def main(argv):
     elif argv[0] == 'permit':  # permit <網站資料夾> <社區名> <annex.json>：使照存根判讀寫進 data/permits.json
         e = save_permit(argv[1], argv[2], json.loads(Path(argv[3]).read_text(encoding='utf-8')))
         print(f'{argv[2]}：' + (json.dumps(e, ensure_ascii=False) if e else '存根判讀沒有看得清楚的起造人／承造人，未寫入'))
+        argv = [argv[1]]
+    elif argv[0] == 'keywords':  # keywords <網站資料夾> <社區名>：抓 Google 自動完成寫進 data/keywords.json
+        e = save_keywords(argv[1], argv[2])
+        print(f"{argv[2]}：{len(e['queries'])} 個搜尋詞（排除負面詞 {len(e['excluded'])} 個）")
         argv = [argv[1]]
     elif argv[0] == 'narration':
         scenes = json.loads(Path(argv[3]).read_text(encoding='utf-8'))

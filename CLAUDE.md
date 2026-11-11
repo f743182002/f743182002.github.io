@@ -41,7 +41,9 @@
 ## 社區頁看得見的分析文章（2026-11-11）
 
 - 每個社區頁在章節列 `<nav class="rail">` 後面有 `<!-- ARTICLE:START -->…<!-- ARTICLE:END -->`（`<article id="analysis">`，純 HTML、Google 讀得到）；頁首「看商圈地圖」旁的 `<!-- ARTICLE-LINK -->`「看文字版分析」；地圖頁 footer 前的 `<!-- MAPLINKS -->` 社區文章清單。都由 `scripts/structured_data.py` 產生，**不要手改**，Actions 每次 push 重跑（內容沒變不改檔）。
-- 社區頁的 `<title>`／meta description／og／JSON-LD `WebPage.name`、`headline` 是問句型「○○可以買嗎？交通、日照、學區與看屋重點｜板橋阿陞聊房」（沒有資料的主題不列），摘要以「○○社區分析：」開頭。社區頁不再放 `<noscript>` 摘要（文章已是可見文字，避免同一份內容出現兩次）；物件頁（S*）照舊。
+- 社區頁的 `<title>`／meta description／og／JSON-LD `WebPage.name`、`headline` 是問句型「○○可以買嗎？優缺點、捷運、管委會與車位｜板橋阿陞聊房」：後面三個主題依 `data/keywords.json` 的買方搜尋詞排序（沒有資料的主題不列；「實價登錄」「完工年」不進標題），摘要以「○○社區分析：」開頭。
+- 文章章節＝買方搜尋的問句：每個 h2 是一題（例「新巨蛋有車位嗎？車位有多少？」），h2 下第一段（`.sa-lead`）直接講結論，FAQPage 用同一份問句與第一段。第一節固定「○○可以買嗎？先說結論」，最後是「優缺點」「缺點是什麼？看屋時要確認什麼？」。
+- `data/keywords.json`（林津陞 2026-11-11「優化成就是買方會搜的關鍵字」）：每個社區的 Google 自動完成與「其他人也搜尋了」。`queries` 決定主題排序；`excluded` 是凶宅、跳樓、上吊、法拍、釘子戶等負面詞，**只記錄、不寫進文章或標題**；房價、租金、行情類的詞也不回答（法遵）。社區版發布時 property-deck 自動抓自動完成合併進去；手動更新 `python scripts/structured_data.py keywords . <社區名>`（「其他人也搜尋了」要用瀏覽器看搜尋結果頁，人工補進 queries）。社區頁不再放 `<noscript>` 摘要（文章已是可見文字，避免同一份內容出現兩次）；物件頁（S*）照舊。
 - 文章、常見問題（與 JSON-LD FAQPage 同一份）**不寫金額（含實價登錄單價）、屋齡數字、興建中站點**；完整揭露四行＋攻略兩行固定在文末。
 - 起造人／承造人：`data/permits.json`（使照存根影像判讀，看不清楚的不收），社區版發布時 property-deck 自動寫入；手動補 `python scripts/structured_data.py permit . <社區名> <_使照存根庫\字號\annex.json>`。
 - 首頁社區卡片與地圖資料卡的連結文字是「看○○社區分析」（內部連結錨文字）。
