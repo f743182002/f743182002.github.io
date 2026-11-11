@@ -48,5 +48,15 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html sitemap.xml llms.txt '*.html'
           git commit -m "自動更新 sitemap.xml、首頁靜態清單與結構化資料（依 decks.json）"
-          git pull --rebase origin main
-          git push origin HEAD:main
+          # 2026-11-11：建置期間若有人又推了新提交，直接 push 會被拒絕（fetch first）。
+          # 改成：拉最新再推，被拒就重試，最多 3 次。
+          for i in 1 2 3; do
+            if git pull --rebase origin main && git push origin HEAD:main; then
+              exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            echo "推送被拒絕，第 $i 次重試"
+            sleep 5
+          done
+          echo "推送重試 3 次仍失敗"
+          exit 1
