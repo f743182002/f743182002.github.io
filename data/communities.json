@@ -143,24 +143,24 @@
    "layouts": {
     "source": "內政部實價登錄（已排除特殊交易與預售屋）",
     "basis": "住宅用途；同一戶多次成交只計一次；依申報的建物現況格局（房數）與主建物面積",
-    "period": "110S2～115S4",
+    "period": "108S1～115S4",
     "published_through": "115/11/01",
     "cutoff": "截至 115/11/01 公布",
-    "n": 232,
+    "n": 371,
     "rows": [
      {
       "rooms": 0,
       "label": "0房（開放格局或套房）",
-      "count": 24,
+      "count": 41,
       "main_ping": [
        6.2,
-       10.0
+       13.9
       ]
      },
      {
       "rooms": 1,
       "label": "1房",
-      "count": 134,
+      "count": 216,
       "main_ping": [
        3.3,
        15.5
@@ -169,7 +169,7 @@
      {
       "rooms": 2,
       "label": "2房",
-      "count": 32,
+      "count": 47,
       "main_ping": [
        6.9,
        21.9
@@ -178,7 +178,7 @@
      {
       "rooms": 3,
       "label": "3房",
-      "count": 28,
+      "count": 41,
       "main_ping": [
        6.9,
        41.9
@@ -187,7 +187,7 @@
      {
       "rooms": "4+",
       "label": "4房以上",
-      "count": 14,
+      "count": 26,
       "main_ping": [
        15.5,
        41.9
