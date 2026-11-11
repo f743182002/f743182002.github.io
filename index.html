@@ -178,6 +178,42 @@ section.blk > p{margin-bottom:18px;color:#33475B;font-size:16.5px;line-height:1.
   .hero h1{font-size:27px}
 }
 @media (min-width:761px) and (max-width:1000px){.hero h1{font-size:31px}.hero p{font-size:17px}}  /* 平板：大標不要斷在「社／區」中間 */
+
+/* ===== 配色方案3（2026-11-11 林津陞選定：「方案 3」）：炭黑主視覺＋紅色只給名稱 ===== */
+/* 方案3「炭黑主視覺＋紅色只給名稱」：保留林津陞要的紅字，但讓紅有規矩。
+   - 主色＝LOGO 的近黑 #0F2233（主視覺底、主入口、區塊大標字）；LOGO 亮藍 #1E88FF 只當細線與記號（跟 LOGO 菱形呼應）。
+   - 重點色＝紅 #B91C1C，只用在「名稱」：社區名、物件名、工具名、攻略書名、地圖清單社區名與地圖點。其他地方一律不用紅。
+   - 區塊大標改近黑＋紅色短底線（紅只當 48px 的記號，不整行紅）。
+   - 主視覺從藍改炭黑，紅藍不在同一塊大面積上打架；照片的紅領帶剛好呼應紅色名稱。 */
+:root{--brand:#0F2233;--s-red:#B91C1C}
+body,.hero{background:#F4F5F7}
+.topbar::before{background:#0F2233}
+.nav a[aria-current="page"]{background:#EEF1F4;box-shadow:inset 0 -3px 0 #0F2233}
+.nav a:hover{background:#EEF1F4}
+.disc-bar{background:#EEF1F4;border-bottom-color:#CBD2D9}
+.hero-top::before{background:linear-gradient(100deg,#0F2233 0%,#1D3A52 100%)}
+.hero-top::after{height:5px;background:#1E88FF}
+.hero .kick{background:#fff;color:#0F2233}
+.me::before{background:radial-gradient(circle at 50% 45%,rgba(30,136,255,.45),rgba(30,136,255,.14) 58%,transparent 72%)}
+.me figcaption{border:2px solid #fff;font-size:20px}
+.big a{border:1.5px solid #C3CAD1}
+.big a:hover{border-color:#0F2233}
+.big b{color:#0F2233}
+.big a.main{background:#0F2233;border-color:#0F2233}
+.big a.main:hover{background:#1D3A52;border-color:#1D3A52}
+.big a.main b{color:#fff}
+section.blk h2{color:#0F2233;border-left:0;border-image:none;padding-left:0;padding-bottom:10px;position:relative}
+section.blk h2::after{content:"";position:absolute;left:0;bottom:0;width:48px;height:5px;border-radius:3px;background:#B91C1C}
+section.blk > p{margin-top:10px}
+.grid a,.tools a,.book{border:1.5px solid #C3CAD1}
+.grid a:hover,.tools a:hover{border-color:#0F2233}
+.grid b,.tools b,.book b{color:#B91C1C}
+.grid .st,.grid .st-c{background:#EEF1F4;color:#0F2233;border-color:#C3CAD1}
+.grid .go{text-decoration-color:#1E88FF}
+.contact a{border-color:#0F2233}
+.site-foot::before{background:#0F2233}
+.dock2 .d-tel{color:#0F2233;border-color:#0F2233}
+
 </style>
 <!-- LD:START -->
 <script type="application/ld+json">
