@@ -508,6 +508,7 @@ def deck_graph(key, text, ctx):
 
     place = {'@type': 'Apartment' if listing else 'ApartmentComplex', '@id': place_id,
              'name': f"{name} {deck.get('floor')}F" if listing and deck.get('floor') else name,
+             'alternateName': (aliases_of(ctx.get('keywords', {}).get(name), name) or None) if not listing else None,
              'description': clean(deck.get('interiorText') if listing else (deck.get('interiorText') or deck.get('subtitle')), com) or None,
              'url': url, 'address': address,
              'geo': {'@type': 'GeoCoordinates', 'latitude': lat, 'longitude': lon} if lat and lon else None,
@@ -1091,13 +1092,14 @@ KEYWORD_SEEDS = ['', '優缺點', '可以買嗎', '缺點', '日照', '捷運', 
                  '格局', '坪數']
 
 
-def fetch_keywords(name, seeds=KEYWORD_SEEDS, pause=0.4):
-    """Google 搜尋框自動完成（社區名＋空白、＋優缺點…），只留含社區名的詞；負面詞放 excluded。只用標準函式庫。"""
+def fetch_keywords(name, seeds=KEYWORD_SEEDS, pause=0.4, bases=None):
+    """Google 搜尋框自動完成（社區名＋空白、＋優缺點…），只留含社區名的詞；負面詞放 excluded。只用標準函式庫。
+    bases：keywords.json 有 alias 時改用別名查（「大禾 」會帶出大禾拉麵、大禾設計這類同名店家）。"""
     import time
     import urllib.request
     got = []
-    for s in seeds:
-        q = f'{name} {s}'.strip() + ('' if s else ' ')
+    for b, s in [(b, s) for b in (bases or [name]) for s in seeds]:
+        q = f'{b} {s}'.strip() + ('' if s else ' ')
         u = 'https://suggestqueries.google.com/complete/search?client=chrome&hl=zh-TW&gl=tw&q=' + quote(q)
         d = json.loads(urllib.request.urlopen(urllib.request.Request(u, headers={'User-Agent': 'Mozilla/5.0'}), timeout=20)
                        .read().decode('utf-8', 'replace'))
@@ -1112,9 +1114,10 @@ def save_keywords(root, name, fetched=None):
     """data/keywords.json 合併新抓的自動完成（保留原本人工查的「其他人也搜尋了」等）。"""
     kf = Path(root) / 'data' / 'keywords.json'
     data = json.loads(kf.read_text(encoding='utf-8')) if kf.exists() else {}
-    new = fetched if fetched is not None else fetch_keywords(name)
     old = data.get(name) or {}
-    entry = {'queries': list(dict.fromkeys((old.get('queries') or []) + new['queries'])),
+    new = fetched if fetched is not None else fetch_keywords(name, bases=aliases_of(old, name) or None)
+    entry = {**({'alias': old['alias']} if old.get('alias') else {}),
+             'queries': list(dict.fromkeys((old.get('queries') or []) + new['queries'])),
              'related': old.get('related') or [],
              'excluded': list(dict.fromkeys((old.get('excluded') or []) + new['excluded'])),
              'checked': __import__('datetime').date.today().isoformat(),
@@ -1125,16 +1128,32 @@ def save_keywords(root, name, fetched=None):
     return entry
 
 
+def aliases_of(kw, name):
+    """keywords.json 的 alias：買方實際搜尋的社區名（例：大禾 → 興富發大禾；2026-11-11 Google 自動完成幾乎都是「興富發大禾」）。"""
+    al = (kw or {}).get('alias') or []
+    al = [al] if isinstance(al, str) else al
+    return [x.strip() for x in al if isinstance(x, str) and x.strip() and x.strip() != name and not NEGATIVE_WORDS.search(x)]
+
+
+def display_name(name, alias):
+    """title／h1 用的名字：別名含原名（興富發大禾 ⊃ 大禾）就用別名，否則「原名（別名）」。"""
+    if not alias:
+        return name
+    return alias[0] if name in alias[0] else f'{name}（{alias[0]}）'
+
+
 def finish_article(a, kw, place, where_short, station):
     """依關鍵字排序主題，產生章節、title、h1、meta description、FAQ（＝章節問句＋第一段）。"""
     a['topic_order'] = topic_order(kw)
     a['keywords'] = [q for q in (kw or {}).get('queries') or [] if not NEGATIVE_WORDS.search(q)]
+    a['alias'] = aliases_of(kw, a['name'])
     a['sections'] = article_sections(a)
     # 標題不放「實價登錄」「完工年」：搜這兩個詞的人多半要看房價，文章不寫價格，放標題會答非所問（章節照留）
     labels = [TOPICS[s['topic']][0] for s in a['sections'] if s['topic'] in TOPICS and s['topic'] not in ('實價', '完工')]
-    a['title'] = question_title(a['name'], labels)
-    a['h1'] = question_h1(a['name'], place, labels)
-    a['desc'] = question_desc(a['name'], where_short, station, labels)
+    disp = display_name(a['name'], a['alias'])
+    a['title'] = question_title(disp, labels)
+    a['h1'] = question_h1(disp, place, labels)
+    a['desc'] = question_desc(disp, where_short, station, labels)
     a['qa'] = [(s['q'], s['lead']) for s in a['sections']]
     return a
 
@@ -1252,6 +1271,8 @@ def article_html(a):
     name = a['name']
     out = [f'<p class="sa-kicker">社區分析・文字版</p>', f'<h1>{e(a["h1"])}</h1>',
            f'<p class="sa-meta">整理：林津陞（阿陞）' + (f'｜更新：{e(a["updated"])}' if a.get('updated') else '') + '</p>']
+    if a.get('alias'):  # 網路上常用的另一個名字（同一個社區）
+        out.append(f'<p>{e(name)}在網路上也常寫成「' + '」「'.join(e(x) for x in a['alias']) + '」，指的是同一個社區。</p>')
     secs = a.get('sections') or []
     out.append(f'<p>帶看{e(name)}時，買方最常問的就是下面這幾題。我把查過的資料整理在這篇，每一題第一段先講結論，'
                '跟上面的互動簡報（3D 模型、日照模擬、步行地圖）是同一份資料，數字都標了出處，實際狀況還是要以現場為準。</p>')
