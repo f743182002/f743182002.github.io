@@ -257,8 +257,9 @@ def agent_nodes():
     """RealEstateAgent 與營業員本人。每一頁都放同一份（同一個 @id、同樣內容），不另寫不同版本。"""
     agent = {
         '@type': 'RealEstateAgent', '@id': AGENT_ID,
-        'name': BRAND, 'alternateName': ['林津陞', '全國不動產板橋加盟店 林津陞'],
-        'url': SITE, 'logo': SITE + 'assets/logo-nra-icon.png', 'image': SITE + 'assets/og-banqiaoasheng.png',
+        # 2026-11-10 個人品牌：LOGO、分享圖用 assets/brand/（不用全國不動產 LOGO）；公司名稱只留在法定揭露（description、parentOrganization）
+        'name': BRAND, 'alternateName': ['林津陞', '阿陞'],
+        'url': SITE, 'logo': SITE + 'assets/brand/logo.png', 'image': SITE + 'assets/brand/og-1200x630.png',
         'description': '新北市板橋區的社區分析與看屋服務。' + DISCLOSURE_TEXT + '。',
         'telephone': MOBILE,
         'contactPoint': [
@@ -266,7 +267,6 @@ def agent_nodes():
             {'@type': 'ContactPoint', 'contactType': 'LINE 官方帳號 @banqiao.asheng', 'url': LINE_URL, 'availableLanguage': 'zh-TW'}],
         'areaServed': {'@type': 'AdministrativeArea', 'name': '新北市板橋區',
                        'containedInPlace': {'@type': 'AdministrativeArea', 'name': '新北市'}},
-        'brand': {'@type': 'Brand', 'name': '全國不動產'},
         'parentOrganization': {
             '@type': 'Organization', 'name': '非凡不動產有限公司', 'alternateName': '全國不動產板橋加盟店',
             'description': '經紀業',
@@ -587,7 +587,7 @@ def deck_graph(key, text, ctx):
                'deals_h2': clean(deck.get('dealsH2')), 'deals': [x for x in (clean(t) for t in deck.get('dealsText') or []) if x],
                'layouts': deck.get('layouts') or None, 'ev': deck.get('ev') or None,
                'sources': [clean(s) for s in deck.get('sources') or [] if clean(s)],
-               'videos': ctx['videos'].get(key) or [],
+               'videos': ctx['videos'].get(key) or [], 'image': article_image(ctx, key, text, deck, name),
                'nearby': nearby_communities(ctx, name, (comm or {}).get('lat') or lat, (comm or {}).get('lon') or lon)}
         finish_article(art, ctx.get('keywords', {}).get(name), town + road,
                        f'位於{county}{district}{road}' + (f'，{built}完工' if built else '') +
@@ -881,6 +881,40 @@ def _first_sentences(text, n=2):
     return ''.join(parts[:n]), ''.join(parts[n:])
 
 
+def webp_size(path):
+    """WebP 寬高（標準函式庫讀檔頭：VP8／VP8L／VP8X）；讀不到回 None。"""
+    try:
+        b = Path(path).read_bytes()[:40]
+    except OSError:
+        return None
+    if b[:4] != b'RIFF' or b[8:12] != b'WEBP':
+        return None
+    kind = b[12:16]
+    if kind == b'VP8 ':
+        return int.from_bytes(b[26:28], 'little') & 0x3FFF, int.from_bytes(b[28:30], 'little') & 0x3FFF
+    if kind == b'VP8L':
+        v = int.from_bytes(b[21:25], 'little')
+        return (v & 0x3FFF) + 1, ((v >> 14) & 0x3FFF) + 1
+    if kind == b'VP8X':
+        return int.from_bytes(b[24:27], 'little') + 1, int.from_bytes(b[27:30], 'little') + 1
+    return None
+
+
+def article_image(ctx, key, text, deck, name):
+    """文章「先說結論」配一張簡報封面航照（同資料夾的 WebP），alt 與圖說寫社區名＋畫面內容＋航照出處。"""
+    imgs = grab(text, 'IMG') or {}
+    cover = deck.get('cover') or 'p1'
+    fn = imgs.get(cover)
+    if not fn or not re.fullmatch(r'[\w.-]+\.webp', fn):
+        return None
+    size = webp_size(ctx['root'] / key / fn)
+    if not size:
+        return None
+    cap = next((clean(p[1]) for p in deck.get('photos') or [] if p and p[0] == cover and len(p) > 1), '') or '社區航照'
+    return {'src': fn, 'w': size[0], 'h': size[1], 'alt': f'{name}航照｜{cap}',
+            'caption': f'{name}｜{cap}（航照：內政部國土測繪中心正射影像，現況以現場為準）'}
+
+
 def article_sections(a):
     """文章的問答章節：每節 = {topic, q(h2 問句), lead(直接講結論的第一段，也是 FAQ 答案), body(HTML)}。
     資料只來自 a（頁面已有資料＋使照判讀）；沒資料的主題不產生。順序：結論 → 依關鍵字排的主題 → 優缺點 → 看屋確認。"""
@@ -1022,6 +1056,10 @@ def article_sections(a):
         (f"優點是{'、'.join(pros_h)}；" if pros_h else '') + (f"要留意的是{'、'.join(cons_h)}。" if cons_h else '')
     lead = lead.replace('；。', '。').rstrip('；') + ('' if lead.endswith('。') else '。')
     body = '<p>適不適合，要看你最在意的是什麼。下面把買方最常搜尋的問題一題一題整理，每題第一段先講結論，數字都標了出處，實際狀況還是以現場為準。</p>'
+    im = a.get('image')
+    if im:
+        body += (f'<figure><img src="{e(im["src"], quote=True)}" alt="{e(im["alt"], quote=True)}" width="{im["w"]}" height="{im["h"]}" '
+                 f'loading="lazy" decoding="async"><figcaption>{e(im["caption"])}</figcaption></figure>')
     if a.get('interior'):
         body += f'<h3>{e(a.get("interior_h2") or "從空中看" + name)}</h3><p>{e(a["interior"])}</p>'
     out.append({'topic': '結論', 'q': f'{name}可以買嗎？先說結論', 'lead': clean(lead), 'body': body})
@@ -1174,6 +1212,8 @@ ARTICLE_CSS = (
     '#analysis a{color:#0F2233;text-decoration:underline;text-decoration-color:#0369A1;text-underline-offset:3px}'
     '#analysis .sa-meta,#analysis .sa-note{color:#3F4F5E;font-size:14px}'
     '#analysis .sa-lead{font-weight:600}'
+    '#analysis figure{margin:10px 0 14px}#analysis figure img{display:block;width:100%;max-width:560px;height:auto;'
+    'border-radius:6px;border:1px solid #D7E6EF}#analysis figcaption{font-size:13px;color:#3F4F5E;margin-top:4px}'
     '#analysis .sa-toc{background:#F2F8FB;border:1px solid #D7E6EF;border-radius:8px;padding:10px 14px;margin:8px 0 4px;font-size:15px}'
     '#analysis .sa-toc p{margin:0 0 4px;font-weight:600}#analysis .sa-toc ol{margin:0}'
     '#analysis .sa-kicker{display:inline-block;font-size:13px;color:#3F4F5E;border:1px solid #D7E6EF;border-radius:999px;padding:1px 10px}'

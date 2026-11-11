@@ -71,8 +71,8 @@
 - **法定揭露（不動產經紀業管理條例 §21）**：頁首下方一條細揭露列（`.disc-bar`：13px、淡藍底 #E4F4FA、近黑字 #0F2233，2026-11-11 起），文字一字不改「全國不動產板橋加盟店｜經紀業 非凡不動產有限公司｜經紀人 謝政峯（99）北縣字第002181號｜營業員 林津陞（99）登字第148103號」；頁尾完整揭露四行文字不變、用小字次要色（`.disc-full`），最後加「© 林津陞　板橋阿陞聊房」。「營業員」只出現在揭露小字裡，照片說明只寫「林津陞（阿陞）」（林津陞 2026-11-10）。
 - **照片＝IP**：首頁主視覺放大張半身去背照 `about/lin-half.webp`（電腦高 440px、手機 300px）＋白底近黑字名牌「林津陞（阿陞）」，不用圓形小頭像（林津陞 11/10：「至少要有半身照 一個頭很難看」「不需要做太小 位子還很空阿」）；地圖頁標題旁有小頭像；404 有小頭像。about 頁（2026-11-11 林津陞「改關於我」）同首頁：主視覺近黑漸層＋白字＋大張半身去背照 `about/lin-half.webp` 與名牌；ABOUT 段用方形圓角半身照 `about/lin-studio-half.webp`（由 property-deck `_brand/林津陞_黑西裝紅領帶_原圖.webp` 裁，不含右下角浮水印）；舊圓形照 `lin-portrait.*` 只留給 JSON-LD 與地圖小頭像。不加新的宣傳用語。
 - **地圖標記**：社區圓點深藍 #0369A1＋白圈，名稱深藍字 #075985＋白色光暈，維持加大、高對比（取代 SOP 4.9 的紅色）；生活圈標籤白底黑字青框（#0E7490）。
-- **分享圖**：`assets/brand/og-1200x630.png`（LOGO、照片、板橋阿陞聊房、底部小字「經紀業 非凡不動產有限公司｜營業員 林津陞（99）登字第148103號」），index／map／about／404 手寫的 og:image、twitter:image 都指向它。舊的 `assets/og-banqiaoasheng.png`、`about/og-home*.png` 有公司 LOGO／舊配色，不再引用（JSON-LD 裡的 `logo`／`image` 由 structured_data.py 產生，要改請改 9b-houseflow-tools 那份）。
-- **還沒改的**：簡報頁 community/*、S*/（property-deck 範本）、JSON-LD 的 logo（structured_data.py 上游）、Netlify 工具站（稅務小幫手、青安 3.0）。
+- **分享圖**：`assets/brand/og-1200x630.png`（LOGO、照片、板橋阿陞聊房、底部小字「經紀業 非凡不動產有限公司｜營業員 林津陞（99）登字第148103號」），index／map／about／404 手寫的 og:image、twitter:image 都指向它。舊的 `assets/og-banqiaoasheng.png`、`about/og-home*.png` 有公司 LOGO／舊配色，不再引用（JSON-LD 的 `logo`／`image` 2026-11-11 起改 `assets/brand/logo.png`、`assets/brand/og-1200x630.png`，由 structured_data.py 產生）。
+- **還沒改的**：簡報頁 community/*、S*/（property-deck 範本）、Netlify 工具站（稅務小幫手、青安 3.0）。
 
 ## 網域
 
