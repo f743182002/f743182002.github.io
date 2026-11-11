@@ -588,6 +588,7 @@ def deck_graph(key, text, ctx):
                'layouts': deck.get('layouts') or None, 'ev': deck.get('ev') or None,
                'sources': [clean(s) for s in deck.get('sources') or [] if clean(s)],
                'videos': ctx['videos'].get(key) or [], 'image': article_image(ctx, key, text, deck, name),
+               'facilities': ctx.get('facilities', {}).get(name),
                'nearby': nearby_communities(ctx, name, (comm or {}).get('lat') or lat, (comm or {}).get('lon') or lon)}
         finish_article(art, ctx.get('keywords', {}).get(name), town + road,
                        f'位於{county}{district}{road}' + (f'，{built}完工' if built else '') +
@@ -654,6 +655,7 @@ def simple_community_graph(key, text, ctx):
            'school': (comm.get('school') or '').replace('・', '、'), 'sun': '', 'sun_src': '',
            'pros': [(p, '') for p in pros if p], 'cons': [(p, '') for p in cons if p], 'deals_h2': '', 'deals': [],
            'layouts': None, 'ev': None, 'sources': [], 'videos': ctx['videos'].get(key) or [],
+           'facilities': ctx.get('facilities', {}).get(name),
            'nearby': nearby_communities(ctx, name, comm.get('lat'), comm.get('lon'))}
     finish_article(art, ctx.get('keywords', {}).get(name), town + road,
                    f'位於{county}{district}{road}' + (f'，{built}' if built and not re.search(r'\d', built)
@@ -997,11 +999,19 @@ def article_sections(a):
                 body += f'<p class="sa-note">{e(note)}</p>'
         secs['車位'] = {'q': f'{name}有車位嗎？車位有多少？', 'lead': clean('；'.join(car) + '。'), 'body': body}
 
-    # 公設
+    # 公設（2026-11-11：簡報事實欄沒有的，用 data/facilities.json 補；只收建商資料或本店物件照片佐證的項目）
+    fac = a.get('facilities') or {}
+    if fac.get('items') and not f.get('公設'):
+        f['公設'] = '、'.join(fac['items'])
+    if fac.get('ratio') and not f.get('公設比'):
+        f['公設比'] = fac['ratio']
     if f.get('公設') or f.get('公設比'):
         lead = _join([f"公設有{f['公設']}" if f.get('公設') else '', f"公設比{f['公設比']}" if f.get('公設比') else ''], '；') + '。'
-        secs['公設'] = {'q': f'{name}公設有哪些？公設比多少？', 'lead': clean(lead),
-                      'body': '<p>公設實際開放時間與使用規定，以管委會公告與規約為準，看屋時可以請管理室帶看。</p>'}
+        body = ''.join(f'<p>{e(x)}</p>' for x in (clean(t) for t in fac.get('notes') or []) if x)
+        body += '<p>公設實際開放時間與使用規定，以管委會公告與規約為準，看屋時可以請管理室帶看。</p>'
+        if fac.get('src'):
+            body += f'<p class="sa-note">公設資料來源：{e(clean(fac["src"]))}</p>'
+        secs['公設'] = {'q': f'{name}公設有哪些？公設比多少？', 'lead': clean(lead), 'body': body}
 
     # 管委會
     if f.get('管理'):
@@ -1466,7 +1476,8 @@ def load_ctx(root):
             'communities': {c['name']: c for c in comm.get('communities', [])},
             'areas': {a['id']: a for a in comm.get('areas', [])},
             'videos': rd('data/videos.json', {}), 'narration': rd('data/narration.json', {}),
-            'permits': rd('data/permits.json', {}), 'keywords': rd('data/keywords.json', {})}
+            'permits': rd('data/permits.json', {}), 'keywords': rd('data/keywords.json', {}),
+            'facilities': rd('data/facilities.json', {})}
 
 
 def pages(root):
