@@ -3,27 +3,29 @@
    主色深藍 #0369a1、深藍字 #075985、點綴青 #06b6d4；漸層只用在點綴（頂部光帶、主要按鈕、卡片上緣）。
    酒紅 #8B1E3F 只在 LOGO 圖裡出現，不當介面色。LINE 按鈕維持 LINE 綠。 */
 :root{
-  --bg:#F2F8FB; --card:#FFFFFF; --ink:#0F2233; --muted:#4C5E6E; --line:#D7E6EF; --line-strong:#B9D0DE;
+  color-scheme:only light;
+  --bg:#F2F8FB; --card:#FFFFFF; --ink:#0F2233; --muted:#33475B; --line:#D7E6EF; --line-strong:#B9D0DE;
   --brand:#0369A1; --brand-ink:#075985; --brand-on:#FFFFFF; --brand-soft:#E4F4FA; --brand-line:#A5DBEA;
   --accent:#06B6D4; --surface:#F6FBFD; --sun:#E4F4FA; --warn:#B26A00; --line-green:#06893E;
   --grad:linear-gradient(90deg,#0369A1,#06B6D4);
   --grad-btn:linear-gradient(90deg,#0369A1,#0891B2);
   --grad-btn-hover:linear-gradient(90deg,#075985,#0E7490);
 }
+/* 2026-11-11 林津陞：「大部分都深色 可是文字很淺 辨識度很差」→ 全站一律淺色，系統深色模式也用淺色值 */
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#0B1620; --card:#12212D; --ink:#E6F0F6; --muted:#9DB0BF; --line:#23384A; --line-strong:#2F4A60;
-    --brand:#5CC8EC; --brand-ink:#7DD3FC; --brand-soft:#0F2C3D; --brand-line:#1E5470; --surface:#0E1B25; --sun:#0F2C3D; --warn:#F6C27A;
+    --bg:#F2F8FB; --card:#FFFFFF; --ink:#0F2233; --muted:#33475B; --line:#D7E6EF; --line-strong:#B9D0DE;
+    --brand:#0369A1; --brand-ink:#075985; --brand-soft:#E4F4FA; --brand-line:#A5DBEA; --surface:#F6FBFD; --sun:#E4F4FA; --warn:#B26A00;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#0B1620; --card:#12212D; --ink:#E6F0F6; --muted:#9DB0BF; --line:#23384A; --line-strong:#2F4A60;
-  --brand:#5CC8EC; --brand-ink:#7DD3FC; --brand-soft:#0F2C3D; --brand-line:#1E5470; --surface:#0E1B25; --sun:#0F2C3D; --warn:#F6C27A;
+  --bg:#F2F8FB; --card:#FFFFFF; --ink:#0F2233; --muted:#33475B; --line:#D7E6EF; --line-strong:#B9D0DE;
+    --brand:#0369A1; --brand-ink:#075985; --brand-soft:#E4F4FA; --brand-line:#A5DBEA; --surface:#F6FBFD; --sun:#E4F4FA; --warn:#B26A00;
 }
 *{box-sizing:border-box}
 html,body{margin:0}
 body{font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;-webkit-text-size-adjust:100%}
-a{color:var(--brand)}
+a{color:var(--ink);text-decoration-color:var(--brand)}  /* 連結字用近黑、底線深藍（不用藍字，2026-11-11） */
 
 /* 頁首：深色模式也維持白底，LOGO 才看得清楚 */
 .topbar{position:sticky;top:0;z-index:1000;background:#FFFFFF;color:#0F2233;border-bottom:1px solid #D7E6EF;box-shadow:0 1px 6px rgba(15,34,51,.10)}
@@ -32,12 +34,12 @@ a{color:var(--brand)}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#0F2233;line-height:1.25;white-space:nowrap;min-width:0}
 .brand img{height:38px;width:auto;flex:0 0 auto;display:block}
 .brand-t{display:flex;flex-direction:column;min-width:0;padding-left:12px;border-left:1px solid #D7E6EF}
-.brand small{font-size:13px;color:#4C5E6E;font-weight:500}
+.brand small{font-size:13px;color:#33475B;font-weight:600}
 .nav{display:flex;gap:2px;flex:1;overflow-x:auto;scrollbar-width:none}
 .nav::-webkit-scrollbar{display:none}
-.nav a{white-space:nowrap;text-decoration:none;color:#33475A;padding:7px 11px;border-radius:8px;font-size:15.5px;font-weight:500}
-.nav a:hover{color:#075985;background:#E4F4FA}
-.nav a[aria-current="page"]{color:#075985;background:#E4F4FA;font-weight:700;box-shadow:inset 0 -2px 0 #06B6D4}
+.nav a{white-space:nowrap;text-decoration:none;color:#0F2233;padding:7px 11px;border-radius:8px;font-size:15.5px;font-weight:500}
+.nav a:hover{color:#0F2233;background:#E4F4FA}
+.nav a[aria-current="page"]{color:#0F2233;background:#E4F4FA;font-weight:800;box-shadow:inset 0 -3px 0 #0369A1}
 .btn-line{display:inline-flex;align-items:center;min-height:40px;white-space:nowrap;background:#06893E;color:#fff;text-decoration:none;font-weight:700;padding:9px 18px;border-radius:999px;font-size:15px;line-height:1.3}
 .btn-line:hover{filter:brightness(.95)}
 .wrap{max-width:1200px;margin:0 auto;padding:0 16px}
