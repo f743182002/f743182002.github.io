@@ -692,7 +692,7 @@ def legacy_merge(art, lp, ctx, key, name):
     只放查證過的值（建照、教育局學區、官方資料核對過的步行點）；金額、屋齡照樣由 clean()／article_problems() 擋。"""
     if lp.get('facts'):
         art['facts'] = [(clean(k), clean(v)) for k, v in lp['facts'] if clean(k) and clean(v)]
-    for k in ('facts_src', 'school', 'sun', 'sun_src', 'interior', 'interior_h2', 'car_src'):
+    for k in ('facts_src', 'school', 'sun', 'sun_src', 'interior', 'interior_h2', 'car_src', 'expected_completion', 'expected_src'):
         if lp.get(k):
             art[k] = clean(lp[k])
     if lp.get('walk_note'):
@@ -981,7 +981,16 @@ def article_sections(a):
         notes = _join([a.get('facts_src'), '使用執照依新北市政府工務局使用執照存根影像。' if p else ''], '')
         if notes:
             body += f'<p class="sa-note">{e(notes)}</p>'
-        secs['完工'] = {'q': f'{name}是哪一年完工的？幾層樓、幾戶？', 'lead': clean(f'{name}{bits}。'), 'body': body}
+        exp = a.get('expected_completion')
+        if built == '興建中' and exp:  # 2026-11-12 林津陞：興建中的社區問「什麼時候完工」，答預計年份，不寫成保證
+            rest = _join([floors, f"地下{f['地下層']}" if f.get('地下層') else '',
+                          re.sub(r'（全案合計）$', '', f.get('戶數', '')), f.get('棟數', ''), f.get('結構', '')], '、')
+            lead = f'{name}預計 {exp} 年完工，實際以使用執照核發為準' + (f'；規劃{rest}' if rest else '') + '。'
+            if a.get('expected_src'):
+                body += f'<p class="sa-note">預計完工時間：{e(clean(a["expected_src"]))}</p>'
+            secs['完工'] = {'q': f'{name}什麼時候完工？幾層樓、幾戶？', 'lead': clean(lead), 'body': body}
+        else:
+            secs['完工'] = {'q': f'{name}是哪一年完工的？幾層樓、幾戶？', 'lead': clean(f'{name}{bits}。'), 'body': body}
 
     # 捷運
     st = a['stations']

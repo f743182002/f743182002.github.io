@@ -159,6 +159,8 @@
   "image": {
    "src": "aerial-p1.webp",
    "caption": "近看：施工中的基地與周邊道路（2024 年影像）"
-  }
+  },
+  "expected_completion": "2029",
+  "expected_src": "參考建案公開資料，實際以使用執照核發為準"
  }
 }
