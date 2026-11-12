@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 803" preserveAspectRatio="xMidYMin meet" style="width:100%;height:auto;max-width:1280px" font-family="Noto Sans TC, Microsoft JhengHei, PingFang TC, sans-serif">
+<defs><linearGradient id="band" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#0369A1"/><stop offset="1" stop-color="#06B6D4"/></linearGradient></defs>
+<rect width="100%" height="100%" fill="#FFFFFF"/><rect width="100%" height="6" fill="url(#band)"/>
+<text x="20" y="44" font-size="24" font-weight="700" fill="#0F2233">興富發大悅</text>
+<text x="20" y="72" font-size="14" fill="#8A969E">棟別門牌配置示意</text>
+<defs><clipPath id="c"><rect x="53.3" y="96.0" width="533.3" height="600.0" rx="10"/></clipPath></defs>
+<rect x="53.3" y="96.0" width="533.3" height="600.0" rx="10" fill="#F4F6F7" stroke="#DCE1E5"/>
+<g clip-path="url(#c)">
+<path d="M259.8,739.6 L215.7,821.6 L62.5,740.6 L106.1,658.6 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M172.1,539.2 L329.4,615.0 L289.4,696.5 L132.6,620.2 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M-78.7,269.3 L56.8,336.3 L-9.1,467.6 L-144.6,400.6 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M388.0,602.6 L566.6,685.6 L528.2,767.6 L349.1,684.6 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M451.9,454.1 L533.4,493.0 L474.2,615.5 L392.7,577.1 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M473.7,431.3 L511.6,348.2 L686.0,426.6 L648.6,509.6 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M2.8,88.6 L134.7,154.0 L63.1,297.3 L-68.8,231.9 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M309.1,872.0 L465.9,954.5 L529.2,838.8 L465.9,805.0 L421.2,886.0 L375.6,861.6 L418.7,782.7 L371.9,758.3 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M-238.6,563.1 L-217.8,521.6 L-171.1,448.9 L-129.5,464.5 L-93.2,495.6 L-10.1,521.6 L-30.9,604.6 L-67.2,646.2 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M-128.0,2376.4 L-361.1,1842.7 L-367.8,1761.2 L-31.9,705.3 L519.4,-357.3" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-128.0,2376.4 L-361.1,1842.7 L-367.8,1761.2 L-31.9,705.3 L519.4,-357.3" fill="none" stroke="#F2C14E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M876.0,-142.4 L838.1,333.1 L500.2,1057.8 L323.7,1730.6 L211.5,2241.9 L-128.0,2376.4 L-766.0,2664.5" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M876.0,-142.4 L838.1,333.1 L500.2,1057.8 L323.7,1730.6 L211.5,2241.9 L-128.0,2376.4 L-766.0,2664.5" fill="none" stroke="#F2C14E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M818.4,393.4 L1018.8,496.1 L1128.3,517.4 L1764.7,345.6 L1871.7,341.4" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M818.4,393.4 L1018.8,496.1 L1128.3,517.4 L1764.7,345.6 L1871.7,341.4" fill="none" stroke="#F2C14E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M818.4,393.4 L-112.9,-161.6" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M818.4,393.4 L-112.9,-161.6" fill="none" stroke="#F2C14E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M876.0,-142.4 L-551.6,-1003.6" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M876.0,-142.4 L-551.6,-1003.6" fill="none" stroke="#F2C14E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M444.6,301.0 L327.3,528.8 L199.6,464.0 L316.9,236.1 Z" fill="#FFFFFF" stroke="#0369A1" stroke-width="2.5" stroke-linejoin="round"/>
+</g>
+<text x="322.1" y="387.5" font-size="14" font-weight="700" fill="#075985" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">興富發大悦</text>
+<circle cx="188.3" cy="418.1" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="215.0" cy="362.4" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="230.2" cy="520.3" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="248.0" cy="294.7" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="282.0" cy="231.0" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="311.4" cy="561.0" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="353.3" cy="489.9" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="384.7" cy="431.9" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="422.4" cy="363.6" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="451.7" cy="306.2" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<rect x="193.3" y="409.1" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="207.7" y="422.1" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">179</text>
+<rect x="220.0" y="353.4" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="234.4" y="366.4" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">177</text>
+<rect x="235.2" y="511.3" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="249.6" y="524.3" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">183</text>
+<rect x="253.0" y="285.7" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="267.4" y="298.7" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">175</text>
+<rect x="287.0" y="222.0" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="301.5" y="235.0" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">173</text>
+<rect x="316.4" y="552.0" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="330.8" y="565.0" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">185</text>
+<rect x="358.3" y="480.9" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="372.7" y="493.9" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">187</text>
+<rect x="389.7" y="422.9" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="404.1" y="435.9" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">189</text>
+<rect x="427.4" y="354.6" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="441.8" y="367.6" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">191</text>
+<rect x="456.7" y="297.2" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="471.1" y="310.2" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">193</text>
+<circle cx="556.7" cy="130.0" r="18" fill="#FFFFFF" stroke="#0369A1" stroke-width="2.5"/>
+<path d="M556.7,117.0 L563.7,138.0 L556.7,133.0 L549.7,138.0 Z" fill="#0369A1"/>
+<text x="556.7" y="164.0" font-size="12" font-weight="700" fill="#075985" text-anchor="middle">北</text>
+<line x1="67.3" y1="680.0" x2="326.9" y2="680.0" stroke="#0F2233" stroke-width="2.5"/>
+<text x="67.3" y="673.0" font-size="12" fill="#0F2233">約 50 公尺</text>
+<text x="20" y="722.0" font-size="13" fill="#0F2233">棟別門牌配置示意，僅供參考；實際以現場、門牌及使用執照為準。</text>
+<text x="20" y="741.0" font-size="13" fill="#0F2233">本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap、門牌位置 內政部國土測繪中心門牌定位</text>
+<text x="20" y="760.0" font-size="13" fill="#0F2233">（藍點為門牌實際位置）。</text>
+<text x="20" y="783.0" font-size="11" fill="#8A969E">道路底圖 © OpenStreetMap 貢獻者</text>
+</svg>
