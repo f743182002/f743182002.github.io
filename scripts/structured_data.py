@@ -658,6 +658,15 @@ def simple_community_graph(key, text, ctx):
            'layouts': None, 'ev': None, 'sources': [], 'videos': ctx['videos'].get(key) or [],
            'facilities': ctx.get('facilities', {}).get(name),
            'nearby': nearby_communities(ctx, name, comm.get('lat'), comm.get('lon'))}
+    lp = ctx.get('legacy', {}).get(name)
+    if lp:
+        legacy_merge(art, lp, ctx, key, name)
+        props = [{'@type': 'PropertyValue', 'name': k, 'value': v} for k, v in art['facts']]
+        place['additionalProperty'] = props or None
+        amen = [{'@type': 'LocationFeatureSpecification', 'name': n, 'value': t, 'description': art['walk_note']}
+                for n, t in art['stations'] + [(n, t) for n, t, _ in art['life']]]
+        place['amenityFeature'] = amen or None
+        mrt = '；'.join(f'{n}{t}' for n, t in art['stations'][:1])
     finish_article(art, ctx.get('keywords', {}).get(name), town + road,
                    f'位於{county}{district}{road}' + (f'，{built}' if built and not re.search(r'\d', built)
                                                      else (f'，{built}完工' if built else '')) + '。',
@@ -673,6 +682,38 @@ def simple_community_graph(key, text, ctx):
              {k: v for k, v in place.items() if v not in (None, [], '')}] + videos + faq(url, art['qa']) + \
             [breadcrumb(url, [(BRAND, SITE), (name, url)])]
     return graph, {'article': art}
+
+
+LEGACY_LISTS = ('stations', 'buses', 'schools_walk', 'near_extra')
+
+
+def legacy_merge(art, lp, ctx, key, name):
+    """舊版頁（不是範本做的，例：新濠一滙）的完整文章資料：data/legacy_pages.json 的 {社區名: {...}}（2026-11-12）。
+    只放查證過的值（建照、教育局學區、官方資料核對過的步行點）；金額、屋齡照樣由 clean()／article_problems() 擋。"""
+    if lp.get('facts'):
+        art['facts'] = [(clean(k), clean(v)) for k, v in lp['facts'] if clean(k) and clean(v)]
+    for k in ('facts_src', 'school', 'sun', 'sun_src', 'interior', 'interior_h2', 'car_src'):
+        if lp.get(k):
+            art[k] = clean(lp[k])
+    if lp.get('walk_note'):
+        art['walk_note'] = clean(lp['walk_note'])
+    for k in LEGACY_LISTS:
+        if lp.get(k):
+            art[k] = [(clean(a), clean(b)) for a, b in lp[k] if clean(a)]
+    if lp.get('life'):
+        art['life'] = [(clean(r[0]), clean(r[1]), clean(r[2]) if len(r) > 2 else '') for r in lp['life'] if clean(r[0])]
+    for k in ('pros', 'cons'):
+        if lp.get(k):
+            art[k] = [(clean(h), clean(p)) for h, p in lp[k] if clean(h)]
+    if lp.get('sources'):
+        art['sources'] = [clean(x) for x in lp['sources'] if clean(x)]
+    img = lp.get('image') or {}
+    if img.get('src') and re.fullmatch(r'[\w.-]+\.webp', img['src']):
+        size = webp_size(ctx['root'] / key / img['src'])
+        if size:
+            cap = clean(img.get('caption')) or '社區航照'
+            art['image'] = {'src': img['src'], 'w': size[0], 'h': size[1], 'alt': f'{name}航照｜{cap}',
+                            'caption': f'{name}｜{cap}（航照：內政部國土測繪中心正射影像，現況以現場為準）'}
 
 
 def describe_simple(key, ctx):
@@ -982,7 +1023,7 @@ def article_sections(a):
     ev = a.get('ev') or {}
     car = []
     if f.get('停車位'):
-        car.append(f"依使照資料，停車位為{f['停車位']}")
+        car.append(f"依{a.get('car_src') or '使照'}資料，停車位為{f['停車位']}")
     if f.get('機車位'):
         car.append(f"機車位{f['機車位']}")
     if f.get('車位'):
@@ -1524,7 +1565,7 @@ def load_ctx(root):
             'areas': {a['id']: a for a in comm.get('areas', [])},
             'videos': rd('data/videos.json', {}), 'narration': rd('data/narration.json', {}),
             'permits': rd('data/permits.json', {}), 'keywords': rd('data/keywords.json', {}),
-            'facilities': rd('data/facilities.json', {})}
+            'facilities': rd('data/facilities.json', {}), 'legacy': rd('data/legacy_pages.json', {})}
 
 
 def pages(root):

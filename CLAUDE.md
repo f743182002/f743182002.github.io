@@ -47,6 +47,7 @@
 - 文章、常見問題（與 JSON-LD FAQPage 同一份）**不寫金額（含實價登錄單價）、屋齡數字、興建中站點**；完整揭露四行＋攻略兩行固定在文末。
 - 起造人／承造人：`data/permits.json`（使照存根影像判讀，看不清楚的不收），社區版發布時 property-deck 自動寫入；手動補 `python scripts/structured_data.py permit . <社區名> <_使照存根庫\字號\annex.json>`。
 - 首頁社區卡片與地圖資料卡的連結文字是「看○○社區分析」（內部連結錨文字）。
+- 舊版頁（新濠一滙）的文章資料放 `data/legacy_pages.json`（`{社區名: {facts, facts_src, car_src, stations, buses, life, schools_walk, school, walk_note, interior, pros, cons, sources, image}}`），由 structured_data.py 併進文章、FAQ、JSON-LD；舊頁的 3D 與成交案例不動（林津陞 2026-11-12「不要動 我成交行情 就是可以公開 這我授權的」）。只放查證過的值：新濠一滙 2026-11-12 用建造執照 112板建字第00077號、國土測繪中心村里與航照（`aerial-p1.webp`）、教育局學區、官方資料核對過的步行點（Google 步行距離），查證過程在 `C:\claude-work\property-deck\C_新濠一滙`。興建中沒有使照、成屋實價與已查證輪廓，不寫完工年、日照、實價、公設。
 - 公設：簡報事實欄沒有「公設」「公設比」的社區，由 `data/facilities.json`（`{社區名: {items, ratio, notes, src, checked}}`）補進文章「○○公設有哪些？公設比多少？」與 FAQ。公設項目只收建商資料或本店物件照片看得到的（別家仲介寫的只當線索，不列）；公設比依實價登錄面積逐筆算中位數，寫資料期間與公布截止日。內部物件編號、照片序號只記在工作資料夾查證表 `common_facilities`／`common_area_ratio`，網頁只寫「本店經手物件的現場照片」。2026-11-11：新巨蛋（公設＋公設比）、昇陽文化廳／春池宇宙光／欣璞綻／民生捷座／鑽石名門（公設比）。
 
 ## 生活圈分類
