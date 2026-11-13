@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 776" preserveAspectRatio="xMidYMin meet" style="width:100%;height:auto;max-width:1280px" font-family="Noto Sans TC, Microsoft JhengHei, PingFang TC, sans-serif">
+<defs><linearGradient id="band" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#0369A1"/><stop offset="1" stop-color="#06B6D4"/></linearGradient></defs>
+<rect width="100%" height="100%" fill="#FFFFFF"/><rect width="100%" height="6" fill="url(#band)"/>
+<text x="20" y="44" font-size="24" font-weight="700" fill="#0F2233">永翠漾</text>
+<text x="20" y="72" font-size="14" fill="#8A969E">棟別門牌配置示意</text>
+<defs><clipPath id="c"><rect x="20.0" y="96.0" width="600.0" height="573.9" rx="10"/></clipPath></defs>
+<rect x="20.0" y="96.0" width="600.0" height="573.9" rx="10" fill="#F4F6F7" stroke="#DCE1E5"/>
+<g clip-path="url(#c)">
+<path d="M778.3,607.2 L726.6,703.4 L546.9,608.4 L598.1,512.2 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M675.4,372.1 L860.0,461.1 L813.1,556.7 L629.1,467.1 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M995.2,92.6 L857.5,360.0 L707.7,284.4 L845.3,16.5 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M381.3,55.4 L540.2,134.0 L462.9,288.7 L303.9,209.5 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M476.3,-155.9 L631.6,-79.8 L547.5,88.3 L392.2,11.6 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M836.2,762.5 L1020.1,859.4 L1094.4,723.5 L1020.1,684.0 L967.7,779.0 L914.2,750.3 L964.7,658.4 L909.3,629.1 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M-45.0,416.6 L-591.9,121.2 L-1084.0,-252.7" fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-45.0,416.6 L-591.9,121.2 L-1084.0,-252.7" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-95.0,399.5 L-665.0,2314.3 L-667.5,2387.4 L-425.1,2865.5" fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-95.0,399.5 L-665.0,2314.3 L-667.5,2387.4 L-425.1,2865.5" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-425.1,2865.5 L-413.5,2779.0 L-595.0,2433.7 L-615.1,2343.5 L-45.0,416.6" fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-425.1,2865.5 L-413.5,2779.0 L-595.0,2433.7 L-615.1,2343.5 L-45.0,416.6" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-45.0,416.6 L665.1,-931.2" fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-45.0,416.6 L665.1,-931.2" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M613.3,-962.8 L-95.0,399.5" fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M613.3,-962.8 L-95.0,399.5" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-45.0,416.6 L1060.3,980.6" fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-45.0,416.6 L1060.3,980.6" fill="none" stroke="#F2C14E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M323.4,2527.5 L50.0,1901.4 L42.0,1806.4 L381.3,699.2 L436.1,567.6 L1082.9,-679.6" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M323.4,2527.5 L50.0,1901.4 L42.0,1806.4 L381.3,699.2 L436.1,567.6 L1082.9,-679.6" fill="none" stroke="#F2C14E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M193.7,400.2 L218.0,351.4 L272.9,266.2 L321.6,284.4 L364.2,321.0 L461.7,351.4 L437.3,448.9 L394.7,497.6 Z" fill="#FFFFFF" stroke="#0369A1" stroke-width="2.5" stroke-linejoin="round"/>
+</g>
+<text x="436.1" y="558.6" font-size="14" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">藝文街</text>
+<circle cx="178.3" cy="413.3" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="203.5" cy="367.5" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="218.9" cy="463.8" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="229.9" cy="327.1" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="229.9" cy="437.5" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="268.0" cy="254.3" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="285.2" cy="463.8" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="327.0" cy="280.6" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="333.8" cy="492.1" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="384.1" cy="511.6" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="399.5" cy="309.6" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="412.4" cy="460.4" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="429.6" cy="400.5" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<rect x="183.3" y="404.3" width="21.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="194.3" y="417.3" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">72</text>
+<rect x="208.5" y="358.5" width="21.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="219.5" y="371.5" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">76</text>
+<rect x="223.9" y="454.8" width="21.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="234.9" y="467.8" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">56</text>
+<rect x="234.9" y="318.1" width="21.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="245.9" y="331.1" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">78</text>
+<rect x="234.9" y="428.5" width="21.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="245.9" y="441.5" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">70</text>
+<rect x="273.0" y="245.3" width="21.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="284.0" y="258.3" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">80</text>
+<rect x="290.2" y="454.8" width="21.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="301.2" y="467.8" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">68</text>
+<rect x="332.0" y="271.6" width="21.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="343.0" y="284.6" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">82</text>
+<rect x="338.8" y="483.1" width="21.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="349.7" y="496.1" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">66</text>
+<rect x="389.1" y="502.6" width="21.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="400.1" y="515.6" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">62</text>
+<rect x="404.5" y="300.6" width="21.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="415.5" y="313.6" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">86</text>
+<rect x="417.4" y="451.4" width="21.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="428.4" y="464.4" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">60</text>
+<rect x="434.6" y="391.5" width="21.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="445.6" y="404.5" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">58</text>
+<circle cx="590.0" cy="130.0" r="18" fill="#FFFFFF" stroke="#0369A1" stroke-width="2.5"/>
+<path d="M590.0,117.0 L597.0,138.0 L590.0,133.0 L583.0,138.0 Z" fill="#0369A1"/>
+<text x="590.0" y="164.0" font-size="12" font-weight="700" fill="#075985" text-anchor="middle">北</text>
+<line x1="34.0" y1="653.9" x2="338.5" y2="653.9" stroke="#0F2233" stroke-width="2.5"/>
+<text x="34.0" y="646.9" font-size="12" fill="#0F2233">約 50 公尺</text>
+<text x="20" y="695.9" font-size="13" fill="#0F2233">棟別門牌配置示意，僅供參考；實際以現場、門牌及使用執照為準。</text>
+<text x="20" y="714.9" font-size="13" fill="#0F2233">本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap、門牌位置 內政部國土測繪中心門牌定位</text>
+<text x="20" y="733.9" font-size="13" fill="#0F2233">（藍點為門牌實際位置）。</text>
+<text x="20" y="756.9" font-size="11" fill="#8A969E">道路底圖 © OpenStreetMap 貢獻者</text>
+</svg>
