@@ -1,0 +1,242 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1086" preserveAspectRatio="xMidYMin meet" style="width:100%;height:auto;max-width:1080px" font-family="Noto Sans TC, Microsoft JhengHei, PingFang TC, sans-serif">
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<defs><linearGradient id="band" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#0369A1"/><stop offset="1" stop-color="#06B6D4"/></linearGradient></defs>
+<rect x="0" y="0" width="1080" height="6" fill="url(#band)"/>
+<rect x="0" y="6" width="1080" height="30" fill="#F6FBFD"/>
+<text x="24" y="26" font-size="13" fill="#4C5E6E">全國不動產板橋加盟店｜經紀業 非凡不動產有限公司｜經紀人 謝政峯（99）北縣字第002181號｜營業員 林津陞（99）登字第148103號</text>
+<text x="24" y="80" font-size="30" font-weight="700" fill="#0F2233">永翠漾 每戶成交實價</text>
+<text x="24" y="110" font-size="15" fill="#4C5E6E">門牌在上、樓層在左；每格是該戶最新一筆成交：上為單價（萬元/坪），下為成交年月。截至 115/11/11 公布</text>
+<rect x="24.0" y="134" width="336.0" height="96" rx="10" fill="#FFFFFF" stroke="#D7E6EF"/>
+<text x="40.0" y="160" font-size="14" fill="#4C5E6E">全部期間中位數</text>
+<text x="40.0" y="198" font-size="32" font-weight="700" fill="#075985">64.0<tspan font-size="15" font-weight="400" fill="#4C5E6E"> 萬/坪</tspan></text>
+<text x="40.0" y="220" font-size="13" fill="#4C5E6E">範圍 57.2～71.4・8 戶</text>
+<rect x="372.0" y="134" width="336.0" height="96" rx="10" fill="#FFFFFF" stroke="#D7E6EF"/>
+<text x="388.0" y="160" font-size="14" fill="#4C5E6E">有成交的戶數</text>
+<text x="388.0" y="198" font-size="32" font-weight="700" fill="#0F2233">11<tspan font-size="15" font-weight="400" fill="#4C5E6E"> 戶</tspan></text>
+<text x="388.0" y="220" font-size="13" fill="#4C5E6E">資料期間內共 11 筆成交</text>
+<rect x="720.0" y="134" width="336.0" height="96" rx="10" fill="#FFFFFF" stroke="#D7E6EF"/>
+<text x="736.0" y="160" font-size="14" fill="#4C5E6E">最新一筆成交</text>
+<text x="736.0" y="198" font-size="32" font-weight="700" fill="#0F2233">115/02<tspan font-size="15" font-weight="400" fill="#4C5E6E"> </tspan></text>
+<text x="736.0" y="220" font-size="13" fill="#4C5E6E">截至 115/11/11 公布</text>
+<text x="24" y="264" font-size="14" font-weight="700" fill="#0F2233">單價色階（萬/坪）</text>
+<rect x="154" y="251" width="22" height="16" rx="3" fill="#E4F4FA"/>
+<text x="181" y="264" font-size="13" fill="#0F2233">未滿 58</text>
+<rect x="244" y="251" width="22" height="16" rx="3" fill="#A5DBEA"/>
+<text x="271" y="264" font-size="13" fill="#0F2233">58～64</text>
+<rect x="329" y="251" width="22" height="16" rx="3" fill="#0B7FB5"/>
+<text x="356" y="264" font-size="13" fill="#0F2233">64～70</text>
+<rect x="414" y="251" width="22" height="16" rx="3" fill="#0B4A73"/>
+<text x="441" y="264" font-size="13" fill="#0F2233">70 以上</text>
+<rect x="504" y="251" width="22" height="16" rx="3" fill="#FFFFFF" stroke="#A4762A"/>
+<text x="531" y="264" font-size="13" fill="#0F2233">一樓／店面</text>
+<rect x="612" y="251" width="22" height="16" rx="3" fill="#FFFFFF" stroke="#8A969E" stroke-dasharray="3 2"/>
+<text x="639" y="264" font-size="13" fill="#0F2233">含車位（不比較）</text>
+<rect x="759" y="251" width="22" height="16" rx="3" fill="#F6F7F8" stroke="#F6F7F8"/>
+<text x="786" y="264" font-size="13" fill="#0F2233">無成交</text>
+<text x="24" y="310" font-size="19" font-weight="700" fill="#0F2233">香社一路56～86號</text>
+<text x="24" y="328" font-size="13" fill="#4C5E6E">香社一路56～86號・11 戶有成交・中位數 64.0 萬/坪</text>
+<rect x="69" y="334" width="64" height="24" fill="#F1F3F4"/>
+<text x="101" y="351" font-size="14" font-weight="700" fill="#0F2233" text-anchor="middle">56號</text>
+<rect x="135" y="334" width="64" height="24" fill="#F1F3F4"/>
+<text x="167" y="351" font-size="14" font-weight="700" fill="#0F2233" text-anchor="middle">58號</text>
+<rect x="201" y="334" width="64" height="24" fill="#F1F3F4"/>
+<text x="233" y="351" font-size="14" font-weight="700" fill="#0F2233" text-anchor="middle">60號</text>
+<rect x="267" y="334" width="64" height="24" fill="#F1F3F4"/>
+<text x="299" y="351" font-size="14" font-weight="700" fill="#0F2233" text-anchor="middle">62號</text>
+<rect x="333" y="334" width="64" height="24" fill="#F1F3F4"/>
+<text x="365" y="351" font-size="14" font-weight="700" fill="#0F2233" text-anchor="middle">66號</text>
+<rect x="399" y="334" width="64" height="24" fill="#F1F3F4"/>
+<text x="431" y="351" font-size="14" font-weight="700" fill="#0F2233" text-anchor="middle">68號</text>
+<rect x="465" y="334" width="64" height="24" fill="#F1F3F4"/>
+<text x="497" y="351" font-size="14" font-weight="700" fill="#0F2233" text-anchor="middle">70號</text>
+<rect x="531" y="334" width="64" height="24" fill="#F1F3F4"/>
+<text x="563" y="351" font-size="14" font-weight="700" fill="#0F2233" text-anchor="middle">72號</text>
+<rect x="597" y="334" width="64" height="24" fill="#F1F3F4"/>
+<text x="629" y="351" font-size="14" font-weight="700" fill="#0F2233" text-anchor="middle">76號</text>
+<rect x="663" y="334" width="64" height="24" fill="#F1F3F4"/>
+<text x="695" y="351" font-size="14" font-weight="700" fill="#0F2233" text-anchor="middle">78號</text>
+<rect x="729" y="334" width="64" height="24" fill="#F1F3F4"/>
+<text x="761" y="351" font-size="14" font-weight="700" fill="#0F2233" text-anchor="middle">80號</text>
+<rect x="795" y="334" width="64" height="24" fill="#F1F3F4"/>
+<text x="827" y="351" font-size="14" font-weight="700" fill="#0F2233" text-anchor="middle">82號</text>
+<rect x="861" y="334" width="64" height="24" fill="#F1F3F4"/>
+<text x="893" y="351" font-size="14" font-weight="700" fill="#0F2233" text-anchor="middle">86號</text>
+<text x="62" y="390" font-size="14" font-weight="700" fill="#4C5E6E" text-anchor="end">15F</text>
+<rect x="70" y="362" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="136" y="362" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="202" y="362" width="62" height="46" rx="4" fill="#E4F4FA" stroke="#E4F4FA" stroke-width="1.3"/>
+<text x="233" y="382" font-size="17" font-weight="700" fill="#0F2233" text-anchor="middle">57.2</text>
+<text x="233" y="396" font-size="12" fill="#0F2233" text-anchor="middle">114/09</text>
+<rect x="268" y="362" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="334" y="362" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="400" y="362" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="466" y="362" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="532" y="362" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="598" y="362" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="664" y="362" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="730" y="362" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="796" y="362" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="862" y="362" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<text x="62" y="440" font-size="14" font-weight="700" fill="#4C5E6E" text-anchor="end">14F</text>
+<rect x="70" y="412" width="62" height="46" rx="4" fill="#0B7FB5" stroke="#0B7FB5" stroke-width="1.3"/>
+<text x="101" y="432" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">64.5</text>
+<text x="101" y="446" font-size="12" fill="#FFFFFF" text-anchor="middle">114/01</text>
+<rect x="136" y="412" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="202" y="412" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="268" y="412" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="334" y="412" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="400" y="412" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="466" y="412" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="532" y="412" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="598" y="412" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="664" y="412" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="730" y="412" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="796" y="412" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="862" y="412" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<text x="62" y="490" font-size="14" font-weight="700" fill="#4C5E6E" text-anchor="end">13F</text>
+<rect x="70" y="462" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="136" y="462" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="202" y="462" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="268" y="462" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="334" y="462" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="400" y="462" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="466" y="462" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="532" y="462" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="598" y="462" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="664" y="462" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="730" y="462" width="62" height="46" rx="4" fill="#FFFFFF" stroke="#8A969E" stroke-width="1.3" stroke-dasharray="3 2"/>
+<text x="761" y="482" font-size="17" font-weight="700" fill="#4C5E6E" text-anchor="middle">60.9</text>
+<text x="761" y="496" font-size="12" fill="#4C5E6E" text-anchor="middle">113/10</text>
+<text x="761" y="506" font-size="10.5" fill="#4C5E6E" text-anchor="middle">含車位</text>
+<rect x="796" y="462" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="862" y="462" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<text x="62" y="540" font-size="14" font-weight="700" fill="#4C5E6E" text-anchor="end">12F</text>
+<rect x="70" y="512" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="136" y="512" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="202" y="512" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="268" y="512" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="334" y="512" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="400" y="512" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="466" y="512" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="532" y="512" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="598" y="512" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="664" y="512" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="730" y="512" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="796" y="512" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="862" y="512" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<text x="62" y="590" font-size="14" font-weight="700" fill="#4C5E6E" text-anchor="end">11F</text>
+<rect x="70" y="562" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="136" y="562" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="202" y="562" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="268" y="562" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="334" y="562" width="62" height="46" rx="4" fill="#0B4A73" stroke="#0B4A73" stroke-width="1.3"/>
+<text x="365" y="582" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">71.4</text>
+<text x="365" y="596" font-size="12" fill="#FFFFFF" text-anchor="middle">113/08</text>
+<rect x="400" y="562" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="466" y="562" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="532" y="562" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="598" y="562" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="664" y="562" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="730" y="562" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="796" y="562" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="862" y="562" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="70" y="613" width="854" height="14" fill="#FAFAFB"/>
+<text x="62" y="624" font-size="11" fill="#4C5E6E" text-anchor="end">8–10F</text>
+<text x="76" y="624" font-size="11" fill="#9AA5AC">無成交</text>
+<text x="62" y="660" font-size="14" font-weight="700" fill="#4C5E6E" text-anchor="end">7F</text>
+<rect x="70" y="632" width="62" height="46" rx="4" fill="#A5DBEA" stroke="#A5DBEA" stroke-width="1.3"/>
+<text x="101" y="652" font-size="17" font-weight="700" fill="#0F2233" text-anchor="middle">58.3</text>
+<text x="101" y="666" font-size="12" fill="#0F2233" text-anchor="middle">115/01</text>
+<rect x="136" y="632" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="202" y="632" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="268" y="632" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="334" y="632" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="400" y="632" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="466" y="632" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="532" y="632" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="598" y="632" width="62" height="46" rx="4" fill="#0B7FB5" stroke="#0B7FB5" stroke-width="1.3"/>
+<text x="629" y="652" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">65.0</text>
+<text x="629" y="666" font-size="12" fill="#FFFFFF" text-anchor="middle">115/02</text>
+<rect x="664" y="632" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="730" y="632" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="796" y="632" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="862" y="632" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<text x="62" y="710" font-size="14" font-weight="700" fill="#4C5E6E" text-anchor="end">6F</text>
+<rect x="70" y="682" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="136" y="682" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="202" y="682" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="268" y="682" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="334" y="682" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="400" y="682" width="62" height="46" rx="4" fill="#FFFFFF" stroke="#8A969E" stroke-width="1.3" stroke-dasharray="3 2"/>
+<text x="431" y="702" font-size="17" font-weight="700" fill="#4C5E6E" text-anchor="middle">58.7</text>
+<text x="431" y="716" font-size="12" fill="#4C5E6E" text-anchor="middle">114/05</text>
+<text x="431" y="726" font-size="10.5" fill="#4C5E6E" text-anchor="middle">含車位</text>
+<rect x="466" y="682" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="532" y="682" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="598" y="682" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="664" y="682" width="62" height="46" rx="4" fill="#A5DBEA" stroke="#A5DBEA" stroke-width="1.3"/>
+<text x="695" y="702" font-size="17" font-weight="700" fill="#0F2233" text-anchor="middle">63.6</text>
+<text x="695" y="716" font-size="12" fill="#0F2233" text-anchor="middle">113/10</text>
+<rect x="730" y="682" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="796" y="682" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="862" y="682" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<text x="62" y="760" font-size="14" font-weight="700" fill="#4C5E6E" text-anchor="end">5F</text>
+<rect x="70" y="732" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="136" y="732" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="202" y="732" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="268" y="732" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="334" y="732" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="400" y="732" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="466" y="732" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="532" y="732" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="598" y="732" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="664" y="732" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="730" y="732" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="796" y="732" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="862" y="732" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<text x="62" y="810" font-size="14" font-weight="700" fill="#4C5E6E" text-anchor="end">4F</text>
+<rect x="70" y="782" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="136" y="782" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="202" y="782" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="268" y="782" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="334" y="782" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="400" y="782" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="466" y="782" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="532" y="782" width="62" height="46" rx="4" fill="#0B4A73" stroke="#0B4A73" stroke-width="1.3"/>
+<text x="563" y="802" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">70.0</text>
+<text x="563" y="816" font-size="12" fill="#FFFFFF" text-anchor="middle">113/09</text>
+<rect x="598" y="782" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="664" y="782" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="730" y="782" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="796" y="782" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="862" y="782" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<text x="62" y="860" font-size="14" font-weight="700" fill="#4C5E6E" text-anchor="end">3F</text>
+<rect x="70" y="832" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="136" y="832" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="202" y="832" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="268" y="832" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="334" y="832" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="400" y="832" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="466" y="832" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="532" y="832" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="598" y="832" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="664" y="832" width="62" height="46" rx="4" fill="#FFFFFF" stroke="#8A969E" stroke-width="1.3" stroke-dasharray="3 2"/>
+<text x="695" y="852" font-size="17" font-weight="700" fill="#4C5E6E" text-anchor="middle">54.1</text>
+<text x="695" y="866" font-size="12" fill="#4C5E6E" text-anchor="middle">113/10</text>
+<text x="695" y="876" font-size="10.5" fill="#4C5E6E" text-anchor="middle">含車位</text>
+<rect x="730" y="832" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="796" y="832" width="62" height="46" rx="4" fill="#A5DBEA" stroke="#A5DBEA" stroke-width="1.3"/>
+<text x="827" y="852" font-size="17" font-weight="700" fill="#0F2233" text-anchor="middle">63.6</text>
+<text x="827" y="866" font-size="12" fill="#0F2233" text-anchor="middle">113/12</text>
+<rect x="862" y="832" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="70" y="883" width="854" height="14" fill="#FAFAFB"/>
+<text x="62" y="894" font-size="11" fill="#4C5E6E" text-anchor="end">1–2F</text>
+<text x="76" y="894" font-size="11" fill="#9AA5AC">無成交</text>
+<text x="24" y="930" font-size="14" fill="#0F2233">・資料來源：內政部不動產交易實價查詢服務網（已排除特殊交易），不含預售屋（完工前簽約者）。</text>
+<text x="24" y="951" font-size="14" fill="#0F2233">・資料期間：民國108年第1季起登錄的成交，截至 115/11/11 公布；之後的新成交未納入，以內政部最新資料為準。</text>
+<text x="24" y="972" font-size="14" fill="#0F2233">・單價（萬元/坪）已扣除有拆分的車位；標「含車位」者未拆分，單價含車位，不列入色階與中位數。</text>
+<text x="24" y="993" font-size="14" fill="#0F2233">・同一戶（門牌＋樓層＋之幾）有多筆成交只畫最新一筆，「共N筆」是該戶在資料期間內的成交筆數。</text>
+<text x="24" y="1014" font-size="14" fill="#0F2233">・中位數只算二樓以上、每戶最新一筆；一樓／店面、地下層另外標示，不與住宅樓層混比。淡灰格是資料期間內沒有成交登錄，不代表沒有住戶。</text>
+<text x="24" y="1035" font-size="14" fill="#0F2233">・不依實際比例重繪，實際以現場及權狀為準。</text>
+<text x="24" y="1064" font-size="14" font-weight="700" fill="#075985">板橋阿陞聊房 banqiaoasheng.com｜LINE @banqiao.asheng｜手機 0925-635-678</text>
+</svg>

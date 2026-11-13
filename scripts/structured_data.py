@@ -26,6 +26,7 @@ AI 搜尋讀不到。這支把「頁面本身已經有的資料」整理成 JSON
 用法：python structured_data.py <網站資料夾> [--check]
   --check：只檢查，不寫檔；有頁面需要更新就回傳 1。
 """
+import collections
 import html
 import json
 import math
@@ -1577,7 +1578,10 @@ def guide_problems(block, g):
     t = article_text(block)
     for ok in g.get('money_ok') or []:  # 買方搜尋的問句本身（例「年薪一百萬可以買多少錢的房子？」）不是房價
         t = t.replace(ok, '')
-    probs = [f'含金額「{m[0]}」' for m in GUIDE_MONEY.finditer(t)]
+    if g.get('unit_price_ok'):  # 區域頁：實價登錄單價依社區分析規則放行（要有車位分算說明），總價、售價照擋
+        probs = [f'含金額「{m}」' for m in (money_hit(x, True) for x in re.split(r'[。\n]', t)) if m]
+    else:
+        probs = [f'含金額「{m[0]}」' for m in GUIDE_MONEY.finditer(t)]
     probs += [f'含屋齡數字「{m[0]}」' for m in AGE.finditer(t)]
     probs += [f'含禁用詞「{w}」' for w in banned_hits(t)]
     for must in ('謝政峯（99）北縣字第002181號', '林津陞（99）登字第148103號', '非凡不動產有限公司', '0925-635-678', '@banqiao.asheng'):
@@ -1641,6 +1645,98 @@ def _table(head, rows):
     e = html.escape
     return ('<table><thead><tr>' + ''.join(f'<th scope="col">{e(h)}</th>' for h in head) + '</tr></thead><tbody>'
             + ''.join('<tr>' + ''.join(f'<td>{c}</td>' for c in r) + '</tr>' for r in rows) + '</tbody></table>')
+
+
+def _half(ym):
+    y, m = ym.split('/')
+    return f'{int(y)}年{"上" if int(m) <= 6 else "下"}半年', (int(y), 0 if int(m) <= 6 else 1)
+
+
+def _med(xs):
+    xs = sorted(xs)
+    n = len(xs)
+    return round(xs[n // 2] if n % 2 else (xs[n // 2 - 1] + xs[n // 2]) / 2, 1)
+
+
+def trend_svg(rows, label):
+    """每半年成交單價中位數（萬/坪）長條圖，純 SVG（不靠 JS，搜尋引擎與無障礙讀得到 title／desc）。"""
+    if not rows:
+        return ''
+    w, h, top, bottom, left = 680, 250, 34, 46, 12
+    vals = [r[2] for r in rows]
+    lo = max(0, min(vals) * 0.8)
+    hi = max(vals) * 1.05
+    bw = (w - left * 2) / len(rows)
+    parts = [f'<svg viewBox="0 0 {w} {h}" role="img" aria-labelledby="trend-t trend-d" style="width:100%;height:auto;max-width:{w}px">',
+             f'<title id="trend-t">{html.escape(label)}實價登錄成交單價中位數（萬/坪）</title>',
+             '<desc id="trend-d">' + html.escape('；'.join(f'{r[0]}{r[2]}萬/坪（{r[1]}筆）' for r in rows)) + '</desc>']
+    for i, (period, n, v) in enumerate(rows):
+        x = left + i * bw + bw * 0.18
+        bh = (v - lo) / (hi - lo) * (h - top - bottom) if hi > lo else 10
+        y = h - bottom - bh
+        parts.append(f'<rect x="{x:.1f}" y="{y:.1f}" width="{bw * 0.64:.1f}" height="{bh:.1f}" rx="3" fill="#0369A1"/>')
+        parts.append(f'<text x="{x + bw * 0.32:.1f}" y="{y - 8:.1f}" text-anchor="middle" font-size="15" font-weight="700" fill="#0F2233">{v}</text>')
+        parts.append(f'<text x="{x + bw * 0.32:.1f}" y="{h - bottom + 18:.1f}" text-anchor="middle" font-size="13" fill="#33475B">{html.escape(period)}</text>')
+        parts.append(f'<text x="{x + bw * 0.32:.1f}" y="{h - bottom + 36:.1f}" text-anchor="middle" font-size="12" fill="#33475B">{n}筆</text>')
+    parts.append('</svg>')
+    return '<figure class="sa-chart" style="margin:12px 0">' + ''.join(parts) + \
+        '<figcaption class="sa-note">長條為每半年成交單價中位數（萬/坪），下方為筆數。</figcaption></figure>'
+
+
+def area_trend(arts, ctx, label, link):
+    """區域頁的實價登錄單價走勢（2026-11-13 林津陞：「政府公告的 怎會算判斷？…你弄成圖表數據阿」）。
+    資料：data/units/<社區>.json 的 trend（每筆成交的年月＋單價；2 樓以上、住宅用途、車位有拆分或沒有車位）。
+    只做統計（中位數、筆數），不評論漲跌、不估價；資料期間與公布截止日照寫。"""
+    e = html.escape
+    pts, per, cut, periods = [], [], set(), set()
+    for k, c, a in arts:
+        f = ctx['root'] / 'data' / 'units' / f'{c["name"]}.json'
+        if not f.exists():
+            continue
+        u = json.loads(f.read_text(encoding='utf-8'))
+        tr = [t for t in u.get('trend') or [] if isinstance(t, list) and len(t) == 2]
+        if not tr:
+            continue
+        cut.add(u.get('cutoff') or '')
+        periods.add(u.get('period') or '')
+        pts += tr
+        per.append((k, c, tr))
+    if len(pts) < 10:
+        return None
+    latest = max(pts, key=lambda t: tuple(int(x) for x in t[0].split('/')))[0]
+    ly, lm = (int(x) for x in latest.split('/'))
+    year_ago = (ly - 1, lm)
+    groups = collections.defaultdict(list)
+    for ym, v in pts:
+        name, key = _half(ym)
+        groups[(key, name)].append(v)
+    cur = _half(latest)[0]  # 最新一期通常還沒過完（例：115年下半年只到公布截止日）
+    rows = [(name + ('（至目前）' if name == cur else ''), len(vs), _med(vs))
+            for (key, name), vs in sorted(groups.items()) if len(vs) >= 3][-6:]
+    if not rows:
+        return None
+    cuts = '、'.join(sorted(x for x in cut if x))
+    last = next((r for r in reversed(rows) if r[1] >= 10), rows[-1])  # 第一段用筆數夠多的最近一期
+    lead = (f'依內政部實價登錄，{label}這幾個社區{last[0]}2樓以上住家的成交單價中位數約{last[2]}萬/坪（{last[1]}筆）'
+            '；單價已扣除有拆分的車位，含車位未拆分的成交不列入。不同社區、樓層、屋況差很多，下面有每半年的走勢和各社區的數字'
+            + (f'，資料{cuts}' if cuts else '') + '，以內政部最新資料為準。')
+    trow = [[e(n), f'{c} 筆', f'{v}'] for n, c, v in rows]
+    crow = []
+    for k, c, tr in per:
+        recent = [v for ym, v in tr if tuple(int(x) for x in ym.split('/')) > year_ago]
+        crow.append([link(k, c), f'{len(recent)} 筆', f'{_med(recent)}' if len(recent) >= 3 else '筆數太少不列', f'{len(tr)} 筆'])
+    notes = ('資料來源：內政部不動產交易實價查詢服務網（已排除親友等特殊交易與大樓蓋好前簽約的成交）'
+             + (f'，資料期間{"、".join(sorted(x for x in periods if x))}' if periods else '') + (f'，{cuts}' if cuts else '')
+             + '。只計 2 樓以上、住宅用途的成交；單價已扣除有拆分的車位，含車位未拆分的不列入；同一戶多次成交都列入。'
+             '每半年少於 3 筆的期間不畫；之後的新成交未納入，以內政部最新資料為準。中位數只是統計，不代表個別房屋。')
+    return {'q': f'{label}房價多少？實價登錄單價走勢',
+            'lead': lead,
+            'body': [{'html': trend_svg(rows, label)},
+                     {'html': _table(['期間', '筆數', '單價中位數（萬/坪）'], trow)},
+                     {'html': f'<h3>各社區近一年（{year_ago[0]}/{year_ago[1]:02d} 之後）</h3>'
+                              + _table(['社區', '近一年筆數', '近一年單價中位數（萬/坪）', '資料期間總筆數'], crow)},
+                     {'html': f'<p class="sa-note">{e(notes)}</p>'},
+                     '每一戶的成交年月和單價，可以點各社區的「看每戶成交實價」查。']}
 
 
 def area_guide(name, ctx):
@@ -1742,6 +1838,9 @@ def area_guide(name, ctx):
                      'body': [{'html': _table(['社區', '筆數', '資料期間', '每戶成交實價'], deal_rows)},
                               {'html': '<p class="sa-note">資料來源：內政部不動產交易實價查詢服務網（已排除特殊交易），'
                                        '每個社區的門牌範圍與篩選條件寫在各自的每戶成交實價頁。</p>'}]})
+    trend = area_trend(arts, ctx, label, link)
+    if trend:
+        secs.append(trend)
     # 看屋要確認
     cons, examples = [], []
     for k, c, a in arts:
@@ -1757,7 +1856,7 @@ def area_guide(name, ctx):
                               '買房的預算、流程和費用，可以先看[板橋買房指南](/buy/)；要賣房，可以看[板橋賣房指南](/sell/)。']})
     rows = [f'<li>{link(k, c)}' + (f'（{e(c.get("road") or "")}）' if c.get('road') else '') + '</li>' for k, c, _ in arts]
     return {'label': label, 'title': cfg['title'], 'h1': cfg['h1'], 'desc': cfg['desc'], 'updated': cfg.get('updated'),
-            'contact': 'buyer', 'intro': cfg.get('intro') or [], 'sections': secs,
+            'contact': 'buyer', 'intro': cfg.get('intro') or [], 'sections': secs, 'unit_price_ok': True,
             'community_rows': rows, 'community_h2': f'{label}社區分析',
             'sources': cfg.get('sources') or ['各社區分析頁（使照、教育局學區、官方資料核對過的步行點）', '內政部不動產交易實價查詢服務網']}
 
@@ -1942,7 +2041,7 @@ def build_site(root, check=False):
             for ok in summary['guide']['money_ok']:
                 dump = dump.replace(ok, '')
             scan = json.loads(dump)
-        for p in audit(scan, community=key.startswith('community/')):
+        for p in audit(scan, community=key.startswith(('community/', 'area/'))):
             problems.append(f'{key or "首頁"}：{p}')
         new = apply(text, key, graph, summary, ctx)
         if key == 'map':
