@@ -1555,8 +1555,10 @@ def guide_html(key, g, ctx):
                + ''.join(f'；也可以看<a href="/{k}/">{GUIDE_LABEL[k]}</a>' for k in other) + '，或回<a href="/">首頁</a>。</p>')
     out.append('<h2>想聊聊？</h2>')
     if g.get('contact') == 'seller':  # 給屋主的內容不放買方攻略（591-SOP 4.10）
-        out.append('<div class="sa-contact"><p>☆賣屋諮詢請聯絡：林津陞 <a href="tel:0925635678">0925-635-678</a>｜LINE '
-                   '<a href="https://line.me/R/ti/p/%40banqiao.asheng" target="_blank" rel="noopener">@banqiao.asheng</a></p></div>')
+        # 2026-11-13 林津陞：賣房攻略關鍵字「賣房」（不寫字數頁數，沒有查證過）
+        out.append('<div class="sa-contact"><p>☆賣屋諮詢請聯絡：林津陞 <a href="tel:0925635678">0925-635-678</a><br>'
+                   '加官方 LINE <a href="https://line.me/R/ti/p/%40banqiao.asheng" target="_blank" rel="noopener">@banqiao.asheng</a>'
+                   ' 輸入「賣房」免費領《賣房不吃虧攻略》</p></div>')
     else:
         out.append('<div class="sa-contact"><p>☆預約看屋請聯絡：林津陞 <a href="tel:0925635678">0925-635-678</a><br>'
                    '加官方 LINE：<a href="https://line.me/R/ti/p/%40banqiao.asheng" target="_blank" rel="noopener">@banqiao.asheng</a>，'
