@@ -9,7 +9,7 @@
    之間，依 decks.json 產生靜態清單（不開 JS 也看得到、搜尋引擎也讀得到）。
    如果 index.html 又被舊發布流程覆寫成純清單（沒有標記），
    會從 git 歷史找回最後一版有標記的總站首頁再產生。
-2. sitemap.xml：首頁、map/、about/（存在才列）、每個 community/<社區名>/、
+2. sitemap.xml：首頁、map/、about/、buy/、sell/（存在才列）、每個 community/<社區名>/、
    每個 S<編號>/。網址一律 https://banqiaoasheng.com/ 開頭，中文路徑編碼。
 
 本機執行：python3 scripts/build_site.py
@@ -111,7 +111,7 @@ def lastmod(rel, decks_key=None, decks=None):
 def build_sitemap(decks):
     pages = []  # (path, lastmod)
     pages.append(("", lastmod("index.html")))
-    for sub in ("map", "about"):
+    for sub in ("map", "about", "buy", "sell"):  # buy/sell：2026-11-13 板橋買房／賣房指南
         if (ROOT / sub / "index.html").exists():
             pages.append((sub + "/", lastmod(sub)))
     for d in sorted((ROOT / "community").iterdir()) if (ROOT / "community").is_dir() else []:

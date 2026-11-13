@@ -12,6 +12,8 @@
 - [首頁](https://banqiaoasheng.com/): 社區分析與物件簡報清單
 - [商圈地圖](https://banqiaoasheng.com/map/): 各社區位置、生活圈、完工年、捷運步行時間
 - [關於林津陞](https://banqiaoasheng.com/about/): 營業員介紹與聯絡方式
+- [板橋買房指南](https://banqiaoasheng.com/buy/): 板橋買房指南：先抓銀行核定的預算，再依通勤挑捷運站周邊社區，看屋時確認漏水、管委會、車位與產權。附板橋社區分析與商圈地圖。
+- [板橋賣房指南](https://banqiaoasheng.com/sell/): 板橋賣房指南：先用實價登錄看同社區的成交紀錄，再確認產權、稅費和文件，決定自己賣或委託房仲。稅額以稅捐稽徵機關核定為準。
 - [YouTube 板橋阿陞聊房](https://www.youtube.com/channel/UC_OqNkkqQTT6L7xLZZvlRfQ): 社區分析影片
 
 ## 社區分析

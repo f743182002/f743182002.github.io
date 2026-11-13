@@ -56,6 +56,8 @@ LD_SCRIPT = re.compile(r'[ \t]*<script type="application/ld\+json">.*?</script>\
 ART_MARK = re.compile(r'<!-- ARTICLE:START -->.*?<!-- ARTICLE:END -->\n?', re.S)
 ART_LINK_MARK = re.compile(r'<!-- ARTICLE-LINK:START -->.*?<!-- ARTICLE-LINK:END -->', re.S)
 MAPLINKS_MARK = re.compile(r'<!-- MAPLINKS:START -->.*?<!-- MAPLINKS:END -->\n?', re.S)
+GUIDE_MARK = re.compile(r'<!-- GUIDE:START -->.*?<!-- GUIDE:END -->', re.S)
+GUIDE_KEYS = ('buy', 'sell')  # 2026-11-13 板橋買房指南／板橋賣房指南（data/guides.json）
 # 頁尾完整揭露（SOP 3.1 完整版；峯＝U+5CEF）與買方攻略引流兩行（SOP 4.10，2026-10-29）
 FULL_DISCLOSURE = ['全國不動產板橋加盟店', '經紀業｜非凡不動產有限公司',
                    '經紀人｜謝政峯（99）北縣字第002181號', '營業員｜林津陞（99）登字第148103號']
@@ -154,6 +156,16 @@ def clean_segments(text, sep='｜', community=False):
     return sep.join(s for s in segs if not money_hit(s, community, text) and not any(w in s for w in BANNED))
 
 
+# 法定稅目名稱不是推銷用語（禁用詞「增值」不該擋到「土地增值稅」）；掃禁用詞前先拿掉
+LEGAL_TERMS = ('土地增值稅',)
+
+
+def banned_hits(text):
+    for t in LEGAL_TERMS:
+        text = text.replace(t, '')
+    return [w for w in BANNED if w in text]
+
+
 def audit(graph, community=False):
     """最後一道：整份 JSON-LD 不可有金額、屋齡、禁用詞（社區頁的單價見 money_hit）。"""
     problems = []
@@ -169,9 +181,8 @@ def audit(graph, community=False):
             m = money_hit(v, community)
             if m:
                 problems.append(f'{path} 含金額／屋齡「{m}」')
-            for w in BANNED:
-                if w in v:
-                    problems.append(f'{path} 含禁用詞「{w}」')
+            for w in banned_hits(v):
+                problems.append(f'{path} 含禁用詞「{w}」')
     visit(graph, '$')
     return problems
 
@@ -806,7 +817,7 @@ def home_graph(text, ctx):
             'description': meta_content(text, 'description'), 'inLanguage': 'zh-Hant-TW',
             'isPartOf': {'@id': WEBSITE_ID}, 'about': {'@id': AGENT_ID}, 'author': {'@id': PERSON_ID},
             'publisher': {'@id': AGENT_ID}, 'hasPart': [{'@id': x['@id']} for x in lists],
-            'significantLink': [SITE + 'map/', SITE + 'about/', 'https://tax.banqiaoasheng.com/', 'https://loan.banqiaoasheng.com/']}
+            'significantLink': [SITE + 'map/', SITE + 'about/'] + [SITE + k + '/' for k in GUIDE_KEYS if k in ctx.get('guides', {})] + ['https://tax.banqiaoasheng.com/', 'https://loan.banqiaoasheng.com/']}
     return [page] + lists, None
 
 
@@ -1376,6 +1387,8 @@ def article_html(a):
         out.append('<ul>' + ''.join(f'<li><a href="{e(c["href"], quote=True)}">{e(c["name"])}社區分析</a>'
                                     + (f'（{e(c["where"])}）' if c.get('where') else '') + '</li>' for c in a['nearby']) + '</ul>')
         out.append('<p>想一次比較位置，可以看<a href="/map/">板橋商圈地圖</a>，或回<a href="/">首頁</a>看全部社區分析。</p>')
+    if a.get('guides'):
+        out.append('<p>買房、賣房怎麼開始：' + '、'.join(f'<a href="/{k}/">{GUIDE_LABEL[k]}</a>' for k in a['guides']) + '。</p>')
 
     # 聯絡與完整揭露
     out.append(f'<h2>想看{e(name)}？</h2>')
@@ -1463,7 +1476,10 @@ def map_links_block(ctx):
             '.maplinks ul{columns:2 260px;padding-left:1.2em;margin:8px 0 0}.maplinks li{margin:3px 0;break-inside:avoid}</style>\n'
             '<section class="wrap maplinks" id="community-articles" aria-label="社區分析文章">'
             '<h2>社區分析文章</h2><p>每個社區一篇：交通、日照、學區、生活機能與看屋重點，點社區名就能看完整分析。</p>'
-            '<ul>' + ''.join(x[2] for x in items) + '</ul></section>\n<!-- MAPLINKS:END -->\n')
+            '<ul>' + ''.join(x[2] for x in items) + '</ul>'
+            + (('<p>買房、賣房怎麼開始：' + '、'.join(f'<a href="/{k}/">{GUIDE_LABEL[k]}</a>' for k in GUIDE_KEYS if k in ctx.get('guides', {})) + '。</p>')
+               if ctx.get('guides') else '')
+            + '</section>\n<!-- MAPLINKS:END -->\n')
 
 
 def apply_map_links(text, ctx):
@@ -1472,6 +1488,105 @@ def apply_map_links(text, ctx):
     if i < 0:
         return text
     return text[:i] + map_links_block(ctx) + text[i:]
+
+
+GUIDE_LABEL = {'buy': '板橋買房指南', 'sell': '板橋賣房指南'}
+GUIDE_LINK = re.compile(r'\[([^\]\[]+)\]\((/[^)\s]*|https://(?:tax|loan)\.banqiaoasheng\.com/[^)\s]*|https://lvr\.land\.moi\.gov\.tw/[^)\s]*)\)')
+# 指南不寫成交金額：數字＋萬／元／億、每坪、單價、總價、售價、開價（「行情分析」「房價怎麼查」這類說法可以用）
+GUIDE_MONEY = re.compile(r'\d[\d,.]*\s*(?:萬(?![字人次筆個])|元|億)|[一二三四五六七八九十百千兩]+萬(?![字人次筆個])|萬元|每坪|單價|總價|售價|開價')
+
+
+def guide_inline(text):
+    """指南內文：先跳脫，再把 [文字](網址) 換成連結（只收本站、稅務小幫手、青安試算、內政部實價登錄）。"""
+    return GUIDE_LINK.sub(lambda m: f'<a href="{m[2]}"' + ('' if m[2].startswith('/') else ' target="_blank" rel="noopener"')
+                          + f'>{m[1]}</a>', html.escape(text, quote=False))
+
+
+def guide_body(items):
+    out = []
+    for x in items or []:
+        if isinstance(x, dict) and x.get('ul'):
+            out.append('<ul>' + ''.join(f'<li>{guide_inline(y)}</li>' for y in x['ul']) + '</ul>')
+        elif isinstance(x, str) and x.strip():
+            out.append(f'<p>{guide_inline(x)}</p>')
+    return '\n'.join(out)
+
+
+def guide_community_links(ctx):
+    """指南頁連到每個社區分析（錨文字＝社區名＋社區分析）。"""
+    rows = []
+    for k in sorted((k for k in ctx['decks'] if k.startswith('community/')),
+                    key=lambda k: (ctx['decks'][k].get('area') or '', ctx['decks'][k].get('name') or '')):
+        if not (ctx['root'] / k / 'index.html').exists():
+            continue
+        d = ctx['decks'][k]
+        where = re.sub(r'^新北市', '', (d.get('area') or '').replace('・', ''))
+        rows.append(f'<li><a href="/{quote(k)}/">{html.escape(d["name"])}社區分析</a>'
+                    + (f'（{html.escape(where)}）' if where else '') + '</li>')
+    return rows
+
+
+def guide_html(key, g, ctx):
+    e = html.escape
+    secs = g.get('sections') or []
+    out = [f'<p class="sa-kicker">{e(GUIDE_LABEL[key])}</p>', f'<h1>{e(g["h1"])}</h1>',
+           '<p class="sa-meta">整理：林津陞（阿陞）' + (f'｜更新：{e(g["updated"])}' if g.get('updated') else '') + '</p>']
+    out += [f'<p>{guide_inline(x)}</p>' for x in g.get('intro') or []]
+    if len(secs) > 2:
+        out.append('<nav class="sa-toc" aria-label="本文問題"><p>這篇回答：</p><ol>' +
+                   ''.join(f'<li><a href="#q-{i + 1}">{e(x["q"])}</a></li>' for i, x in enumerate(secs)) + '</ol></nav>')
+    for i, x in enumerate(secs):
+        out += [f'<h2 id="q-{i + 1}">{e(x["q"])}</h2>', f'<p class="sa-lead">{e(x["lead"])}</p>', guide_body(x.get('body'))]
+    rows = guide_community_links(ctx)
+    if rows:
+        out.append('<h2>板橋社區分析</h2>')
+        out.append('<p>每個社區一篇：捷運步行時間、日照、學區、生活機能、優缺點與看屋要確認的事。</p>')
+        out.append('<ul>' + ''.join(rows) + '</ul>')
+    other = [k for k in GUIDE_KEYS if k != key and k in ctx.get('guides', {})]
+    out.append('<p>想一次比較位置，可以看<a href="/map/">板橋商圈地圖</a>'
+               + ''.join(f'；也可以看<a href="/{k}/">{GUIDE_LABEL[k]}</a>' for k in other) + '，或回<a href="/">首頁</a>。</p>')
+    out.append('<h2>想聊聊？</h2>')
+    if g.get('contact') == 'seller':  # 給屋主的內容不放買方攻略（591-SOP 4.10）
+        out.append('<div class="sa-contact"><p>☆賣屋諮詢請聯絡：林津陞 <a href="tel:0925635678">0925-635-678</a>｜LINE '
+                   '<a href="https://line.me/R/ti/p/%40banqiao.asheng" target="_blank" rel="noopener">@banqiao.asheng</a></p></div>')
+    else:
+        out.append('<div class="sa-contact"><p>☆預約看屋請聯絡：林津陞 <a href="tel:0925635678">0925-635-678</a><br>'
+                   '加官方 LINE：<a href="https://line.me/R/ti/p/%40banqiao.asheng" target="_blank" rel="noopener">@banqiao.asheng</a>，'
+                   '聊天室輸入「攻略」，系統自動傳送《買房避坑攻略》電子檔（約2萬字／38頁）</p></div>')
+    src = '；'.join(x.rstrip('。') for x in g.get('sources') or [])
+    out.append('<div class="sa-disc"><p>' + '<br>'.join(e(x) for x in FULL_DISCLOSURE) + '</p><p>'
+               + (f'資料來源：{e(src)}。' if src else '') +
+               '貸款條件依銀行核定；稅額以稅捐稽徵機關核定為準；房屋資訊仍須以現場、產權資料及正式文件為準。</p></div>')
+    return ('<!-- GUIDE:START -->\n<style>' + ARTICLE_CSS + '</style>\n'
+            f'<article id="analysis" aria-label="{e(GUIDE_LABEL[key])}"><div class="sa-in">\n'
+            + '\n'.join(x for x in out if x) + '\n</div></article>\n<!-- GUIDE:END -->')
+
+
+def guide_problems(block, g):
+    """指南整篇掃一次：成交金額、屋齡數字、禁用詞、店電話、必要揭露與聯絡方式。"""
+    t = article_text(block)
+    for ok in g.get('money_ok') or []:  # 買方搜尋的問句本身（例「年薪一百萬可以買多少錢的房子？」）不是房價
+        t = t.replace(ok, '')
+    probs = [f'含金額「{m[0]}」' for m in GUIDE_MONEY.finditer(t)]
+    probs += [f'含屋齡數字「{m[0]}」' for m in AGE.finditer(t)]
+    probs += [f'含禁用詞「{w}」' for w in banned_hits(t)]
+    for must in ('謝政峯（99）北縣字第002181號', '林津陞（99）登字第148103號', '非凡不動產有限公司', '0925-635-678', '@banqiao.asheng'):
+        if must not in t:
+            probs.append(f'少了「{must}」')
+    return probs
+
+
+def guide_graph(key, text, ctx):
+    g = ctx['guides'][key]
+    url = SITE + key + '/'
+    page = {'@type': 'WebPage', '@id': url + '#webpage', 'url': url, 'name': g['title'], 'headline': g['h1'],
+            'description': g['desc'], 'inLanguage': 'zh-Hant-TW', 'isPartOf': {'@id': WEBSITE_ID},
+            'about': {'@id': AGENT_ID}, 'author': {'@id': PERSON_ID}, 'publisher': {'@id': AGENT_ID},
+            'dateModified': g.get('updated'), 'breadcrumb': {'@id': url + '#breadcrumb'}}
+    qa = [(x['q'], x['lead']) for x in g.get('sections') or []]
+    graph = [{k: v for k, v in page.items() if v not in (None, '', [])}] + faq(url, qa) + \
+        [breadcrumb(url, [(BRAND, SITE), (GUIDE_LABEL[key], url)])]
+    return graph, {'guide': g}
 
 
 # ---------------------------------------------------------------------- 寫進 HTML
@@ -1533,7 +1648,15 @@ def apply(text, key, graph, summary, ctx):
         head = head[:m.end()] + ('' if head[m.end() - 1] == '\n' else '\n') + '\n'.join(extras) + '\n' + head[m.end():]
     elif extras:
         head += '\n'.join(extras) + '\n'
+    guide = (summary or {}).get('guide')
+    if guide:  # 買房／賣房指南：標題、摘要、文章、FAQ 同一份資料（data/guides.json）
+        head = set_head_text(head, guide['title'], guide['desc'])
+        if not head.endswith('\n'):
+            head += '\n'
+        return head + ld_block(graph) + GUIDE_MARK.sub(lambda m: guide_html(key, guide, ctx), rest, count=1)
     art = (summary or {}).get('article')
+    if art:
+        art['guides'] = [k for k in GUIDE_KEYS if k in ctx.get('guides', {})]
     if art:  # 社區頁：標題與摘要換成問句型（與 JSON-LD WebPage、文章 h1 同一套）
         head = set_head_text(head, art['title'], art['desc'])
     if not head.endswith('\n'):
@@ -1558,6 +1681,8 @@ def page_graph(key, text, ctx):
         return map_graph(text, ctx)
     if key == 'about':
         return about_graph(text, ctx)
+    if key in GUIDE_KEYS and key in ctx.get('guides', {}):
+        return guide_graph(key, text, ctx)
     if grab(text, 'DECK') is not None:
         return deck_graph(key, text, ctx)
     if (ctx['root'] / key / 'config.js').exists():
@@ -1574,12 +1699,13 @@ def load_ctx(root):
             'areas': {a['id']: a for a in comm.get('areas', [])},
             'videos': rd('data/videos.json', {}), 'narration': rd('data/narration.json', {}),
             'permits': rd('data/permits.json', {}), 'keywords': rd('data/keywords.json', {}),
-            'facilities': rd('data/facilities.json', {}), 'legacy': rd('data/legacy_pages.json', {})}
+            'facilities': rd('data/facilities.json', {}), 'legacy': rd('data/legacy_pages.json', {}),
+            'guides': rd('data/guides.json', {})}
 
 
 def pages(root):
     root = Path(root)
-    keys = [''] + [k for k in ('map', 'about') if (root / k / 'index.html').exists()]
+    keys = [''] + [k for k in ('map', 'about') + GUIDE_KEYS if (root / k / 'index.html').exists()]
     if (root / 'community').is_dir():
         keys += ['community/' + d.name for d in sorted((root / 'community').iterdir()) if (d / 'index.html').exists()]
     keys += [d.name for d in sorted(root.glob('S*')) if d.is_dir() and re.fullmatch(r'S\d+', d.name) and (d / 'index.html').exists()]
@@ -1596,6 +1722,7 @@ def llms_txt(ctx, descs):
              f'- [首頁]({SITE}): 社區分析與物件簡報清單',
              f'- [商圈地圖]({SITE}map/): 各社區位置、生活圈、完工年、捷運步行時間',
              f'- [關於林津陞]({SITE}about/): 營業員介紹與聯絡方式',
+             *[f'- [{GUIDE_LABEL[k]}]({SITE}{k}/): ' + ctx['guides'][k].get('desc', '') for k in GUIDE_KEYS if k in ctx.get('guides', {})],
              f'- [YouTube 板橋阿陞聊房]({YOUTUBE_CHANNEL}): 社區分析影片', '', '## 社區分析', '']
     for k in sorted((k for k in ctx['decks'] if k.startswith('community/')), key=lambda k: ctx['decks'][k].get('updated') or '', reverse=True):
         d = ctx['decks'][k]
@@ -1616,7 +1743,13 @@ def build_site(root, check=False):
         f = Path(root) / key / 'index.html'
         text = f.read_text(encoding='utf-8')
         graph, summary = page_graph(key, text, ctx)
-        for p in audit(graph, community=key.startswith('community/')):
+        scan = graph
+        if key in GUIDE_KEYS and ctx.get('guides', {}).get(key, {}).get('money_ok'):  # 買方搜尋問句裡的年薪不是房價
+            dump = json.dumps(graph, ensure_ascii=False)
+            for ok in ctx['guides'][key]['money_ok']:
+                dump = dump.replace(ok, '')
+            scan = json.loads(dump)
+        for p in audit(scan, community=key.startswith('community/')):
             problems.append(f'{key or "首頁"}：{p}')
         new = apply(text, key, graph, summary, ctx)
         if key == 'map':
@@ -1624,6 +1757,9 @@ def build_site(root, check=False):
         m = ART_MARK.search(new)
         if m:
             problems += [f'{key}：文章{p}' for p in article_problems(m[0])]
+        if key in GUIDE_KEYS and key in ctx.get('guides', {}):
+            g = GUIDE_MARK.search(new)
+            problems += [f'{key}：指南{p}' for p in (guide_problems(g[0], ctx['guides'][key]) if g else ['頁面沒有 GUIDE 標記'])]
         for s in static_age_problems(new):  # title、meta、og、noscript 等寫死的文字不可有屋齡數字（script 裡即時計算的不算）
             problems.append(f'{key or "首頁"}：靜態文字含屋齡數字「{s}」')
         page = next((n for n in graph if n.get('@id', '').endswith('#webpage')), {})
