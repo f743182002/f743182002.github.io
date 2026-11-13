@@ -1676,11 +1676,12 @@ def trend_svg(rows, label):
         y = h - bottom - bh
         parts.append(f'<rect x="{x:.1f}" y="{y:.1f}" width="{bw * 0.64:.1f}" height="{bh:.1f}" rx="3" fill="#0369A1"/>')
         parts.append(f'<text x="{x + bw * 0.32:.1f}" y="{y - 8:.1f}" text-anchor="middle" font-size="15" font-weight="700" fill="#0F2233">{v}</text>')
-        parts.append(f'<text x="{x + bw * 0.32:.1f}" y="{h - bottom + 18:.1f}" text-anchor="middle" font-size="13" fill="#33475B">{html.escape(period)}</text>')
+        short = re.sub(r'(\d+)年([上下])半年', r'\1\2', period).replace('（至目前）', '（至今）')  # 圖上用短標籤，表格寫全名
+        parts.append(f'<text x="{x + bw * 0.32:.1f}" y="{h - bottom + 18:.1f}" text-anchor="middle" font-size="13" fill="#33475B">{html.escape(short)}</text>')
         parts.append(f'<text x="{x + bw * 0.32:.1f}" y="{h - bottom + 36:.1f}" text-anchor="middle" font-size="12" fill="#33475B">{n}筆</text>')
     parts.append('</svg>')
     return '<figure class="sa-chart" style="margin:12px 0">' + ''.join(parts) + \
-        '<figcaption class="sa-note">長條為每半年成交單價中位數（萬/坪），下方為筆數。</figcaption></figure>'
+        '<figcaption class="sa-note">長條為每半年成交單價中位數（萬/坪），下方為期間（例：113上＝113年上半年）與筆數。</figcaption></figure>'
 
 
 def area_trend(arts, ctx, label, link):
