@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 803" preserveAspectRatio="xMidYMin meet" style="width:100%;height:auto;max-width:1280px" font-family="Noto Sans TC, Microsoft JhengHei, PingFang TC, sans-serif">
+<defs><linearGradient id="band" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#0369A1"/><stop offset="1" stop-color="#06B6D4"/></linearGradient></defs>
+<rect width="100%" height="100%" fill="#FFFFFF"/><rect width="100%" height="6" fill="url(#band)"/>
+<text x="20" y="44" font-size="24" font-weight="700" fill="#0F2233">柏克萊公園</text>
+<text x="20" y="72" font-size="14" fill="#8A969E">棟別門牌配置示意</text>
+<defs><clipPath id="c"><rect x="78.5" y="96.0" width="482.9" height="600.0" rx="10"/></clipPath></defs>
+<rect x="78.5" y="96.0" width="482.9" height="600.0" rx="10" fill="#F4F6F7" stroke="#DCE1E5"/>
+<g clip-path="url(#c)">
+<path d="M-65.8,482.1 L35.3,433.6 L130.8,630.2 L29.6,678.6 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M-145.6,532.9 L-86.2,679.1 L-187.9,722.8 L-261.0,590.3 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M423.8,400.4 L525.4,424.1 L554.3,299.2 L452.2,275.5 Z" fill="#E3E7EA" stroke="#D2D8DC" stroke-width="1"/>
+<path d="M258.5,669.6 L44.8,181.9 L38.6,107.4 L303.1,-755.9 L850.2,-1830.5" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M258.5,669.6 L44.8,181.9 L38.6,107.4 L303.1,-755.9 L850.2,-1830.5" fill="none" stroke="#F2C14E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M671.2,79.4 L-300.9,-204.1" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M671.2,79.4 L-300.9,-204.1" fill="none" stroke="#F2C14E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1176.9,-1633.9 L1141.7,-1198.9 L832.6,-536.0 L671.2,79.4 L569.1,547.1 L258.5,669.6 L-325.6,933.6" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1176.9,-1633.9 L1141.7,-1198.9 L832.6,-536.0 L671.2,79.4 L569.1,547.1 L258.5,669.6 L-325.6,933.6" fill="none" stroke="#F2C14E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M569.1,547.1 L736.7,506.3" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M569.1,547.1 L736.7,506.3" fill="none" stroke="#F2C14E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M306.5,386.1 L373.4,356.2 L438.0,501.5 L320.7,551.9 L275.1,439.8 L306.9,425.1 Z" fill="#FFFFFF" stroke="#0369A1" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M202.0,275.0 L312.6,219.5 L373.4,356.2 L306.5,386.1 L281.8,362.4 L246.2,368.1 Z" fill="#FFFFFF" stroke="#0369A1" stroke-width="2.5" stroke-linejoin="round"/>
+</g>
+<text x="258.5" y="660.6" font-size="14" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">藝文街</text>
+<text x="258.5" y="660.6" font-size="14" font-weight="700" fill="#8A5A00" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">永翠路</text>
+<circle cx="283.5" cy="531.6" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="298.4" cy="362.5" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="302.2" cy="572.5" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="315.1" cy="294.8" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="337.6" cy="346.8" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="373.6" cy="443.4" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="386.5" cy="485.9" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<circle cx="398.0" cy="521.1" r="3.2" fill="#0369A1" stroke="#FFFFFF" stroke-width="1.2"/>
+<rect x="288.5" y="522.6" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="303.0" y="535.6" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">387</text>
+<rect x="303.4" y="353.5" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="317.8" y="366.5" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">383</text>
+<rect x="307.2" y="563.5" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="321.6" y="576.5" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">389</text>
+<rect x="320.1" y="285.8" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="334.6" y="298.8" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">379</text>
+<rect x="342.6" y="337.8" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="357.1" y="350.8" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">381</text>
+<rect x="378.6" y="434.4" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="393.0" y="447.4" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">395</text>
+<rect x="391.5" y="476.9" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="405.9" y="489.9" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">393</text>
+<rect x="403.0" y="512.1" width="28.9" height="18.0" rx="4" fill="#FFFFFF" fill-opacity="0.94" stroke="#0369A1" stroke-width="1"/>
+<text x="417.4" y="525.1" font-size="12" font-weight="700" fill="#0F2233" text-anchor="middle">391</text>
+<circle cx="531.5" cy="130.0" r="18" fill="#FFFFFF" stroke="#0369A1" stroke-width="2.5"/>
+<path d="M531.5,117.0 L538.5,138.0 L531.5,133.0 L524.5,138.0 Z" fill="#0369A1"/>
+<text x="531.5" y="164.0" font-size="12" font-weight="700" fill="#075985" text-anchor="middle">北</text>
+<line x1="92.5" y1="680.0" x2="330.0" y2="680.0" stroke="#0F2233" stroke-width="2.5"/>
+<text x="92.5" y="673.0" font-size="12" fill="#0F2233">約 50 公尺</text>
+<text x="20" y="722.0" font-size="13" fill="#0F2233">棟別門牌配置示意，僅供參考；實際以現場、門牌及使用執照為準。</text>
+<text x="20" y="741.0" font-size="13" fill="#0F2233">本圖為本店依自有查證資料繪製：建物輪廓 OpenStreetMap、門牌位置 內政部國土測繪中心門牌定位</text>
+<text x="20" y="760.0" font-size="13" fill="#0F2233">（藍點為門牌實際位置）。</text>
+<text x="20" y="783.0" font-size="11" fill="#8A969E">道路底圖 © OpenStreetMap 貢獻者</text>
+</svg>
