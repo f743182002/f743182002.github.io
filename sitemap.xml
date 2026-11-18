@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://banqiaoasheng.com/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-18</lastmod>
   </url>
   <url>
     <loc>https://banqiaoasheng.com/map/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-18</lastmod>
   </url>
   <url>
     <loc>https://banqiaoasheng.com/about/</loc>
@@ -14,11 +14,11 @@
   </url>
   <url>
     <loc>https://banqiaoasheng.com/buy/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-18</lastmod>
   </url>
   <url>
     <loc>https://banqiaoasheng.com/sell/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-18</lastmod>
   </url>
   <url>
     <loc>https://banqiaoasheng.com/area/%E6%96%B0%E5%9F%94/</loc>
@@ -26,7 +26,7 @@
   </url>
   <url>
     <loc>https://banqiaoasheng.com/area/%E6%B1%9F%E7%BF%A0%E9%87%8D%E5%8A%83%E5%8D%80/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-18</lastmod>
   </url>
   <url>
     <loc>https://banqiaoasheng.com/community/%E4%B8%89%E8%BC%9D%E6%AD%8C%E5%8A%87%E8%8B%91/</loc>
@@ -51,6 +51,10 @@
   <url>
     <loc>https://banqiaoasheng.com/community/%E6%96%B0%E6%9D%BF%E5%9C%96/</loc>
     <lastmod>2026-11-11</lastmod>
+  </url>
+  <url>
+    <loc>https://banqiaoasheng.com/community/%E6%96%B0%E6%BD%A4%E9%9D%92%E5%B3%B0/</loc>
+    <lastmod>2026-11-18</lastmod>
   </url>
   <url>
     <loc>https://banqiaoasheng.com/community/%E6%96%B0%E6%BF%A0%E4%B8%80%E6%BB%99/</loc>
