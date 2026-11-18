@@ -104,8 +104,12 @@ def build_index(decks):
 def lastmod(rel, decks_key=None, decks=None):
     if decks_key and decks and decks.get(decks_key, {}).get("updated"):
         return decks[decks_key]["updated"]
-    d = git("log", "-1", "--format=%cs", "--", rel).strip()
-    return d or None
+    # 2026-11-18：一律換成臺灣時間的日期（雲端／GitHub 自動提交用 UTC，臺灣早上 8 點前改的會差一天）
+    d = git("log", "-1", "--format=%cI", "--", rel).strip()
+    if not d:
+        return None
+    from datetime import datetime, timedelta, timezone
+    return datetime.fromisoformat(d).astimezone(timezone(timedelta(hours=8))).strftime("%Y-%m-%d")
 
 
 def build_sitemap(decks):
