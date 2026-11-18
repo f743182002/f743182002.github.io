@@ -79,6 +79,14 @@ def restore_index_if_overwritten(text):
     sys.exit("index.html 沒有 <!-- DECKS:START --> 標記，git 歷史也找不到可還原的版本")
 
 
+def write_if_changed(path, text):
+    """內容和原檔相同就不寫（2026-11-19 從 PR#5 補進來），回傳是否有寫入。"""
+    if path.exists() and path.read_text(encoding="utf-8") == text:
+        return False
+    path.write_text(text, encoding="utf-8")
+    return True
+
+
 def build_index(decks):
     text = INDEX.read_text(encoding="utf-8")
     text = restore_index_if_overwritten(text)
@@ -98,7 +106,9 @@ def build_index(decks):
         return m.group(1) + "\n" + body + "\n" + m.group(4)
 
     new = MARK.sub(repl, text)
-    INDEX.write_text(new, encoding="utf-8")
+    changed = write_if_changed(INDEX, new)
+    print("index.html：" + ("已更新" if changed else "沒有變動"))
+    return changed
 
 
 def lastmod(rel, decks_key=None, decks=None):
@@ -112,9 +122,15 @@ def lastmod(rel, decks_key=None, decks=None):
     return datetime.fromisoformat(d).astimezone(timezone(timedelta(hours=8))).strftime("%Y-%m-%d")
 
 
-def build_sitemap(decks):
+def build_sitemap(decks, index_changed=False):
     pages = []  # (path, lastmod)
-    pages.append(("", lastmod("index.html")))
+    # 這次有改 index.html 的話，git 日期還是上一次提交的，改用臺灣時間今天（2026-11-19 從 PR#5 補進來）
+    if index_changed:
+        from datetime import datetime, timedelta, timezone
+        home_lm = datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d")
+    else:
+        home_lm = lastmod("index.html")
+    pages.append(("", home_lm))
     for sub in ("map", "about", "buy", "sell"):  # buy/sell：2026-11-13 板橋買房／賣房指南
         if (ROOT / sub / "index.html").exists():
             pages.append((sub + "/", lastmod(sub)))
@@ -144,8 +160,8 @@ def build_sitemap(decks):
 
 def main():
     decks = load_decks()
-    build_index(decks)
-    build_sitemap(decks)
+    changed = build_index(decks)
+    build_sitemap(decks, index_changed=changed)
 
 
 if __name__ == "__main__":
