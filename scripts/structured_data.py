@@ -161,10 +161,14 @@ def clean_segments(text, sep='｜', community=False):
 LEGAL_TERMS = ('土地增值稅',)
 
 
-def banned_hits(text):
+# 2026-11-19／11-20 林津陞：社區分析不是房子廣告，增建／夾層／頂樓加蓋等事實描述可寫（同 community_wording.COMMUNITY_ALLOWED）；紅線照擋
+COMMUNITY_ALLOWED = ('增建', '頂樓加蓋', '加蓋', '夾層')
+
+
+def banned_hits(text, community=False):
     for t in LEGAL_TERMS:
         text = text.replace(t, '')
-    return [w for w in BANNED if w in text]
+    return [w for w in BANNED if w in text and not (community and w in COMMUNITY_ALLOWED)]
 
 
 def audit(graph, community=False):
@@ -182,7 +186,7 @@ def audit(graph, community=False):
             m = money_hit(v, community)
             if m:
                 problems.append(f'{path} 含金額／屋齡「{m}」')
-            for w in banned_hits(v):
+            for w in banned_hits(v, community):
                 problems.append(f'{path} 含禁用詞「{w}」')
     visit(graph, '$')
     return problems
@@ -1415,7 +1419,7 @@ def article_text(block):
     return html.unescape(re.sub(r'<[^>]+>', ' ', s))
 
 
-def article_problems(block):
+def article_problems(block, community=False):
     """整篇再掃一次：金額（社區頁單價規則同 money_hit）、屋齡數字、禁用詞、店電話。"""
     t = article_text(block)
     probs = []
@@ -1424,7 +1428,7 @@ def article_problems(block):
         if m:
             probs.append(f'含金額「{m}」')
     probs += [f'含屋齡數字「{m[0]}」' for m in AGE.finditer(t)]
-    probs += [f'含禁用詞「{w}」' for w in BANNED if w in t]
+    probs += [f'含禁用詞「{w}」' for w in banned_hits(t, community)]
     for must in ('謝政峯（99）北縣字第002181號', '林津陞（99）登字第148103號', '非凡不動產有限公司', '0925-635-678', '@banqiao.asheng'):
         if must not in t:
             probs.append(f'少了「{must}」')
@@ -2049,7 +2053,7 @@ def build_site(root, check=False):
             new = apply_map_links(new, ctx)
         m = ART_MARK.search(new)
         if m:
-            problems += [f'{key}：文章{p}' for p in article_problems(m[0])]
+            problems += [f'{key}：文章{p}' for p in article_problems(m[0], key.startswith(('community/', 'area/')))]
         gd = summary.get('guide') if isinstance(summary, dict) else None
         if gd:
             g = GUIDE_MARK.search(new)
