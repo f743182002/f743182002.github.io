@@ -159,16 +159,18 @@ def clean_segments(text, sep='｜', community=False):
 
 # 法定稅目名稱不是推銷用語（禁用詞「增值」不該擋到「土地增值稅」）；掃禁用詞前先拿掉
 LEGAL_TERMS = ('土地增值稅',)
-
-
-# 2026-11-19／11-20 林津陞：社區分析不是房子廣告，增建／夾層／頂樓加蓋等事實描述可寫（同 community_wording.COMMUNITY_ALLOWED）；紅線照擋
-COMMUNITY_ALLOWED = ('增建', '頂樓加蓋', '加蓋', '夾層')
+try:  # 社區版放行字（2026-11-19 林津陞「我這不是廣告」）；網站 repo 單獨跑時沒有這個模組就不放行
+    from community_wording import COMMUNITY_ALLOWED
+except ImportError:  # pragma: no cover
+    COMMUNITY_ALLOWED = ()
 
 
 def banned_hits(text, community=False):
     for t in LEGAL_TERMS:
         text = text.replace(t, '')
-    return [w for w in BANNED if w in text and not (community and w in COMMUNITY_ALLOWED)]
+    # 2026-11-20：社區頁照 11/19 社區版用字規則放行事實描述（例 國家文化館「1樓夾層設管理中心」），紅線照擋
+    allowed = COMMUNITY_ALLOWED if community else ()
+    return [w for w in BANNED if w in text and w not in allowed]
 
 
 def audit(graph, community=False):
@@ -1419,7 +1421,7 @@ def article_text(block):
     return html.unescape(re.sub(r'<[^>]+>', ' ', s))
 
 
-def article_problems(block, community=False):
+def article_problems(block):
     """整篇再掃一次：金額（社區頁單價規則同 money_hit）、屋齡數字、禁用詞、店電話。"""
     t = article_text(block)
     probs = []
@@ -1428,7 +1430,7 @@ def article_problems(block, community=False):
         if m:
             probs.append(f'含金額「{m}」')
     probs += [f'含屋齡數字「{m[0]}」' for m in AGE.finditer(t)]
-    probs += [f'含禁用詞「{w}」' for w in banned_hits(t, community)]
+    probs += [f'含禁用詞「{w}」' for w in banned_hits(t, community=True)]  # 文章只出現在社區／區域頁
     for must in ('謝政峯（99）北縣字第002181號', '林津陞（99）登字第148103號', '非凡不動產有限公司', '0925-635-678', '@banqiao.asheng'):
         if must not in t:
             probs.append(f'少了「{must}」')
@@ -2053,7 +2055,7 @@ def build_site(root, check=False):
             new = apply_map_links(new, ctx)
         m = ART_MARK.search(new)
         if m:
-            problems += [f'{key}：文章{p}' for p in article_problems(m[0], key.startswith(('community/', 'area/')))]
+            problems += [f'{key}：文章{p}' for p in article_problems(m[0])]
         gd = summary.get('guide') if isinstance(summary, dict) else None
         if gd:
             g = GUIDE_MARK.search(new)
