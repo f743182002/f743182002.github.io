@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 866" preserveAspectRatio="xMidYMin meet" style="width:100%;height:auto;max-width:1080px" font-family="Noto Sans TC, Microsoft JhengHei, PingFang TC, sans-serif">
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<defs><linearGradient id="band" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#0369A1"/><stop offset="1" stop-color="#06B6D4"/></linearGradient></defs>
+<rect x="0" y="0" width="1080" height="6" fill="url(#band)"/>
+<rect x="0" y="6" width="1080" height="30" fill="#F6FBFD"/>
+<text x="24" y="26" font-size="13" fill="#4C5E6E">全國不動產板橋加盟店｜經紀業 非凡不動產有限公司｜經紀人 謝政峯（99）北縣字第002181號｜營業員 林津陞（99）登字第148103號</text>
+<text x="24" y="80" font-size="30" font-weight="700" fill="#0F2233">新樸文藝 每戶成交實價</text>
+<text x="24" y="110" font-size="15" fill="#4C5E6E">門牌在上、樓層在左；每格是該戶最新一筆成交：上為單價（萬元/坪），下為成交年月。截至 115/11/11 公布</text>
+<rect x="24.0" y="134" width="336.0" height="96" rx="10" fill="#FFFFFF" stroke="#D7E6EF"/>
+<text x="40.0" y="160" font-size="14" fill="#4C5E6E">全部期間中位數</text>
+<text x="40.0" y="198" font-size="32" font-weight="700" fill="#075985">55.8<tspan font-size="15" font-weight="400" fill="#4C5E6E"> 萬/坪</tspan></text>
+<text x="40.0" y="220" font-size="13" fill="#4C5E6E">範圍 53.3～76.6・6 戶</text>
+<rect x="372.0" y="134" width="336.0" height="96" rx="10" fill="#FFFFFF" stroke="#D7E6EF"/>
+<text x="388.0" y="160" font-size="14" fill="#4C5E6E">有成交的戶數</text>
+<text x="388.0" y="198" font-size="32" font-weight="700" fill="#0F2233">7<tspan font-size="15" font-weight="400" fill="#4C5E6E"> 戶</tspan></text>
+<text x="388.0" y="220" font-size="13" fill="#4C5E6E">資料期間內共 7 筆成交</text>
+<rect x="720.0" y="134" width="336.0" height="96" rx="10" fill="#FFFFFF" stroke="#D7E6EF"/>
+<text x="736.0" y="160" font-size="14" fill="#4C5E6E">最新一筆成交</text>
+<text x="736.0" y="198" font-size="32" font-weight="700" fill="#0F2233">113/12<tspan font-size="15" font-weight="400" fill="#4C5E6E"> </tspan></text>
+<text x="736.0" y="220" font-size="13" fill="#4C5E6E">截至 115/11/11 公布</text>
+<text x="24" y="264" font-size="14" font-weight="700" fill="#0F2233">單價色階（萬/坪）</text>
+<rect x="154" y="251" width="22" height="16" rx="3" fill="#E4F4FA"/>
+<text x="181" y="264" font-size="13" fill="#0F2233">未滿 54</text>
+<rect x="244" y="251" width="22" height="16" rx="3" fill="#A5DBEA"/>
+<text x="271" y="264" font-size="13" fill="#0F2233">54～56</text>
+<rect x="329" y="251" width="22" height="16" rx="3" fill="#0B7FB5"/>
+<text x="356" y="264" font-size="13" fill="#0F2233">56～68</text>
+<rect x="414" y="251" width="22" height="16" rx="3" fill="#0B4A73"/>
+<text x="441" y="264" font-size="13" fill="#0F2233">68 以上</text>
+<rect x="504" y="251" width="22" height="16" rx="3" fill="#FFFFFF" stroke="#A4762A"/>
+<text x="531" y="264" font-size="13" fill="#0F2233">一樓／店面</text>
+<rect x="612" y="251" width="22" height="16" rx="3" fill="#FFFFFF" stroke="#8A969E" stroke-dasharray="3 2"/>
+<text x="639" y="264" font-size="13" fill="#0F2233">含車位（不比較）</text>
+<rect x="759" y="251" width="22" height="16" rx="3" fill="#F6F7F8" stroke="#F6F7F8"/>
+<text x="786" y="264" font-size="13" fill="#0F2233">無成交</text>
+<text x="24" y="310" font-size="19" font-weight="700" fill="#0F2233">藝文一街6～12號</text>
+<text x="24" y="328" font-size="13" fill="#4C5E6E">藝文一街6～12號・7 戶有成交・中位數 55.8 萬/坪</text>
+<rect x="69" y="334" width="64" height="24" fill="#F1F3F4"/>
+<text x="101" y="351" font-size="14" font-weight="700" fill="#0F2233" text-anchor="middle">6號</text>
+<rect x="135" y="334" width="64" height="24" fill="#F1F3F4"/>
+<text x="167" y="351" font-size="14" font-weight="700" fill="#0F2233" text-anchor="middle">8號</text>
+<rect x="201" y="334" width="64" height="24" fill="#F1F3F4"/>
+<text x="233" y="351" font-size="14" font-weight="700" fill="#0F2233" text-anchor="middle">10號</text>
+<rect x="267" y="334" width="64" height="24" fill="#F1F3F4"/>
+<text x="299" y="351" font-size="14" font-weight="700" fill="#0F2233" text-anchor="middle">12號</text>
+<text x="62" y="390" font-size="14" font-weight="700" fill="#4C5E6E" text-anchor="end">13F</text>
+<rect x="70" y="362" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="136" y="362" width="62" height="46" rx="4" fill="#0B7FB5" stroke="#0B7FB5" stroke-width="1.3"/>
+<text x="167" y="382" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">67.8</text>
+<text x="167" y="396" font-size="12" fill="#FFFFFF" text-anchor="middle">113/05</text>
+<rect x="202" y="362" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="268" y="362" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<text x="62" y="440" font-size="14" font-weight="700" fill="#4C5E6E" text-anchor="end">12F</text>
+<rect x="70" y="412" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="136" y="412" width="62" height="46" rx="4" fill="#0B4A73" stroke="#0B4A73" stroke-width="1.3"/>
+<text x="167" y="432" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">76.6</text>
+<text x="167" y="446" font-size="12" fill="#FFFFFF" text-anchor="middle">113/12</text>
+<rect x="202" y="412" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="268" y="412" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<text x="62" y="490" font-size="14" font-weight="700" fill="#4C5E6E" text-anchor="end">11F</text>
+<rect x="70" y="462" width="62" height="46" rx="4" fill="#A5DBEA" stroke="#A5DBEA" stroke-width="1.3"/>
+<text x="101" y="482" font-size="17" font-weight="700" fill="#0F2233" text-anchor="middle">54.0</text>
+<text x="101" y="496" font-size="12" fill="#0F2233" text-anchor="middle">112/08</text>
+<rect x="136" y="462" width="62" height="46" rx="4" fill="#A5DBEA" stroke="#A5DBEA" stroke-width="1.3"/>
+<text x="167" y="482" font-size="17" font-weight="700" fill="#0F2233" text-anchor="middle">55.8</text>
+<text x="167" y="496" font-size="12" fill="#0F2233" text-anchor="middle">112/09</text>
+<rect x="202" y="462" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="268" y="462" width="62" height="46" rx="4" fill="#A5DBEA" stroke="#A5DBEA" stroke-width="1.3"/>
+<text x="299" y="482" font-size="17" font-weight="700" fill="#0F2233" text-anchor="middle">55.8</text>
+<text x="299" y="496" font-size="12" fill="#0F2233" text-anchor="middle">112/09</text>
+<rect x="70" y="513" width="260" height="14" fill="#FAFAFB"/>
+<text x="62" y="524" font-size="11" fill="#4C5E6E" text-anchor="end">4–10F</text>
+<text x="76" y="524" font-size="11" fill="#9AA5AC">無成交</text>
+<text x="62" y="560" font-size="14" font-weight="700" fill="#4C5E6E" text-anchor="end">3F</text>
+<rect x="70" y="532" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="136" y="532" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="202" y="532" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="268" y="532" width="62" height="46" rx="4" fill="#FFFFFF" stroke="#8A969E" stroke-width="1.3" stroke-dasharray="3 2"/>
+<text x="299" y="552" font-size="17" font-weight="700" fill="#4C5E6E" text-anchor="middle">47.5</text>
+<text x="299" y="566" font-size="12" fill="#4C5E6E" text-anchor="middle">113/04</text>
+<text x="299" y="576" font-size="10.5" fill="#4C5E6E" text-anchor="middle">含車位</text>
+<text x="62" y="610" font-size="14" font-weight="700" fill="#4C5E6E" text-anchor="end">2F</text>
+<rect x="70" y="582" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="136" y="582" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="202" y="582" width="62" height="46" rx="4" fill="#E4F4FA" stroke="#E4F4FA" stroke-width="1.3"/>
+<text x="233" y="602" font-size="17" font-weight="700" fill="#0F2233" text-anchor="middle">53.3</text>
+<text x="233" y="616" font-size="12" fill="#0F2233" text-anchor="middle">112/12</text>
+<rect x="268" y="582" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<text x="62" y="660" font-size="14" font-weight="700" fill="#4C5E6E" text-anchor="end">1F</text>
+<rect x="70" y="632" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="136" y="632" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="202" y="632" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<rect x="268" y="632" width="62" height="46" rx="4" fill="#F6F7F8"/>
+<text x="24" y="710" font-size="14" fill="#0F2233">・資料來源：內政部不動產交易實價查詢服務網（已排除特殊交易），不含預售屋（完工前簽約者）。</text>
+<text x="24" y="731" font-size="14" fill="#0F2233">・資料期間：民國108年第1季起登錄的成交，截至 115/11/11 公布；之後的新成交未納入，以內政部最新資料為準。</text>
+<text x="24" y="752" font-size="14" fill="#0F2233">・單價（萬元/坪）已扣除有拆分的車位；標「含車位」者未拆分，單價含車位，不列入色階與中位數。</text>
+<text x="24" y="773" font-size="14" fill="#0F2233">・同一戶（門牌＋樓層＋之幾）有多筆成交只畫最新一筆，「共N筆」是該戶在資料期間內的成交筆數。</text>
+<text x="24" y="794" font-size="14" fill="#0F2233">・中位數只算二樓以上、每戶最新一筆；一樓／店面、地下層另外標示，不與住宅樓層混比。淡灰格是資料期間內沒有成交登錄，不代表沒有住戶。</text>
+<text x="24" y="815" font-size="14" fill="#0F2233">・不依實際比例重繪，實際以現場及權狀為準。</text>
+<text x="24" y="844" font-size="14" font-weight="700" fill="#075985">板橋阿陞聊房 banqiaoasheng.com｜LINE @banqiao.asheng｜手機 0925-635-678</text>
+</svg>
