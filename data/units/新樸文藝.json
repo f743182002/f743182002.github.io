@@ -1,8 +1,8 @@
 {
  "source": "政府實價登錄（已排除特殊交易）",
  "period": "108S1～115S4",
- "published_through": "115/11/11",
- "cutoff": "截至 115/11/11 公布",
+ "published_through": "115/11/21",
+ "cutoff": "截至 115/11/21 公布",
  "scope": "新北市板橋區藝文一街6～12號（雙號）",
  "floors": 13,
  "door_floors": {
