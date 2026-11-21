@@ -526,7 +526,7 @@ def deck_graph(key, text, ctx):
 
     place = {'@type': 'Apartment' if listing else 'ApartmentComplex', '@id': place_id,
              'name': f"{name} {deck.get('floor')}F" if listing and deck.get('floor') else name,
-             'alternateName': (aliases_of(ctx.get('keywords', {}).get(name), name) or None) if not listing else None,
+             'alternateName': (names_of(ctx.get('keywords', {}).get(name), name) or None) if not listing else None,
              'description': clean(deck.get('interiorText') if listing else (deck.get('interiorText') or deck.get('subtitle')), com) or None,
              'url': url, 'address': address,
              'geo': {'@type': 'GeoCoordinates', 'latitude': lat, 'longitude': lon} if lat and lon else None,
@@ -612,7 +612,7 @@ def deck_graph(key, text, ctx):
         finish_article(art, ctx.get('keywords', {}).get(name), town + road,
                        f'位於{county}{district}{road}' + (f'，{built}完工' if built else '') +
                        (f"、{floors.replace(' ', '')}" if floors else '') + '。',
-                       f'{walk_name(st)}{walk_text(st)}。' if st else '')
+                       f'{walk_name(st)}{walk_text(st)}。' if st else '', town=town)
         title, desc, qa = art['title'], art['desc'], art['qa']
 
     if not title or title in GENERIC_TITLES or not desc:
@@ -652,6 +652,7 @@ def simple_community_graph(key, text, ctx):
     if comm.get('mrt'):
         amen.append({'@type': 'LocationFeatureSpecification', 'name': '捷運', 'value': comm['mrt'], 'description': WALK_NOTE})
     place = {'@type': 'ApartmentComplex', '@id': place_id, 'name': name, 'url': url,
+             'alternateName': names_of(ctx.get('keywords', {}).get(name), name) or None,
              'description': clean(entry.get('subtitle'), True) or None,
              'address': {'@type': 'PostalAddress', 'addressCountry': 'TW', 'addressRegion': county or '新北市',
                          'addressLocality': district, 'streetAddress': road},
@@ -688,7 +689,7 @@ def simple_community_graph(key, text, ctx):
     finish_article(art, ctx.get('keywords', {}).get(name), town + road,
                    f'位於{county}{district}{road}' + (f'，{built}' if built and not re.search(r'\d', built)
                                                      else (f'，{built}完工' if built else '')) + '。',
-                   f'捷運{mrt}。' if mrt else '')
+                   f'捷運{mrt}。' if mrt else '', town=town)
     title, h1, desc = art['title'], art['h1'], art['desc']
     page = {'@type': 'WebPage', '@id': url + '#webpage', 'url': url, 'name': title, 'headline': h1, 'description': desc,
             'inLanguage': 'zh-Hant-TW', 'isPartOf': {'@id': WEBSITE_ID}, 'about': {'@id': place_id},
@@ -911,10 +912,13 @@ def topic_order(kw):
     return sorted(TOPIC_DEFAULT, key=lambda t: (-score[t], TOPIC_DEFAULT.index(t)))
 
 
-def question_title(name, labels):
+def question_title(name, labels, town=''):
+    """2026-11-21 SEO 複盤：前面加行政區（「板橋綠如意可以買嗎？」）。Search Console 的搜尋詞多半只打社區名，
+    自動完成常見「板橋＋社區名」；加了也能跟同名的東西分開（文化勳章是韓國勳章、大禾是拉麵店）。名字裡已有就不重複。"""
     lab = [x for x in labels if x][:3]
     mid = ('、'.join(lab[:-1]) + '與' + lab[-1]) if len(lab) > 1 else (lab[0] if lab else '看屋重點')
-    return f'{name}可以買嗎？優缺點、{mid}｜{BRAND}'
+    pre = town if town and town not in name else ''
+    return f'{pre}{name}可以買嗎？優缺點、{mid}｜{BRAND}'
 
 
 def question_h1(name, place, labels):
@@ -1148,7 +1152,8 @@ def article_sections(a):
     if a['pros'] or a['cons']:
         lead = (f"優點：{'；'.join(pros_h)}。" if pros_h else '') + (f"要留意：{'；'.join(cons_h)}。" if cons_h else '')
         body = ''.join((f'<h3>{e(h)}</h3>' if h else '') + (f'<p>{e(b)}</p>' if b else '') for h, b in a['pros'])
-        out.append({'topic': '優缺點', 'q': f'{name}優缺點有哪些？', 'lead': clean(lead), 'body': body})
+        # 2026-11-21：題目加「評價」（Search Console 有「○○社區的評論」，自動完成多數社區都有「評價」「評論」）
+        out.append({'topic': '優缺點', 'q': f'{name}評價如何？優缺點有哪些？', 'lead': clean(lead), 'body': body})
     if a['cons']:
         lead = f"看{name}要先確認的是：{'；'.join(cons_h)}。"
         body = ''.join((f'<h3>{e(h)}</h3>' if h else '') + (f'<p>{e(b)}</p>' if b else '') for h, b in a['cons'])
@@ -1185,6 +1190,7 @@ def save_keywords(root, name, fetched=None):
     old = data.get(name) or {}
     new = fetched if fetched is not None else fetch_keywords(name, bases=aliases_of(old, name) or None)
     entry = {**({'alias': old['alias']} if old.get('alias') else {}),
+             **({'typos': old['typos']} if old.get('typos') else {}),
              'queries': list(dict.fromkeys((old.get('queries') or []) + new['queries'])),
              'related': old.get('related') or [],
              'excluded': list(dict.fromkeys((old.get('excluded') or []) + new['excluded'])),
@@ -1203,6 +1209,21 @@ def aliases_of(kw, name):
     return [x.strip() for x in al if isinstance(x, str) and x.strip() and x.strip() != name and not NEGATIVE_WORDS.search(x)]
 
 
+def typos_of(kw, name):
+    """keywords.json 的 typos：買方常打錯的寫法（例：三輝歌劇苑 → 三輝歌劇院；2026-11-21 Search Console 實際搜尋詞）。
+    只寫進文章開頭那一句與 JSON-LD alternateName，不進 title／h1。"""
+    return aliases_of({'alias': (kw or {}).get('typos')}, name)
+
+
+def names_of(kw, name):
+    """別名＋常見錯字（JSON-LD alternateName 用）。"""
+    out = []
+    for x in aliases_of(kw, name) + typos_of(kw, name):
+        if x not in out:
+            out.append(x)
+    return out
+
+
 def display_name(name, alias):
     """title／h1 用的名字：別名含原名（興富發大禾 ⊃ 大禾）就用別名，否則「原名（別名）」。"""
     if not alias:
@@ -1210,16 +1231,17 @@ def display_name(name, alias):
     return alias[0] if name in alias[0] else f'{name}（{alias[0]}）'
 
 
-def finish_article(a, kw, place, where_short, station):
+def finish_article(a, kw, place, where_short, station, town=''):
     """依關鍵字排序主題，產生章節、title、h1、meta description、FAQ（＝章節問句＋第一段）。"""
     a['topic_order'] = topic_order(kw)
     a['keywords'] = [q for q in (kw or {}).get('queries') or [] if not NEGATIVE_WORDS.search(q)]
     a['alias'] = aliases_of(kw, a['name'])
+    a['typos'] = [x for x in typos_of(kw, a['name']) if x not in a['alias']]
     a['sections'] = article_sections(a)
     # 標題不放「實價登錄」「完工年」：搜這兩個詞的人多半要看房價，文章不寫價格，放標題會答非所問（章節照留）
     labels = [TOPICS[s['topic']][0] for s in a['sections'] if s['topic'] in TOPICS and s['topic'] not in ('實價', '完工')]
     disp = display_name(a['name'], a['alias'])
-    a['title'] = question_title(disp, labels)
+    a['title'] = question_title(disp, labels, town)
     a['h1'] = question_h1(disp, place, labels)
     a['desc'] = question_desc(disp, where_short, station, labels)
     a['qa'] = [(s['q'], s['lead']) for s in a['sections']]
@@ -1365,8 +1387,9 @@ def article_html(a):
     name = a['name']
     out = [f'<p class="sa-kicker">社區分析・文字版</p>', f'<h1>{e(a["h1"])}</h1>',
            f'<p class="sa-meta">整理：林津陞（阿陞）' + (f'｜更新：{e(a["updated"])}' if a.get('updated') else '') + '</p>']
-    if a.get('alias'):  # 網路上常用的另一個名字（同一個社區）
-        out.append(f'<p>{e(name)}在網路上也常寫成「' + '」「'.join(e(x) for x in a['alias']) + '」，指的是同一個社區。</p>')
+    also = list(a.get('alias') or []) + list(a.get('typos') or [])
+    if also:  # 網路上常用的另一個名字、常見的錯字寫法（同一個社區）
+        out.append(f'<p>{e(name)}在網路上也常寫成「' + '」「'.join(e(x) for x in also) + '」，指的是同一個社區。</p>')
     secs = a.get('sections') or []
     out.append(f'<p>帶看{e(name)}時，買方最常問的就是下面這幾題。我把查過的資料整理在這篇，每一題第一段先講結論，'
                '跟上面的互動簡報（3D 模型、日照模擬、步行地圖）是同一份資料，數字都標了出處，實際狀況還是要以現場為準。</p>')
