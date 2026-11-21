@@ -18,7 +18,7 @@ AI 搜尋讀不到。這支把「頁面本身已經有的資料」整理成 JSON
 2026-11-11 起社區頁另外產生看得見的分析文章（<article id="analysis">，接在章節列後面）、問句型 title／h1／meta
 （「○○可以買嗎？交通、日照、學區與看屋重點」）、地圖頁的社區文章清單；社區頁不再放 noscript 摘要。
 使照起造人／承造人來自 data/permits.json（社區版發布時由 deck_engine.publish_permit 依使照存根判讀寫入）。
-文章、常見問題（與 FAQPage 同一份）一律不寫金額（含實價登錄單價）、屋齡數字；有一頁沒過整批不寫。
+文章、常見問題（與 FAQPage 同一份）不寫總價、售價、屋齡數字；社區／區域頁可寫實價登錄單價（2026-11-21 林津陞「社區分析拿掉單價限制」）；有一頁沒過整批不寫。
 
 法遵：JSON-LD 一樣算廣告。不寫售價、單價、屋齡數字；禁用詞與最高級擋下；
 聯絡只放手機與 LINE；揭露四行固定；距離只用頁面已有的步行路線，註明實際以現場為準。
@@ -563,10 +563,9 @@ def deck_graph(key, text, ctx):
     if com:
         street = short_street(street)
         address['streetAddress'] = street
-        # 2026-11-11 文章與常見問題（FAQPage 同一份）一律不寫金額：實價登錄單價也拿掉（社區頁其他 JSON-LD 照 11/04 規則）
-        sun = sun_text(narration, False)
-        pros = [clean(f"{p.get('h')}：{p.get('p')}") for p in deck.get('pros') or []]
-        cons = [clean(f"{p.get('h')}：{p.get('p')}") for p in deck.get('cons') or []]
+        # 2026-11-21 林津陞「社區分析拿掉單價限制 去改法遵」：文章與常見問題（FAQPage 同一份）也可以寫實價登錄單價
+        # （11/11 原本整句拿掉）。總價、售價、屋齡照擋；沒寫車位說明由 clean 自動補預設說明。pros／cons 用上面 com 版。
+        sun = sun_text(narration, com)
     where = f'{name}位於{county}{district}{street}' + (f'，屬{area_name}' if area_name else '') + \
             (f'，{built}完工' if built else '') + (f'，{floors}' if floors else '') + '。'
     wnote = walk_source(walks) if com else WALK_NOTE
@@ -1449,7 +1448,7 @@ def article_problems(block):
     t = article_text(block)
     probs = []
     for line in re.split(r'[。\n]', t):
-        m = money_hit(line)
+        m = money_hit(line, True)  # 2026-11-21 文章只在社區／區域頁：實價登錄單價放行，總價、售價照擋
         if m:
             probs.append(f'含金額「{m}」')
     probs += [f'含屋齡數字「{m[0]}」' for m in AGE.finditer(t)]
@@ -1869,8 +1868,8 @@ def area_guide(name, ctx):
                               {'html': '<p class="sa-note">資料來源：內政部不動產交易實價查詢服務網（已排除特殊交易），'
                                        '每個社區的門牌範圍與篩選條件寫在各自的每戶成交實價頁。</p>'}]})
     trend = area_trend(arts, ctx, label, link)
-    if trend:
-        secs.append(trend)
+    if trend:  # 2026-11-21 林津陞同意：搜尋最多的是「○○房價」，房價這題排到結論後面第一題（原本排第 7）
+        secs.insert(1, trend)
     # 看屋要確認
     cons, examples = [], []
     for k, c, a in arts:
@@ -2091,7 +2090,10 @@ def build_site(root, check=False):
             changed.append(key or '首頁')
             writes.append((f, new))
     llms = llms_txt(ctx, descs)
-    problems += [f'llms.txt：{p}' for p in audit(llms)]
+    # 2026-11-21 社區分析單價放行：llms.txt 裡社區頁、區域頁那幾行照社區規則，其他（指南、物件簡報）照舊全擋
+    loose = [ln for ln in llms.splitlines() if '/community/' in ln or '/area/' in ln]
+    strict = [ln for ln in llms.splitlines() if ln not in loose]
+    problems += [f'llms.txt：{p}' for p in audit('\n'.join(strict)) + audit('\n'.join(loose), community=True)]
     if problems:  # 有一頁沒過就整批不寫
         raise SystemExit('JSON-LD 法遵檢查沒過：\n' + '\n'.join(problems))
     if not check:
