@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-20",
+ "updated": "2026-11-21",
  "office": {
   "name": "全國不動產板橋加盟店",
   "lat": 25.02497,
@@ -1689,6 +1689,74 @@
       "rooms": null,
       "label": "其他",
       "count": 2,
+      "main_ping": null
+     }
+    ]
+   }
+  },
+  {
+   "name": "高妍植",
+   "area": "jiangcui-ab",
+   "road": "板城路",
+   "lat": 25.0180646,
+   "lon": 121.4496484,
+   "built": "民國113年7月",
+   "year": 113,
+   "floors": "地上24層／地下5層",
+   "units": "308戶",
+   "structure": "鋼筋混凝土造",
+   "mrt": "",
+   "school": "國光國小・板橋國中",
+   "pros": [
+    "民國113年完工、24層大樓",
+    "市場、公園走路可到",
+    "車位配比充足"
+   ],
+   "cautions": [
+    "公設比約3成5",
+    "超商、捷運要走一段"
+   ],
+   "deals": 344,
+   "deck": "community/高妍植/",
+   "layouts": {
+    "source": "政府實價登錄（已排除特殊交易與大樓蓋好以前簽約的成交；備註為預售屋、交屋後登錄的買賣仍列入）",
+    "basis": "住宅用途；同一戶多次成交只計一次；依申報的建物現況格局（房數）與主建物面積",
+    "period": "108S1～115S4",
+    "published_through": "115/11/11",
+    "cutoff": "截至 115/11/11 公布",
+    "n": 29,
+    "rows": [
+     {
+      "rooms": 1,
+      "label": "1房",
+      "count": 4,
+      "main_ping": [
+       10.4,
+       19.2
+      ]
+     },
+     {
+      "rooms": 2,
+      "label": "2房",
+      "count": 10,
+      "main_ping": [
+       10.4,
+       11.4
+      ]
+     },
+     {
+      "rooms": 3,
+      "label": "3房",
+      "count": 14,
+      "main_ping": [
+       13.5,
+       19.4
+      ]
+     },
+     {
+      "rooms": null,
+      "label": "其他",
+      "count": 1,
       "main_ping": null
      }
     ]
