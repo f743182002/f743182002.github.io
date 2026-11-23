@@ -158,7 +158,7 @@ def clean_segments(text, sep='｜', community=False):
 
 
 # 法定稅目名稱不是推銷用語（禁用詞「增值」不該擋到「土地增值稅」）；掃禁用詞前先拿掉
-LEGAL_TERMS = ('土地增值稅',)
+LEGAL_TERMS = ('土地增值稅', '履約保證', '保證書', '保證範圍', '保證號碼')  # 履約保證：2026-11-23 房屋知識（制度名稱，不是對客戶的保證）
 try:  # 社區版放行字（2026-11-19 林津陞「我這不是廣告」）；網站 repo 的副本單獨跑時沒有這個模組，用同一組字
     from community_wording import COMMUNITY_ALLOWED
 except ImportError:  # pragma: no cover
