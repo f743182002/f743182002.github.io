@@ -26,7 +26,7 @@
 - 減重：不載 Google Fonts（系統字型）；照片（≤1100px）、航照（≤1600px）、地圖圖示是同資料夾的 WebP 獨立檔、`loading="lazy"`；three.js 延後載入（封面按「看 3D 模型」或進日照章才下載）。目標每頁整頁瀏覽 ≤2 MB。
 - og：每頁有 og:title／og:description／og:image（同資料夾 og.jpg，1200×630）；og 文字不寫屋齡數字、金額、禁用詞。
 - 影片版：`data/videos.json` 有這頁的影片才顯示「看影片版 ▶」，按了才載入 youtube-nocookie iframe，不預先載入。
-- `decks.json` 每筆有 `status`：`社區分析`（community/* 一律）、`銷售中`、`已成交`、`已下架`（2026-11-23 加，沒有成交但不賣了）、`待確認`。物件狀態只有林津陞確認過才寫銷售中／已成交，其他一律待確認；首頁卡片顯示狀態（待確認顯示「狀態待確認」），已成交或下架的物件不可寫「還在賣」之類的字。發布程式會保留已有的 status。
+- `decks.json` 每筆有 `status`：`社區分析`（community/* 一律）、`銷售中`、`已成交`、`已下架`（2026-11-23 加，沒有成交但不賣了）、`待確認`。物件狀態只有林津陞確認過才寫銷售中／已成交，其他一律待確認；首頁卡片顯示狀態（待確認顯示「狀態待確認」），已成交或下架的物件不可寫「還在賣」之類的字。發布程式會保留已有的 status。**物件狀態自動聯動（2026-11-23 林津陞：「有沒有辦法上下架工具聯動」）**：MSI 每晚 04:30 的 nightly-9b-sync 第 0c 步跑 property-deck site_listing_status.py，拿公司委託物件目錄（HouseFlow B21，每天 03:01 更新）比對：委託編號還在目錄而且可上廣告→銷售中；不在目錄、或只剩口頭約→已下架；已成交 永遠不動（要林津陞確認才寫）。目錄超過 48 小時沒更新或少於 300 筆就不改。有變動才 commit＋push（只動 decks.json 的 status）。網站物件頁對委託編號的對照表在 MSI C:\\claude-work\\site-listing-cases.json（內部編號，不放進這個公開資料夾）；**新的物件頁（S 開頭）上線要在對照表加一筆，沒加就不會自動聯動**。所以 status 不用再手改，手改的隔天會被目錄蓋回去（已成交除外）。
 - 舊版頁（不是範本做的）：`community/新濠一滙/`、`S21140123/` 由 property-deck `legacy_page.py`（`deck_engine.py legacy <路徑>`）在 `<!-- SITE-CHROME:START/END -->` 之間加揭露列與頁首、拆 WebP、重寫 og；S21140123 有 CSP，只放靜態連結（影片版連到 YouTube）。
 - 只換版型的重發布不動 `data/communities.json`（地圖資料可能人工校過）。
 
