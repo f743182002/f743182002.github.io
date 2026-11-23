@@ -1424,11 +1424,23 @@ def article_html(a):
         out.append('<p>買房、賣房怎麼開始：' + '、'.join(f'<a href="/{k}/">{GUIDE_LABEL[k]}</a>' for k in a['guides']) + '。</p>')
 
     # 聯絡與完整揭露
-    out.append(f'<h2>想看{e(name)}？</h2>')
-    out.append(f'<div class="sa-contact"><p>想知道{e(name)}目前有沒有房子在賣，歡迎聯絡。</p>'
-               f'<p>☆預約看屋請聯絡：林津陞 <a href="tel:0925635678">0925-635-678</a><br>'
-               f'加官方 LINE：<a href="https://line.me/R/ti/p/%40banqiao.asheng" target="_blank" rel="noopener">@banqiao.asheng</a>，'
+    # 2026-11-23 買方、屋主兩個入口（林津陞選「買方屋主雙入口」）：原本文末只接買方；屋主那塊照賣房指南的寫法
+    # （☆賣屋諮詢、LINE 關鍵字「賣房」，不放買方攻略）。興建中的社區還沒有屋主，只放買方。
+    line = '<a href="https://line.me/R/ti/p/%40banqiao.asheng" target="_blank" rel="noopener">@banqiao.asheng</a>'
+    tel = '<a href="tel:0925635678">0925-635-678</a>'
+    guides = a.get('guides') or []
+    seller = dict(a['facts']).get('完工') != '興建中'
+    out.append(f'<h2>想買{e(name)}，還是你是{e(name)}屋主？</h2>' if seller else f'<h2>想看{e(name)}？</h2>')
+    out.append(f'<div class="sa-contact"><h3 style="margin-top:0">我想買{e(name)}</h3>'
+               f'<p>想知道{e(name)}目前有沒有房子在賣，歡迎聯絡；可以直接告訴我想要的格局、樓層和有沒有要車位。'
+               + ('買房的預算、流程和費用，可以先看<a href="/buy/">板橋買房指南</a>。' if 'buy' in guides else '') + '</p>'
+               f'<p>☆預約看屋請聯絡：林津陞 {tel}<br>加官方 LINE：{line}，'
                '聊天室輸入「攻略」，系統自動傳送《買房避坑攻略》電子檔（約2萬字／38頁）</p></div>')
+    if seller:
+        out.append(f'<div class="sa-contact"><h3 style="margin-top:0">我是{e(name)}屋主，在考慮要不要賣</h3>'
+                   f'<p>可以告訴我坪數、樓層和屋況，我把{e(name)}實價登錄的成交紀錄整理給你參考，再一起看稅費和出售方式。'
+                   + ('賣房的流程、稅費、文件與委託，可以先看<a href="/sell/">板橋賣房指南</a>。' if 'sell' in guides else '') + '</p>'
+                   f'<p>☆賣屋諮詢請聯絡：林津陞 {tel}<br>加官方 LINE {line} 輸入「賣房」免費領《賣房不吃虧攻略》</p></div>')
     src = '；'.join(x.rstrip('。') for x in a.get('sources') or [])
     out.append('<div class="sa-disc"><p>' + '<br>'.join(e(x) for x in FULL_DISCLOSURE) + '</p>'
                '<p>' + (f'資料來源：{e(src)}。' if src else '本文資料參考政府公開資料。') +
