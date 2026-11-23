@@ -511,7 +511,7 @@ def deck_graph(key, text, ctx):
     area_name = (ctx['areas'].get((comm or {}).get('area')) or {}).get('name')
     contained = admin_area(county, district)
     if area_name:
-        contained = {'@type': 'Place', 'name': area_name, 'description': '生活圈名稱參考樂居板橋區生活圈分區',
+        contained = {'@type': 'Place', 'name': area_name, 'description': '生活圈為板橋區約略分區，僅供參考',
                      'containedInPlace': contained}
 
     cover = deck.get('cover') or ((deck.get('photos') or [[None]])[0][0])
@@ -643,7 +643,7 @@ def simple_community_graph(key, text, ctx):
     area_name = (ctx['areas'].get(comm.get('area')) or {}).get('name')
     contained = admin_area(county, district)
     if area_name:
-        contained = {'@type': 'Place', 'name': area_name, 'description': '生活圈名稱參考樂居板橋區生活圈分區',
+        contained = {'@type': 'Place', 'name': area_name, 'description': '生活圈為板橋區約略分區，僅供參考',
                      'containedInPlace': contained}
     props = [{'@type': 'PropertyValue', 'name': k, 'value': comm[f]} for k, f in
              (('完工', 'built'), ('樓高', 'floors'), ('戶數', 'units'), ('結構', 'structure')) if comm.get(f)]
@@ -1418,6 +1418,8 @@ def article_html(a):
         out.append('<p>想一次比較位置，可以看<a href="/map/">板橋商圈地圖</a>，或回<a href="/">首頁</a>看全部社區分析。</p>')
     if a.get('area_page'):
         out.append(f'<p>{e(name)}所在區域的整理：<a href="{e(a["area_page"][1], quote=True)}">{e(a["area_page"][0])}</a>。</p>')
+    if a.get('compare'):  # 2026-11-23 同區比較頁
+        out.append(f'<p>{e(name)}和附近社區放在一起比：' + compare_links_html(a['compare']) + '。</p>')
     if a.get('guides'):
         out.append('<p>買房、賣房怎麼開始：' + '、'.join(f'<a href="/{k}/">{GUIDE_LABEL[k]}</a>' for k in a['guides']) + '。</p>')
 
@@ -1580,6 +1582,16 @@ def guide_html(key, g, ctx):
     areas = [] if key.startswith('area/') else area_links(ctx)
     if areas:
         out.append('<p>依區域看：' + '、'.join(areas) + '。</p>')
+    if key == 'buy':  # 2026-11-23 同區比較頁：買房指南列全部，區域頁列本區的，比較頁列其他幾篇
+        cmp_links = compare_links(ctx)
+    elif key.startswith('area/'):
+        cmp_links = compare_links(ctx, areas=ctx.get('area_pages', {}).get(key[5:], {}).get('areas') or [])
+    elif key.startswith('compare/'):
+        cmp_links = compare_links(ctx, skip=key[8:])
+    else:
+        cmp_links = []
+    if cmp_links:
+        out.append('<p>' + ('其他社區比較：' if key.startswith('compare/') else '社區比較：') + compare_links_html(cmp_links) + '。</p>')
     out.append('<p>想一次比較位置，可以看<a href="/map/">板橋商圈地圖</a>'
                + ''.join(f'；也可以看<a href="/{k}/">{GUIDE_LABEL[k]}</a>' for k in other) + '，或回<a href="/">首頁</a>。</p>')
     out.append('<h2>想聊聊？</h2>')
@@ -1686,11 +1698,12 @@ def _med(xs):
     return round(xs[n // 2] if n % 2 else (xs[n // 2 - 1] + xs[n // 2]) / 2, 1)
 
 
-def trend_svg(rows, label):
-    """每半年成交單價中位數（萬/坪）長條圖，純 SVG（不靠 JS，搜尋引擎與無障礙讀得到 title／desc）。"""
+def trend_svg(rows, label, caption=None, width=680):
+    """每半年成交單價中位數（萬/坪）長條圖，純 SVG（不靠 JS，搜尋引擎與無障礙讀得到 title／desc）。
+    caption、width：比較頁用同一張圖畫「各社區」的中位數（只有兩三根長條）時，換掉圖說、畫窄一點（手機上字才不會太小）。"""
     if not rows:
         return ''
-    w, h, top, bottom, left = 680, 250, 34, 46, 12
+    w, h, top, bottom, left = width, 250, 34, 46, 12
     vals = [r[2] for r in rows]
     lo = max(0, min(vals) * 0.8)
     hi = max(vals) * 1.05
@@ -1708,8 +1721,8 @@ def trend_svg(rows, label):
         parts.append(f'<text x="{x + bw * 0.32:.1f}" y="{h - bottom + 18:.1f}" text-anchor="middle" font-size="13" fill="#33475B">{html.escape(short)}</text>')
         parts.append(f'<text x="{x + bw * 0.32:.1f}" y="{h - bottom + 36:.1f}" text-anchor="middle" font-size="12" fill="#33475B">{n}筆</text>')
     parts.append('</svg>')
-    return '<figure class="sa-chart" style="margin:12px 0">' + ''.join(parts) + \
-        '<figcaption class="sa-note">長條為每半年成交單價中位數（萬/坪），下方為期間（例：113上＝113年上半年）與筆數。</figcaption></figure>'
+    return '<figure class="sa-chart" style="margin:12px 0">' + ''.join(parts) + '<figcaption class="sa-note">' + \
+        html.escape(caption or '長條為每半年成交單價中位數（萬/坪），下方為期間（例：113上＝113年上半年）與筆數。') + '</figcaption></figure>'
 
 
 def area_trend(arts, ctx, label, link):
@@ -1903,6 +1916,295 @@ def area_graph(key, text, ctx):
     return graph, {'guide': g}
 
 
+# ---------------------------------------------------------------------- 同區比較頁（2026-11-23）
+# /compare/<名稱>/：林津陞 2026-11-23「幫我做同區比較頁」。data/compare_pages.json 只設定要比哪幾個社區
+# （{名稱: {members:[社區名], place:'板橋新埔站周邊', updated, town?, title?, h1?, desc?, intro?}}），
+# 內容全部來自各社區頁已查證的資料與 data/units 的實價登錄統計，並排成表格；只列事實，不評哪個比較好。
+NUM_ZH = {2: '兩', 3: '三', 4: '四', 5: '五'}
+
+
+def compare_label(cfg):
+    return '、'.join(cfg.get('members') or []) + '比較'
+
+
+def compare_links(ctx, name=None, areas=None, skip=None):
+    """已上線的比較頁 [(文字, 網址)]。name：只列有這個社區的；areas：只列成員都在這些生活圈的；skip：不列自己。"""
+    out = []
+    for slug, cfg in ctx.get('compare_pages', {}).items():
+        ms = cfg.get('members') or []
+        if slug == skip or not (ctx['root'] / 'compare' / slug / 'index.html').exists():
+            continue
+        if name is not None and name not in ms:
+            continue
+        if areas is not None and not all((ctx['communities'].get(m) or {}).get('area') in areas for m in ms):
+            continue
+        out.append((compare_label(cfg), '/' + quote('compare/' + slug) + '/'))
+    return out
+
+
+def compare_links_html(links):
+    return '、'.join(f'<a href="{html.escape(h, quote=True)}">{html.escape(t)}</a>' for t, h in links)
+
+
+def ensure_compare_shells(root, ctx):
+    """compare_pages.json 有、網站還沒有的比較頁：拿現成區域頁的外殼（頁首、揭露列、頁尾）建一頁空的，內容由 build_site 填。"""
+    root = Path(root)
+    src = next(iter(sorted((root / 'area').glob('*/index.html'))), None) if (root / 'area').is_dir() else None
+    made = []
+    for slug in ctx.get('compare_pages', {}):
+        f = root / 'compare' / slug / 'index.html'
+        if f.exists() or not src:
+            continue
+        t = GUIDE_MARK.sub('<!-- GUIDE:START --><!-- GUIDE:END -->', LD_MARK.sub('', src.read_text(encoding='utf-8')), count=1)
+        t = t.replace(page_url('area/' + src.parent.name), page_url('compare/' + slug))
+        f.parent.mkdir(parents=True, exist_ok=True)
+        f.write_text(t, encoding='utf-8')
+        made.append('compare/' + slug)
+    return made
+
+
+def _station_short(n):
+    return re.sub(r'（[^）]*）.*$|\d+號出口.*$', '', n or '').strip()
+
+
+def _ctable(arts, rows):
+    """比較表：一欄一個社區（欄名連到社區頁）、一列一個項目；整列都沒資料的不列，單格沒資料寫「—」。"""
+    e = html.escape
+    rows = [(k, cells) for k, cells in rows if any(cells)]
+    if not rows:
+        return ''
+    head = '<th scope="col">項目</th>' + ''.join(f'<th scope="col"><a href="/{quote(k)}/">{e(c["name"])}</a></th>' for k, c, _ in arts)
+    body = ''.join(f'<tr><th scope="row" style="white-space:normal">{e(k)}</th>' + ''.join(f'<td>{c or "—"}</td>' for c in cells) + '</tr>' for k, cells in rows)
+    return f'<div style="overflow-x:auto"><table><thead><tr>{head}</tr></thead><tbody>{body}</tbody></table></div>'
+
+
+def _ym(t):
+    return tuple(int(x) for x in t.split('/'))
+
+
+def compare_price(arts, ctx, names):
+    """比較頁的實價登錄單價：每個社區近一年、近三年的筆數與單價中位數（口徑同區域頁 area_trend）。只做統計，不評高低。"""
+    e = html.escape
+    data, cut, periods = [], set(), set()
+    for k, c, a in arts:
+        f = ctx['root'] / 'data' / 'units' / f'{c["name"]}.json'
+        u = json.loads(f.read_text(encoding='utf-8')) if f.exists() else {}
+        tr = [t for t in u.get('trend') or [] if isinstance(t, list) and len(t) == 2]
+        if tr:
+            cut.add(u.get('cutoff') or '')
+            periods.add(u.get('period') or '')
+        data.append((k, c, tr, u))
+    pts = [t for _, _, tr, _ in data for t in tr]
+    if sum(1 for _, _, tr, _ in data if tr) < 2:
+        return None
+    ly, lm = _ym(max(pts, key=lambda t: _ym(t[0]))[0])
+    spans = [('近一年', (ly - 1, lm)), ('近三年', (ly - 3, lm))]
+    stat = {label: [[v for ym, v in tr if _ym(ym) > since] for _, _, tr, _ in data] for label, since in spans}
+    basis = next(((label, since) for label, since in spans if sum(1 for vs in stat[label] if len(vs) >= 3) >= 2), None)
+    cuts = '、'.join(sorted(x for x in cut if x))
+    tail = '單價已扣除有拆分的車位，含車位未拆分的成交不列入；中位數只是統計，不代表個別房屋' + (f'，資料{cuts}' if cuts else '') + '，以內政部最新資料為準。'
+    chart = ''
+    if basis:
+        label, since = basis
+        ok = [(c['name'], len(vs), _med(vs)) for (_, c, _, _), vs in zip(data, stat[label]) if len(vs) >= 3]
+        few = [c['name'] for (_, c, _, _), vs in zip(data, stat[label]) if len(vs) < 3]
+        lead = (f'依內政部實價登錄，{label}（{since[0]}/{since[1]:02d} 之後）2樓以上住家的成交單價中位數：'
+                + '、'.join(f'{n}約{v}萬/坪（{k}筆）' for n, k, v in ok)
+                + (f'；{"、".join(few)}不到3筆，不列' if few else '') + '。' + tail)
+        chart = trend_svg(ok, names + label, f'長條為{label}成交單價中位數（萬/坪），下方為社區與筆數；不到 3 筆的社區不畫。', width=420)
+    else:
+        lead = f'依內政部實價登錄，{names}近三年2樓以上住家的成交筆數都不多，算不出有代表性的中位數，筆數列在下表。' + tail
+    med = lambda vs: f'{_med(vs)}' if len(vs) >= 3 else ('筆數太少不列' if vs else '')
+    rows = []
+    for label, since in spans:
+        rows.append((f'{label}筆數', [f'{len(vs)} 筆' if tr else '' for vs, (_, _, tr, _) in zip(stat[label], data)]))
+        rows.append((f'{label}單價中位數（萬/坪）', [med(vs) if tr else '' for vs, (_, _, tr, _) in zip(stat[label], data)]))
+    rows.append(('資料期間總筆數', [f'{len(tr)} 筆' if tr else '' for _, _, tr, _ in data]))
+    rows.append(('資料期間', [e(u.get('period') or '') if tr else '' for _, _, tr, u in data]))
+    rows.append(('每一戶', [f'<a href="/data/units/view.html?n={quote(c["name"])}">看每戶成交實價</a>' if tr else '' for _, c, tr, _ in data]))
+    notes = ('資料來源：內政部不動產交易實價查詢服務網（已排除親友等特殊交易與大樓蓋好前簽約的成交）'
+             + (f'，{cuts}' if cuts else '') + f'。近一年指 {spans[0][1][0]}/{spans[0][1][1]:02d} 之後、近三年指 {spans[1][1][0]}/{spans[1][1][1]:02d} 之後的成交；'
+             '只計 2 樓以上、住宅用途；單價已扣除有拆分的車位，含車位未拆分的不列入；同一戶多次成交都列入。'
+             '之後的新成交未納入，以內政部最新資料為準。各社區成交的坪數、樓層、屋況組成不同，中位數只是統計，不代表個別房屋。')
+    return {'q': f'{names}房價多少？實價登錄單價比較', 'lead': lead,
+            'body': [{'html': chart}, {'html': _ctable(arts, rows)}, {'html': f'<p class="sa-note">{e(notes)}</p>'}]}
+
+
+def compare_guide(slug, ctx):
+    """比較頁的內容（guide 格式）：每題第一段先講結論，資料全部來自各社區頁；沒資料的題目不產生。"""
+    e = html.escape
+    cfg = ctx['compare_pages'][slug]
+    arts = []
+    for n in cfg.get('members') or []:
+        c = ctx['communities'].get(n) or {}
+        key = str(c.get('deck') or '').strip('/')
+        if not key or not (ctx['root'] / key / 'index.html').exists():
+            raise SystemExit(f'比較頁 {slug}：找不到「{n}」的社區頁')
+        _, summ = page_graph(key, (ctx['root'] / key / 'index.html').read_text(encoding='utf-8'), ctx)
+        arts.append((key, c, (summ or {}).get('article') or {}))
+    if len(arts) < 2:
+        raise SystemExit(f'比較頁 {slug}：至少要兩個社區')
+    names = '、'.join(c['name'] for _, c, _ in arts)
+    cnt = NUM_ZH.get(len(arts), str(len(arts))) + '個社區'
+    place = cfg.get('place') or ''
+    facts = [dict(a.get('facts') or []) for _, _, a in arts]
+    each = lambda fn: [fn(c, a, f) or '' for (_, c, a), f in zip(arts, facts)]
+    topics = []
+
+    # 捷運
+    st = each(lambda c, a, f: (a.get('stations') or [])[:2])
+    mrt = None
+    if any(st):
+        near = sorted((_minutes(s[0][1]), c['name'], _station_short(s[0][0])) for s, (_, c, _) in zip(st, arts)
+                      if s and _minutes(s[0][1]) is not None)
+        if near and len({s for _, _, s in near}) == 1:
+            mrt_lead = f'走到{near[0][2]}：' + '、'.join(f'{n}約{m}分鐘' for m, n, _ in near)
+        else:
+            mrt_lead = '走到最近的捷運站：' + '、'.join(f'{n}到{s}約{m}分鐘' for m, n, s in near)
+        none = [c['name'] for s, (_, c, _) in zip(st, arts) if not s]
+        if near:
+            notes = sorted({a['walk_note'].rstrip('。') for _, _, a in arts if a.get('walk_note')})
+            mrt = {'q': f'{names}哪個離捷運站近？',
+                   'lead': mrt_lead + (f'；{"、".join(none)}的社區分析沒有列步行可到的捷運站' if none else '') + '。',
+                   'body': [{'html': _ctable(arts, [('最近捷運站', [e(s[0][0]) if s else '' for s in st]),
+                                                    ('步行', [e(s[0][1]) if s else '' for s in st]),
+                                                    ('第二近', [e(f'{s[1][0]}，{s[1][1]}') if len(s) > 1 else '' for s in st])])},
+                            {'html': '<p class="sa-note">' + e('；'.join(notes) or WALK_NOTE) + '。</p>'}]}
+            topics.append('捷運')
+    price = compare_price(arts, ctx, names)
+    if price:
+        topics.append('房價')
+
+    # 格局
+    lay = each(lambda c, a, f: [r for r in (a.get('layouts') or {}).get('rows') or [] if r.get('count') and r.get('label') != '其他'])
+    layout = None
+    if sum(1 for x in lay if x) >= 2:
+        ping = lambda r: f'{r["main_ping"][0]}～{r["main_ping"][1]}坪' if len(r.get('main_ping') or []) == 2 else ''
+        tops = [max(x, key=lambda r: r['count']) if x else None for x in lay]
+        cutoffs = sorted({(a.get('layouts') or {}).get('cutoff') or '' for (_, _, a), x in zip(arts, lay) if x} - {''})
+        layout = {'q': f'{names}格局有哪些？幾房、幾坪？',
+                  'lead': '依實價登錄申報資料，有成交紀錄的住宅：' + '；'.join(
+                      f'{c["name"]}以{t["label"]}最多' + (f'（主建物約{ping(t)}）' if ping(t) else '') for (_, c, _), t in zip(arts, tops) if t) + '。',
+                  'body': [{'html': _ctable(arts, [('最多的房型', [e(f'{t["label"]}（{t["count"]}筆）') if t else '' for t in tops]),
+                                                   ('各房型筆數', [e('、'.join(f'{r["label"]}{r["count"]}筆' for r in x)) for x in lay]),
+                                                   ('主建物坪數', [e('；'.join(f'{r["label"]}{ping(r)}' for r in x if ping(r))) for x in lay])])},
+                           {'html': '<p class="sa-note">資料來源：內政部實價登錄（申報資料，可能與現況不同，不代表個別房屋）'
+                                    + (f'，{e("、".join(cutoffs))}' if cutoffs else '') + '；已排除特殊交易與預售屋，少於 3 筆的房型不列；'
+                                    '坪數為主建物面積，僅供參考，實際以權狀與現場為準。</p>'}]}
+        topics.append('格局')
+
+    # 學區
+    sch = each(lambda c, a, f: '、'.join(_school_short(x) for x in re.split(r'[、・]', a.get('school') or (c.get('school') or '')) if x.strip()))
+    school = None
+    if all(sch):
+        if len(set(sch)) == 1:
+            lead = f'依教育局學區查詢，{cnt}的學區相同：{sch[0]}'
+        else:
+            lead = '依教育局學區查詢，' + '；'.join(f'{c["name"]}是{s}' for (_, c, _), s in zip(arts, sch))
+        school = {'q': f'{names}學區一樣嗎？', 'lead': lead + '；實際以教育局公告為準。',
+                  'body': [{'html': _ctable(arts, [('學區', [e(s) for s in sch]),
+                                                   ('走路到學校', each(lambda c, a, f: e('；'.join(f'{n}{t}' for n, t in a.get('schools_walk') or []))))])},
+                           '學區每年可能調整，入學前記得再向學校或教育局確認。']}
+        topics.append('學區')
+
+    # 生活機能
+    life = each(lambda c, a, f: a.get('life') or [])
+    living = None
+    if sum(1 for x in life if x) >= 2:
+        bits = []
+        for kind in ('便利商店', '超市'):
+            got = [(c['name'], min(m for m in (_minutes(t) for n, t, k in x if k == kind) if m is not None))
+                   for (_, c, _), x in zip(arts, life) if any(k == kind and _minutes(t) is not None for n, t, k in x)]
+            if len(got) >= 2:
+                bits.append(f'走到最近的{kind}：' + '、'.join(f'{n}約{m}分鐘' for n, m in got))
+        living = {'q': f'{names}生活機能比較：超商、超市走路多久？',
+                  'lead': ('；'.join(bits) if bits else '各社區步行可到的生活機能點列在下面') + '。每個社區最近的點不一樣，可以對照下表。',
+                  'body': [{'html': _ctable(arts, [('步行可到', [e('；'.join(f'{n}{t}' for n, t, _ in x)) for x in life])])},
+                           {'html': '<p class="sa-note">地點名稱與位置參考政府開放資料與連鎖店官方門市查詢；' + e(WALK_NOTE) + '。</p>'}]}
+
+    # 車位、公設（至少兩個社區有資料的項目才比）
+    fac = each(lambda c, a, f: a.get('facilities') or {})
+    cand = [('停車位', [f.get('停車位', '') for f in facts]),
+            ('公設比', [f.get('公設比') or re.split(r'[（(]', (x or {}).get('ratio') or '')[0].strip() for f, x in zip(facts, fac)]),
+            ('公設', [f.get('公設') or '、'.join((x or {}).get('items') or []) for f, x in zip(facts, fac)]),
+            ('管理', [f.get('管理', '') for f in facts])]
+    cand = [(k, [clean(v) for v in vs]) for k, vs in cand]
+    cand = [(k, vs) for k, vs in cand if sum(1 for v in vs if v) >= 2]
+    head = [(k, vs) for k, vs in cand if k != '管理'][:2]  # 只有「管理」一列不成一題（每個社區都是「有管委會」）
+    common = None
+    if head:
+        common = {'q': f'{names}的{"、".join(k for k, _ in head)}有什麼不同？',
+                  'lead': '；'.join(f'{k}：' + '、'.join(f'{c["name"]}{v}' for (_, c, _), v in zip(arts, vs) if v) for k, vs in head) + '。',
+                  'body': [{'html': _ctable(arts, [(k, [e(v) for v in vs]) for k, vs in cand])},
+                           '車位的產權登記方式、公設開放時間與管理費，以管委會公告與規約為準，看屋時可以向管理室確認。']}
+
+    # 優缺點
+    pros = each(lambda c, a, f: [x for x in (clean(h or b) for h, b in a.get('pros') or []) if x])
+    cons = each(lambda c, a, f: [x for x in (clean(h or b) for h, b in a.get('cons') or []) if x])
+    pc = None
+    if any(pros) or any(cons):
+        pc = {'q': f'{names}各有什麼優缺點？',
+              'lead': '；'.join(c['name'] + _join([f'優點是{"、".join(p[:2])}' if p else '', f'要留意{"、".join(n[:2])}' if n else ''], '，')
+                              for (_, c, _), p, n in zip(arts, pros, cons) if p or n) + '。',
+              'body': [{'html': _ctable(arts, [('優點', ['<br>'.join(e(x) for x in p) for p in pros]),
+                                               ('看屋要留意', ['<br>'.join(e(x) for x in n) for n in cons])])},
+                       '每一項的說明寫在各社區分析裡，看屋前先看「看屋時要確認什麼」，到現場逐項確認。'
+                       '買房的預算、流程和費用，可以先看[板橋買房指南](/buy/)。']}
+        topics.append('優缺點')
+
+    # 結論＋基本資料
+    built = each(lambda c, a, f: f.get('完工', ''))
+    floors = each(lambda c, a, f: f.get('樓高', ''))
+    lead = (f'{names}都在{place}。' if place else '')
+    if mrt:
+        lead += mrt['lead'].split('；')[0].rstrip('。') + '。'
+    if all(built):
+        lead += '完工：' + '、'.join(f'{c["name"]}{b}' for (_, c, _), b in zip(arts, built)) + '。'
+    if all(floors):
+        lead += '樓高：' + '、'.join(f'{c["name"]}{x}' for (_, c, _), x in zip(arts, floors)) + '。'
+    main = [t for t in topics if t != '優缺點'][:4] or ['基本資料']
+    lead += '怎麼選，看你最在意的是' + '、'.join(main) + '哪一項，下面一題一題比。'
+    units = lambda v: re.sub(r'（全案合計）$', '', v or '')
+    base = _ctable(arts, [('位置', each(lambda c, a, f: e(c.get('road') or ''))),
+                          ('完工', [e(x) for x in built]),
+                          ('樓高', each(lambda c, a, f: e(_join([f.get('樓高', ''), f"地下{f['地下層']}" if f.get('地下層') else ''], '、')))),
+                          ('戶數', each(lambda c, a, f: e(units(f.get('戶數'))))),
+                          ('結構', each(lambda c, a, f: e(f.get('結構', '')))),
+                          ('使用執照', each(lambda c, a, f: e((a.get('permit') or {}).get('license') or '')))])
+    secs = [{'q': f'{names}怎麼選？先說結論', 'lead': clean(lead),
+             'body': [{'html': base},
+                      {'html': '<p class="sa-note">資料取自各社區分析頁（使用執照、政府公開資料）；屋齡請看各社區分析頁，依完工年月即時計算。</p>'}]}]
+    secs += [x for x in (price, mrt, layout, school, living, common, pc) if x]
+    tlist = ('、'.join(main[:-1]) + '與' + main[-1]) if len(main) > 1 else main[0]
+    town = cfg.get('town', '板橋')
+    rows = [f'<li><a href="/{quote(k)}/">{e(c["name"])}社區分析</a>' + (f'（{e(c.get("road") or "")}）' if c.get('road') else '') + '</li>'
+            for k, c, _ in arts]
+    return {'label': compare_label(cfg),
+            'title': cfg.get('title') or f'{"" if town in names else town}{names}比較：{tlist}｜{BRAND}',
+            'h1': cfg.get('h1') or f'{names}怎麼選？{place}{cnt}比較',
+            'desc': cfg.get('desc') or f'{names}比較：把{place}這{cnt}的{"、".join(main)}、生活機能與優缺點並排整理，資料來自各社區分析頁與內政部實價登錄。',
+            'updated': cfg.get('updated'), 'contact': 'buyer', 'unit_price_ok': True,
+            'intro': cfg.get('intro') or ['這幾個社區位置相近，適合放在一起比。這篇把各社區分析頁已查證的資料並排，每一題第一段先講結論；'
+                                          '我只整理事實，哪個適合你要看你的需求，實際狀況還是以現場為準。'],
+            'sections': secs, 'community_rows': rows, 'community_h2': f'{names}社區分析',
+            'sources': cfg.get('sources') or ['各社區分析頁（使照、教育局學區、官方資料核對過的步行點）', '內政部不動產交易實價查詢服務網']}
+
+
+def compare_graph(key, text, ctx):
+    slug = key[8:]
+    g = compare_guide(slug, ctx)
+    url = page_url(key)
+    page = {'@type': 'WebPage', '@id': url + '#webpage', 'url': url, 'name': g['title'], 'headline': g['h1'],
+            'description': g['desc'], 'inLanguage': 'zh-Hant-TW', 'isPartOf': {'@id': WEBSITE_ID},
+            'about': {'@id': AGENT_ID}, 'author': {'@id': PERSON_ID}, 'publisher': {'@id': AGENT_ID},
+            'dateModified': g.get('updated'), 'breadcrumb': {'@id': url + '#breadcrumb'}}
+    qa = [(x['q'], x['lead']) for x in g['sections']]
+    ap = area_page_of(ctx, ctx['compare_pages'][slug]['members'][0])
+    crumbs = [(BRAND, SITE)] + ([(ap[0], SITE.rstrip('/') + ap[1])] if ap else []) + [(g['label'], url)]
+    graph = [{k: v for k, v in page.items() if v not in (None, '', [])}] + faq(url, qa) + [breadcrumb(url, crumbs)]
+    return graph, {'guide': g}
+
+
 # ---------------------------------------------------------------------- 寫進 HTML
 def ld_block(graph):
     doc = {'@context': 'https://schema.org', '@graph': agent_nodes() + graph}
@@ -1972,6 +2274,7 @@ def apply(text, key, graph, summary, ctx):
     if art:
         art['guides'] = [k for k in GUIDE_KEYS if k in ctx.get('guides', {})]
         art['area_page'] = area_page_of(ctx, art.get('name'))
+        art['compare'] = compare_links(ctx, name=art.get('name'))
     if art:  # 社區頁：標題與摘要換成問句型（與 JSON-LD WebPage、文章 h1 同一套）
         head = set_head_text(head, art['title'], art['desc'])
     if not head.endswith('\n'):
@@ -2000,6 +2303,8 @@ def page_graph(key, text, ctx):
         return guide_graph(key, text, ctx)
     if key.startswith('area/') and key[5:] in ctx.get('area_pages', {}):
         return area_graph(key, text, ctx)
+    if key.startswith('compare/') and key[8:] in ctx.get('compare_pages', {}):
+        return compare_graph(key, text, ctx)
     if grab(text, 'DECK') is not None:
         return deck_graph(key, text, ctx)
     if (ctx['root'] / key / 'config.js').exists():
@@ -2017,7 +2322,8 @@ def load_ctx(root):
             'videos': rd('data/videos.json', {}), 'narration': rd('data/narration.json', {}),
             'permits': rd('data/permits.json', {}), 'keywords': rd('data/keywords.json', {}),
             'facilities': rd('data/facilities.json', {}), 'legacy': rd('data/legacy_pages.json', {}),
-            'guides': rd('data/guides.json', {}), 'area_pages': rd('data/area_pages.json', {})}
+            'guides': rd('data/guides.json', {}), 'area_pages': rd('data/area_pages.json', {}),
+            'compare_pages': rd('data/compare_pages.json', {})}
 
 
 def pages(root):
@@ -2025,6 +2331,8 @@ def pages(root):
     keys = [''] + [k for k in ('map', 'about') + GUIDE_KEYS if (root / k / 'index.html').exists()]
     if (root / 'area').is_dir():  # 2026-11-13 區域買房頁
         keys += ['area/' + d.name for d in sorted((root / 'area').iterdir()) if (d / 'index.html').exists()]
+    if (root / 'compare').is_dir():  # 2026-11-23 同區比較頁（排在社區頁後面也可以，內容只讀社區頁，不互相依賴）
+        keys += ['compare/' + d.name for d in sorted((root / 'compare').iterdir()) if (d / 'index.html').exists()]
     if (root / 'community').is_dir():
         keys += ['community/' + d.name for d in sorted((root / 'community').iterdir()) if (d / 'index.html').exists()]
     keys += [d.name for d in sorted(root.glob('S*')) if d.is_dir() and re.fullmatch(r'S\d+', d.name) and (d / 'index.html').exists()]
@@ -2044,6 +2352,7 @@ def llms_txt(ctx, descs):
              *[f'- [{GUIDE_LABEL[k]}]({SITE}{k}/): ' + ctx['guides'][k].get('desc', '') for k in GUIDE_KEYS if k in ctx.get('guides', {})],
              *[f'- [{c.get("label") or n}買房]({page_url("area/" + n)}): ' + (c.get('desc') or '') for n, c in ctx.get('area_pages', {}).items()
                if (ctx['root'] / 'area' / n / 'index.html').exists()],
+             *[f'- [{t}]({SITE.rstrip("/")}{h}): 同區社區並排比較（捷運、實價登錄單價、格局、學區、優缺點）' for t, h in compare_links(ctx)],
              f'- [YouTube 板橋阿陞聊房]({YOUTUBE_CHANNEL}): 社區分析影片', '', '## 社區分析', '']
     for k in sorted((k for k in ctx['decks'] if k.startswith('community/')), key=lambda k: ctx['decks'][k].get('updated') or '', reverse=True):
         d = ctx['decks'][k]
@@ -2060,6 +2369,8 @@ def llms_txt(ctx, descs):
 def build_site(root, check=False):
     ctx = load_ctx(root)
     changed, problems, descs, writes = [], [], {}, []
+    if not check:
+        changed += ensure_compare_shells(root, ctx)
     for key in pages(root):
         f = Path(root) / key / 'index.html'
         text = f.read_text(encoding='utf-8')
@@ -2070,7 +2381,7 @@ def build_site(root, check=False):
             for ok in summary['guide']['money_ok']:
                 dump = dump.replace(ok, '')
             scan = json.loads(dump)
-        for p in audit(scan, community=key.startswith(('community/', 'area/'))):
+        for p in audit(scan, community=key.startswith(('community/', 'area/', 'compare/'))):
             problems.append(f'{key or "首頁"}：{p}')
         new = apply(text, key, graph, summary, ctx)
         if key == 'map':
@@ -2091,7 +2402,7 @@ def build_site(root, check=False):
             writes.append((f, new))
     llms = llms_txt(ctx, descs)
     # 2026-11-21 社區分析單價放行：llms.txt 裡社區頁、區域頁那幾行照社區規則，其他（指南、物件簡報）照舊全擋
-    loose = [ln for ln in llms.splitlines() if '/community/' in ln or '/area/' in ln]
+    loose = [ln for ln in llms.splitlines() if '/community/' in ln or '/area/' in ln or '/compare/' in ln]
     strict = [ln for ln in llms.splitlines() if ln not in loose]
     problems += [f'llms.txt：{p}' for p in audit('\n'.join(strict)) + audit('\n'.join(loose), community=True)]
     if problems:  # 有一頁沒過就整批不寫
