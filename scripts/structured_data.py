@@ -1703,10 +1703,14 @@ def _minutes(t):
     return int(m[1]) if m else None
 
 
-def _table(head, rows):
+def _table(head, rows, min_width=None):
+    """區域頁的表格。外面包一層可左右滑的框（2026-11-23：手機上欄位多的表會把整頁撐寬）；
+    min_width：欄位很多的表（整區總表）給最小寬度，手機上在框內左右滑，字不會被擠成一字一行。"""
     e = html.escape
-    return ('<table><thead><tr>' + ''.join(f'<th scope="col">{e(h)}</th>' for h in head) + '</tr></thead><tbody>'
-            + ''.join('<tr>' + ''.join(f'<td>{c}</td>' for c in r) + '</tr>' for r in rows) + '</tbody></table>')
+    style = f' style="min-width:{min_width}px"' if min_width else ''
+    return (f'<div class="sa-scroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch"><table{style}><thead><tr>'
+            + ''.join(f'<th scope="col">{e(h)}</th>' for h in head) + '</tr></thead><tbody>'
+            + ''.join('<tr>' + ''.join(f'<td>{c}</td>' for c in r) + '</tr>' for r in rows) + '</tbody></table></div>')
 
 
 def _half(ym):
@@ -1817,11 +1821,34 @@ def area_guide(name, ctx):
         arts.append((key, c, a))
     link = lambda key, c: f'<a href="/{quote(key)}/">{e(c["name"])}社區分析</a>'
     names = '、'.join(c['name'] for _, c, _ in arts)
+    # 2026-11-23 整區總表（林津陞：「繼續做區域頁整區總表」）：本區每個社區一列，位置、完工、樓高、戶數、最近捷運、國小學區
+    # 一張表看完；資料全部來自各社區頁已查證的事實欄（不寫屋齡數字、不寫價格），依走到最近捷運站的分鐘數排序。
+    def row_of(k, c, a):
+        f = dict(a.get('facts') or [])
+        st = (a.get('stations') or [])[:1]
+        mins = _minutes(st[0][1]) if st else None
+        mrt = f'{_station_short(st[0][0])}約{mins}分鐘' if st and mins is not None else '—'  # 社區頁沒有列步行可到的捷運站
+        sc = a.get('school') or (c.get('school') or '').replace('・', '、')
+        es = '、'.join(x for x in (_school_short(y) for y in re.split(r'[、・]', sc)) if '國小' in x)
+        return (mins if mins is not None else 999, c['name'],
+                [f'<a href="/{quote(k)}/">{e(c["name"])}</a>', e(c.get('road') or ''), e(f.get('完工', '')),
+                 e(re.sub(r'^地上', '', f.get('樓高', ''))), e(re.sub(r'（全案合計）$', '', f.get('戶數', ''))), e(mrt), e(es)])
+    table = sorted(row_of(k, c, a) for k, c, a in arts)
+    yrs = sorted(int(m[1]) for _, _, a in arts for m in [re.search(r'民國(\d+)年', dict(a.get('facts') or []).get('完工', ''))] if m)
+    fls = sorted(int(m[1]) for _, _, a in arts for m in [re.search(r'(\d+)層', dict(a.get('facts') or []).get('樓高', ''))] if m)
+    span = _join([f'完工從民國{yrs[0]}年到民國{yrs[-1]}年' if len(yrs) > 1 and yrs[0] != yrs[-1] else '',
+                  f'樓高從{fls[0]}層到{fls[-1]}層' if len(fls) > 1 and fls[0] != fls[-1] else ''], '、')
+    body = [{'html': _table(['社區', '位置', '完工', '樓高', '戶數', '最近捷運（步行）', '國小學區'], [r for _, _, r in table], min_width=720)},
+            {'html': '<p class="sa-note">表格可以左右滑動。</p>'},
+            {'html': '<p class="sa-note">依走到最近捷運站的時間排序（「—」是社區分析頁沒有列步行可到的捷運站）；完工、樓高、戶數取自各社區分析頁（使用執照等政府公開資料），'
+                     '步行時間為估算，學區以教育局公告為準。屋齡請看各社區分析頁，依完工年月即時計算。</p>'}]
+    cmp = compare_links(ctx, areas=cfg.get('areas') or [])
+    if cmp:
+        body.append({'html': '<p>位置相近的社區放在一起比：' + compare_links_html(cmp) + '。</p>'})
     secs = [{'q': f'{label}買房要看哪些社區？先說結論',
-             'lead': f'我目前整理了{len(arts)}個{label}的社區：{names}。先想清楚你最在意的是捷運距離、學區還是生活機能，'
-                     '再對照下面每一題的資料，挑出兩三個社區實際去看。',
-             'body': [{'html': '<ul>' + ''.join(f'<li>{link(k, c)}' + (f'（{e(c.get("road") or "")}）' if c.get('road') else '')
-                                                + '</li>' for k, c, _ in arts) + '</ul>'}]}]
+             'lead': f'我目前整理了{len(arts)}個{label}的社區：{names}' + (f'；{span}' if span else '') +
+                     '。下面這張總表把位置、完工、樓高、捷運和學區排在一起，先挑出兩三個符合你需求的社區，再看各題的細節、實際去現場。',
+             'body': body}]
     if cfg.get('range'):
         secs.append({'q': f'{label}的範圍在哪？', 'lead': cfg['range'],
                      'body': [f'想看各社區實際位置，可以打開[板橋商圈地圖](/map/)。'] + list(cfg.get('range_body') or [])})
