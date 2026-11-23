@@ -9,7 +9,7 @@
    之間，依 decks.json 產生靜態清單（不開 JS 也看得到、搜尋引擎也讀得到）。
    如果 index.html 又被舊發布流程覆寫成純清單（沒有標記），
    會從 git 歷史找回最後一版有標記的總站首頁再產生。
-2. sitemap.xml：首頁、map/、about/、buy/、sell/、area/<區域名>/、compare/<比較頁>/（存在才列）、每個 community/<社區名>/、
+2. sitemap.xml：首頁、map/、about/、buy/、sell/、area/<區域名>/、compare/<比較頁>/、knowledge/ 與 knowledge/<文章>/（存在才列）、每個 community/<社區名>/、
    每個 S<編號>/。網址一律 https://banqiaoasheng.com/ 開頭，中文路徑編碼。
 
 本機執行：python3 scripts/build_site.py
@@ -42,7 +42,7 @@ def esc(s):
 
 # decks.json 的 status（2026-11-04）：社區分析／銷售中／已成交；其他（待確認、沒填）一律顯示「狀態待確認」，
 # 不會把已成交或下架的物件寫成還在賣
-STATUS = {"社區分析": ("社區分析", "c"), "銷售中": ("銷售中", "s"), "已成交": ("已成交", "d")}
+STATUS = {"社區分析": ("社區分析", "c"), "銷售中": ("銷售中", "s"), "已成交": ("已成交", "d"), "已下架": ("已下架", "d")}  # 已下架：2026-11-23 林津陞「鑽石名門也下架了」
 
 
 def status_badge(d):
@@ -137,6 +137,11 @@ def build_sitemap(decks, index_changed=False):
     for d in sorted((ROOT / "area").iterdir()) if (ROOT / "area").is_dir() else []:  # 2026-11-13 區域買房頁
         if (d / "index.html").exists():
             pages.append(("area/" + d.name + "/", lastmod("area/" + d.name)))
+    if (ROOT / "knowledge" / "index.html").exists():  # 2026-11-23 房屋知識（目錄＋每篇文章）
+        pages.append(("knowledge/", lastmod("knowledge")))
+        for d in sorted((ROOT / "knowledge").iterdir()):
+            if (d / "index.html").exists():
+                pages.append(("knowledge/" + d.name + "/", lastmod("knowledge/" + d.name)))
     for d in sorted((ROOT / "compare").iterdir()) if (ROOT / "compare").is_dir() else []:  # 2026-11-23 同區比較頁
         if (d / "index.html").exists():
             pages.append(("compare/" + d.name + "/", lastmod("compare/" + d.name)))

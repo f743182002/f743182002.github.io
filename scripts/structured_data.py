@@ -1536,7 +1536,7 @@ def apply_map_links(text, ctx):
 
 
 GUIDE_LABEL = {'buy': '板橋買房指南', 'sell': '板橋賣房指南'}
-GUIDE_LINK = re.compile(r'\[([^\]\[]+)\]\((/[^)\s]*|https://(?:tax|loan)\.banqiaoasheng\.com/[^)\s]*|https://lvr\.land\.moi\.gov\.tw/[^)\s]*)\)')
+GUIDE_LINK = re.compile(r'\[([^\]\[]+)\]\((/[^)\s]*|https://(?:tax|loan)\.banqiaoasheng\.com/[^)\s]*|https://lvr\.land\.moi\.gov\.tw/[^)\s]*|https://law\.moj\.gov\.tw/[^)\s]*)\)')
 # 指南不寫成交金額：數字＋萬／元／億、每坪、單價、總價、售價、開價（「行情分析」「房價怎麼查」這類說法可以用）
 GUIDE_MONEY = re.compile(r'\d[\d,.]*\s*(?:萬(?![字人次筆個])|元|億)|[一二三四五六七八九十百千兩]+萬(?![字人次筆個])|萬元|每坪|單價|總價|售價|開價')
 
@@ -1607,11 +1607,21 @@ def guide_html(key, g, ctx):
     out.append('<p>想一次比較位置，可以看<a href="/map/">板橋商圈地圖</a>'
                + ''.join(f'；也可以看<a href="/{k}/">{GUIDE_LABEL[k]}</a>' for k in other) + '，或回<a href="/">首頁</a>。</p>')
     out.append('<h2>想聊聊？</h2>')
-    if g.get('contact') == 'seller':  # 給屋主的內容不放買方攻略（591-SOP 4.10）
+    kl = knowledge_links(ctx, skip=key[10:] if key.startswith('knowledge/') else None) if key in GUIDE_KEYS or key.startswith('knowledge') else []
+    if kl and key != 'knowledge':  # 2026-11-23 房屋知識文章：買房／賣房指南與每篇知識文互相連
+        out.insert(-1, '<p>' + ('其他房屋知識：' if key.startswith('knowledge/') else '房屋知識：') + compare_links_html(kl)
+                   + '；全部文章在<a href="/knowledge/">房屋知識</a>。</p>')
+    seller_block = ('<div class="sa-contact"><p>☆賣屋諮詢請聯絡：林津陞 <a href="tel:0925635678">0925-635-678</a><br>'
+                    '加官方 LINE <a href="https://line.me/R/ti/p/%40banqiao.asheng" target="_blank" rel="noopener">@banqiao.asheng</a>'
+                    ' 輸入「賣房」免費領《賣房不吃虧攻略》</p></div>')
+    if g.get('contact') == 'both':  # 房屋知識：買方、屋主都會看，兩塊分開放（屋主那塊不放買方攻略）
+        out.append('<div class="sa-contact"><p>☆預約看屋請聯絡：林津陞 <a href="tel:0925635678">0925-635-678</a><br>'
+                   '加官方 LINE：<a href="https://line.me/R/ti/p/%40banqiao.asheng" target="_blank" rel="noopener">@banqiao.asheng</a>，'
+                   '聊天室輸入「攻略」，系統自動傳送《買房避坑攻略》電子檔（約2萬字／38頁）</p></div>')
+        out.append(seller_block)
+    elif g.get('contact') == 'seller':  # 給屋主的內容不放買方攻略（591-SOP 4.10）
         # 2026-11-13 林津陞：賣房攻略關鍵字「賣房」（不寫字數頁數，沒有查證過）
-        out.append('<div class="sa-contact"><p>☆賣屋諮詢請聯絡：林津陞 <a href="tel:0925635678">0925-635-678</a><br>'
-                   '加官方 LINE <a href="https://line.me/R/ti/p/%40banqiao.asheng" target="_blank" rel="noopener">@banqiao.asheng</a>'
-                   ' 輸入「賣房」免費領《賣房不吃虧攻略》</p></div>')
+        out.append(seller_block)
     else:
         out.append('<div class="sa-contact"><p>☆預約看屋請聯絡：林津陞 <a href="tel:0925635678">0925-635-678</a><br>'
                    '加官方 LINE：<a href="https://line.me/R/ti/p/%40banqiao.asheng" target="_blank" rel="noopener">@banqiao.asheng</a>，'
@@ -1619,7 +1629,7 @@ def guide_html(key, g, ctx):
     src = '；'.join(x.rstrip('。') for x in g.get('sources') or [])
     out.append('<div class="sa-disc"><p>' + '<br>'.join(e(x) for x in FULL_DISCLOSURE) + '</p><p>'
                + (f'資料來源：{e(src)}。' if src else '') +
-               '貸款條件依銀行核定；稅額以稅捐稽徵機關核定為準；房屋資訊仍須以現場、產權資料及正式文件為準。</p></div>')
+               (g.get('disclaimer') or '貸款條件依銀行核定；稅額以稅捐稽徵機關核定為準；房屋資訊仍須以現場、產權資料及正式文件為準。') + '</p></div>')
     return ('<!-- GUIDE:START -->\n<style>' + ARTICLE_CSS + '</style>\n'
             f'<article id="analysis" aria-label="{e(label)}"><div class="sa-in">\n'
             + '\n'.join(x for x in out if x) + '\n</div></article>\n<!-- GUIDE:END -->')
@@ -2217,6 +2227,75 @@ def compare_graph(key, text, ctx):
     return graph, {'guide': g}
 
 
+# ---------------------------------------------------------------------- 房屋知識（2026-11-23）
+# /knowledge/（目錄）與 /knowledge/<文章名>/：林津陞 2026-11-23「幫我做房屋知識文章」。內容只改 data/knowledge.json
+# （{index:{title,h1,desc,intro,updated}, articles:{文章名:{title,h1,desc,updated,short,money_ok,intro,sections:[{q,lead,body}],sources,checked}}}），
+# 格式同買房／賣房指南。法規一律先查全國法規資料庫或主管機關公告的現行原文再寫（技能 realtor-ad-compliance 第 8 節），
+# sources 寫條號與查證日；不寫成交金額、估價、保證；每篇文末固定「個案仍以契約、事實與主管機關、法院認定為準」。
+KNOWLEDGE_DISCLAIMER = '本文是一般性的法規與交易實務整理，不是個案的法律意見；個別情況仍以契約內容、實際事實與主管機關、法院的認定為準。'
+
+
+def knowledge_links(ctx, skip=None):
+    out = []
+    for slug, g in (ctx.get('knowledge', {}).get('articles') or {}).items():
+        if slug != skip and (ctx['root'] / 'knowledge' / slug / 'index.html').exists():
+            out.append((g.get('short') or g.get('h1') or slug, '/' + quote('knowledge/' + slug) + '/'))
+    return out
+
+
+def knowledge_guide(key, ctx):
+    kn = ctx['knowledge']
+    if key == 'knowledge':  # 目錄頁：每篇文章一題（問句＋摘要＋連結）
+        idx = kn.get('index') or {}
+        secs = [{'q': g.get('short') or g['h1'], 'lead': g['desc'],
+                 'body': [f'[看全文：{g.get("short") or g["h1"]}](/{quote("knowledge/" + slug)}/)']}
+                for slug, g in (kn.get('articles') or {}).items() if (ctx['root'] / 'knowledge' / slug / 'index.html').exists()]
+        return dict(idx, label='房屋知識', sections=secs, contact='both', community_rows=[], disclaimer=KNOWLEDGE_DISCLAIMER,
+                    money_ok=sorted({m for g in (kn.get('articles') or {}).values() for m in g.get('money_ok') or []}))
+    g = kn['articles'][key[10:]]
+    return dict(g, label='房屋知識', contact=g.get('contact') or 'both', community_rows=[], disclaimer=KNOWLEDGE_DISCLAIMER)
+
+
+def knowledge_graph(key, text, ctx):
+    g = knowledge_guide(key, ctx)
+    url = page_url(key)
+    page = {'@type': 'WebPage', '@id': url + '#webpage', 'url': url, 'name': g['title'], 'headline': g['h1'],
+            'description': g['desc'], 'inLanguage': 'zh-Hant-TW', 'isPartOf': {'@id': WEBSITE_ID},
+            'about': {'@id': AGENT_ID}, 'author': {'@id': PERSON_ID}, 'publisher': {'@id': AGENT_ID},
+            'dateModified': g.get('updated'), 'breadcrumb': {'@id': url + '#breadcrumb'}}
+    qa = [(x['q'], x['lead']) for x in g.get('sections') or []]
+    crumbs = [(BRAND, SITE), ('房屋知識', page_url('knowledge'))] + ([] if key == 'knowledge' else [(g.get('short') or g['h1'], url)])
+    graph = [{k: v for k, v in page.items() if v not in (None, '', [])}] + faq(url, qa) + [breadcrumb(url, crumbs)]
+    return graph, {'guide': g}
+
+
+def ensure_knowledge_shells(root, ctx):
+    """knowledge.json 有、網站還沒有的頁面：拿買房指南（沒有就拿區域頁）的外殼建一頁空的，內容由 build_site 填。"""
+    root = Path(root)
+    kn = ctx.get('knowledge') or {}
+    if not kn.get('articles'):
+        return []
+    src_key = next((k for k in ('buy',) + tuple('area/' + d.name for d in sorted((root / 'area').glob('*')) if d.is_dir())
+                    if (root / k / 'index.html').exists()), None)
+    made = []
+    for key in ['knowledge'] + ['knowledge/' + s for s in kn['articles']]:
+        f = root / key / 'index.html'
+        if f.exists() or not src_key:
+            continue
+        t = GUIDE_MARK.sub('<!-- GUIDE:START --><!-- GUIDE:END -->', LD_MARK.sub('', (root / src_key / 'index.html').read_text(encoding='utf-8')), count=1)
+        t = t.replace(page_url(src_key), page_url(key))
+        buyer = '系統自動傳送《買房避坑攻略》電子檔（約2萬字／38頁）<br>\n'  # 頁尾：買方、屋主都會看，補屋主那兩行
+        i = t.find('<footer class="site-foot">')
+        if i >= 0 and buyer in t[i:] and '賣屋諮詢請聯絡' not in t[i:]:
+            j = t.index(buyer, i) + len(buyer)
+            t = t[:j] + ('  <b>☆賣屋諮詢請聯絡：林津陞 0925-635-678</b><br>\n'
+                         '  加官方 LINE @banqiao.asheng 輸入「賣房」免費領《賣房不吃虧攻略》<br>\n') + t[j:]
+        f.parent.mkdir(parents=True, exist_ok=True)
+        f.write_text(t, encoding='utf-8')
+        made.append(key)
+    return made
+
+
 # ---------------------------------------------------------------------- 寫進 HTML
 def ld_block(graph):
     doc = {'@context': 'https://schema.org', '@graph': agent_nodes() + graph}
@@ -2317,6 +2396,9 @@ def page_graph(key, text, ctx):
         return area_graph(key, text, ctx)
     if key.startswith('compare/') and key[8:] in ctx.get('compare_pages', {}):
         return compare_graph(key, text, ctx)
+    if (key == 'knowledge' and ctx.get('knowledge', {}).get('articles')) or \
+            (key.startswith('knowledge/') and key[10:] in (ctx.get('knowledge', {}).get('articles') or {})):
+        return knowledge_graph(key, text, ctx)
     if grab(text, 'DECK') is not None:
         return deck_graph(key, text, ctx)
     if (ctx['root'] / key / 'config.js').exists():
@@ -2335,7 +2417,7 @@ def load_ctx(root):
             'permits': rd('data/permits.json', {}), 'keywords': rd('data/keywords.json', {}),
             'facilities': rd('data/facilities.json', {}), 'legacy': rd('data/legacy_pages.json', {}),
             'guides': rd('data/guides.json', {}), 'area_pages': rd('data/area_pages.json', {}),
-            'compare_pages': rd('data/compare_pages.json', {})}
+            'compare_pages': rd('data/compare_pages.json', {}), 'knowledge': rd('data/knowledge.json', {})}
 
 
 def pages(root):
@@ -2343,6 +2425,8 @@ def pages(root):
     keys = [''] + [k for k in ('map', 'about') + GUIDE_KEYS if (root / k / 'index.html').exists()]
     if (root / 'area').is_dir():  # 2026-11-13 區域買房頁
         keys += ['area/' + d.name for d in sorted((root / 'area').iterdir()) if (d / 'index.html').exists()]
+    if (root / 'knowledge' / 'index.html').exists():  # 2026-11-23 房屋知識
+        keys += ['knowledge'] + ['knowledge/' + d.name for d in sorted((root / 'knowledge').iterdir()) if (d / 'index.html').exists()]
     if (root / 'compare').is_dir():  # 2026-11-23 同區比較頁（排在社區頁後面也可以，內容只讀社區頁，不互相依賴）
         keys += ['compare/' + d.name for d in sorted((root / 'compare').iterdir()) if (d / 'index.html').exists()]
     if (root / 'community').is_dir():
@@ -2365,6 +2449,7 @@ def llms_txt(ctx, descs):
              *[f'- [{c.get("label") or n}買房]({page_url("area/" + n)}): ' + (c.get('desc') or '') for n, c in ctx.get('area_pages', {}).items()
                if (ctx['root'] / 'area' / n / 'index.html').exists()],
              *[f'- [{t}]({SITE.rstrip("/")}{h}): 同區社區並排比較（捷運、實價登錄單價、格局、學區、優缺點）' for t, h in compare_links(ctx)],
+             *[f'- [房屋知識：{t}]({SITE.rstrip("/")}{h}): 法規與交易實務整理，附條號與查證日' for t, h in knowledge_links(ctx)],
              f'- [YouTube 板橋阿陞聊房]({YOUTUBE_CHANNEL}): 社區分析影片', '', '## 社區分析', '']
     for k in sorted((k for k in ctx['decks'] if k.startswith('community/')), key=lambda k: ctx['decks'][k].get('updated') or '', reverse=True):
         d = ctx['decks'][k]
@@ -2383,6 +2468,7 @@ def build_site(root, check=False):
     changed, problems, descs, writes = [], [], {}, []
     if not check:
         changed += ensure_compare_shells(root, ctx)
+        changed += ensure_knowledge_shells(root, ctx)
     for key in pages(root):
         f = Path(root) / key / 'index.html'
         text = f.read_text(encoding='utf-8')
