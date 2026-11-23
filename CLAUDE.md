@@ -82,6 +82,12 @@
 - **分享圖**：`assets/brand/og-1200x630.png`（LOGO、照片、板橋阿陞聊房、底部小字「經紀業 非凡不動產有限公司｜營業員 林津陞（99）登字第148103號」），index／map／about／404 手寫的 og:image、twitter:image 都指向它。舊的 `assets/og-banqiaoasheng.png`、`about/og-home*.png` 有公司 LOGO／舊配色，不再引用（JSON-LD 的 `logo`／`image` 2026-11-11 起改 `assets/brand/logo.png`、`assets/brand/og-1200x630.png`，由 structured_data.py 產生）。
 - **還沒改的**：簡報頁 community/*、S*/（property-deck 範本）、Netlify 工具站（稅務小幫手、青安 3.0）。
 
+## 深色模式開關（2026-11-24 林津陞「這個能不能跟上架中心一樣 有個深色模式開關阿 晚上看了很刺眼」）
+- **預設淺色**，不跟手機／電腦的深色設定（11/11 決定，原因見上一節）；左下角「🌙 深色／☀️ 淺色」按鈕，按了才變深色，記在該瀏覽器（localStorage `sa-theme`）。
+- 程式只有一支 `assets/theme.js`：整頁反轉亮度＋色相轉回（同查詢台做法）；照片、影片、3D、地圖（`svg#map`、`.leaflet-container`）、背景圖、本來就是深色底的區塊（主視覺、深色卡片、按鈕，自動偵測）維持原色；近黑 LOGO 跟著變亮。手機底部有固定列時按鈕自動往上移。錄影版（`html.rec`）與列印不套用、不顯示按鈕。
+- 每頁 `<head>` 的 `<!-- THEME:START -->…<!-- THEME:END -->` 由 `scripts/structured_data.py`（正本 9b `tools/property-deck/structured_data.py` 的 `with_theme`）自動放，不要手動刪；404.html、data/layout/view.html、data/units/view.html 不在自動範圍，是手動加的。
+- 改 theme.js 後把 THEME_TAG 的 `?v=` 加 1，避免瀏覽器用舊版快取。
+
 ## 網域
 
 - 主網域 **banqiaoasheng.com**，2026-11-02 在 Cloudflare 註冊。DNS 也在 Cloudflare，所有紀錄一律設成 **DNS only（灰色雲）**，不開 Cloudflare 代理，由 GitHub、Netlify 自己簽 HTTPS 憑證。

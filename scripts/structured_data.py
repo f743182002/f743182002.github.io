@@ -58,6 +58,9 @@ ART_MARK = re.compile(r'<!-- ARTICLE:START -->.*?<!-- ARTICLE:END -->\n?', re.S)
 ART_LINK_MARK = re.compile(r'<!-- ARTICLE-LINK:START -->.*?<!-- ARTICLE-LINK:END -->', re.S)
 MAPLINKS_MARK = re.compile(r'<!-- MAPLINKS:START -->.*?<!-- MAPLINKS:END -->\n?', re.S)
 GUIDE_MARK = re.compile(r'<!-- GUIDE:START -->.*?<!-- GUIDE:END -->', re.S)
+THEME_MARK = re.compile(r'<!-- THEME:START -->.*?<!-- THEME:END -->\n?', re.S)
+# 2026-11-24 林津陞「這個能不能跟上架中心一樣 有個深色模式開關阿 晚上看了很刺眼」：每頁 <head> 帶 assets/theme.js（預設淺色，按了才深色）
+THEME_TAG = '<!-- THEME:START --><script src="/assets/theme.js?v=1"></script><!-- THEME:END -->\n'
 GUIDE_KEYS = ('buy', 'sell')  # 2026-11-13 板橋買房指南／板橋賣房指南（data/guides.json）
 # 頁尾完整揭露（SOP 3.1 完整版；峯＝U+5CEF）與買方攻略引流兩行（SOP 4.10，2026-10-29）
 FULL_DISCLOSURE = ['全國不動產板橋加盟店', '經紀業｜非凡不動產有限公司',
@@ -223,6 +226,16 @@ def head_end(text):
 
 def head_of(text):
     return text[:head_end(text)]
+
+
+def with_theme(text):
+    """深色模式開關：<head> 結尾放一行 assets/theme.js（重跑不重複）。"""
+    text = THEME_MARK.sub('', text)
+    i = head_end(text)
+    pre = text[:i]
+    if pre and not pre.endswith('\n'):
+        pre += '\n'
+    return pre + THEME_TAG + text[i:]
 
 
 def meta_content(text, name):
@@ -2511,6 +2524,7 @@ def build_site(root, check=False):
         new = apply(text, key, graph, summary, ctx)
         if key == 'map':
             new = apply_map_links(new, ctx)
+        new = with_theme(new)
         m = ART_MARK.search(new)
         if m:
             problems += [f'{key}：文章{p}' for p in article_problems(m[0])]
