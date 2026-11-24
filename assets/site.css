@@ -70,6 +70,13 @@ a{color:var(--ink);text-decoration-color:var(--brand)}  /* 連結字用近黑、
 @media (max-width:440px){
   .brand-t{display:none}
 }
+/* 平板（761～1239px）：選單移到第二行、整排顯示，不用往旁邊滑（林津陞 2026-11-24：「有針對平板設計嗎?」→「好，改完給我看」） */
+@media (min-width:761px) and (max-width:1239px){
+  .topbar-in{flex-wrap:wrap;gap:6px 16px;padding:9px 16px 4px}
+  .brand{flex:1}
+  .nav{order:3;flex-basis:100%;justify-content:space-between;margin:0;padding:0 0 3px}
+  .nav a{font-size:16px;padding:8px 9px}
+}
 /* 手機底部快捷列（首頁、地圖） */
 .dock2{position:fixed;left:0;right:0;bottom:0;z-index:1200;display:none;gap:8px;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:#FFFFFF;border-top:1px solid #D7E6EF;box-shadow:0 -2px 8px rgba(15,34,51,.12)}
 .dock2 a{flex:1;display:flex;align-items:center;justify-content:center;min-height:46px;border-radius:999px;font-weight:700;font-size:16px;text-decoration:none}
