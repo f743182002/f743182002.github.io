@@ -82,6 +82,12 @@
 - **分享圖**：`assets/brand/og-1200x630.png`（LOGO、照片、板橋阿陞聊房、底部小字「經紀業 非凡不動產有限公司｜營業員 林津陞（99）登字第148103號」），index／map／about／404 手寫的 og:image、twitter:image 都指向它。舊的 `assets/og-banqiaoasheng.png`、`about/og-home*.png` 有公司 LOGO／舊配色，不再引用（JSON-LD 的 `logo`／`image` 2026-11-11 起改 `assets/brand/logo.png`、`assets/brand/og-1200x630.png`，由 structured_data.py 產生）。
 - **還沒改的**：簡報頁 community/*、S*/（property-deck 範本）、Netlify 工具站（稅務小幫手、青安 3.0）。
 
+## 社區頁「不同棟、不同面向差在哪？」（2026-11-24 林津陞「繼續做同社區不同棟面向怎麼看」）
+- 文章接在「日照」後面一節，由 structured_data.py 的 `building_info`／`building_section` 自動產生；**不進 title、h1、description**（finish_article 排除「棟別」），既有標題不動。
+- 資料只用頁面已有的：SITE.blds（me＝本社區輪廓）、data/doors（門牌定位，40 公尺內對到最近的本社區建物）、data/units（二樓以上住家、每戶最新一筆、車位未拆分的不計、不到 3 筆不算）。
+- 兩棟以上：棟（門牌）／樓高／主要面向／成交筆數／單價中位數表，結論寫最高、最低那棟。一棟：輪廓最長兩面相對才寫「長邊朝○、○」，不是長方形只寫「外牆主要朝…」；各門牌單價表（2 個門牌以上才出）。
+- 方位說明只寫一般日照常識（DIR_TIPS），不寫模擬時數；附註固定寫「棟別依輪廓與門牌推算，不是建商棟別編號」。單價句要寫「已扣除車位坪數與價格」（PARKING_NOTE 認得），否則 clean 會自動補「單價含車位計算」而互相矛盾。
+
 ## 深色模式開關（2026-11-24 林津陞「這個能不能跟上架中心一樣 有個深色模式開關阿 晚上看了很刺眼」）
 - **預設淺色**，不跟手機／電腦的深色設定（11/11 決定，原因見上一節）；左下角「🌙 深色／☀️ 淺色」按鈕，按了才變深色，記在該瀏覽器（localStorage `sa-theme`）。
 - 程式只有一支 `assets/theme.js`：整頁反轉亮度＋色相轉回（同查詢台做法）；照片、影片、3D、地圖（`svg#map`、`.leaflet-container`）、背景圖、本來就是深色底的區塊（主視覺、深色卡片、按鈕，自動偵測）維持原色；近黑 LOGO 跟著變亮。手機底部有固定列時按鈕自動往上移。錄影版（`html.rec`）與列印不套用、不顯示按鈕。

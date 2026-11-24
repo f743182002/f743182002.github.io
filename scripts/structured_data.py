@@ -31,6 +31,7 @@ import html
 import json
 import math
 import re
+import statistics
 import sys
 from pathlib import Path
 from urllib.parse import quote
@@ -620,6 +621,7 @@ def deck_graph(key, text, ctx):
                'sources': [clean(s) for s in deck.get('sources') or [] if clean(s)],
                'videos': ctx['videos'].get(key) or [], 'image': article_image(ctx, key, text, deck, name),
                'facilities': ctx.get('facilities', {}).get(name),
+               'buildings': building_info(ctx, name, text, deck),
                'nearby': nearby_communities(ctx, name, (comm or {}).get('lat') or lat, (comm or {}).get('lon') or lon)}
         finish_article(art, ctx.get('keywords', {}).get(name), town + road,
                        f'位於{county}{district}{road}' + (f'，{built}完工' if built else '') +
@@ -912,6 +914,7 @@ TOPICS = {  # 主題：（標題用字，搜尋詞裡出現就算一次）
     '生活': ('生活機能', ['全家', '全聯', '超市', '市場', '生活', '醫院', '公園']),
     '完工': ('完工年', ['屋齡', '完工', '幾年']),
     '實價': ('實價登錄', ['實價登錄', '實價', '成交']),
+    '棟別': ('棟別與面向', ['棟', '面向', '方位', '邊間']),  # 2026-11-24；放最後、不進標題（finish_article）
 }
 TOPIC_DEFAULT = list(TOPICS)
 NEGATIVE_WORDS = re.compile(r'凶宅|跳樓|上吊|意外|命案|自殺|法拍|釘子戶|災難|車禍|死')
@@ -993,6 +996,193 @@ def article_image(ctx, key, text, deck, name):
             'caption': f'{name}｜{cap}（航照：內政部國土測繪中心正射影像，現況以現場為準）'}
 
 
+# ---------------------------------------------------------------------- 同社區不同棟、不同面向
+# 2026-11-24 林津陞「繼續做同社區不同棟面向怎麼看」（競品分析建議第 5 項）。只用頁面已有資料：
+# SITE.blds（地圖建物輪廓，me＝本社區）、data/doors（門牌定位）、data/units（每戶最新一筆實價登錄）。
+# 門牌對到最近的本社區建物（40 公尺內）；各面朝向＝輪廓每條邊的外法線方向，依長度合併成八方位。
+# 「棟」是依輪廓與門牌推算，不是建商的棟別編號；方位的說明只寫一般日照常識，不寫模擬時數。
+DIR8 = ['北', '東北', '東', '東南', '南', '西南', '西', '西北']
+DIR_TIPS = {
+    '南': '冬天太陽低，陽光照得進屋裡；夏天太陽高，直射比較少',
+    '北': '一年到頭直射陽光少，光線比較穩定，冬天偏陰涼',
+    '東': '早上有陽光，下午比較涼',
+    '西': '下午會西曬，夏天要注意隔熱和窗簾',
+    '東南': '上午陽光多，冬天也曬得到',
+    '西南': '下午陽光多，夏天午後會西曬',
+    '東北': '只有清晨有一點陽光，整體偏陰涼',
+    '西北': '傍晚有陽光，夏天傍晚會西曬，冬天偏陰涼',
+}
+
+
+def dir8(deg):
+    return DIR8[int(((deg % 360) + 22.5) // 45) % 8]
+
+
+def _local_m(lat, lon, lat0, lon0):
+    return ((lon - lon0) * 111320 * math.cos(math.radians(lat0)), (lat - lat0) * 110540)
+
+
+def _in_poly(pt, poly):
+    x, y = pt
+    c = False
+    for i in range(len(poly)):
+        (x1, y1), (x2, y2) = poly[i], poly[i - 1]
+        if (y1 > y) != (y2 > y) and x < (x2 - x1) * (y - y1) / (y2 - y1) + x1:
+            c = not c
+    return c
+
+
+def _dist_poly(pt, poly):
+    best = float('inf')
+    for i in range(len(poly)):
+        (x1, y1), (x2, y2) = poly[i - 1], poly[i]
+        dx, dy = x2 - x1, y2 - y1
+        t = max(0.0, min(1.0, ((pt[0] - x1) * dx + (pt[1] - y1) * dy) / ((dx * dx + dy * dy) or 1e-9)))
+        best = min(best, math.hypot(pt[0] - x1 - t * dx, pt[1] - y1 - t * dy))
+    return best
+
+
+def poly_faces(poly):
+    """建物輪廓各面朝向：[(八方位, 該方位牆面總長公尺)]，長的在前。座標 x＝東、y＝北（公尺）。"""
+    area = sum(poly[i - 1][0] * poly[i][1] - poly[i][0] * poly[i - 1][1] for i in range(len(poly))) / 2
+    acc = {}
+    for i in range(len(poly)):
+        (x1, y1), (x2, y2) = poly[i - 1], poly[i]
+        dx, dy = x2 - x1, y2 - y1
+        ln = math.hypot(dx, dy)
+        if ln < 1:
+            continue
+        nx, ny = (dy, -dx) if area > 0 else (-dy, dx)  # 外法線
+        k = dir8(math.degrees(math.atan2(nx, ny)))
+        acc[k] = acc.get(k, 0) + ln
+    return sorted(acc.items(), key=lambda kv: -kv[1])
+
+
+def main_faces(faces, share=0.15):
+    """佔牆面總長 share 以上的方位（長邊在前）。"""
+    tot = sum(v for _, v in faces) or 1
+    return [k for k, v in faces if v / tot >= share]
+
+
+def _door_base(no):
+    m = re.match(r'\d+', str(no or ''))
+    return int(m[0]) if m else None
+
+
+def building_info(ctx, name, text, deck):
+    """回傳 {rows, per_door, road, cutoff, facing, floor}；資料不夠（沒有本社區輪廓或門牌）回 None。"""
+    root = Path(ctx['root'])
+    site = grab(text, 'SITE') or {}
+    me = [b for b in site.get('blds') or [] if b.get('me') and len(b.get('p') or []) >= 3]
+    try:
+        doors = json.loads((root / 'data' / 'doors' / f'{name}.json').read_text(encoding='utf-8')).get('doors') or []
+    except (OSError, ValueError):
+        doors = []
+    lat0, lon0 = deck.get('lat'), deck.get('lon')
+    if not me or not doors or lat0 is None or lon0 is None:
+        return None
+    try:
+        units = json.loads((root / 'data' / 'units' / f'{name}.json').read_text(encoding='utf-8'))
+    except (OSError, ValueError):
+        units = {}
+    door_bldg = {}
+    for d in doors:
+        base = _door_base(d.get('no'))
+        if base is None or d.get('lat') is None:
+            continue
+        p = _local_m(d['lat'], d['lon'], lat0, lon0)
+        hit = next((i for i, b in enumerate(me) if _in_poly(p, b['p'])), None)
+        if hit is None:
+            dist, i = min((_dist_poly(p, b['p']), i) for i, b in enumerate(me))
+            hit = i if dist <= 40 else None
+        if hit is not None:
+            door_bldg.setdefault(base, hit)
+    if not door_bldg:
+        return None
+    floors_of = {}
+    for addr, fl in (units.get('door_floors') or {}).items():
+        b = _door_base(re.sub(r'^\D*', '', addr))
+        if b is not None:
+            floors_of[b] = max(floors_of.get(b, 0), fl or 0)
+    price_of, road = {}, ''
+    for u in units.get('units') or []:  # 每戶最新一筆；二樓以上住家；含車位未拆分的不算（同區域頁規則）
+        if (u.get('floor') or 0) < 2 or u.get('use') != '住家用' or u.get('parking') == 'included' or not u.get('price'):
+            continue
+        b = _door_base(re.sub(r'^\D*', '', u.get('addr') or ''))
+        if b is None:
+            continue
+        road = road or re.sub(r'\d.*$', '', u.get('addr') or '')
+        price_of.setdefault(b, []).append(float(u['price']))
+    rows = []
+    for i in sorted(set(door_bldg.values())):
+        ds = sorted(b for b, j in door_bldg.items() if j == i)
+        ps = [x for b in ds for x in price_of.get(b, [])]
+        fl = max((floors_of.get(b, 0) for b in ds), default=0)
+        rows.append({'doors': ds, 'faces': main_faces(poly_faces(me[i]['p'])), 'floors': fl or None,
+                     'n': len(ps), 'median': round(statistics.median(ps), 1) if len(ps) >= 3 else None})
+    per_door = [(b, len(v), round(statistics.median(v), 1)) for b, v in sorted(price_of.items()) if len(v) >= 3]
+    return {'rows': rows, 'per_door': per_door, 'road': road, 'cutoff': units.get('cutoff') or '',
+            'period': units.get('period') or '', 'facing': deck.get('facing'), 'floor': deck.get('floor')}
+
+
+def _doors_label(ds):
+    return '、'.join(str(x) for x in ds) + '號'
+
+
+def building_section(name, bi):
+    """「不同棟、不同面向怎麼看」一節：{q, lead, body}；寫不出結論回 None。"""
+    e = html.escape
+    rows = bi['rows']
+    note_price = (f"單價為二樓以上住家、每戶最新一筆的中位數，已扣除車位坪數與價格；車位未拆分的成交不計；"
+                  f"不到 3 筆不算（{bi['cutoff']}）。")
+    faces_all = []
+    for r in rows:
+        for k in r['faces']:
+            if k not in faces_all:
+                faces_all.append(k)
+    if len(rows) >= 2:
+        priced = [r for r in rows if r['median'] is not None]
+        lead = f"依地圖建物輪廓與門牌位置，{name}的門牌分在{len(rows)}棟，各棟樓高、面向不一樣"
+        if len(priced) >= 2:
+            hi, lo = max(priced, key=lambda r: r['median']), min(priced, key=lambda r: r['median'])
+            if hi is not lo:
+                lead += (f"；實價登錄單價中位數，{_doors_label(hi['doors'])}那棟約{hi['median']}萬/坪、"
+                         f"{_doors_label(lo['doors'])}那棟約{lo['median']}萬/坪（已扣除車位坪數與價格）")
+        lead += '。'
+        body = _table(['棟（門牌）', '樓高', '主要面向', '成交筆數', '單價中位數（萬/坪）'],
+                      [(f"{bi['road']}{_doors_label(r['doors'])}", f"{r['floors']}層" if r['floors'] else '—',
+                        '、'.join(r['faces']) or '—', str(r['n']), str(r['median']) if r['median'] is not None else '—')
+                       for r in rows], min_width=560)
+    else:
+        r = rows[0]
+        if len(r['faces']) < 2:
+            return None
+        opp = DIR8[(DIR8.index(r['faces'][0]) + 4) % 8]
+        if opp in r['faces'][:2]:  # 長方形：最長兩面正好相對
+            longs, shorts = r['faces'][:2], r['faces'][2:]
+            lead = (f"依地圖建物輪廓，{name}的建物長邊朝{longs[0]}、{longs[1]}，大部分住戶的主要窗戶在這兩面"
+                    + (f"；朝{'、'.join(shorts)}的短邊多半是邊間，多一面採光" if shorts else '') + '。')
+        else:  # 輪廓不是長方形（L 形、幾棟相連），只寫外牆主要朝向
+            lead = (f"依地圖建物輪廓，{name}的建物外牆主要朝{'、'.join(r['faces'])}，"
+                    '不同位置的住戶面向不一樣，同樣坪數也可能一戶朝陽、一戶背陽。')
+        body = ''
+        pd = bi['per_door']
+        if len(pd) >= 2:
+            body += ('<p>不同門牌（不同的梯）成交單價也會有差，下表是各門牌的實價登錄：</p>'
+                     + _table(['門牌', '成交筆數', '單價中位數（萬/坪）'],
+                              [(f"{bi['road']}{b}號", str(n), str(m)) for b, n, m in pd], min_width=360))
+    tips = [k for k in faces_all if k in DIR_TIPS]
+    if tips:
+        body += '<h3>各面向的一般日照特性</h3><ul>' + ''.join(f'<li>朝{e(k)}：{e(DIR_TIPS[k])}。</li>' for k in tips) + '</ul>'
+    if bi.get('facing') is not None:
+        body += (f"<p>簡報與影片的日照模擬是以正面朝{e(dir8(bi['facing']))}"
+                 + (f"、{e(str(bi['floor']))}樓" if bi.get('floor') else '') + '示意；'
+                 '其他面向、樓層，以及被周邊大樓擋到的程度都會不同，看屋時建議上午、下午各去一次，站到窗邊看。</p>')
+    body += ('<p class="sa-note">棟別是依地圖建物輪廓（OpenStreetMap、內政部國土測繪中心）與門牌定位推算，不是建商的棟別編號；'
+             '面向是建物外牆的大致方位，各戶實際座向以現場及權狀為準。' + (e(note_price) if len(rows) >= 2 or len(bi['per_door']) >= 2 else '') + '</p>')
+    return {'q': f'{name}不同棟、不同面向差在哪？怎麼選？', 'lead': lead, 'body': body}
+
+
 def article_sections(a):
     """文章的問答章節：每節 = {topic, q(h2 問句), lead(直接講結論的第一段，也是 FAQ 答案), body(HTML)}。
     資料只來自 a（頁面已有資料＋使照判讀）；沒資料的主題不產生。順序：結論 → 依關鍵字排的主題 → 優缺點 → 看屋確認。"""
@@ -1061,6 +1251,12 @@ def article_sections(a):
             '<p>日照會因為面向、樓層、前後棟距差很多，看屋時建議上午、下午各去一次，站到窗邊看實際的採光與視野。</p>' + \
             (f'<p class="sa-note">{e(a["sun_src"])}</p>' if a.get('sun_src') else '')
         secs['日照'] = {'q': f'{name}日照好嗎？冬天曬得到太陽嗎？', 'lead': lead, 'body': body}
+
+    # 同社區不同棟、不同面向（2026-11-24）
+    if a.get('buildings'):
+        sec = building_section(name, a['buildings'])
+        if sec and clean(sec['lead'], True):
+            secs['棟別'] = dict(sec, lead=clean(sec['lead'], True))
 
     # 車位
     ev = a.get('ev') or {}
@@ -1158,7 +1354,10 @@ def article_sections(a):
     if a.get('interior'):
         body += f'<h3>{e(a.get("interior_h2") or "從空中看" + name)}</h3><p>{e(a["interior"])}</p>'
     out.append({'topic': '結論', 'q': f'{name}可以買嗎？先說結論', 'lead': clean(lead), 'body': body})
-    order = a.get('topic_order') or TOPIC_DEFAULT
+    order = list(a.get('topic_order') or TOPIC_DEFAULT)
+    if '棟別' in order and '日照' in order:  # 接在日照後面讀（不影響標題：finish_article 不拿它當標題字）
+        order.remove('棟別')
+        order.insert(order.index('日照') + 1, '棟別')
     out += [dict(secs[t], topic=t) for t in order if t in secs]
     # 優缺點、看屋確認
     if a['pros'] or a['cons']:
@@ -1251,7 +1450,7 @@ def finish_article(a, kw, place, where_short, station, town=''):
     a['typos'] = [x for x in typos_of(kw, a['name']) if x not in a['alias']]
     a['sections'] = article_sections(a)
     # 標題不放「實價登錄」「完工年」：搜這兩個詞的人多半要看房價，文章不寫價格，放標題會答非所問（章節照留）
-    labels = [TOPICS[s['topic']][0] for s in a['sections'] if s['topic'] in TOPICS and s['topic'] not in ('實價', '完工')]
+    labels = [TOPICS[s['topic']][0] for s in a['sections'] if s['topic'] in TOPICS and s['topic'] not in ('實價', '完工', '棟別')]
     disp = display_name(a['name'], a['alias'])
     a['title'] = question_title(disp, labels, town)
     a['h1'] = question_h1(disp, place, labels)
