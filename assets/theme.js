@@ -2,6 +2,7 @@
    - 預設淺色：11/11 林津陞「大部分都深色 可是文字很淺 辨識度很差」，所以不跟手機／電腦的深色設定，按了才變深色。
    - 選擇記在這台瀏覽器（localStorage sa-theme），下次打開同一頁、其他頁都一樣。
    - 做法同查詢台：整頁反轉亮度＋色相轉回；照片、影片、地圖、3D 畫面、深色主視覺再轉回原色。
+   - 按鈕在右下角（11/24 林津陞：「這個深色擋住了 移動到右下去」，原本左下擋到頁尾文字）。
    - 錄影版（html.rec）、列印一律淺色、不顯示按鈕。
    每頁 <head> 由 scripts/structured_data.py 自動帶入（THEME 標記），不要手動刪。 */
 (function () {
@@ -18,7 +19,7 @@
     }).join(',') + '{filter:none!important}' +
     D + ' img[src*="logo"]:not(.sa-keep img),' + D + ' img[src*="brand/icon"]:not(.sa-keep img){filter:none!important}' +  // 近黑 LOGO 在深色頁首跟著反轉成淺色才看得到
 
-    '#sa-theme-btn{position:fixed;left:12px;bottom:12px;z-index:2147483000;display:flex;align-items:center;gap:6px;' +
+    '#sa-theme-btn{position:fixed;right:12px;bottom:12px;z-index:2147483000;display:flex;align-items:center;gap:6px;' +
     'font:600 14px/1 system-ui,"PingFang TC","Microsoft JhengHei",sans-serif;padding:9px 13px;border-radius:999px;' +
     'border:1px solid #B9D0DE;background:#FFFFFF;color:#0F2233;box-shadow:0 2px 10px rgba(15,34,51,.18);cursor:pointer}' +
     '#sa-theme-btn:hover{background:#F2F8FB}' +
@@ -64,7 +65,7 @@
       var cs = getComputedStyle(el);
       if (cs.position !== 'fixed' || cs.display === 'none' || cs.visibility === 'hidden') continue;
       var r = el.getBoundingClientRect();
-      if (r.height > 0 && r.height < vh * 0.4 && r.bottom >= vh - 4 && r.left < 120) off = Math.max(off, vh - r.top);
+      if (r.height > 0 && r.height < vh * 0.4 && r.bottom >= vh - 4 && r.right > window.innerWidth - 120) off = Math.max(off, vh - r.top);
     }
     b.style.bottom = (off + 12) + 'px';
   }
