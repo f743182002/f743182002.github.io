@@ -61,7 +61,7 @@ MAPLINKS_MARK = re.compile(r'<!-- MAPLINKS:START -->.*?<!-- MAPLINKS:END -->\n?'
 GUIDE_MARK = re.compile(r'<!-- GUIDE:START -->.*?<!-- GUIDE:END -->', re.S)
 THEME_MARK = re.compile(r'<!-- THEME:START -->.*?<!-- THEME:END -->\n?', re.S)
 # 2026-11-24 林津陞「這個能不能跟上架中心一樣 有個深色模式開關阿 晚上看了很刺眼」：每頁 <head> 帶 assets/theme.js（預設淺色，按了才深色）
-THEME_TAG = '<!-- THEME:START --><script src="/assets/theme.js?v=1"></script><!-- THEME:END -->\n'
+THEME_TAG = '<!-- THEME:START --><script src="/assets/theme.js?v=2"></script><!-- THEME:END -->\n'
 GUIDE_KEYS = ('buy', 'sell')  # 2026-11-13 板橋買房指南／板橋賣房指南（data/guides.json）
 # 頁尾完整揭露（SOP 3.1 完整版；峯＝U+5CEF）與買方攻略引流兩行（SOP 4.10，2026-10-29）
 FULL_DISCLOSURE = ['全國不動產板橋加盟店', '經紀業｜非凡不動產有限公司',
