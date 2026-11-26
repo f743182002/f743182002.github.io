@@ -42,6 +42,10 @@ AGENT_ID = SITE + '#agent'
 PERSON_ID = SITE + 'about/#lin'
 WEBSITE_ID = SITE + '#website'
 YOUTUBE_CHANNEL = 'https://www.youtube.com/channel/UC_OqNkkqQTT6L7xLZZvlRfQ'
+# 2026-11-26 Google 商家檔案已驗證：地圖連結（CID）與各社群帳號，讓 Google 把網站和商家檔案認成同一家
+GBP_MAP = 'https://maps.google.com/?cid=10827041157387395974'
+SOCIAL = ['https://www.facebook.com/ARB0925635678', 'https://www.instagram.com/f743182002',
+          'https://www.tiktok.com/@banqiao_asheng']
 LINE_URL = 'https://line.me/R/ti/p/%40banqiao.asheng'
 MOBILE = '+886-925-635-678'
 # 揭露四行（峯＝U+5CEF；林津陞是營業員，不是經紀人）
@@ -306,7 +310,12 @@ def agent_nodes():
                          'hasCredential': {'@type': 'EducationalOccupationalCredential', 'name': '不動產經紀人證書',
                                            'identifier': '（99）北縣字第002181號'}}},
         'employee': {'@id': PERSON_ID},
-        'sameAs': [YOUTUBE_CHANNEL],
+        'hasMap': GBP_MAP,
+        # 看屋請先預約；營業時間與 Google 商家檔案一致（每天 09:00–22:00）
+        'openingHoursSpecification': [{'@type': 'OpeningHoursSpecification',
+                                       'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+                                       'opens': '09:00', 'closes': '22:00'}],
+        'sameAs': [YOUTUBE_CHANNEL, GBP_MAP] + SOCIAL,
     }
     person = {
         '@type': 'Person', '@id': PERSON_ID, 'name': '林津陞', 'alternateName': '阿陞',
