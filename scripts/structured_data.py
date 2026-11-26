@@ -1462,6 +1462,10 @@ def finish_article(a, kw, place, where_short, station, town=''):
     labels = [TOPICS[s['topic']][0] for s in a['sections'] if s['topic'] in TOPICS and s['topic'] not in ('實價', '完工', '棟別')]
     disp = display_name(a['name'], a['alias'])
     a['title'] = question_title(disp, labels, town)
+    # 2026-11-26 林津陞同意（樣張二）：keywords.json 可指定單一社區的 title（例：國家文化館放實價登錄與捷運步行）；
+    # 指定的字要先過法遵：步行分鐘要跟本頁步行路線一致，不寫價格數字
+    if (kw or {}).get('title'):
+        a['title'] = str(kw['title']).strip()
     a['h1'] = question_h1(disp, place, labels)
     a['desc'] = question_desc(disp, where_short, station, labels)
     a['qa'] = [(s['q'], s['lead']) for s in a['sections']]
@@ -2167,7 +2171,10 @@ def area_guide(name, ctx):
                      'body': [{'html': '<ul>' + ''.join(cons) + '</ul>'},
                               '買房的預算、流程和費用，可以先看[板橋買房指南](/buy/)；要賣房，可以看[板橋賣房指南](/sell/)。']})
     rows = [f'<li>{link(k, c)}' + (f'（{e(c.get("road") or "")}）' if c.get('road') else '') + '</li>' for k, c, _ in arts]
-    return {'label': label, 'title': cfg['title'], 'h1': cfg['h1'], 'desc': cfg['desc'], 'updated': cfg.get('updated'),
+    # 2026-11-26 林津陞同意（樣張二）：標題、h1 可寫「{n}個社區」，數字由實際收錄的社區頁自動算，新增社區不會過時
+    n = str(len(arts))
+    return {'label': label, 'title': cfg['title'].replace('{n}', n), 'h1': cfg['h1'].replace('{n}', n),
+            'desc': cfg['desc'].replace('{n}', n), 'updated': cfg.get('updated'),
             'contact': 'buyer', 'intro': cfg.get('intro') or [], 'sections': secs, 'unit_price_ok': True,
             'community_rows': rows, 'community_h2': f'{label}社區分析',
             'sources': cfg.get('sources') or ['各社區分析頁（使照、教育局學區、官方資料核對過的步行點）', '內政部不動產交易實價查詢服務網']}
