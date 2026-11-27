@@ -33,6 +33,7 @@ import math
 import re
 import statistics
 import sys
+from datetime import datetime
 from pathlib import Path
 from urllib.parse import quote
 
@@ -2814,6 +2815,14 @@ def video_id_of(url):
     return m[1]
 
 
+def _upload_ts(v):
+    """uploadDate（ISO、帶時區）轉秒數，時區不同也比得對；沒有或看不懂＝0。"""
+    try:
+        return datetime.fromisoformat(str(v.get('uploadDate') or '').replace('Z', '+00:00')).timestamp()
+    except ValueError:
+        return 0
+
+
 def add_video(root, key, url, content_url=None):
     """data/videos.json 加一支影片；口播稿長度對得上（±2 秒）就自動綁到這支影片。"""
     root = Path(root)
@@ -2824,7 +2833,8 @@ def add_video(root, key, url, content_url=None):
     if content_url:
         v['contentUrl'] = content_url
     lst = [x for x in videos.get(key, []) if x['id'] != v['id']] + [v]
-    videos[key] = sorted(lst, key=lambda x: x['uploadDate'])
+    # 新→舊：重做片排第一，社區頁「看影片版」與文章影片清單都先看到最新一支（2026-11-27 民生捷座按鈕播到舊片）
+    videos[key] = sorted(lst, key=_upload_ts, reverse=True)
     n = narr.get(key)
     if n and not n.get('video') and v.get('seconds'):
         total = sum(float(sc.get('d') or 0) for sc in n.get('scenes') or [])
